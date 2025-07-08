@@ -189,13 +189,13 @@ const Header: React.FC = () => {
               /* أزرار تسجيل الدخول للزوار */
               <div className="hidden md:flex items-center gap-2 lg:gap-3">
                 <Link
-                  to="/login"
+                  to="/#"
                   className="px-3 lg:px-6 py-2 lg:py-3 text-primary-600 border border-primary-200 rounded-lg lg:rounded-xl hover:bg-primary-50 transition-all duration-200 font-medium text-sm lg:text-base"
                 >
                   {t('navigation.login')}
                 </Link>
                 <Link
-                  to="/register"
+                  to="/#"
                   className="px-3 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-primary-600 to-emerald-600 text-white rounded-lg lg:rounded-xl hover:from-primary-700 hover:to-emerald-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl text-sm lg:text-base"
                 >
                   {t('navigation.register')}
@@ -310,14 +310,14 @@ const Header: React.FC = () => {
                 {!isAuthenticated && (
                   <div className="pt-4 border-t border-slate-200 space-y-3 animate-fadeIn">
                     <Link
-                      to="/login"
+                      to="/#"
                       className="mobile-menu-item animate-slideInRight block w-full text-center px-4 py-3 text-primary-600 border border-primary-200 rounded-xl hover:bg-primary-50 transition-all duration-200 font-medium"
                       onClick={() => setShowMobileMenu(false)}
                     >
                       {t('navigation.login')}
                     </Link>
                     <Link
-                      to="/register"
+                      to="/#"
                       className="mobile-menu-item animate-slideInRight block w-full text-center px-4 py-3 bg-gradient-to-r from-primary-600 to-emerald-600 text-white rounded-xl hover:from-primary-700 hover:to-emerald-700 transition-all duration-300 font-medium shadow-lg"
                       onClick={() => setShowMobileMenu(false)}
                     >

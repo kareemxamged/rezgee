@@ -45,9 +45,9 @@ const Footer: React.FC = () => {
               <li><Link to="/" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.home')}</Link></li>
               <li><Link to="/features" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.features')}</Link></li>
               <li><Link to="/about" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.about')}</Link></li>
-              <li><Link to="/search" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.search')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.search')}</Link></li>
               <li><Link to="/contact" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.contact')}</Link></li>
-              <li><Link to="/help-center" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.help')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.quickLinks.help')}</Link></li>
             </ul>
           </div>
 
@@ -68,12 +68,12 @@ const Footer: React.FC = () => {
           <div className={i18n.language === 'ar' ? 'text-right' : 'text-left'}>
             <h4 className="text-base md:text-lg font-bold mb-4 md:mb-6">{t('footer.support.title')}</h4>
             <ul className="space-y-2 md:space-y-3">
-              <li><Link to="/help-center" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.helpCenter')}</Link></li>
-              <li><Link to="/faq" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.faq')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.helpCenter')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.faq')}</Link></li>
               <li><Link to="/contact" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.contact')}</Link></li>
-              <li><Link to="/islamic-guidelines" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.islamicGuidelines')}</Link></li>
-              <li><Link to="/privacy-policy" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.privacyPolicy')}</Link></li>
-              <li><Link to="/terms-of-service" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.termsOfService')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.islamicGuidelines')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.privacyPolicy')}</Link></li>
+              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.termsOfService')}</Link></li>
             </ul>
           </div>
 
