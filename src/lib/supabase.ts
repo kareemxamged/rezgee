@@ -64,6 +64,43 @@ export interface Message {
   updated_at?: string;
 }
 
+export interface Match {
+  id: string;
+  user1_id: string;
+  user2_id: string;
+  compatibility_score: number;
+  match_type: 'suggested' | 'mutual_like' | 'conversation_started';
+  status: 'active' | 'inactive' | 'blocked';
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface Like {
+  id: string;
+  liker_id: string;
+  liked_user_id: string;
+  like_type: 'like' | 'super_like' | 'interest';
+  message?: string;
+  status: 'pending' | 'accepted' | 'rejected' | 'expired';
+  created_at: string;
+  updated_at?: string;
+  expires_at?: string;
+}
+
+export interface ContactRequest {
+  id: string;
+  sender_id: string;
+  receiver_id: string;
+  message: string;
+  request_type: 'direct' | 'through_family' | 'formal';
+  status: 'pending' | 'accepted' | 'rejected' | 'withdrawn';
+  family_email?: string;
+  family_phone?: string;
+  created_at: string;
+  updated_at?: string;
+  expires_at: string;
+}
+
 export interface Report {
   id: string;
   reported_user_id: string;

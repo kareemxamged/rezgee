@@ -91,7 +91,7 @@ interface GuestOnlyRouteProps {
 
 export const GuestOnlyRoute: React.FC<GuestOnlyRouteProps> = ({
   children,
-  redirectTo = '/profile'
+  redirectTo = '/dashboard'
 }) => {
   const { isAuthenticated, isLoading } = useAuth();
 

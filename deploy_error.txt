@@ -1,19 +1,48 @@
-[02:26:41.567] Running build in Washington, D.C., USA (East) – iad1
-[02:26:41.567] Build machine configuration: 2 cores, 8 GB
-[02:26:41.586] Cloning github.com/kareemamged/rezge (Branch: main, Commit: 8544a79)
-[02:26:41.763] Previous build caches not available
-[02:26:41.858] Cloning completed: 272.000ms
-[02:26:42.195] Running "vercel build"
-[02:26:42.742] Vercel CLI 44.0.0
-[02:26:43.352] Running "install" command: `npm install`...
-[02:26:44.769] npm error code ENOENT
-[02:26:44.769] npm error syscall open
-[02:26:44.770] npm error path /vercel/path0/package.json
-[02:26:44.770] npm error errno -2
-[02:26:44.770] npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/vercel/path0/package.json'
-[02:26:44.771] npm error enoent This is related to npm not being able to find a file.
-[02:26:44.771] npm error enoent
-[02:26:44.772] npm error A complete log of this run can be found in: /vercel/.npm/_logs/2025-07-03T00_26_43_638Z-debug-0.log
-[02:26:44.803] Error: Command "npm install" exited with 254
-[02:26:45.004] 
-[02:26:47.785] Exiting build container
+لهغ[12:55:05.996] Running build in Washington, D.C., USA (East) – iad1, 2025-07-08T12:55:05.996Z
+[12:55:05.996] Build machine configuration: 2 cores, 8 GB
+[12:55:06.012] Cloning github.com/kareemxamged/rezgee (Branch: main, Commit: 77f72db)
+[12:55:06.130] Previous build caches not available
+[12:55:06.288] Cloning completed: 276.000ms
+[12:55:06.363] Found .vercelignore
+[12:55:06.379] Removed 117 ignored files defined in .vercelignore
+[12:55:06.380]   /.git/config
+[12:55:06.380]   /.git/description
+[12:55:06.380]   /.git/FETCH_HEAD
+[12:55:06.380]   /.git/HEAD
+[12:55:06.380]   /.git/hooks/applypatch-msg.sample
+[12:55:06.380]   /.git/hooks/commit-msg.sample
+[12:55:06.380]   /.git/hooks/fsmonitor-watchman.sample
+[12:55:06.380]   /.git/hooks/post-update.sample
+[12:55:06.380]   /.git/hooks/pre-applypatch.sample
+[12:55:06.381]   /.git/hooks/pre-commit.sample
+[12:55:06.688] Running "vercel build"
+[12:55:07.120] Vercel CLI 44.2.13
+[12:55:07.693] Installing dependencies...
+[12:55:16.157] 
+[12:55:16.157] added 341 packages in 8s
+[12:55:16.158] 
+[12:55:16.159] 84 packages are looking for funding
+[12:55:16.159]   run `npm fund` for details
+[12:55:16.207] Running "npm run build"
+[12:55:16.687] 
+[12:55:16.688] > rezge-islamic-marriage@0.0.0 build
+[12:55:16.688] > tsc -b && vite build
+[12:55:16.688] 
+[12:55:24.960] src/components/AboutPage.tsx(137,63): error TS2339: Property 'map' does not exist on type '$SpecialObject'.
+[12:55:24.961]   Property 'map' does not exist on type 'object'.
+[12:55:24.961] src/components/FAQPage.tsx(31,9): error TS6133: 'isLTR' is declared but its value is never read.
+[12:55:25.222] Error: Command "npm run build" exited with 2
+[12:55:25.424]
+[12:55:28.224] Exiting build container
+
+=== ERRORS RESOLVED (2025-07-08) ===
+
+✅ FIXED: AboutPage.tsx(137,63) - Property 'map' does not exist on type '$SpecialObject'
+   Solution: Added type assertion (as string[]) to t() function call with returnObjects: true
+   Code: {(t('about.values.items', { returnObjects: true }) as string[]).map(...)}
+
+✅ FIXED: FAQPage.tsx(31,9) - 'isLTR' is declared but its value is never read
+   Solution: Removed unused variable isLTR, kept only isRTL which is used
+   Code: Removed line "const isLTR = i18n.language === 'en';"
+
+STATUS: Ready for deployment - TypeScript errors resolved

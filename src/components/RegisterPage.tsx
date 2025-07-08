@@ -468,9 +468,9 @@ const RegisterPage: React.FC = () => {
             {/* Login Link */}
             <div className="text-center pt-4">
               <p className="text-slate-600">
-                لديك حساب بالفعل؟{' '}
+                {t('auth.register.alreadyHaveAccount')}{' '}
                 <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
-                  تسجيل الدخول
+                  {t('auth.register.loginLink')}
                 </Link>
               </p>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, User, Menu, LogOut, Shield, X } from 'lucide-react';
+import { Heart, User, Menu, LogOut, Shield, X, Activity } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import LanguageToggle from './LanguageToggle';
@@ -82,6 +82,26 @@ const Header: React.FC = () => {
                 >
                   {t('navigation.messages')}
                 </Link>
+                <Link
+                  to="/matches"
+                  className={`transition-colors duration-200 font-medium text-base xl:text-lg ${
+                    location.pathname === '/matches'
+                      ? 'text-primary-600'
+                      : 'text-slate-600 hover:text-primary-600'
+                  }`}
+                >
+                  المطابقات
+                </Link>
+                <Link
+                  to="/likes"
+                  className={`transition-colors duration-200 font-medium text-base xl:text-lg ${
+                    location.pathname === '/likes'
+                      ? 'text-primary-600'
+                      : 'text-slate-600 hover:text-primary-600'
+                  }`}
+                >
+                  الإعجابات
+                </Link>
               </>
             )}
 
@@ -149,6 +169,14 @@ const Header: React.FC = () => {
                 {showUserMenu && (
                   <>
                     <div className="absolute left-0 mt-2 w-56 lg:w-64 bg-white rounded-xl shadow-lg border border-slate-200 py-2 z-50">
+                      <Link
+                        to="/dashboard"
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors"
+                        onClick={() => setShowUserMenu(false)}
+                      >
+                        <Activity className="w-5 h-5 text-slate-600" />
+                        <span className="text-slate-800">لوحة التحكم</span>
+                      </Link>
                       <Link
                         to="/profile"
                         className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors"
@@ -267,6 +295,28 @@ const Header: React.FC = () => {
                       >
                         {t('navigation.messages')}
                       </Link>
+                      <Link
+                        to="/matches"
+                        className={`mobile-menu-item animate-slideInRight block px-4 py-3 rounded-xl font-medium transition-all duration-200 ${
+                          location.pathname === '/matches'
+                            ? 'text-primary-600 bg-primary-50'
+                            : 'text-slate-600 hover:text-primary-600 hover:bg-slate-50'
+                        }`}
+                        onClick={() => setShowMobileMenu(false)}
+                      >
+                        المطابقات
+                      </Link>
+                      <Link
+                        to="/likes"
+                        className={`mobile-menu-item animate-slideInRight block px-4 py-3 rounded-xl font-medium transition-all duration-200 ${
+                          location.pathname === '/likes'
+                            ? 'text-primary-600 bg-primary-50'
+                            : 'text-slate-600 hover:text-primary-600 hover:bg-slate-50'
+                        }`}
+                        onClick={() => setShowMobileMenu(false)}
+                      >
+                        الإعجابات
+                      </Link>
                     </>
                   )}
 
@@ -329,6 +379,14 @@ const Header: React.FC = () => {
                 {/* Mobile User Menu */}
                 {isAuthenticated && (
                   <div className="pt-4 border-t border-slate-200 space-y-3 animate-fadeIn">
+                    <Link
+                      to="/dashboard"
+                      className="mobile-menu-item animate-slideInRight flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-50 transition-all duration-200"
+                      onClick={() => setShowMobileMenu(false)}
+                    >
+                      <Activity className="w-5 h-5 text-slate-600" />
+                      <span className="text-slate-800">لوحة التحكم</span>
+                    </Link>
                     <Link
                       to="/profile"
                       className="mobile-menu-item animate-slideInRight flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-50 transition-all duration-200"

@@ -11,6 +11,9 @@ import SetPasswordPage from './components/SetPasswordPage';
 import ProfilePage from './components/ProfilePage';
 import SearchPage from './components/SearchPage';
 import MessagesPage from './components/MessagesPage';
+import MatchesPage from './components/MatchesPage';
+import LikesPage from './components/LikesPage';
+import DashboardPage from './components/DashboardPage';
 import AdminDashboard from './components/AdminDashboard';
 import SecuritySettingsPage from './components/SecuritySettingsPage';
 import FeaturesPage from './components/FeaturesPage';
@@ -60,6 +63,11 @@ function App() {
               } />
 
               {/* الصفحات المحمية (تتطلب تسجيل دخول) */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              } />
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <ProfilePage />
@@ -73,6 +81,16 @@ function App() {
               <Route path="/messages" element={
                 <ProtectedRoute requireVerification={true}>
                   <MessagesPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/matches" element={
+                <ProtectedRoute requireVerification={true}>
+                  <MatchesPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/likes" element={
+                <ProtectedRoute requireVerification={true}>
+                  <LikesPage />
                 </ProtectedRoute>
               } />
               <Route path="/security" element={
