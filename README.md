@@ -896,6 +896,45 @@ ID: cdg1::v4bp6-1751977444421-18641e1d5b4c
 
 **الخطوة التالية:** الموقع جاهز للنشر على Vercel بدون مشاكل 404
 
+### [2025-07-08] حل أخطاء TypeScript في النشر
+**الوصف:** إصلاح أخطاء TypeScript التي كانت تمنع نشر الموقع على Vercel
+
+**الأخطاء المحلولة:**
+- ✅ **خطأ في `AboutPage.tsx` السطر 137**: مشكلة استخدام `.map()` على كائن من نوع `$SpecialObject`
+- ✅ **خطأ في `FAQPage.tsx` السطر 31**: متغير `isLTR` معرف لكن غير مستخدم
+
+**الحلول المطبقة:**
+- ✅ **AboutPage.tsx**: إضافة type assertion `(as string[])` لدالة الترجمة مع `returnObjects: true`
+  ```typescript
+  // قبل الإصلاح
+  {t('about.values.items', { returnObjects: true }).map((value: string, index: number) => (
+
+  // بعد الإصلاح
+  {(t('about.values.items', { returnObjects: true }) as string[]).map((value: string, index: number) => (
+  ```
+
+- ✅ **FAQPage.tsx**: حذف المتغير غير المستخدم `isLTR`
+  ```typescript
+  // قبل الإصلاح
+  const isRTL = i18n.language === 'ar';
+  const isLTR = i18n.language === 'en'; // غير مستخدم
+
+  // بعد الإصلاح
+  const isRTL = i18n.language === 'ar';
+  ```
+
+**الملفات المُحدثة:**
+- `src/components/AboutPage.tsx` - إضافة type assertion للترجمة
+- `src/components/FAQPage.tsx` - حذف المتغير غير المستخدم
+- `deploy_error.txt` - توثيق الأخطاء والحلول
+
+**النتيجة:**
+- ✅ لا توجد أخطاء TypeScript
+- ✅ الموقع يُبنى بنجاح
+- ✅ جاهز للنشر على Vercel
+
+**الخطوة التالية:** الموقع جاهز للنشر بدون أخطاء
+
 ---
 
 ### [2025-06-30] ربط نصوص الموقع بقاعدة البيانات Supabase

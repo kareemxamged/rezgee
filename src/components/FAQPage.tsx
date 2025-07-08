@@ -28,7 +28,6 @@ const FAQPage: React.FC = () => {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const isRTL = i18n.language === 'ar';
-  const isLTR = i18n.language === 'en';
 
   const categories = [
     { id: 'all', icon: HelpCircle, label: t('faq.categories.all') },

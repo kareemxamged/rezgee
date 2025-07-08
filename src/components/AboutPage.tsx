@@ -134,7 +134,7 @@ const AboutPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t('about.values.items', { returnObjects: true }).map((value: string, index: number) => (
+            {(t('about.values.items', { returnObjects: true }) as string[]).map((value: string, index: number) => (
               <div
                 key={index}
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-100"
