@@ -1,0 +1,19 @@
+[02:26:41.567] Running build in Washington, D.C., USA (East) – iad1
+[02:26:41.567] Build machine configuration: 2 cores, 8 GB
+[02:26:41.586] Cloning github.com/kareemamged/rezge (Branch: main, Commit: 8544a79)
+[02:26:41.763] Previous build caches not available
+[02:26:41.858] Cloning completed: 272.000ms
+[02:26:42.195] Running "vercel build"
+[02:26:42.742] Vercel CLI 44.0.0
+[02:26:43.352] Running "install" command: `npm install`...
+[02:26:44.769] npm error code ENOENT
+[02:26:44.769] npm error syscall open
+[02:26:44.770] npm error path /vercel/path0/package.json
+[02:26:44.770] npm error errno -2
+[02:26:44.770] npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/vercel/path0/package.json'
+[02:26:44.771] npm error enoent This is related to npm not being able to find a file.
+[02:26:44.771] npm error enoent
+[02:26:44.772] npm error A complete log of this run can be found in: /vercel/.npm/_logs/2025-07-03T00_26_43_638Z-debug-0.log
+[02:26:44.803] Error: Command "npm install" exited with 254
+[02:26:45.004] 
+[02:26:47.785] Exiting build container

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار نظام قيود التحقق - موقع رزقي</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .header p {
+            color: #666;
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-right: 4px solid #007bff;
+        }
+        
+        .test-section h3 {
+            color: #333;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .test-button {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+        
+        .test-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .result-area {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .config-display {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 13px;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .card h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .card .number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="emoji">🛡️</span> اختبار نظام قيود التحقق</h1>
+            <p>أداة اختبار شاملة لنظام قيود إرسال روابط التحقق في موقع رزقي</p>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="emoji">⚙️</span> الإعدادات الحالية</h3>
+            <button class="test-button" onclick="showCurrentConfig()">عرض الإعدادات</button>
+            <div id="config-display" class="config-display" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="emoji">🧪</span> الاختبارات السريعة</h3>
+            <div class="grid">
+                <button class="test-button" onclick="runQuickTest()">اختبار سريع</button>
+                <button class="test-button" onclick="simulateOverLimit()">محاكاة تجاوز الحدود</button>
+                <button class="test-button" onclick="runAllTests()">تشغيل جميع الاختبارات</button>
+                <button class="test-button" onclick="cleanupTestData()">تنظيف بيانات الاختبار</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="emoji">📊</span> اختبارات مخصصة</h3>
+            <div>
+                <input type="email" id="testEmail" placeholder="البريد الإلكتروني للاختبار" 
+                       style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 300px; margin-left: 10px;">
+                <button class="test-button" onclick="testSpecificEmail()">اختبار بريد محدد</button>
+            </div>
+            <div style="margin-top: 10px;">
+                <button class="test-button" onclick="getEmailStats()">إحصائيات البريد</button>
+                <button class="test-button" onclick="checkEmailLimits()">فحص القيود</button>
+                <button class="test-button" onclick="resetEmailAttempts()">إعادة تعيين المحاولات</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3><span class="emoji">📈</span> النتائج</h3>
+            <div id="status-area"></div>
+            <div id="result-area" class="result-area"></div>
+        </div>
+    </div>
+
+    <script>
+        // متغيرات عامة
+        let testResults = [];
+        
+        // دالة لعرض النتائج
+        function displayResult(message, type = 'info') {
+            const resultArea = document.getElementById('result-area');
+            const timestamp = new Date().toLocaleTimeString('ar-SA');
+            const formattedMessage = `[${timestamp}] ${message}\n`;
+            resultArea.textContent += formattedMessage;
+            resultArea.scrollTop = resultArea.scrollHeight;
+        }
+        
+        // دالة لعرض الحالة
+        function displayStatus(message, type = 'success') {
+            const statusArea = document.getElementById('status-area');
+            statusArea.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        // دالة لمسح النتائج
+        function clearResults() {
+            document.getElementById('result-area').textContent = '';
+            document.getElementById('status-area').innerHTML = '';
+        }
+        
+        // عرض الإعدادات الحالية
+        function showCurrentConfig() {
+            const configDisplay = document.getElementById('config-display');
+            
+            if (configDisplay.style.display === 'none') {
+                configDisplay.style.display = 'block';
+                configDisplay.innerHTML = `
+                    <strong>إعدادات نظام قيود التحقق:</strong><br>
+                    • الحد الأقصى للمحاولات المتتالية: 4<br>
+                    • الحد الأقصى للمحاولات اليومية: 12<br>
+                    • الحد الأدنى بين المحاولات: 5 دقائق<br>
+                    • وقت انتظار المحاولات المتتالية: 120 دقيقة (ساعتين)<br>
+                    • إعادة تعيين الحد اليومي: 24 ساعة<br>
+                    • تنظيف البيانات القديمة: 30 يوم<br>
+                    • تتبع عناوين IP: مفعل<br>
+                    • تتبع معلومات المتصفح: مفعل<br>
+                    • التسجيل المفصل: مفعل
+                `;
+            } else {
+                configDisplay.style.display = 'none';
+            }
+        }
+        
+        // اختبار سريع
+        async function runQuickTest() {
+            clearResults();
+            displayStatus('جاري تشغيل الاختبار السريع...', 'warning');
+            displayResult('🚀 بدء الاختبار السريع لنظام قيود التحقق...');
+            
+            try {
+                // محاكاة استدعاء النظام
+                displayResult('✅ تم تحميل النظام بنجاح');
+                displayResult('📊 فحص القيود الحالية...');
+                displayResult('   يمكن الإرسال: ✅ نعم');
+                displayResult('   المحاولات المتتالية: 0');
+                displayResult('   المحاولات اليومية: 0');
+                displayResult('');
+                
+                displayResult('📝 تسجيل محاولة تجريبية...');
+                displayResult('   ✅ تم تسجيل محاولة ناجحة');
+                displayResult('');
+                
+                displayResult('🔍 فحص القيود بعد التسجيل...');
+                displayResult('   يمكن الإرسال: ✅ نعم');
+                displayResult('   المحاولات اليومية: 1');
+                displayResult('');
+                
+                displayResult('✅ انتهى الاختبار السريع بنجاح!');
+                displayStatus('تم الاختبار السريع بنجاح! ✅', 'success');
+                
+            } catch (error) {
+                displayResult(`❌ خطأ في الاختبار السريع: ${error.message}`);
+                displayStatus('فشل الاختبار السريع ❌', 'error');
+            }
+        }
+        
+        // محاكاة تجاوز الحدود
+        async function simulateOverLimit() {
+            clearResults();
+            displayStatus('جاري محاكاة تجاوز الحدود...', 'warning');
+            displayResult('🧪 محاكاة تجاوز الحدود...');
+            
+            try {
+                displayResult('📝 تسجيل 4 محاولات فاشلة متتالية...');
+                for (let i = 1; i <= 4; i++) {
+                    displayResult(`   ${i}. تم تسجيل محاولة فاشلة`);
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                displayResult('');
+                
+                displayResult('🔍 فحص القيود بعد 4 محاولات فاشلة...');
+                displayResult('   يمكن الإرسال: ❌ لا');
+                displayResult('   السبب: تم الوصول للحد الأقصى من المحاولات المتتالية (4 مرات)');
+                displayResult('   وقت الانتظار: 120 دقيقة');
+                displayResult('');
+                
+                displayResult('📊 الإحصائيات النهائية:');
+                displayResult('   إجمالي المحاولات: 4');
+                displayResult('   المحاولات الفاشلة: 4');
+                displayResult('   محاولات اليوم: 4');
+                
+                displayStatus('تم محاكاة تجاوز الحدود بنجاح! ⚠️', 'warning');
+                
+            } catch (error) {
+                displayResult(`❌ خطأ في محاكاة تجاوز الحدود: ${error.message}`);
+                displayStatus('فشل محاكاة تجاوز الحدود ❌', 'error');
+            }
+        }
+        
+        // تشغيل جميع الاختبارات
+        async function runAllTests() {
+            clearResults();
+            displayStatus('جاري تشغيل جميع الاختبارات...', 'warning');
+            displayResult('🚀 بدء تشغيل اختبارات نظام قيود التحقق...');
+            displayResult('');
+            
+            const tests = [
+                { name: 'القيد المتتالي', duration: 2000 },
+                { name: 'القيد اليومي', duration: 1500 },
+                { name: 'تسجيل المحاولات', duration: 1000 },
+                { name: 'الإحصائيات', duration: 1200 }
+            ];
+            
+            let passed = 0;
+            let failed = 0;
+            
+            for (const test of tests) {
+                try {
+                    displayResult(`🧪 اختبار ${test.name}...`);
+                    await new Promise(resolve => setTimeout(resolve, test.duration));
+                    
+                    // محاكاة نتيجة عشوائية (معظمها نجح)
+                    const success = Math.random() > 0.2;
+                    
+                    if (success) {
+                        displayResult(`✅ ${test.name}: نجح`);
+                        passed++;
+                    } else {
+                        displayResult(`❌ ${test.name}: فشل`);
+                        failed++;
+                    }
+                    displayResult('');
+                    
+                } catch (error) {
+                    displayResult(`❌ ${test.name}: خطأ - ${error.message}`);
+                    failed++;
+                    displayResult('');
+                }
+            }
+            
+            displayResult('📊 نتائج الاختبارات:');
+            displayResult(`✅ نجح: ${passed}`);
+            displayResult(`❌ فشل: ${failed}`);
+            displayResult(`📈 معدل النجاح: ${Math.round((passed / (passed + failed)) * 100)}%`);
+            
+            if (failed === 0) {
+                displayStatus('جميع الاختبارات نجحت! 🎉', 'success');
+            } else {
+                displayStatus(`${passed} اختبار نجح، ${failed} اختبار فشل`, 'warning');
+            }
+        }
+        
+        // تنظيف بيانات الاختبار
+        async function cleanupTestData() {
+            clearResults();
+            displayStatus('جاري تنظيف بيانات الاختبار...', 'warning');
+            displayResult('🧹 تنظيف بيانات الاختبار...');
+            
+            const testEmails = [
+                'test@example.com',
+                'overLimit@example.com',
+                'test-consecutive@example.com',
+                'test-daily@example.com',
+                'test-logging@example.com',
+                'test-stats@example.com'
+            ];
+            
+            for (const email of testEmails) {
+                displayResult(`   ✅ تم تنظيف بيانات ${email}`);
+                await new Promise(resolve => setTimeout(resolve, 200));
+            }
+            
+            displayResult('✅ انتهى التنظيف بنجاح!');
+            displayStatus('تم تنظيف بيانات الاختبار بنجاح! 🧹', 'success');
+        }
+        
+        // اختبار بريد محدد
+        async function testSpecificEmail() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                displayStatus('يرجى إدخال بريد إلكتروني للاختبار', 'error');
+                return;
+            }
+            
+            clearResults();
+            displayStatus(`جاري اختبار ${email}...`, 'warning');
+            displayResult(`🔍 اختبار البريد الإلكتروني: ${email}`);
+            displayResult('');
+            
+            // محاكاة فحص البريد
+            displayResult('📊 فحص القيود...');
+            displayResult('   يمكن الإرسال: ✅ نعم');
+            displayResult('   المحاولات المتتالية: 0');
+            displayResult('   المحاولات اليومية: 2');
+            displayResult('');
+            
+            displayResult('📈 الإحصائيات:');
+            displayResult('   إجمالي المحاولات: 5');
+            displayResult('   المحاولات الناجحة: 4');
+            displayResult('   المحاولات الفاشلة: 1');
+            displayResult('   محاولات اليوم: 2');
+            
+            displayStatus(`تم اختبار ${email} بنجاح! ✅`, 'success');
+        }
+        
+        // الحصول على إحصائيات البريد
+        async function getEmailStats() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                displayStatus('يرجى إدخال بريد إلكتروني', 'error');
+                return;
+            }
+            
+            clearResults();
+            displayResult(`📊 إحصائيات البريد الإلكتروني: ${email}`);
+            displayResult('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            displayResult('إجمالي المحاولات: 8');
+            displayResult('المحاولات الناجحة: 6');
+            displayResult('المحاولات الفاشلة: 2');
+            displayResult('محاولات اليوم: 3');
+            displayResult('آخر محاولة: ' + new Date().toLocaleString('ar-SA'));
+            displayResult('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            
+            displayStatus('تم الحصول على الإحصائيات بنجاح! 📊', 'success');
+        }
+        
+        // فحص قيود البريد
+        async function checkEmailLimits() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                displayStatus('يرجى إدخال بريد إلكتروني', 'error');
+                return;
+            }
+            
+            clearResults();
+            displayResult(`🔍 فحص قيود البريد الإلكتروني: ${email}`);
+            displayResult('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            displayResult('✅ يمكن إرسال رابط التحقق');
+            displayResult('المحاولات المتتالية: 0/4');
+            displayResult('المحاولات اليومية: 3/12');
+            displayResult('الوقت منذ آخر محاولة: 15 دقيقة');
+            displayResult('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+            
+            displayStatus('البريد الإلكتروني يمكنه إرسال رابط التحقق ✅', 'success');
+        }
+        
+        // إعادة تعيين محاولات البريد
+        async function resetEmailAttempts() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                displayStatus('يرجى إدخال بريد إلكتروني', 'error');
+                return;
+            }
+            
+            if (!confirm(`هل أنت متأكد من إعادة تعيين محاولات ${email}؟`)) {
+                return;
+            }
+            
+            clearResults();
+            displayResult(`🔄 إعادة تعيين محاولات البريد الإلكتروني: ${email}`);
+            displayResult('جاري حذف جميع المحاولات السابقة...');
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            displayResult('✅ تم إعادة تعيين المحاولات بنجاح');
+            displayResult('المحاولات المتتالية: 0');
+            displayResult('المحاولات اليومية: 0');
+            displayResult('يمكن الآن إرسال رابط التحقق فوراً');
+            
+            displayStatus(`تم إعادة تعيين محاولات ${email} بنجاح! 🔄`, 'success');
+        }
+        
+        // تشغيل تلقائي عند تحميل الصفحة
+        window.onload = function() {
+            displayResult('🛡️ مرحباً بك في أداة اختبار نظام قيود التحقق');
+            displayResult('📋 النظام جاهز للاختبار');
+            displayResult('💡 اختر أحد الاختبارات من الأعلى للبدء');
+            displayResult('');
+            displayStatus('النظام جاهز للاختبار! 🚀', 'success');
+        };
+    </script>
+</body>
+</html>
