@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
               <li><Link to="/help-center" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.helpCenter')}</Link></li>
               <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.faq')}</Link></li>
               <li><Link to="/contact" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.contact')}</Link></li>
-              <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.islamicGuidelines')}</Link></li>
+              <li><Link to="/islamic-guidelines" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.islamicGuidelines')}</Link></li>
               <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.privacyPolicy')}</Link></li>
               <li><Link to="/#" className="text-slate-300 hover:text-white transition-colors text-sm md:text-base">{t('footer.support.termsOfService')}</Link></li>
             </ul>
