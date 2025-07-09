@@ -174,7 +174,7 @@ const IslamicGuidelinesPage: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/faq"
+                href="/#"
                 className="bg-primary-600 text-white px-8 py-4 rounded-xl font-medium hover:bg-primary-700 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-lg"
               >
                 {t('islamicGuidelines.callToAction.faqButton')}
