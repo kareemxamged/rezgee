@@ -1,0 +1,389 @@
+PS C:\Users\qwiklabs\Downloads\Update 27-7-2025-01-18> npm run build
+
+> rezge-islamic-marriage@0.0.0 build
+> tsc -b && vite build
+
+src/components/RegisterPage.tsx:236:13 - error TS6133: 'userAgent' is declared but its value is nev
+er read.
+
+236       const userAgent = navigator.userAgent;
+                ~~~~~~~~~
+
+src/components/RegisterPage.tsx:277:20 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+277         if (result.limits) {
+                       ~~~~~~
+
+src/components/RegisterPage.tsx:278:22 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+278           if (result.limits.dailyAttempts >= 12) {
+                         ~~~~~~
+
+src/components/RegisterPage.tsx:279:92 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+279             errorMsg += `\n\n⚠️ ${t('auth.register.messages.dailyLimitReached')} (${result.limi
+ts.dailyAttempts}/12 ${t('auth.register.messages.attempts')})`;
+                                                                                               ~~~~
+~~
+
+src/components/RegisterPage.tsx:280:29 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+280           } else if (result.limits.consecutiveAttempts >= 4) {
+                                ~~~~~~
+
+src/components/RegisterPage.tsx:281:98 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+281             errorMsg += `\n\n⚠️ ${t('auth.register.messages.consecutiveLimitReached')} (${resul
+t.limits.consecutiveAttempts}/4)`;
+    
+  ~~~~~~
+
+src/components/RegisterPage.tsx:284:22 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+284           if (result.limits.nextAllowedTime) {
+                         ~~~~~~
+
+src/components/RegisterPage.tsx:285:46 - error TS2339: Property 'limits' does not exist on type '{
+success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+285             const nextTime = new Date(result.limits.nextAllowedTime);
+                                                 ~~~~~~
+
+src/components/RegisterPage.tsx:291:20 - error TS2339: Property 'waitTime' does not exist on type '
+{ success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+291         if (result.waitTime) {
+                       ~~~~~~~~
+
+src/components/RegisterPage.tsx:292:30 - error TS2339: Property 'waitTime' does not exist on type '
+{ success: boolean; token?: string | undefined; error?: string | undefined; }'.
+
+292           setWaitTime(result.waitTime);
+                                 ~~~~~~~~
+
+src/components/ScrollToTop.tsx:25:11 - error TS6133: 'previousPath' is declared but its value is ne
+ver read.
+
+25     const previousPath = previousPathRef.current;
+             ~~~~~~~~~~~~
+
+src/components/ScrollToTop.tsx:43:13 - error TS6133: 'forceReflow' is declared but its value is nev
+er read.
+
+43       const forceReflow = document.body.offsetHeight;
+               ~~~~~~~~~~~
+
+src/components/SecuritySettingsPage.tsx:19:3 - error TS6133: 'Info' is declared but its value is ne
+ver read.
+
+19   Info,
+     ~~~~
+
+src/components/SecuritySettingsPage.tsx:31:3 - error TS6196: 'RecordPendingRequestResult' is declar
+ed but never used.
+
+31   RecordPendingRequestResult
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/SecuritySettingsPage.tsx:592:40 - error TS2345: Argument of type 'string | undefined
+' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+592         await createEmailChangeRequest(emailToUpdate, phoneToUpdate || undefined);
+                                           ~~~~~~~~~~~~~
+
+src/components/SecuritySettingsPage.tsx:1057:17 - error TS2322: Type 'boolean | null' is not assign
+able to type 'boolean | undefined'.
+  Type 'null' is not assignable to type 'boolean | undefined'.
+
+1057                 disabled={isContactLoading || (rateLimitInfo && !rateLimitInfo.allowed)}
+                     ~~~~~~~~
+
+  node_modules/@types/react/index.d.ts:2959:9
+    2959         disabled?: boolean | undefined;
+                 ~~~~~~~~
+    The expected type comes from property 'disabled' which is declared here on type 'DetailedHTMLPr
+ops<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'
+
+src/components/VerificationAttemptsAdmin.tsx:91:59 - error TS2339: Property 'getVerificationStats'
+does not exist on type 'EmailVerificationService'.
+
+91         const emailStats = await emailVerificationService.getVerificationStats(email);
+                                                             ~~~~~~~~~~~~~~~~~~~~
+
+src/components/VerificationAttemptsAdmin.tsx:109:53 - error TS2339: Property 'resetUserAttempts' do
+es not exist on type 'EmailVerificationService'.
+
+109       const result = await emailVerificationService.resetUserAttempts(email);
+                                                        ~~~~~~~~~~~~~~~~~
+
+src/components/VerificationAttemptsAdmin.tsx:127:38 - error TS2339: Property 'cleanupOldAttempts' d
+oes not exist on type 'EmailVerificationService'.
+
+127       await emailVerificationService.cleanupOldAttempts();
+                                         ~~~~~~~~~~~~~~~~~~
+
+src/components/VerificationStatus.tsx:31:64 - error TS2339: Property 'getVerificationStats' does no
+t exist on type 'EmailVerificationService'.
+
+31       const verificationStats = await emailVerificationService.getVerificationStats(email);
+                                                                  ~~~~~~~~~~~~~~~~~~~~
+
+src/components/VerifyEmailChangePage.tsx:10:27 - error TS6133: 'userProfile' is declared but its va
+lue is never read.
+
+10   const { refreshProfile, userProfile } = useAuth();
+                             ~~~~~~~~~~~
+
+src/components/VerifyEmailChangePage.tsx:144:15 - error TS2561: Object literal may only specify kno
+wn properties, but 'email_confirmed_at' does not exist in type 'AdminUserAttributes'. Did you mean
+to write 'email_confirm'?
+
+144               email_confirmed_at: new Date().toISOString()
+                  ~~~~~~~~~~~~~~~~~~
+
+src/lib/contactUpdateRateLimit.ts:198:27 - error TS6133: 'result' is declared but its value is neve
+r read.
+
+198   static getStatusMessage(result: RateLimitCheckResult): string {
+                              ~~~~~~
+
+src/lib/emailVerification.ts:60:15 - error TS6133: 'data' is declared but its value is never read.
+
+60       const { data, error } = await supabase
+                 ~~~~
+
+src/lib/emailVerification.ts:165:17 - error TS6133: 'hashPassword' is declared but its value is nev
+er read.
+
+165   private async hashPassword(password: string): Promise<string> {
+                    ~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:291:47 - error TS2339: Property 'nationality' does not exist on type '
+UserData'.
+
+291           nationality: verification.user_data.nationality || null,
+                                                  ~~~~~~~~~~~
+
+src/lib/emailVerification.ts:292:42 - error TS2339: Property 'weight' does not exist on type 'UserD
+ata'.
+
+292           weight: verification.user_data.weight || null,
+                                             ~~~~~~
+
+src/lib/emailVerification.ts:293:42 - error TS2339: Property 'height' does not exist on type 'UserD
+ata'.
+
+293           height: verification.user_data.height || null,
+                                             ~~~~~~
+
+src/lib/emailVerification.ts:294:53 - error TS2339: Property 'religiosity_level' does not exist on
+type 'UserData'.
+
+294           religiosity_level: verification.user_data.religiosity_level || null,
+                                                        ~~~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:295:53 - error TS2339: Property 'prayer_commitment' does not exist on
+type 'UserData'.
+
+295           prayer_commitment: verification.user_data.prayer_commitment || null,
+                                                        ~~~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:296:43 - error TS2339: Property 'smoking' does not exist on type 'User
+Data'.
+
+296           smoking: verification.user_data.smoking || null,
+                                              ~~~~~~~
+
+src/lib/emailVerification.ts:297:41 - error TS2339: Property 'beard' does not exist on type 'UserDa
+ta'.
+
+297           beard: verification.user_data.beard || null,
+                                            ~~~~~
+
+src/lib/emailVerification.ts:298:41 - error TS2339: Property 'hijab' does not exist on type 'UserDa
+ta'.
+
+298           hijab: verification.user_data.hijab || null,
+                                            ~~~~~
+
+src/lib/emailVerification.ts:299:51 - error TS2339: Property 'education_level' does not exist on ty
+pe 'UserData'.
+
+299           education_level: verification.user_data.education_level || null,
+                                                      ~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:300:52 - error TS2339: Property 'financial_status' does not exist on t
+ype 'UserData'.
+
+300           financial_status: verification.user_data.financial_status || null
+                                                       ~~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:341:47 - error TS2339: Property 'nationality' does not exist on type '
+UserData'.
+
+341           nationality: verification.user_data.nationality || null,
+                                                  ~~~~~~~~~~~
+
+src/lib/emailVerification.ts:342:42 - error TS2339: Property 'weight' does not exist on type 'UserD
+ata'.
+
+342           weight: verification.user_data.weight || null,
+                                             ~~~~~~
+
+src/lib/emailVerification.ts:343:42 - error TS2339: Property 'height' does not exist on type 'UserD
+ata'.
+
+343           height: verification.user_data.height || null,
+                                             ~~~~~~
+
+src/lib/emailVerification.ts:344:53 - error TS2339: Property 'religiosity_level' does not exist on
+type 'UserData'.
+
+344           religiosity_level: verification.user_data.religiosity_level || null,
+                                                        ~~~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:345:53 - error TS2339: Property 'prayer_commitment' does not exist on
+type 'UserData'.
+
+345           prayer_commitment: verification.user_data.prayer_commitment || null,
+                                                        ~~~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:346:43 - error TS2339: Property 'smoking' does not exist on type 'User
+Data'.
+
+346           smoking: verification.user_data.smoking || null,
+                                              ~~~~~~~
+
+src/lib/emailVerification.ts:347:41 - error TS2339: Property 'beard' does not exist on type 'UserDa
+ta'.
+
+347           beard: verification.user_data.beard || null,
+                                            ~~~~~
+
+src/lib/emailVerification.ts:348:41 - error TS2339: Property 'hijab' does not exist on type 'UserDa
+ta'.
+
+348           hijab: verification.user_data.hijab || null,
+                                            ~~~~~
+
+src/lib/emailVerification.ts:349:51 - error TS2339: Property 'education_level' does not exist on ty
+pe 'UserData'.
+
+349           education_level: verification.user_data.education_level || null,
+                                                      ~~~~~~~~~~~~~~~
+
+src/lib/emailVerification.ts:350:52 - error TS2339: Property 'financial_status' does not exist on t
+ype 'UserData'.
+
+350           financial_status: verification.user_data.financial_status || null,
+                                                       ~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:57:49 - error TS2339: Property 'checkVerificationLimits' does
+not exist on type 'EmailVerificationService'.
+
+57     let limits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                                   ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:66:45 - error TS2339: Property 'checkVerificationLimits' does
+not exist on type 'EmailVerificationService'.
+
+66     limits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                               ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:97:49 - error TS2339: Property 'checkVerificationLimits' does
+not exist on type 'EmailVerificationService'.
+
+97     let limits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                                   ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:107:45 - error TS2339: Property 'checkVerificationLimits' does
+ not exist on type 'EmailVerificationService'.
+
+107     limits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                                ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:130:36 - error TS2339: Property 'logVerificationAttempt' does
+not exist on type 'EmailVerificationService'.
+
+130     await emailVerificationService.logVerificationAttempt(
+                                       ~~~~~~~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:139:36 - error TS2339: Property 'logVerificationAttempt' does
+not exist on type 'EmailVerificationService'.
+
+139     await emailVerificationService.logVerificationAttempt(
+                                       ~~~~~~~~~~~~~~~~~~~~~~
+
+src/tests/verificationLimits.test.ts:186:50 - error TS2339: Property 'getVerificationStats' does no
+t exist on type 'EmailVerificationService'.
+
+186     const stats = await emailVerificationService.getVerificationStats(testEmail);
+                                                     ~~~~~~~~~~~~~~~~~~~~
+
+src/utils/profileDataFixer.ts:2:8 - error TS2613: Module '"C:/Users/qwiklabs/Downloads/Update 27-7-
+2025-01-18/src/lib/emailVerification"' has no default export. Did you mean to use 'import { emailVe
+rificationService } from "C:/Users/qwiklabs/Downloads/Update 27-7-2025-01-18/src/lib/emailVerificat
+ion"' instead?
+
+2 import emailVerificationService from '../lib/emailVerification';
+         ~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:17:51 - error TS2339: Property 'checkVerificationLimits' does n
+ot exist on type 'EmailVerificationService'.
+
+17     const limits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                                     ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:29:50 - error TS2339: Property 'getVerificationStats' does not
+exist on type 'EmailVerificationService'.
+
+29     const stats = await emailVerificationService.getVerificationStats(testEmail);
+                                                    ~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:41:36 - error TS2339: Property 'logVerificationAttempt' does no
+t exist on type 'EmailVerificationService'.
+
+41     await emailVerificationService.logVerificationAttempt(
+                                      ~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:53:54 - error TS2339: Property 'checkVerificationLimits' does n
+ot exist on type 'EmailVerificationService'.
+
+53     const newLimits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:77:38 - error TS2339: Property 'logVerificationAttempt' does no
+t exist on type 'EmailVerificationService'.
+
+77       await emailVerificationService.logVerificationAttempt(
+                                        ~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:90:51 - error TS2339: Property 'checkVerificationLimits' does n
+ot exist on type 'EmailVerificationService'.
+
+90     const limits = await emailVerificationService.checkVerificationLimits(testEmail);
+                                                     ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:99:50 - error TS2339: Property 'getVerificationStats' does not
+exist on type 'EmailVerificationService'.
+
+99     const stats = await emailVerificationService.getVerificationStats(testEmail);
+                                                    ~~~~~~~~~~~~~~~~~~~~
+
+src/utils/testVerificationSystem.ts:128:53 - error TS2339: Property 'resetUserAttempts' does not ex
+ist on type 'EmailVerificationService'.
+
+128       const result = await emailVerificationService.resetUserAttempts(email);
+                                                        ~~~~~~~~~~~~~~~~~
+
+
+Found 61 errors.
+
+PS C:\Users\qwiklabs\Downloads\Update 27-7-2025-01-18>
