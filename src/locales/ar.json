@@ -1,0 +1,2858 @@
+{
+    "common": {
+        "welcome": "مرحباً",
+        "login": "تسجيل الدخول",
+        "register": "إنشاء حساب",
+        "logout": "تسجيل الخروج",
+        "search": "البحث",
+        "save": "حفظ",
+        "cancel": "إلغاء",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "confirm": "تأكيد",
+        "loading": "جاري التحميل...",
+        "deleting": "جاري الحذف...",
+        "error": "حدث خطأ",
+        "success": "تم بنجاح",
+        "warning": "تحذير",
+        "actionCannotBeUndone": "لا يمكن التراجع عن هذا الإجراء",
+        "deleteWarningMessage": "سيتم حذف هذا العنصر نهائياً ولا يمكن استرداده مرة أخرى.",
+        "required": "هذا الحقل مطلوب",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "name": "الاسم",
+        "age": "العمر",
+        "location": "الموقع",
+        "submit": "إرسال",
+        "backToHome": "العودة للرئيسية",
+        "dir": "rtl",
+        "minutes": "دقيقة",
+        "hours": "ساعة",
+        "unknown": "غير معروف"
+    },
+    "navigation": {
+        "home": "الرئيسية",
+        "search": "البحث",
+        "messages": "الرسائل",
+        "profile": "الملف الشخصي",
+        "settings": "الإعدادات",
+        "help": "المساعدة",
+        "features": "الميزات",
+        "about": "من نحن",
+        "articles": "المقالات",
+        "contact": "اتصل بنا",
+        "helpCenter": "مركز المساعدة",
+        "faq": "الأسئلة الشائعة",
+        "islamicGuidelines": "الإرشادات الشرعية",
+        "privacyPolicy": "سياسة الخصوصية",
+        "termsOfService": "شروط الاستخدام",
+        "security": "الأمان والخصوصية",
+        "logout": "تسجيل الخروج",
+        "userMenu": "قائمة المستخدم",
+        "login": "تسجيل الدخول",
+        "register": "إنشاء حساب",
+        "verified": "محقق",
+        "underReview": "قيد المراجعة",
+        "openMenu": "فتح القائمة",
+        "dashboard": "لوحة التحكم",
+        "matches": "المطابقات",
+        "likes": "الإعجابات"
+    },
+    "profileImage": {
+        "profilePicture": "الصورة الشخصية",
+        "uploadImage": "رفع صورة شخصية",
+        "changeImage": "تغيير الصورة",
+        "deleteImage": "حذف الصورة",
+        "showImage": "إظهار الصورة",
+        "hideImage": "إخفاء الصورة",
+        "uploadSuccess": "تم رفع الصورة بنجاح",
+        "uploadError": "فشل في رفع الصورة",
+        "deleteSuccess": "تم حذف الصورة بنجاح",
+        "deleteError": "فشل في حذف الصورة",
+        "visibilityEnabled": "تم تفعيل عرض الصورة",
+        "visibilityDisabled": "تم إخفاء الصورة",
+        "visibilityError": "فشل في تحديث إعدادات الخصوصية",
+        "supportedFormats": "الصيغ المدعومة: JPEG, PNG, WebP",
+        "maxSize": "الحد الأقصى: 5 ميجابايت"
+    },
+    "shareProfile": {
+        "shareButton": "مشاركة الملف الشخصي",
+        "modalTitle": "مشاركة ملفي الشخصي",
+        "profileLink": "رابط الملف الشخصي",
+        "shareVia": "مشاركة عبر:",
+        "nativeShare": "مشاركة",
+        "whatsapp": "واتساب",
+        "email": "البريد الإلكتروني",
+        "copyLink": "نسخ الرابط",
+        "copied": "تم النسخ!",
+        "copySuccess": "تم نسخ الرابط",
+        "copySuccessDesc": "تم نسخ رابط ملفك الشخصي بنجاح",
+        "copyError": "فشل في النسخ",
+        "copyErrorDesc": "حدث خطأ أثناء نسخ الرابط",
+        "whatsappMessage": "مرحباً! يمكنك مشاهدة ملفي الشخصي على موقع رزقي:",
+        "emailSubject": "ملف {{name}} الشخصي على موقع رزقي",
+        "emailBody": "مرحباً!\n\nيمكنك مشاهدة ملفي الشخصي على موقع رزقي للتعارف الإسلامي:",
+        "shareTitle": "ملف {{name}} الشخصي",
+        "shareText": "مشاهدة ملف {{name}} الشخصي على موقع رزقي",
+        "privacyNote": "سيتمكن من يحصل على هذا الرابط من مشاهدة ملفك الشخصي العام فقط"
+    },
+    "publicProfile": {
+        "notFound": "الملف الشخصي غير موجود",
+        "notFoundDesc": "لم يتم العثور على الملف الشخصي المطلوب أو أنه غير متاح للعرض",
+        "privacyNotice": "ملاحظة الخصوصية",
+        "privacyNoticeDesc": "هذا الملف الشخصي العام يعرض المعلومات الأساسية فقط وفقاً لإعدادات الخصوصية",
+        "showInterest": "إظهار الاهتمام",
+        "sendLike": "إرسال إعجاب",
+        "likeSent": "تم إرسال الإعجاب",
+        "sendMessage": "إرسال رسالة",
+        "memberSince": "عضو منذ",
+        "error": {
+            "notFound": "الملف الشخصي غير موجود",
+            "doesNotExist": "هذا الملف الشخصي غير متاح",
+            "loadingError": "حدث خطأ أثناء تحميل الملف الشخصي",
+            "unavailable": "الملف الشخصي غير متاح",
+            "profilePrivate": "هذا الملف الشخصي خاص ولا يمكن عرضه للعامة",
+            "authRequired": "يجب تسجيل الدخول لعرض الملفات الشخصية",
+            "verificationRequired": "هذا الملف الشخصي متاح للأعضاء الموثقين فقط",
+            "invalidStatus": "حسابك غير نشط أو غير صالح",
+            "sameGenderNotAllowed": "لا يُسمح بالوصول للملفات الشخصية من نفس الجنس وفقاً للضوابط الشرعية"
+        }
+    },
+    "header": {
+        "brand": {
+            "name": "رزقي"
+        }
+    },
+    "auth": {
+        "loginTitle": "تسجيل الدخول",
+        "registerTitle": "إنشاء حساب جديد",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "rememberMe": "تذكرني",
+        "alreadyHaveAccount": "لديك حساب بالفعل؟",
+        "dontHaveAccount": "ليس لديك حساب؟",
+        "login": {
+            "title": "تسجيل الدخول",
+            "subtitle": "مرحباً بك مرة أخرى في رزقي",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "emailPlaceholder": "example@email.com",
+            "passwordPlaceholder": "أدخل كلمة المرور",
+            "rememberMe": "تذكرني",
+            "forgotPassword": "نسيت كلمة المرور؟",
+            "loginButton": "تسجيل الدخول",
+            "loginButtonLoading": "جاري تسجيل الدخول...",
+            "loginBlocked": "تم منع تسجيل الدخول مؤقتاً",
+            "attemptsRemaining": "المحاولات المتبقية: {{count}}",
+            "noAccount": "ليس لديك حساب؟",
+            "createAccount": "إنشاء حساب جديد",
+            "orDivider": "أو",
+            "googleLogin": "الدخول بحساب Google",
+            "facebookLogin": "الدخول بحساب Facebook",
+            "backToHome": "العودة للصفحة الرئيسية",
+            "secure": "آمن",
+            "verified": "موثق",
+            "dataProtection": {
+                "title": "حماية البيانات",
+                "description": "جميع بياناتك محمية بتشفير SSL وتلتزم بأعلى معايير الأمان والخصوصية"
+            },
+            "validation": {
+                "emailInvalid": "البريد الإلكتروني غير صحيح",
+                "passwordRequired": "كلمة المرور مطلوبة",
+                "emailRequired": "يرجى إدخال البريد الإلكتروني أولاً"
+            },
+            "messages": {
+                "loginSuccess": "تم تسجيل الدخول بنجاح!",
+                "loginError": "خطأ في البريد الإلكتروني أو كلمة المرور",
+                "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى",
+                "resetPasswordSent": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
+                "resetPasswordError": "حدث خطأ أثناء إرسال رابط إعادة التعيين",
+                "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+                "userNotFound": "المستخدم غير موجود",
+                "emailNotConfirmed": "يرجى تأكيد البريد الإلكتروني أولاً",
+                "accountDisabled": "الحساب معطل، يرجى التواصل مع الدعم",
+                "tooManyAttempts": "تم تجاوز الحد المسموح من المحاولات، يرجى المحاولة لاحقاً",
+                "networkError": "خطأ في الاتصال، يرجى التحقق من الإنترنت",
+                "serverError": "خطأ في الخادم، يرجى المحاولة لاحقاً",
+                "sessionExpired": "انتهت صلاحية الجلسة، يرجى تسجيل الدخول مرة أخرى",
+                "accessDenied": "ليس لديك صلاحية للوصول",
+                "invalidToken": "رمز التحقق غير صحيح أو منتهي الصلاحية"
+            }
+        },
+        "twoFactor": {
+            "title": "المصادقة الثنائية",
+            "loginTitle": "التحقق من الهوية",
+            "enableTitle": "تفعيل المصادقة الثنائية",
+            "disableTitle": "إلغاء المصادقة الثنائية",
+            "description": "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني",
+            "enableDescription": "أدخل رمز التحقق لتفعيل المصادقة الثنائية",
+            "disableDescription": "أدخل رمز التحقق لإلغاء تفعيل المصادقة الثنائية",
+            "codeSentTo": "تم إرسال الرمز إلى:",
+            "enterCode": "رمز التحقق",
+            "codeLength": "يرجى إدخال رمز التحقق كاملاً",
+            "verifyButton": "تحقق من الرمز",
+            "verifyingButton": "جاري التحقق...",
+            "resendCode": "إعادة إرسال الرمز",
+            "resendingButton": "جاري الإرسال...",
+            "canResendIn": "يمكنك طلب رمز جديد خلال",
+            "seconds": "ثانية",
+            "minutes": "دقيقة",
+            "hours": "ساعة",
+            "successMessage": "تم التحقق بنجاح! جاري التوجيه...",
+            "enabledSuccess": "تم تفعيل المصادقة الثنائية بنجاح",
+            "disabledSuccess": "تم إلغاء تفعيل المصادقة الثنائية بنجاح",
+            "invalidCode": "رمز التحقق غير صحيح",
+            "expiredCode": "انتهت صلاحية رمز التحقق",
+            "tooManyAttempts": "محاولات كثيرة جداً. يرجى المحاولة لاحقاً",
+            "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+            "backToLogin": "العودة إلى تسجيل الدخول",
+            "backToSecurity": "العودة إلى إعدادات الأمان",
+            "didntReceiveCode": "لم تستلم الرمز؟",
+            "newCodeSent": "تم إرسال رمز جديد إلى بريدك الإلكتروني"
+        },
+
+        "resetPassword": {
+            "title": "إعادة تعيين كلمة المرور",
+            "description": "أدخل كلمة المرور الجديدة لحسابك",
+            "password": "كلمة المرور الجديدة",
+            "confirmPassword": "تأكيد كلمة المرور",
+            "passwordPlaceholder": "أدخل كلمة المرور الجديدة",
+            "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+            "updateButton": "تحديث كلمة المرور",
+            "updatingButton": "جاري التحديث...",
+            "backToLogin": "العودة إلى تسجيل الدخول",
+            "validation": {
+                "passwordMinLength": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+                "passwordComplexity": "كلمة المرور يجب أن تحتوي على حرف كبير وصغير ورقم",
+                "passwordsNotMatch": "كلمات المرور غير متطابقة"
+            },
+            "messages": {
+                "success": "تم تحديث كلمة المرور بنجاح!",
+                "successDescription": "سيتم توجيهك لصفحة تسجيل الدخول...",
+                "invalidSession": "رابط إعادة تعيين كلمة المرور غير صالح أو منتهي الصلاحية",
+                "updateError": "فشل في تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
+                "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+                "checkingSession": "جاري التحقق من صحة الرابط...",
+                "invalidLink": "رابط غير صالح",
+                "requestNewLink": "طلب رابط جديد"
+            }
+        },
+
+        "createAccount": "إنشاء حساب",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "forgotPassword": {
+            "title": "نسيت كلمة المرور",
+            "subtitle": "أدخل بريدك الإلكتروني لاستلام كلمة مرور مؤقتة",
+            "description": "سنرسل لك كلمة مرور مؤقتة يمكنك استخدامها لتعيين كلمة مرور جديدة لحسابك.",
+            "email": "البريد الإلكتروني",
+            "emailPlaceholder": "أدخل بريدك الإلكتروني",
+            "sendButton": "إرسال كلمة المرور المؤقتة",
+            "sendingButton": "جاري الإرسال...",
+            "backToLogin": "العودة لتسجيل الدخول",
+            "validation": {
+                "emailRequired": "يرجى إدخال بريدك الإلكتروني",
+                "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح"
+            },
+            "messages": {
+                "success": "تم إرسال كلمة المرور المؤقتة بنجاح!",
+                "successDescription": "تم إرسال كلمة المرور المؤقتة إلى بريدك الإلكتروني. ستنتهي صلاحيتها خلال 60 دقيقة.",
+                "useNowLink": "استخدام كلمة المرور المؤقتة الآن",
+                "emailSendError": "تم إنشاء كلمة المرور المؤقتة ولكن فشل إرسال البريد الإلكتروني. يرجى المحاولة مرة أخرى.",
+                "rateLimitError": "طلبات كثيرة جداً. يرجى الانتظار قبل المحاولة مرة أخرى.",
+                "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى لاحقاً.",
+                "blockedMessage": "محاولات فاشلة كثيرة جداً. يرجى المحاولة مرة أخرى لاحقاً.",
+                "createPasswordError": "حدث خطأ أثناء إنشاء كلمة المرور المؤقتة",
+                "warning": "تنبيه"
+            }
+        },
+        "temporaryPassword": {
+            "title": "تعيين كلمة مرور جديدة",
+            "subtitle": "استخدم كلمة المرور المؤقتة لتعيين كلمة مرور جديدة",
+            "description": "أدخل كلمة المرور المؤقتة التي استلمتها عبر البريد الإلكتروني وأنشئ كلمة مرور جديدة آمنة.",
+            "email": "البريد الإلكتروني",
+            "emailPlaceholder": "أدخل بريدك الإلكتروني",
+            "temporaryPassword": "كلمة المرور المؤقتة",
+            "temporaryPasswordPlaceholder": "أدخل كلمة المرور المؤقتة من البريد الإلكتروني",
+            "newPassword": "كلمة المرور الجديدة",
+            "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+            "confirmPassword": "تأكيد كلمة المرور الجديدة",
+            "confirmPasswordPlaceholder": "أكد كلمة المرور الجديدة",
+            "updateButton": "تحديث كلمة المرور",
+            "updatingButton": "جاري التحديث...",
+            "backToLogin": "العودة لتسجيل الدخول",
+            "validation": {
+                "emailRequired": "يرجى إدخال بريدك الإلكتروني",
+                "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح",
+                "temporaryPasswordRequired": "يرجى إدخال كلمة المرور المؤقتة",
+                "newPasswordRequired": "يرجى إدخال كلمة مرور جديدة",
+                "newPasswordMinLength": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+                "newPasswordPattern": "كلمة المرور يجب أن تحتوي على حرف كبير وصغير ورقم",
+                "confirmPasswordRequired": "يرجى تأكيد كلمة المرور الجديدة",
+                "passwordsNotMatch": "كلمات المرور غير متطابقة"
+            },
+            "messages": {
+                "success": "تم تحديث كلمة المرور بنجاح! جاري تسجيل الدخول...",
+                "updateError": "فشل في تحديث كلمة المرور",
+                "loginError": "تم تحديث كلمة المرور ولكن فشل تسجيل الدخول. يرجى تسجيل الدخول يدوياً.",
+                "loginErrorRedirect": "تم تحديث كلمة المرور. يرجى تسجيل الدخول يدوياً.",
+                "invalidTempPassword": "كلمة المرور المؤقتة غير صحيحة أو منتهية الصلاحية",
+                "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
+            },
+            "passwordStrength": {
+                "weak": "ضعيفة",
+                "fair": "مقبولة",
+                "good": "جيدة",
+                "strong": "قوية"
+            }
+        },
+        "register": {
+            "title": "إنشاء حساب جديد",
+            "subtitle": "انضم إلى آلاف المسلمين الباحثين عن الزواج الشرعي",
+            "personalInfo": "المعلومات الشخصية",
+            "firstName": "الاسم الأول",
+            "lastName": "اسم العائلة",
+            "email": "البريد الإلكتروني",
+            "phone": "رقم الهاتف",
+            "age": "العمر",
+            "city": "المدينة",
+            "gender": "الجنس",
+            "maritalStatus": "الحالة الاجتماعية",
+            "firstNamePlaceholder": "أدخل اسمك الأول",
+            "lastNamePlaceholder": "أدخل اسم العائلة",
+            "emailPlaceholder": "example@email.com",
+            "phonePlaceholder": "رقم الهاتف",
+            "agePlaceholder": "25",
+            "cityPlaceholder": "الرياض",
+            "genderOptions": {
+                "placeholder": "اختر الجنس",
+                "male": "ذكر",
+                "female": "أنثى"
+            },
+            "maritalStatusOptions": {
+                "placeholder": "اختر الحالة الاجتماعية",
+                "single": "أعزب",
+                "divorced": "مطلق",
+                "widowed": "أرمل"
+            },
+            "terms": {
+                "acceptTerms": "أوافق على",
+                "termsLink": "الشروط والأحكام",
+                "termsText": "للموقع والالتزام بالضوابط الشرعية",
+                "acceptPrivacy": "أوافق على",
+                "privacyLink": "سياسة الخصوصية",
+                "privacyText": "وحماية البيانات الشخصية"
+            },
+            "submitButton": "تأكيد الحساب",
+            "submitButtonLoading": "جاري إرسال رابط التحقق...",
+            "alreadyHaveAccount": "لديك حساب بالفعل؟",
+            "loginLink": "تسجيل الدخول",
+            "features": {
+                "secure": "آمن ومحمي",
+                "verified": "محقق شرعياً",
+                "free": "مجاني للبداية"
+            },
+            "verification": {
+                "showStats": "عرض إحصائيات التحقق",
+                "hideStats": "إخفاء إحصائيات التحقق"
+            },
+            "validation": {
+                "firstNameMin": "الاسم الأول يجب أن يكون على الأقل حرفين",
+                "lastNameMin": "اسم العائلة يجب أن يكون على الأقل حرفين",
+                "emailInvalid": "عنوان البريد الإلكتروني غير صحيح",
+                "ageMin": "العمر يجب أن يكون على الأقل 18 سنة",
+                "ageMax": "العمر يجب أن يكون أقل من 80 سنة",
+                "genderRequired": "يرجى اختيار الجنس",
+                "cityMin": "يرجى إدخال المدينة",
+                "maritalStatusRequired": "يرجى اختيار الحالة الاجتماعية",
+                "acceptTermsRequired": "يجب الموافقة على الشروط والأحكام",
+                "acceptPrivacyRequired": "يجب الموافقة على سياسة الخصوصية",
+                "phoneRequired": "يرجى إدخال رقم الهاتف",
+                "phoneInvalid": "يرجى إدخال رقم هاتف صحيح",
+                "nationalityRequired": "الجنسية مطلوبة",
+                "professionRequired": "المهنة مطلوبة",
+                "bioRequired": "نبذة عن نفسك مطلوبة (10 أحرف على الأقل)",
+                "bioMax": "النبذة يجب ألا تزيد عن 500 حرف",
+                "formErrors": "يرجى التحقق من جميع الحقول المطلوبة"
+            },
+            "messages": {
+                "verificationSent": "تم إرسال رابط التحقق إلى",
+                "linkValid": "الرابط صالح لمدة 24 ساعة",
+                "dailyLimitReached": "تم الوصول للحد اليومي",
+                "consecutiveLimitReached": "تم الوصول لحد المحاولات المتتالية",
+                "nextAttemptTime": "يمكنك المحاولة مرة أخرى في:",
+                "waitTime": "يمكنك طلب رابط جديد بعد",
+                "minutes": "دقيقة",
+                "attempts": "محاولة",
+                "dailyAttempts": "محاولة اليوم",
+                "consecutiveAttempts": "محاولة متتالية",
+                "statistics": "إحصائيات:",
+                "tip": "نصيحة: افتح أدوات المطور (F12) وانسخ رابط التحقق من تبويب Console للمتابعة فوراً.",
+                "verificationError": "حدث خطأ أثناء إرسال رابط التحقق",
+                "unexpectedError": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى"
+            },
+            "requiredInfoTitle": "معلومات إضافية مطلوبة",
+            "requiredInfoSubtitle": "هذه المعلومات مطلوبة لإكمال ملفك الشخصي وضمان ظهوره في نتائج البحث",
+            "optionalInfoTitle": "معلومات إضافية اختيارية",
+            "optionalInfoSubtitle": "يمكنك ملء هذه المعلومات لاحقاً من صفحة الملف الشخصي",
+            "bio": "نبذة عن نفسك",
+            "bioPlaceholder": "اكتب نبذة مختصرة عن نفسك وشخصيتك...",
+            "education": "التعليم",
+            "educationPlaceholder": "مثال: بكالوريوس هندسة",
+            "profession": "المهنة",
+            "professionPlaceholder": "مثال: مهندس برمجيات",
+            "religiousCommitment": "مستوى الالتزام الديني",
+            "religiousCommitmentPlaceholder": "اختر مستوى الالتزام",
+            "religiousCommitmentCommitted": "ملتزم",
+            "religiousCommitmentConservative": "محافظ",
+            "religiousCommitmentPreferNotSay": "أفضل أن لا أقول",
+            "nationality": "الجنسية",
+            "nationalityPlaceholder": "اختر الجنسية",
+            "height": "الطول (سم)",
+            "heightPlaceholder": "مثال: 170",
+            "weight": "الوزن (كغ)",
+            "weightPlaceholder": "مثال: 70",
+            "educationLevel": "المستوى التعليمي",
+            "educationLevelPlaceholder": "اختر المستوى التعليمي",
+            "educationLevelPrimary": "ابتدائي",
+            "educationLevelSecondary": "ثانوي",
+            "educationLevelDiploma": "دبلوم",
+            "educationLevelBachelor": "بكالوريوس",
+            "educationLevelMaster": "ماجستير",
+            "educationLevelDoctorate": "دكتوراه",
+            "prayerCommitment": "الالتزام بالصلاة",
+            "prayerCommitmentPlaceholder": "اختر مستوى الالتزام بالصلاة",
+            "prayerCommitmentDontPray": "لا أصلي",
+            "prayerCommitmentPrayAll": "أصلي جميع الفروض",
+            "prayerCommitmentPraySometimes": "أصلي أحياناً",
+            "prayerCommitmentPreferNotSay": "أفضل أن لا أقول",
+            "smoking": "التدخين",
+            "smokingYes": "نعم",
+            "smokingNo": "لا",
+            "beard": "اللحية (للرجال)",
+            "beardPlaceholder": "اختر حالة اللحية",
+            "beardYes": "نعم",
+            "beardNo": "لا",
+            "hijab": "الحجاب (للنساء)",
+            "hijabPlaceholder": "اختر حالة الحجاب",
+            "hijabNoHijab": "غير محجبة",
+            "hijabHijab": "محجبة",
+            "hijabNiqab": "منتقبة",
+            "hijabPreferNotSay": "أفضل أن لا أقول",
+            "personalReligiousInfoTitle": "معلومات شخصية ودينية",
+            "religiosityLevel": "مستوى التدين",
+            "religiosityLevelPlaceholder": "اختر مستوى التدين",
+            "religiosityLevelNotReligious": "غير متدين",
+            "religiosityLevelSomewhatReligious": "متدين إلى حد ما",
+            "religiosityLevelReligious": "متدين",
+            "financialStatus": "الوضع المالي",
+            "financialStatusPlaceholder": "اختر الوضع المالي",
+            "financialStatusPoor": "ضعيف",
+            "financialStatusBelowAverage": "أقل من المتوسط",
+            "financialStatusAverage": "متوسط",
+            "financialStatusAboveAverage": "أعلى من المتوسط",
+            "financialStatusWealthy": "ميسور",
+            "genderSpecificInfoTitle": "معلومات خاصة"
+        }
+    },
+    "profile": {
+        "title": "الملف الشخصي المطور",
+        "subtitle": "إدارة معلوماتك الشخصية وتفضيلاتك بشكل مفصل",
+        "loading": {
+            "title": "جاري تحميل الملف الشخصي",
+            "subtitle": "يرجى الانتظار بينما نحمل بياناتك الشخصية..."
+        },
+        "personalInfo": "المعلومات الشخصية",
+        "religiousInfo": "المعلومات الدينية",
+        "preferences": "التفضيلات",
+        "photos": "الصور",
+        "education": "التعليم",
+        "occupation": "المهنة",
+        "membershipNumber": "رقم العضوية",
+        "notSpecified": "غير محدد",
+        "professionNotSpecified": "لم يتم تحديد المهنة",
+        "cityNotSpecified": "لم يتم تحديد المدينة",
+        "years": "سنة",
+        "user": "المستخدم",
+        "edit": "تعديل",
+        "cancel": "إلغاء",
+        "save": "حفظ التغييرات",
+        "fixData": "إصلاح",
+        "fixDataTitle": "إصلاح البيانات المفقودة",
+        "errorDuringFix": "❌ حدث خطأ أثناء الإصلاح",
+        "choose": "اختر...",
+
+        "maritalStatusSection": {
+            "title": "الحالة الاجتماعية",
+            "marriageType": "نوع الزواج",
+            "maritalStatus": "الحالة الاجتماعية",
+            "age": "العمر",
+            "childrenCount": "عدد الأطفال",
+            "marriageTypeOptions": {
+                "male": {
+                    "firstWife": "زوجة أولى",
+                    "secondWife": "زوجة ثانية"
+                },
+                "female": {
+                    "onlyWife": "الوحيدة",
+                    "noObjectionPolygamy": "لا مانع من التعدد"
+                }
+            },
+            "maritalStatusOptions": {
+                "male": {
+                    "single": "عازب",
+                    "married": "متزوج",
+                    "divorced": "مطلق",
+                    "widowed": "أرمل"
+                },
+                "female": {
+                    "unmarried": "آنسة",
+                    "divorcedFemale": "مطلقة",
+                    "widowedFemale": "أرملة"
+                }
+            }
+        },
+
+        "nationalitySection": {
+            "title": "الجنسية والإقامة",
+            "residenceLocation": "مكان الإقامة (الدولة)",
+            "nationality": "الجنسية",
+            "city": "المدينة",
+            "cityPlaceholder": "المدينة الحالية"
+        },
+
+        "specificationsSection": {
+            "title": "المواصفات",
+            "weight": "الوزن (كجم)",
+            "height": "الطول (سم)",
+            "skinColor": "لون البشرة",
+            "bodyType": "بنية الجسم",
+            "skinColorOptions": {
+                "veryFair": "فاتح جداً",
+                "fair": "فاتح",
+                "medium": "متوسط",
+                "olive": "زيتوني",
+                "dark": "غامق"
+            },
+            "bodyTypeOptions": {
+                "slim": "نحيف/رفيع",
+                "average": "متوسط البنية",
+                "athletic": "جسم رياضي",
+                "heavy": "ثقيل البنية"
+            }
+        },
+
+        "religiousSection": {
+            "title": "الالتزام الديني",
+            "religiosity": "التدين",
+            "prayer": "الصلاة",
+            "smoking": "التدخين",
+            "beard": "اللحية",
+            "hijab": "الحجاب",
+            "religiosityOptions": {
+                "notReligious": "غير متدين",
+                "somewhatReligious": "متدين إلى حد ما",
+                "religious": "متدين"
+            },
+            "prayerOptions": {
+                "dontPray": "لا أصلي",
+                "prayAll": "أصلي جميع الفروض",
+                "praySometimes": "أصلي أحياناً",
+                "preferNotSay": "أفضل أن لا أقول"
+            },
+            "smokingOptions": {
+                "yes": "نعم",
+                "no": "لا"
+            },
+            "beardOptions": {
+                "yes": "نعم",
+                "no": "لا"
+            },
+            "hijabOptions": {
+                "noHijab": "غير محجبة",
+                "hijab": "محجبة",
+                "niqab": "منتقبة",
+                "preferNotSay": "أفضل أن لا أقول"
+            }
+        },
+
+        "educationWorkSection": {
+            "title": "الدراسة والعمل",
+            "educationLevel": "المستوى التعليمي",
+            "financialStatus": "الوضع المادي",
+            "workField": "مجال العمل",
+            "jobTitle": "الوظيفة",
+            "workFieldPlaceholder": "مثل: تقنية المعلومات، الطب، التعليم",
+            "jobTitlePlaceholder": "مثل: مطور برمجيات، طبيب، مدرس",
+            "educationLevelOptions": {
+                "primary": "ابتدائي",
+                "secondary": "ثانوي",
+                "diploma": "دبلوم",
+                "bachelor": "بكالوريوس",
+                "master": "ماجستير",
+                "phd": "دكتوراه"
+            },
+            "financialStatusOptions": {
+                "poor": "ضعيف",
+                "belowAverage": "أقل من المتوسط",
+                "average": "متوسط",
+                "aboveAverage": "أعلى من المتوسط",
+                "wealthy": "ميسور"
+            }
+        },
+
+        "incomeHealthSection": {
+            "title": "الدخل الشهري والحالة الصحية",
+            "monthlyIncome": "الدخل الشهري",
+            "healthStatus": "الحالة الصحية",
+            "monthlyIncomeOptions": {
+                "less3000": "أقل من 3000 ريال",
+                "3000to5000": "3000 - 5000 ريال",
+                "5000to8000": "5000 - 8000 ريال",
+                "8000to12000": "8000 - 12000 ريال",
+                "12000to20000": "12000 - 20000 ريال",
+                "more20000": "أكثر من 20000 ريال",
+                "preferNotSay": "أفضل أن لا أقول"
+            },
+            "healthStatusOptions": {
+                "excellent": "ممتازة",
+                "veryGood": "جيدة جداً",
+                "good": "جيدة",
+                "fair": "مقبولة",
+                "poor": "ضعيفة",
+                "preferNotSay": "أفضل أن لا أقول"
+            }
+        },
+
+        "bioSection": {
+            "title": "النبذة الشخصية",
+            "aboutYou": "نبذة عن نفسك",
+            "lookingFor": "ما تبحث عنه في شريك الحياة",
+            "aboutYouPlaceholder": "اكتب نبذة مختصرة عن شخصيتك وقيمك...",
+            "lookingForPlaceholder": "اكتب المواصفات التي تبحث عنها في شريك الحياة..."
+        },
+
+        "validation": {
+            "ageMin": "العمر يجب أن يكون 18 سنة على الأقل",
+            "ageMax": "العمر يجب أن يكون أقل من 80 سنة",
+            "bioMax": "النبذة الشخصية يجب أن تكون أقل من 500 حرف",
+            "lookingForMax": "ما تبحث عنه يجب أن يكون أقل من 300 حرف",
+            "emailInvalid": "البريد الإلكتروني غير صحيح"
+        }
+    },
+    "search": {
+        "title": "البحث المتقدم",
+        "subtitle": "ابحث عن شريك حياتك المثالي باستخدام فلاتر البحث المتقدمة",
+        "searchTitle": "البحث عن شريك الحياة",
+        "completeProfilesOnly": "يتم عرض الحسابات المكتملة فقط لضمان جودة النتائج",
+        "basicSearch": "البحث الأساسي",
+        "advancedSearch": "البحث المتقدم",
+        "filters": {
+            "title": "فلاتر البحث",
+            "age": "العمر",
+            "ageRange": "الفئة العمرية",
+            "from": "من",
+            "to": "إلى",
+            "fromPlaceholder": "من",
+            "toPlaceholder": "إلى",
+            "country": "البلد",
+            "city": "المدينة",
+            "cityPlaceholder": "اختر المدينة",
+            "education": "التعليم",
+            "educationPlaceholder": "المؤهل التعليمي",
+            "occupation": "المهنة",
+            "profession": "المهنة",
+            "professionPlaceholder": "المهنة",
+            "maritalStatus": "الحالة الاجتماعية",
+            "maritalStatusOptions": {
+                "any": "الكل",
+                "single": "أعزب/عزباء",
+                "divorced": "مطلق/مطلقة",
+                "widowed": "أرمل/أرملة"
+            },
+            "religiousCommitment": "مستوى الالتزام الديني",
+            "religiousCommitmentOptions": {
+                "any": "الكل",
+                "committed": "ملتزم",
+                "conservative": "محافظ",
+                "prefer_not_say": "أفضل أن لا أقول"
+            }
+        },
+        "buttons": {
+            "search": "بحث",
+            "searching": "جاري البحث...",
+            "clearFilters": "مسح الفلاتر",
+            "clearFiltersAndSearch": "مسح الفلاتر والبحث مرة أخرى"
+        },
+        "results": {
+            "title": "نتائج البحث",
+            "count": "نتائج البحث ({{count}})",
+            "activeFilters": "الفلاتر النشطة:",
+            "sortBy": "ترتيب حسب:",
+            "sortOptions": {
+                "newest": "الأحدث",
+                "age": "العمر",
+                "rating": "التقييم",
+                "lastSeen": "آخر ظهور"
+            },
+            "noResults": "لا توجد نتائج",
+            "noResultsMessage": "لم نجد أي نتائج تطابق معايير البحث الخاصة بك",
+            "yearsOld": "سنة",
+            "lastSeen": "آخر ظهور:",
+            "sendMessage": "إرسال رسالة",
+            "sendLike": "إرسال إعجاب",
+            "likeSent": "تم إرسال الإعجاب",
+            "removeLike": "إلغاء الإعجاب",
+            "sending": "جاري الإرسال...",
+            "removing": "جاري الإلغاء...",
+            "checking": "جاري الفحص...",
+            "viewProfile": "عرض الملف الشخصي",
+            "showing": "عرض",
+            "of": "من",
+            "results": "نتيجة",
+            "page": "صفحة"
+        },
+        "pagination": {
+            "previous": "السابق",
+            "next": "التالي"
+        },
+        "messages": {
+            "authenticationCheck": "جاري التحقق من المصادقة...",
+            "loginRequired": "يرجى تسجيل الدخول",
+            "loginRequiredMessage": "يجب تسجيل الدخول للوصول إلى صفحة البحث",
+            "loginButton": "تسجيل الدخول",
+            "loadingProfile": "جاري تحميل الملف الشخصي...",
+            "completeProfile": "يرجى إكمال الملف الشخصي",
+            "completeProfileMessage": "يجب تحديد الجنس في الملف الشخصي للوصول إلى صفحة البحث. يرجى الذهاب إلى صفحة الملف الشخصي وتحديد الجنس.",
+            "completeProfileTip": "💡 إذا كنت قد حددت الجنس أثناء التسجيل، جرب إعادة تحميل الملف الشخصي أولاً",
+            "refreshProfile": "إعادة تحميل الملف الشخصي",
+            "refreshingProfile": "جاري إعادة التحميل...",
+            "completeProfileButton": "إكمال الملف الشخصي",
+            "refreshPage": "تحديث الصفحة",
+            "searchError": "حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.",
+            "profileRefreshSuccess": "تم تحديث الملف الشخصي بنجاح",
+            "profileRefreshError": "خطأ في تحديث الملف الشخصي",
+            "conversationError": "حدث خطأ أثناء إنشاء المحادثة",
+            "unexpectedError": "حدث خطأ غير متوقع"
+        },
+        "validation": {
+            "ageMinRequired": "العمر الأدنى يجب أن يكون 18 سنة على الأقل",
+            "ageMaxRequired": "العمر الأقصى يجب أن يكون أقل من 80 سنة"
+        }
+    },
+    "messages": {
+        "messagesTitle": "الرسائل",
+        "subtitle": "تواصل مع الأعضاء بطريقة محترمة وآمنة",
+        "newMessage": "رسالة جديدة",
+        "sendMessage": "إرسال رسالة",
+        "typeMessage": "اكتب رسالتك هنا...",
+        "noMessages": "لا توجد رسائل",
+        "conversation": "المحادثة",
+        "conversations": "المحادثات",
+        "online": "متصل",
+        "offline": "غير متصل",
+        "lastSeen": "آخر ظهور",
+        "messageGuidelines": "إرشادات المراسلة",
+        "respectfulCommunication": "التواصل المحترم",
+        "noPersonalInfo": "عدم مشاركة المعلومات الشخصية",
+        "reportInappropriate": "الإبلاغ عن المحتوى غير المناسب",
+        "searchConversations": "البحث في المحادثات...",
+        "noConversations": "لا توجد محادثات",
+        "noConversationsDesc": "ابدأ محادثة جديدة من صفحة البحث",
+        "searchMembers": "البحث عن أعضاء",
+        "selectConversation": "اختر محادثة",
+        "selectConversationDesc": "اختر محادثة من القائمة لبدء المراسلة",
+        "loadingConversations": "جاري تحميل المحادثات...",
+        "loadingMessages": "جاري تحميل الرسائل...",
+        "noMessagesYet": "لا توجد رسائل بعد",
+        "startConversation": "ابدأ المحادثة بإرسال رسالة أدناه",
+        "you": "أنت: ",
+        "minutesAgo": "منذ دقائق",
+        "hoursAgo": "ساعة",
+        "member": "عضو في الموقع",
+        "viewProfile": "عرض الملف الشخصي",
+        "backToConversations": "العودة للمحادثات",
+        "contentModeration": "جميع الرسائل تخضع للمراجعة للتأكد من الالتزام بالآداب الإسلامية",
+        "familyInvolvement": {
+            "title": "إشراك الأهل",
+            "description": "يمكنك دعوة أحد أفراد الأسرة للمشاركة في هذه المحادثة",
+            "emailLabel": "البريد الإلكتروني لولي الأمر",
+            "emailPlaceholder": "father@example.com",
+            "guidelines": "ضوابط إشراك الأهل",
+            "guidelinesDesc": "سيتم إرسال دعوة لولي الأمر للاطلاع على المحادثة وفقاً للضوابط الشرعية. هذا يساعد في ضمان سير التعارف بطريقة محترمة ومناسبة.",
+            "cancel": "إلغاء",
+            "sendInvitation": "إرسال الدعوة"
+        },
+        "moreOptions": "المزيد من الخيارات",
+        "reportUser": "الإبلاغ عن المستخدم",
+        "blockUser": "حظر المستخدم",
+        "unblockUser": "إلغاء حظر المستخدم",
+        "deleteConversation": "حذف المحادثة",
+        "blockModal": {
+            "title": "تأكيد حظر المستخدم",
+            "message": "هل أنت متأكد من حظر {name}؟\n\nسيتم حظر هذا المستخدم بشكل كامل.",
+            "confirmButton": "حظر المستخدم نهائياً",
+            "cancelButton": "إلغاء"
+        },
+        "unblockModal": {
+            "title": "تأكيد إلغاء حظر المستخدم",
+            "message": "هل أنت متأكد من إلغاء حظر {name}؟",
+            "confirmButton": "إلغاء الحظر",
+            "cancelButton": "إبقاء الحظر"
+        },
+        "reportModal": {
+            "title": "الإبلاغ عن المستخدم",
+            "message": "يرجى ذكر سبب الإبلاغ عن {name}.\n\nسيتم مراجعة البلاغ من قبل الإدارة خلال 24 ساعة.",
+            "placeholder": "اذكر سبب الإبلاغ بالتفصيل (على الأقل 10 أحرف)...",
+            "confirmButton": "إرسال البلاغ",
+            "cancelButton": "إلغاء"
+        },
+        "deleteModal": {
+            "title": "تأكيد حذف المحادثة",
+            "message": "سيتم حذف المحادثة وجميع الرسائل نهائياً من النظام لكلا الطرفين. هذا الإجراء لا يمكن التراجع عنه.",
+            "confirmButton": "حذف المحادثة",
+            "cancelButton": "إلغاء"
+        },
+        "messageStatus": {
+            "sent": "تم إرسال الرسالة",
+            "delivered": "تم توصيل الرسالة",
+            "read": "تم قراءة الرسالة"
+        },
+        "blocked": {
+            "cannotSend": "لا يمكن إرسال الرسائل",
+            "unblockToSend": "قم بإلغاء الحظر لإرسال الرسائل",
+            "unblockUser": "إلغاء الحظر"
+        },
+        "warnings": {
+            "profileBlocked": "الملف الشخصي محظور",
+            "profileBlockedDesc": "لا يمكن عرض الملف الشخصي للمستخدم المحظور"
+        },
+        "errors": {
+            "loadingError": "خطأ في التحميل",
+            "loadingConversationsError": "حدث خطأ أثناء تحميل المحادثات. يرجى المحاولة مرة أخرى.",
+            "loadingMessagesError": "لا يمكن تحميل رسائل هذه المحادثة. يرجى المحاولة مرة أخرى.",
+            "sendingError": "فشل إرسال الرسالة",
+            "sendingErrorDesc": "لا يمكن إرسال الرسالة في الوقت الحالي. يرجى المحاولة مرة أخرى.",
+            "unexpectedError": "خطأ غير متوقع",
+            "unexpectedLoadingError": "حدث خطأ غير متوقع أثناء تحميل المحادثات. يرجى إعادة تحميل الصفحة.",
+            "unexpectedMessagesError": "حدث خطأ غير متوقع أثناء تحميل الرسائل. يرجى إعادة المحاولة.",
+            "unexpectedSendingError": "حدث خطأ غير متوقع أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+            "noActiveConversation": "خطأ",
+            "noActiveConversationDesc": "لا توجد محادثة نشطة أو مستخدم غير مسجل",
+            "noUserData": "خطأ",
+            "noUserDataDesc": "لا يمكن العثور على بيانات المستخدم",
+            "familyInviteError": "فشل إشراك الأهل",
+            "familyInviteErrorDesc": "حدث خطأ أثناء إشراك الأهل. يرجى المحاولة مرة أخرى.",
+            "familyEmailRequired": "بيانات ناقصة",
+            "familyEmailRequiredDesc": "يرجى إدخال بريد إلكتروني صحيح للأهل",
+            "blockingError": "فشل حظر المستخدم",
+            "blockingErrorDesc": "حدث خطأ أثناء حظر المستخدم. يرجى المحاولة مرة أخرى.",
+            "unblockingError": "فشل إلغاء حظر المستخدم",
+            "unblockingErrorDesc": "حدث خطأ أثناء إلغاء حظر المستخدم. يرجى المحاولة مرة أخرى.",
+            "reportingError": "فشل إرسال البلاغ",
+            "reportingErrorDesc": "حدث خطأ أثناء إرسال البلاغ. يرجى المحاولة مرة أخرى.",
+            "reportReasonRequired": "سبب الإبلاغ مطلوب",
+            "reportReasonRequiredDesc": "يجب كتابة سبب الإبلاغ",
+            "reportReasonTooShort": "سبب الإبلاغ قصير",
+            "reportReasonTooShortDesc": "يجب أن يكون على الأقل 10 أحرف",
+            "reportAlreadySubmitted": "تم الإبلاغ مسبقاً",
+            "reportInvalidData": "خطأ في البيانات",
+            "reportInvalidDataDesc": "البيانات المرسلة غير صحيحة. يرجى المحاولة مرة أخرى.",
+            "reportSelfError": "خطأ في العملية",
+            "reportSelfErrorDesc": "لا يمكن الإبلاغ عن نفسك.",
+            "deleteError": "فشل الحذف",
+            "deleteErrorDesc": "حدث خطأ أثناء حذف المحادثة. يرجى المحاولة مرة أخرى.",
+            "messagesDisabled": "الرسائل غير مفعلة",
+            "messagesDisabledDesc": "هذا المستخدم لا يسمح بالرسائل حالياً",
+            "userNotFound": "المستخدم غير موجود",
+            "userNotFoundDesc": "لم يتم العثور على المستخدم المطلوب",
+            "conversationSendingError": "خطأ في الإرسال",
+            "conversationSendingErrorDesc": "حدث خطأ في إرسال الرسالة. حاول مرة أخرى.",
+            "conversationUnexpectedError": "خطأ غير متوقع",
+            "unexpectedSendingError": "حدث خطأ غير متوقع. تأكد من اتصالك بالإنترنت وحاول مرة أخرى."
+        },
+        "success": {
+            "messageSent": "تم الإرسال",
+            "messageSentDesc": "تم إرسال رسالتك بنجاح",
+            "familyInvited": "تم إشراك الأهل",
+            "familyInvitedDesc": "تم إرسال دعوة للأهل بنجاح. سيتم إشعارهم عبر البريد الإلكتروني.",
+            "userBlocked": "تم حظر المستخدم بنجاح",
+            "userBlockedDesc": "تم حظر {name} بنجاح. لن يتمكن من إرسال رسائل إليك أو رؤية ملفك الشخصي. يمكنك إلغاء الحظر في أي وقت من نفس القائمة.",
+            "userUnblocked": "تم إلغاء حظر المستخدم بنجاح",
+            "userUnblockedDesc": "تم إلغاء حظر {name} بنجاح. يمكنكما الآن التواصل مرة أخرى.",
+            "reportSent": "تم إرسال البلاغ بنجاح",
+            "reportSentDesc": "تم إرسال البلاغ بنجاح ورقم البلاغ هو: {reportId}. سيتم مراجعة البلاغ خلال 24 ساعة.",
+            "conversationDeleted": "تم الحذف",
+            "conversationDeletedDesc": "تم حذف المحادثة وجميع الرسائل نهائياً من النظام.",
+            "conversationStarted": "💬 تم بدء المحادثة!",
+            "conversationStartedDesc": "تم إنشاء المحادثة بنجاح. سيتم توجيهك إلى صفحة الرسائل."
+        },
+        "info": {
+            "processing": "جاري المعالجة",
+            "blockingInProgress": "جاري حظر المستخدم، يرجى الانتظار...",
+            "unblockingInProgress": "جاري إلغاء حظر المستخدم، يرجى الانتظار...",
+            "reportingInProgress": "يتم إرسال البلاغ، يرجى الانتظار..."
+        },
+        "warnings": {
+            "reportAlreadyExists": "تم الإبلاغ مسبقاً",
+            "reportLimitReached": "لقد قمت بالإبلاغ عن هذا المستخدم خلال آخر 24 ساعة"
+        }
+    },
+    "likes": {
+        "page": {
+            "title": "الإعجابات المستلمة",
+            "subtitle": "الأشخاص الذين أعجبوا بملفك الشخصي",
+            "sectionTitle": "الإعجابات المستلمة",
+            "count": "إعجاب",
+            "loading": "جاري تحميل البيانات...",
+            "noLikes": "لا توجد إعجابات جديدة",
+            "noLikesDesc": "عندما يعجب أحد بملفك الشخصي، ستظهر هنا",
+            "viewProfile": "عرض الملف الشخصي",
+            "acceptLike": "قبول الإعجاب",
+            "rejectLike": "رفض الإعجاب",
+            "accepted": "✓ تم القبول",
+            "rejected": "✗ تم الرفض",
+            "processing": "جاري المعالجة...",
+            "timeAgo": {
+                "minutes": "منذ دقائق",
+                "hours": "منذ {{count}} ساعة",
+                "days": "منذ {{count}} يوم"
+            },
+            "userInfo": {
+                "yearsOld": "سنة",
+                "notSpecified": "غير محدد",
+                "notAvailable": "غير متاح",
+                "defaultUser": "مستخدم"
+            }
+        },
+        "actions": {
+            "accept": "قبول",
+            "reject": "رفض",
+            "responding": "جاري الرد...",
+            "acceptSuccess": "تم القبول بنجاح!",
+            "rejectSuccess": "تم الرفض",
+            "responseError": "حدث خطأ في الرد على الإعجاب"
+        },
+        "success": {
+            "likeSent": "✨ تم الإرسال!",
+            "likeSentDesc": "تم إرسال الإعجاب بنجاح. سيتم إشعار المستخدم.",
+            "likeRemoved": "🗑️ تم الإلغاء!",
+            "likeRemovedDesc": "تم إلغاء الإعجاب بنجاح.",
+            "mutualMatch": "🎉 تهانينا!",
+            "mutualMatchDesc": "لديكم إعجاب متبادل! يمكنكم الآن بدء المحادثة."
+        },
+        "errors": {
+            "sendingError": "خطأ في الإرسال",
+            "sendingErrorDesc": "حدث خطأ في إرسال الإعجاب. حاول مرة أخرى.",
+            "removingError": "خطأ في الإلغاء",
+            "removingErrorDesc": "حدث خطأ في إلغاء الإعجاب. حاول مرة أخرى.",
+            "unexpectedError": "خطأ غير متوقع",
+            "unexpectedErrorDesc": "حدث خطأ غير متوقع. تأكد من اتصالك بالإنترنت وحاول مرة أخرى.",
+            "loadingError": "خطأ في التحميل",
+            "loadingErrorDesc": "حدث خطأ في تحميل الإعجابات. حاول مرة أخرى."
+        }
+    },
+    "matches": {
+        "page": {
+            "loading": "جاري البحث عن المطابقات المناسبة...",
+            "noMatches": "لا توجد مطابقات جديدة",
+            "noMatchesDesc": "لقد راجعت جميع المطابقات المتاحة حالياً. سنقوم بإشعارك عند ظهور مطابقات جديدة.",
+            "refreshMatches": "تحديث المطابقات",
+            "matchCounter": "المطابقة {{current}} من {{total}}",
+            "remaining": "{{count}} متبقي",
+            "likeRate": "معدل الإعجاب: {{rate}}%",
+            "goodChoices": "اختيارات جيدة! 👍"
+        },
+        "actions": {
+            "like": "إعجاب",
+            "pass": "تمرير",
+            "view": "عرض",
+            "message": "رسالة",
+            "viewProfile": "عرض الملف الشخصي",
+            "nextMatch": "المطابقة التالية",
+            "keyboardShortcuts": "⌨️ اختصارات: مسافة = إعجاب | ESC = تمرير | Enter = عرض الملف"
+        },
+        "compatibility": {
+            "score": "نقاط التوافق",
+            "excellent": "توافق ممتاز",
+            "good": "توافق جيد",
+            "average": "توافق متوسط",
+            "poor": "توافق ضعيف",
+            "reasons": "أسباب التوافق:",
+            "details": "تفاصيل التوافق:",
+            "age": "العمر",
+            "education": "التعليم",
+            "religion": "الدين",
+            "location": "الموقع",
+            "reasonsExamples": {
+                "ageMatch": "🎯 عمر متطابق تماماً",
+                "sameCity": "🏠 نفس المدينة - سهولة اللقاء",
+                "sameEducation": "📚 نفس مستوى التعليم",
+                "sameReligion": "🕌 نفس الالتزام الديني",
+                "similarInterests": "💼 اهتمامات مشتركة",
+                "compatibleGoals": "🎯 أهداف متوافقة",
+                "educationMatch": "🎓 مستوى تعليمي متطابق",
+                "closeAge": "🎯 عمر متقارب",
+                "nearbyLocation": "🏠 موقع قريب",
+                "sharedValues": "💎 قيم مشتركة",
+                "similarBackground": "🌟 خلفية متشابهة"
+            }
+        },
+        "filters": {
+            "title": "فلاتر البحث المتقدمة",
+            "age": "العمر ({{min}} - {{max}} سنة)",
+            "ageMin": "الحد الأدنى: {{min}}",
+            "ageMax": "الحد الأقصى: {{max}}",
+            "minCompatibility": "الحد الأدنى لنقاط التوافق ({{score}}%)",
+            "religiousCommitment": "الالتزام الديني",
+            "applyFilters": "تطبيق الفلاتر",
+            "resetFilters": "إعادة تعيين",
+            "religiousLevels": {
+                "very_religious": "متدين جداً",
+                "religious": "متدين",
+                "high": "عالي",
+                "medium": "متوسط",
+                "moderate": "معتدل"
+            }
+        },
+        "userInfo": {
+            "yearsOld": "سنة",
+            "personalBio": "نبذة شخصية:",
+            "imageLoadError": "في حالة فشل تحميل الصورة، اعرض الأيقونة الافتراضية"
+        },
+        "tips": {
+            "title": "💡 نصائح للحصول على أفضل النتائج",
+            "readProfile": "• اقرأ الملف الشخصي بعناية قبل اتخاذ القرار",
+            "payAttention": "• انتبه لنقاط التوافق وأسباب المطابقة",
+            "useFilters": "• استخدم الفلاتر لتخصيص البحث حسب تفضيلاتك",
+            "beHonest": "• كن صادقاً في اختياراتك لتحسين جودة المطابقات"
+        },
+        "success": {
+            "matchesFound": "تم العثور على مطابقات!",
+            "matchesFoundDesc": "وجدنا {{count}} مطابقة مناسبة لك.",
+            "likeSent": "💖 تم الإعجاب!",
+            "likeSentDesc": "تم إرسال إعجابك إلى {{name}} بنجاح.",
+            "mutualMatch": "🎉 مطابقة متبادلة!",
+            "mutualMatchDesc": "تهانينا! لديك مطابقة متبادلة مع {{name}}. يمكنكم الآن بدء المحادثة.",
+            "passed": "تم التمرير",
+            "passedDesc": "تم تمرير {{name}}. يمكنك العثور على مطابقات أخرى."
+        },
+        "errors": {
+            "loadingError": "خطأ في تحميل المطابقات",
+            "loadingErrorDesc": "حدث خطأ أثناء البحث عن المطابقات. حاول مرة أخرى.",
+            "sendingError": "خطأ في الإرسال",
+            "sendingErrorDesc": "حدث خطأ أثناء إرسال الإعجاب. حاول مرة أخرى.",
+            "noMatches": "لا توجد مطابقات",
+            "noMatchesDesc": "لم نجد مطابقات مناسبة حالياً. جرب تعديل إعدادات البحث."
+        },
+        "comments": {
+            "loadMatches": "تحميل المطابقات عند تحميل الصفحة",
+            "keyboardShortcuts": "دعم اختصارات لوحة المفاتيح",
+            "spaceForLike": "مسافة للإعجاب",
+            "escapeForPass": "ESC للتمرير",
+            "enterForProfile": "Enter لعرض الملف الشخصي",
+            "arrowForNext": "سهم يمين للمطابقة التالية",
+            "loadImages": "تحميل الصور الشخصية للمطابقات",
+            "getImageUrl": "الحصول على URL الصورة الشخصية",
+            "handleLike": "التعامل مع الإعجاب",
+            "sendLike": "إرسال إعجاب عبر LikesService",
+            "addToLiked": "إضافة إلى قائمة الإعجابات",
+            "saveMatch": "حفظ المطابقة في قاعدة البيانات",
+            "noErrorToUser": "لا نعرض خطأ للمستخدم لأن الإعجاب تم إرساله بنجاح",
+            "showSuccess": "عرض رسالة نجاح",
+            "handlePass": "التعامل مع التمرير",
+            "showConfirmation": "عرض رسالة تأكيد",
+            "nextMatch": "الانتقال للمطابقة التالية",
+            "reloadMatches": "إعادة تحميل مطابقات جديدة",
+            "compatibilityColor": "الحصول على لون نقاط التوافق",
+            "compatibilityText": "الحصول على نص مستوى التوافق",
+            "compatibilityFilter": "فلتر نقاط التوافق",
+            "educationFilter": "فلتر مستوى التعليم",
+            "religiousFilter": "فلتر الالتزام الديني"
+        }
+    },
+    "home": {
+        "welcomeMessage": "مرحباً بك في موقع رزق للزواج الإسلامي",
+        "subtitle": "منصة آمنة وشرعية للبحث عن شريك الحياة",
+        "featuredProfiles": "ملفات مميزة",
+        "recentlyJoined": "انضموا مؤخراً",
+        "successStories": "قصص النجاح",
+        "howItWorks": "كيف يعمل الموقع",
+        "step1": "أنشئ ملفك الشخصي",
+        "step2": "ابحث عن الشريك المناسب",
+        "step3": "تواصل بطريقة محترمة",
+        "step4": "ابدأ رحلة الزواج الشرعي",
+        "hero": {
+            "title": "موقع الزواج الاسلامي",
+            "subtitle": "الأول للمسلمين",
+            "description": "ابحث عن شريك حياتك المثالي في بيئة آمنة ومحترمة تلتزم بالقيم الإسلامية والضوابط الشرعية",
+            "stats": {
+                "members": "ألف عضو",
+                "matches": "مليون مطابقة",
+                "users": "مليون مستخدم"
+            },
+            "cta": {
+                "register": "ابدأ رحلتك الآن مجاناً",
+                "learn": "اعرف المزيد",
+                "watch": "شاهد كيف يعمل الموقع"
+            }
+        },
+        "trustIndicators": {
+            "title": "لماذا تختار رزقي؟",
+            "verified": "آمن ومحمي",
+            "sharia": "موثق شرعياً",
+            "success": "نجح في ربط آلاف الأزواج"
+        },
+        "websitePreview": {
+            "title": "استكشف الموقع",
+            "subtitle": "اكتشف جميع الميزات التي تجعل رزقي الخيار الأمثل للزواج الإسلامي"
+        },
+        "howItWorksSection": {
+            "title": "كيف يعمل الموقع؟",
+            "subtitle": "خطوات بسيطة وسهلة للعثور على شريك حياتك",
+            "steps": {
+                "register": {
+                    "title": "إنشاء الحساب",
+                    "description": "سجل بياناتك الأساسية وأنشئ ملفك الشخصي المفصل الذي يعكس شخصيتك وقيمك الإسلامية"
+                },
+                "search": {
+                    "title": "البحث الذكي",
+                    "description": "استخدم أدوات البحث المتقدمة للعثور على الشركاء المتوافقين معك حسب تفضيلاتك"
+                },
+                "communicate": {
+                    "title": "التواصل الآمن",
+                    "description": "ابدأ محادثات في بيئة مراقبة وآمنة تلتزم بالآداب الإسلامية"
+                },
+                "marriage": {
+                    "title": "الزواج الشرعي",
+                    "description": "ابدأ رحلة الزواج مع إشراك الأهل والالتزام بالتقاليد الإسلامية"
+                }
+            }
+        },
+        "successStoriesSection": {
+            "title": "قصص نجاح حقيقية",
+            "subtitle": "قصص أزواج وجدوا شريك حياتهم من خلال رزقي",
+            "stats": {
+                "title": "إنجازاتنا",
+                "marriages": "زواج ناجح",
+                "members": "عضو نشط",
+                "countries": "دولة",
+                "satisfaction": "معدل الرضا",
+                "experience": "من الخبرة"
+            },
+            "stories": {
+                "story1": {
+                    "text": "بفضل رزقي وجدت شريك حياتي في بيئة آمنة ومحترمة. الموقع ساعدنا على التواصل وفقاً للضوابط الإسلامية.",
+                    "author": "أحمد وفاطمة",
+                    "status": "متزوجان منذ سنتين"
+                },
+                "story2": {
+                    "text": "تجربة البحث كانت ممتازة والنتائج دقيقة. تمكنا من إشراك أهلنا منذ البداية.",
+                    "author": "عمر وعائشة",
+                    "status": "متزوجان منذ سنة"
+                },
+                "story3": {
+                    "text": "منصة رائعة تحترم القيم الإسلامية. شعرنا بالأمان والراحة طوال العملية.",
+                    "author": "خالد ومريم",
+                    "status": "متزوجان منذ ثلاث سنوات"
+                },
+                "story4": {
+                    "text": "تجربة استثنائية! الموقع يوفر بيئة آمنة ومحترمة للتعارف. نحن سعداء جداً بزواجنا ونشكر فريق رزقي على هذه الخدمة المميزة.",
+                    "author": "سارة وليث",
+                    "status": "متزوجان منذ ٣ أشهر"
+                },
+                "story5": {
+                    "text": "الحمد لله وجدت شريك حياتي المناسب من خلال رزقي. الموقع يحترم القيم الإسلامية ويوفر بيئة آمنة للتعارف الشرعي.",
+                    "author": "محمد ويسرا",
+                    "status": "متزوجان منذ شهرين"
+                }
+            }
+        },
+        "featuresSection": {
+            "title": "ما يجعل الموقع مميزاً؟",
+            "subtitle": "اكتشف الميزات التي تجعل رزقي الخيار الأول للمسلمين الباحثين عن الزواج",
+            "features": {
+                "detailedProfile": {
+                    "title": "ملف شخصي مفصل",
+                    "description": "أنشئ ملفاً شخصياً شاملاً يعكس شخصيتك وقيمك الإسلامية مع إمكانية إضافة تفاصيل دقيقة عن توقعاتك"
+                },
+                "privacyProtection": {
+                    "title": "حماية كاملة للخصوصية",
+                    "description": "نضمن حماية بياناتك الشخصية بأعلى معايير الأمان مع مراقبة المحتوى والتحقق من الهوية"
+                },
+                "respectfulCommunication": {
+                    "title": "تواصل محترم",
+                    "description": "نظام تواصل متقدم يضمن الالتزام بالآداب الإسلامية مع إمكانية إشراك الأهل في المحادثات"
+                }
+            }
+        },
+        "securitySection": {
+            "title": "الأمان والخصوصية أولويتنا",
+            "subtitle": "نلتزم بأعلى معايير الأمان لحماية بياناتك الشخصية وضمان تجربة آمنة ومحترمة",
+            "features": {
+                "advancedEncryption": {
+                    "title": "تشفير متقدم",
+                    "description": "جميع البيانات محمية بتشفير SSL 256-bit لضمان أقصى درجات الأمان"
+                },
+                "identityVerification": {
+                    "title": "التحقق من الهوية",
+                    "description": "نظام صارم للتحقق من هوية المستخدمين لضمان مصداقية الملفات الشخصية"
+                },
+                "contentModeration": {
+                    "title": "مراقبة المحتوى",
+                    "description": "فريق متخصص يراقب المحتوى على مدار الساعة لضمان الالتزام بالآداب الإسلامية"
+                },
+                "completePrivacy": {
+                    "title": "خصوصية كاملة",
+                    "description": "تحكم كامل في من يمكنه رؤية ملفك الشخصي ومعلوماتك الخاصة"
+                }
+            },
+            "trustBadges": {
+                "shariaCompliant": "معتمد شرعياً",
+                "iso27001": "ISO 27001",
+                "gdprCompliant": "GDPR متوافق"
+            }
+        },
+        "faqSection": {
+            "title": "الأسئلة الشائعة",
+            "subtitle": "إجابات على أكثر الأسئلة شيوعاً حول رزقي",
+            "questions": {
+                "q1": {
+                    "question": "هل الموقع مجاني؟",
+                    "answer": "نعم، يمكنك إنشاء حساب والبدء في البحث مجاناً. كما نوفر خطط مدفوعة بميزات إضافية مثل الرسائل غير المحدودة والبحث المتقدم."
+                },
+                "q2": {
+                    "question": "كيف تضمنون الالتزام بالقيم الإسلامية؟",
+                    "answer": "لدينا فريق متخصص من العلماء والمستشارين الشرعيين يشرفون على جميع جوانب الموقع. كما نراقب المحتوى باستمرار ونطبق إرشادات صارمة للتواصل المحترم."
+                },
+                "q3": {
+                    "question": "هل يمكن للأهل المشاركة في العملية؟",
+                    "answer": "بالطبع! نشجع إشراك الأهل في عملية التعارف. يمكن للوالدين إنشاء حسابات لأبنائهم أو المشاركة في المحادثات عند الحاجة."
+                },
+                "q4": {
+                    "question": "كيف تحمون خصوصيتي؟",
+                    "answer": "نستخدم أحدث تقنيات التشفير لحماية بياناتك. يمكنك التحكم في من يرى ملفك الشخصي، ولا نشارك معلوماتك مع أي طرف ثالث دون موافقتك."
+                },
+                "q5": {
+                    "question": "ما هي معدلات النجاح؟",
+                    "answer": "أكثر من ٢٥٠٠ زواج ناجح تم من خلال رزجة، بمعدل رضا يصل إلى ٩٨٪. نفتخر بكوننا ساعدنا آلاف الأشخاص في العثور على شريك حياتهم المناسب."
+                }
+            }
+        },
+        "blogSection": {
+            "title": "مقالات ونصائح للزواج الإسلامي",
+            "subtitle": "اكتشف أحدث المقالات والنصائح من خبراء الزواج والمستشارين الشرعيين",
+            "articles": {
+                "article1": {
+                    "date": "٢٥ ديسمبر ٢٠٢٤",
+                    "author": "د. أحمد الشريف",
+                    "title": "آداب التعارف في الإسلام: دليل شامل للمقبلين على الزواج",
+                    "excerpt": "تعرف على الضوابط الشرعية والآداب الإسلامية في التعارف قبل الزواج وكيفية اختيار الشريك المناسب...",
+                    "readMore": "اقرأ المزيد ←",
+                    "imageAlt": "صورة المقال"
+                },
+                "article2": {
+                    "date": "٢٠ ديسمبر ٢٠٢٤",
+                    "author": "أ. فاطمة النور",
+                    "title": "دور الأهل في اختيار شريك الحياة: التوازن بين الرأي والاختيار",
+                    "excerpt": "كيف يمكن للأهل المساعدة في عملية اختيار شريك الحياة مع احترام رغبة الأبناء وتوجيههم نحو الخيار الأفضل...",
+                    "readMore": "اقرأ المزيد ←",
+                    "imageAlt": "صورة المقال"
+                },
+                "article3": {
+                    "date": "١٥ ديسمبر ٢٠٢٤",
+                    "author": "د. محمد العتيبي",
+                    "title": "الأمان الرقمي في مواقع الزواج: كيف تحمي نفسك من المحتالين",
+                    "excerpt": "نصائح مهمة للحفاظ على أمانك وخصوصيتك عند استخدام مواقع الزواج الإلكترونية وتجنب عمليات الاحتيال...",
+                    "readMore": "اقرأ المزيد ←",
+                    "imageAlt": "صورة المقال"
+                }
+            },
+            "viewAllButton": "عرض جميع المقالات"
+        },
+        "admin": {
+            "articles": {
+                "title": "إدارة المقالات",
+                "addNew": "إضافة مقال جديد",
+                "filters": "المرشحات",
+                "searchPlaceholder": "البحث في المقالات...",
+                "allCategories": "جميع التصنيفات",
+                "allStatuses": "جميع الحالات",
+                "loading": "جاري التحميل...",
+                "confirmDelete": "هل أنت متأكد من حذف هذا المقال؟",
+                "confirmBulkAction": "هل أنت متأكد من تطبيق العملية '{{action}}' على {{count}} مقال؟",
+                "selectedCount": "تم تحديد {{count}} مقال",
+                "status": {
+                    "published": "منشور",
+                    "draft": "مسودة",
+                    "archived": "مؤرشف"
+                },
+                "sort": {
+                    "latest": "الأحدث",
+                    "popular": "الأكثر شعبية",
+                    "trending": "الأكثر رواجاً"
+                },
+                "table": {
+                    "title": "العنوان",
+                    "author": "المؤلف",
+                    "category": "التصنيف",
+                    "status": "الحالة",
+                    "stats": "الإحصائيات",
+                    "date": "التاريخ",
+                    "actions": "الإجراءات"
+                },
+                "bulkActions": {
+                    "publish": "نشر",
+                    "archive": "أرشفة",
+                    "delete": "حذف"
+                },
+                "pagination": {
+                    "previous": "السابق",
+                    "next": "التالي",
+                    "showing": "عرض {{from}} إلى {{to}} من أصل {{total}}"
+                }
+            }
+        },
+        "pricingSection": {
+            "title": "اختر الباقة المناسبة لك",
+            "subtitle": "ابدأ مجاناً واكتشف جميع الميزات المتاحة",
+            "plans": {
+                "free": {
+                    "name": "الباقة المجانية",
+                    "price": "مجاناً",
+                    "period": "/شهر",
+                    "features": [
+                        "إنشاء ملف شخصي",
+                        "البحث الأساسي",
+                        "٥ رسائل شهرياً",
+                        "عرض الملفات الأساسية"
+                    ],
+                    "button": "ابدأ مجاناً"
+                },
+                "premium": {
+                    "name": "الباقة المميزة",
+                    "price": "٤٩ ر.س",
+                    "period": "/شهر",
+                    "badge": "الأكثر شعبية",
+                    "features": [
+                        "جميع ميزات الباقة المجانية",
+                        "رسائل غير محدودة",
+                        "بحث متقدم",
+                        "رؤية من شاهد ملفك",
+                        "إخفاء الإعلانات"
+                    ],
+                    "button": "اختر المميزة"
+                },
+                "vip": {
+                    "name": "باقة VIP",
+                    "price": "٩٩ ر.س",
+                    "period": "/شهر",
+                    "features": [
+                        "جميع ميزات الباقة المميزة",
+                        "أولوية في النتائج",
+                        "استشارة زواج مجانية",
+                        "دعم فني مخصص",
+                        "تحقق مميز من الهوية"
+                    ],
+                    "button": "اختر VIP"
+                }
+            }
+        },
+        "ctaSection": {
+            "title": "ابدأ رحلتك نحو الزواج الشرعي اليوم",
+            "subtitle": "انضم إلى آلاف المسلمين الذين وثقوا برزقي لإيجاد شريك حياتهم",
+            "buttons": {
+                "register": "إنشاء حساب مجاني",
+                "learn": "تعرف على المزيد"
+            },
+            "features": [
+                "مجاني للبدء",
+                "آمن ومحمي",
+                "موثق شرعياً"
+            ]
+        }
+    },
+    "features": {
+        "title": "ميزات رزقي",
+        "subtitle": "اكتشف ما يجعل رزقي الخيار الأول للمسلمين الباحثين عن الزواج الشرعي",
+        "detailedProfile": {
+            "title": "ملف شخصي مفصل",
+            "description": "أنشئ ملفاً شخصياً شاملاً يعكس شخصيتك وقيمك الإسلامية مع إمكانية إضافة تفاصيل دقيقة عن توقعاتك وما تبحث عنه في شريك الحياة",
+            "benefits": {
+                "comprehensive": "إضافة تفاصيل شخصية شاملة",
+                "preferences": "تحديد التفضيلات والتوقعات",
+                "religious": "عرض المعلومات الدينية والثقافية",
+                "updates": "إمكانية التحديث المستمر"
+            }
+        },
+        "smartMatching": {
+            "title": "نظام مطابقة ذكي",
+            "description": "خوارزمية متطورة تجد لك الشريك المناسب بناءً على التوافق في القيم والاهتمامات والأهداف الحياتية مع مراعاة الضوابط الشرعية",
+            "benefits": {
+                "algorithm": "خوارزمية ذكية للمطابقة",
+                "compatibility": "تحليل التوافق في القيم",
+                "suggestions": "اقتراحات مخصصة",
+                "updates": "تحديث مستمر للنتائج"
+            }
+        },
+        "secureMessaging": {
+            "title": "مراسلات آمنة ومراقبة",
+            "description": "نظام مراسلات داخلي آمن مع مراقبة المحتوى لضمان الالتزام بالآداب الإسلامية وإمكانية إشراك الأهل في المحادثات",
+            "benefits": {
+                "monitoring": "مراقبة المحتوى تلقائياً",
+                "family": "إشراك الأهل في المحادثات",
+                "encryption": "تشفير الرسائل",
+                "history": "حفظ سجل المحادثات"
+            }
+        },
+        "privacyProtection": {
+            "title": "حماية الخصوصية",
+            "description": "أعلى مستويات الأمان لحماية بياناتك الشخصية مع تشفير متقدم وإعدادات خصوصية قابلة للتخصيص حسب احتياجاتك",
+            "benefits": {
+                "encryption": "تشفير البيانات الشخصية",
+                "settings": "إعدادات خصوصية متقدمة",
+                "access": "حماية من الوصول غير المصرح",
+                "backup": "نسخ احتياطية آمنة"
+            }
+        },
+        "familyInvolvement": {
+            "title": "إشراك الأهل",
+            "description": "إمكانية إشراك الأهل في عملية التعارف والتواصل لضمان الالتزام بالتقاليد الإسلامية والحصول على موافقة الأسرة",
+            "benefits": {
+                "invitation": "دعوة الأهل للمشاركة",
+                "monitoring": "مراقبة عائلية للمحادثات",
+                "approval": "موافقة الأسرة على التواصل",
+                "reports": "تقارير دورية للأهل"
+            }
+        },
+        "verifiedProfiles": {
+            "title": "ملفات موثقة",
+            "description": "نظام توثيق شامل للملفات الشخصية يضمن مصداقية المعلومات ويقلل من المحاولات الوهمية أو المضللة",
+            "benefits": {
+                "identity": "توثيق الهوية الشخصية",
+                "verification": "التحقق من المعلومات",
+                "badges": "شارات التوثيق",
+                "fake": "تقليل الحسابات الوهمية"
+            }
+        },
+        "islamicGuidelines": {
+            "title": "ضوابط شرعية",
+            "description": "جميع ميزات الموقع مصممة وفقاً للضوابط الشرعية الإسلامية مع منع عرض الصور للنساء والالتزام بآداب التواصل",
+            "benefits": {
+                "photos": "منع عرض صور النساء",
+                "communication": "ضوابط التواصل الشرعي",
+                "review": "مراجعة شرعية للمحتوى",
+                "guidance": "إرشادات إسلامية"
+            }
+        },
+        "multiLanguage": {
+            "title": "دعم متعدد اللغات",
+            "description": "واجهة باللغة العربية والإنجليزية مع دعم كامل لاتجاه النص من اليمين إلى اليسار (RTL) للمستخدمين العرب",
+            "benefits": {
+                "interface": "واجهة عربية كاملة",
+                "rtl": "دعم RTL",
+                "translation": "ترجمة شاملة",
+                "switching": "تبديل سهل بين اللغات"
+            }
+        },
+        "mobileOptimized": {
+            "title": "محسن للهواتف",
+            "description": "تصميم متجاوب يعمل بسلاسة على جميع الأجهزة من الهواتف الذكية إلى أجهزة الكمبيوتر مع تجربة مستخدم مثالية",
+            "benefits": {
+                "responsive": "تصميم متجاوب",
+                "app": "تطبيق محمول قريباً",
+                "speed": "سرعة في التحميل",
+                "experience": "تجربة مستخدم مثالية"
+            }
+        },
+        "statistics": {
+            "title": "أرقام تتحدث عن نفسها",
+            "subtitle": "إنجازاتنا في خدمة المجتمع المسلم",
+            "members": {
+                "number": "10,000+",
+                "label": "عضو مسجل"
+            },
+            "marriages": {
+                "number": "500+",
+                "label": "زواج ناجح"
+            },
+            "satisfaction": {
+                "number": "99%",
+                "label": "رضا المستخدمين"
+            },
+            "support": {
+                "number": "24/7",
+                "label": "دعم فني"
+            }
+        },
+        "security": {
+            "title": "الأمان والخصوصية",
+            "subtitle": "نحن نأخذ أمان بياناتك وخصوصيتك على محمل الجد",
+            "encryption": {
+                "title": "تشفير متقدم",
+                "description": "جميع بياناتك محمية بتشفير AES-256 المتقدم"
+            },
+            "monitoring": {
+                "title": "مراقبة المحتوى",
+                "description": "نظام ذكي لمراقبة المحتوى وضمان الالتزام بالآداب"
+            },
+            "quality": {
+                "title": "جودة عالية",
+                "description": "معايير صارمة لضمان جودة الملفات الشخصية"
+            }
+        }
+    },
+    "about": {
+        "title": "من نحن",
+        "subtitle": "نحن منصة رزقي، الموقع الإسلامي الرائد للزواج الشرعي في العالم العربي",
+        "vision": {
+            "title": "رؤيتنا",
+            "description": "أن نكون المنصة الرائدة عالمياً للزواج الإسلامي الشرعي، نساعد المسلمين في جميع أنحاء العالم على إيجاد شريك الحياة المناسب في بيئة آمنة ومحترمة تلتزم بتعاليم الإسلام وقيمه السامية."
+        },
+        "mission": {
+            "title": "رسالتنا",
+            "description": "نسعى لتوفير منصة زواج إسلامية شرعية تجمع بين التقنية الحديثة والقيم الإسلامية الأصيلة، لنساعد المسلمين على بناء أسر مستقرة وسعيدة وفقاً لتعاليم الدين الحنيف."
+        },
+        "values": {
+            "title": "قيمنا",
+            "subtitle": "القيم التي نؤمن بها ونعمل من خلالها",
+            "items": [
+                "الالتزام بالضوابط الشرعية في جميع جوانب الخدمة",
+                "الشفافية والمصداقية في التعامل مع المستخدمين",
+                "حماية الخصوصية والبيانات الشخصية",
+                "تعزيز القيم الأسرية الإسلامية",
+                "التطوير المستمر لخدمة المجتمع المسلم"
+            ]
+        },
+        "story": {
+            "title": "قصتنا",
+            "description": "بدأت فكرة رزقي من إيمان عميق بأهمية الزواج في الإسلام وضرورة توفير وسائل شرعية وآمنة للتعارف. لاحظنا الحاجة الماسة لمنصة تجمع بين سهولة التقنية الحديثة والالتزام الكامل بالضوابط الشرعية، فكان رزقي ثمرة هذا الحلم."
+        },
+        "team": {
+            "title": "فريقنا",
+            "description": "يضم فريق رزقي نخبة من المطورين والمصممين والمستشارين الشرعيين الذين يعملون بشغف لتطوير أفضل تجربة زواج إسلامية. نحن ملتزمون بالتطوير المستمر والاستماع لاحتياجات مجتمعنا المسلم.",
+            "members": {
+                "development": {
+                    "role": "فريق التطوير",
+                    "description": "مطورون متخصصون في التقنيات الحديثة"
+                },
+                "sharia": {
+                    "role": "المستشارون الشرعيون",
+                    "description": "علماء وفقهاء متخصصون في أحكام الزواج"
+                },
+                "design": {
+                    "role": "فريق التصميم",
+                    "description": "مصممون مبدعون يراعون الهوية الإسلامية"
+                },
+                "security": {
+                    "role": "فريق الأمان",
+                    "description": "خبراء أمن معلومات لحماية بياناتكم"
+                }
+            }
+        },
+        "commitment": {
+            "title": "التزامنا",
+            "description": "نتعهد بالحفاظ على أعلى معايير الجودة والأمان والالتزام الشرعي في جميع خدماتنا. كما نلتزم بالتطوير المستمر والاستجابة لاحتياجات مستخدمينا وتطلعاتهم.",
+            "features": {
+                "quality": {
+                    "title": "جودة عالية",
+                    "description": "معايير صارمة في جميع خدماتنا"
+                },
+                "innovation": {
+                    "title": "ابتكار مستمر",
+                    "description": "تطوير دائم لتحسين تجربتكم"
+                },
+                "global": {
+                    "title": "خدمة عالمية",
+                    "description": "نخدم المسلمين في جميع أنحاء العالم"
+                }
+            }
+        }
+    },
+    "contact": {
+        "title": "اتصل بنا",
+        "subtitle": "نحن هنا لمساعدتك في رحلة البحث عن شريك الحياة",
+        "form": {
+            "title": "أرسل لنا رسالة",
+            "name": "الاسم الكامل",
+            "email": "البريد الإلكتروني",
+            "phone": "رقم الهاتف",
+            "subject": "الموضوع",
+            "message": "الرسالة",
+            "send": "إرسال الرسالة",
+            "sending": "جاري الإرسال...",
+            "success": "تم إرسال رسالتك بنجاح! سنتواصل معك قريباً",
+            "error": "حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى",
+            "required": "هذا الحقل مطلوب",
+            "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+            "invalidPhone": "رقم الهاتف غير صالح",
+            "messageMinLength": "الرسالة يجب أن تكون 10 أحرف على الأقل"
+        },
+        "info": {
+            "title": "معلومات الاتصال",
+            "address": {
+                "title": "العنوان",
+                "value": "الرياض، المملكة العربية السعودية"
+            },
+            "phone": {
+                "title": "الهاتف",
+                "value": "+966582352555",
+                "dir": "ltr"
+            },
+            "email": {
+                "title": "البريد الإلكتروني",
+                "value": "info@rezge.com"
+            },
+            "hours": {
+                "title": "ساعات العمل",
+                "value": "الأحد - الخميس: 9:00 ص - 6:00 م"
+            }
+        },
+        "support": {
+            "title": "الدعم الفني",
+            "description": "فريق الدعم الفني متاح لمساعدتك في أي استفسارات تقنية",
+            "email": "support@rezge.com",
+            "phone": "+966582352555",
+            "phoneDir": "ltr"
+        },
+        "sales": {
+            "title": "المبيعات والاشتراكات",
+            "description": "للاستفسار عن الباقات المدفوعة والاشتراكات المميزة",
+            "email": "sales@rezge.com",
+            "phone": "+966582352555",
+            "phoneDir": "ltr"
+        },
+        "legal": {
+            "title": "الشؤون القانونية",
+            "description": "للاستفسارات القانونية والشكاوى الرسمية",
+            "email": "legal@rezge.com"
+        },
+        "social": {
+            "title": "تابعنا على وسائل التواصل",
+            "description": "ابق على اطلاع بآخر الأخبار والتحديثات"
+        },
+        "faq": {
+            "title": "الأسئلة الشائعة",
+            "description": "قد تجد إجابة سؤالك في قسم الأسئلة الشائعة",
+            "button": "عرض الأسئلة الشائعة"
+        },
+        "departments": {
+            "title": "أقسام الدعم المتخصصة",
+            "subtitle": "تواصل مع القسم المناسب للحصول على أفضل خدمة"
+        },
+        "map": {
+            "title": "موقعنا على الخريطة",
+            "placeholder": "خريطة تفاعلية",
+            "location": "الرياض، المملكة العربية السعودية",
+            "detailedAddress": "العنوان التفصيلي",
+            "address": "حي الملك فهد، الرياض 12345"
+        },
+        "quickContact": {
+            "title": "تحتاج مساعدة فورية؟",
+            "subtitle": "فريق الدعم الفني متاح على مدار الساعة لمساعدتك في أي استفسار",
+            "callButton": "اتصل بنا الآن",
+            "emailButton": "راسلنا عبر البريد"
+        }
+    },
+    "helpCenter": {
+        "title": "مركز المساعدة",
+        "subtitle": "نحن هنا لمساعدتك في كل خطوة من رحلتك للعثور على شريك الحياة",
+        "searchPlaceholder": "ابحث في مركز المساعدة...",
+        "categories": {
+            "gettingStarted": {
+                "title": "البدء",
+                "description": "تعلم كيفية استخدام الموقع وإنشاء ملفك الشخصي"
+            },
+            "profile": {
+                "title": "الملف الشخصي",
+                "description": "إدارة وتحسين ملفك الشخصي لجذب الشريك المناسب"
+            },
+            "matching": {
+                "title": "المطابقة والبحث",
+                "description": "كيفية العثور على الشريك المناسب باستخدام أدوات البحث"
+            },
+            "communication": {
+                "title": "التواصل",
+                "description": "إرشادات التواصل الشرعي والمراسلات الآمنة"
+            },
+            "safety": {
+                "title": "الأمان والخصوصية",
+                "description": "حماية بياناتك وضمان تجربة آمنة"
+            },
+            "islamic": {
+                "title": "الضوابط الشرعية",
+                "description": "التوجيهات الإسلامية للزواج والتعارف"
+            }
+        },
+        "popularTopics": {
+            "title": "المواضيع الشائعة",
+            "topics": [
+                "كيفية إنشاء ملف شخصي جذاب",
+                "ضوابط التواصل الشرعي",
+                "كيفية البحث عن الشريك المناسب",
+                "حماية الخصوصية والأمان",
+                "إشراك الأهل في عملية التعارف",
+                "التحقق من صحة المعلومات"
+            ]
+        },
+        "quickActions": {
+            "title": "إجراءات سريعة",
+            "contact": "تواصل مع الدعم",
+            "faq": "الأسئلة الشائعة",
+            "guidelines": "الإرشادات الشرعية",
+            "report": "إبلاغ عن مشكلة"
+        },
+        "support": {
+            "title": "تحتاج مساعدة إضافية؟",
+            "description": "فريق الدعم متاح لمساعدتك على مدار الساعة",
+            "chat": "دردشة مباشرة",
+            "email": "إرسال بريد إلكتروني",
+            "phone": "اتصال هاتفي"
+        },
+        "categoriesTitle": "فئات المساعدة",
+        "articlesCount": "مقالة"
+    },
+    "faq": {
+        "title": "الأسئلة الشائعة",
+        "subtitle": "إجابات شاملة على الأسئلة الأكثر شيوعاً حول استخدام موقع رزقي للزواج الإسلامي",
+        "searchPlaceholder": "ابحث في الأسئلة الشائعة...",
+        "categoriesTitle": "الفئات",
+        "noResults": {
+            "title": "لم نجد أي نتائج",
+            "description": "جرب البحث بكلمات مختلفة أو اختر فئة أخرى"
+        },
+        "categories": {
+            "all": "جميع الأقسام",
+            "general": "أسئلة عامة",
+            "account": "إدارة الحساب",
+            "profile": "الملف الشخصي",
+            "matching": "البحث والمطابقة",
+            "communication": "التواصل والرسائل",
+            "safety": "الأمان والخصوصية",
+            "islamic": "الضوابط الشرعية",
+            "billing": "الاشتراكات والفواتير"
+        },
+        "questions": [{
+                "id": "what-is-rezge",
+                "category": "general",
+                "question": "ما هو موقع رزقي؟",
+                "answer": "رزقي هو موقع زواج إسلامي شرعي يهدف إلى مساعدة المسلمين في العثور على شريك الحياة المناسب وفقاً للضوابط الشرعية الإسلامية. نحن نوفر بيئة آمنة ومراقبة للتعارف الشرعي."
+            },
+            {
+                "id": "how-to-register",
+                "category": "account",
+                "question": "كيف يمكنني إنشاء حساب جديد؟",
+                "answer": "يمكنك إنشاء حساب جديد بالنقر على زر 'إنشاء حساب' في الصفحة الرئيسية، ثم ملء النموذج بالمعلومات المطلوبة مثل الاسم والبريد الإلكتروني وكلمة المرور. ستحتاج أيضاً للموافقة على الشروط والأحكام."
+            },
+            {
+                "id": "forgot-password",
+                "category": "account",
+                "question": "نسيت كلمة المرور، كيف يمكنني استعادتها؟",
+                "answer": "يمكنك استعادة كلمة المرور بالنقر على رابط 'نسيت كلمة المرور' في صفحة تسجيل الدخول. ستصلك رسالة إلكترونية تحتوي على رابط لإعادة تعيين كلمة المرور. تأكد من فحص مجلد الرسائل غير المرغوب فيها."
+            },
+            {
+                "id": "account-deletion",
+                "category": "account",
+                "question": "كيف يمكنني حذف حسابي؟",
+                "answer": "يمكنك حذف حسابك من خلال الذهاب إلى إعدادات الحساب واختيار 'حذف الحساب'. سيتم حذف جميع بياناتك نهائياً خلال 30 يوماً. يمكنك التراجع عن هذا القرار خلال هذه المدة بتسجيل الدخول مرة أخرى."
+            },
+            {
+                "id": "profile-verification",
+                "category": "profile",
+                "question": "كيف يتم التحقق من الملف الشخصي؟",
+                "answer": "نحن نتحقق من الملفات الشخصية من خلال مراجعة المعلومات المقدمة والتأكد من صحتها. قد نطلب وثائق إضافية للتحقق من الهوية في بعض الحالات. الملفات المتحقق منها تحصل على علامة التحقق الزرقاء."
+            },
+            {
+                "id": "profile-completion",
+                "category": "profile",
+                "question": "لماذا يجب إكمال الملف الشخصي؟",
+                "answer": "إكمال الملف الشخصي يزيد من فرص العثور على شريك مناسب. الملفات المكتملة تظهر في نتائج البحث بشكل أفضل وتحصل على مشاهدات أكثر. كما أن المعلومات الكاملة تساعد في عملية المطابقة الذكية."
+            },
+            {
+                "id": "photo-guidelines",
+                "category": "profile",
+                "question": "ما هي إرشادات الصور في الملف الشخصي؟",
+                "answer": "وفقاً للضوابط الشرعية، لا يُسمح بعرض صور النساء. يمكن للرجال إضافة صور محتشمة ولائقة. جميع الصور تخضع للمراجعة قبل النشر. يُمنع الصور غير اللائقة أو المخالفة للآداب الإسلامية."
+            },
+            {
+                "id": "matching-algorithm",
+                "category": "matching",
+                "question": "كيف تعمل خوارزمية المطابقة؟",
+                "answer": "خوارزمية المطابقة تعتمد على عوامل متعددة مثل العمر، المستوى التعليمي، الموقع الجغرافي، التفضيلات الشخصية، والقيم المشتركة. كلما كان ملفك الشخصي أكثر تفصيلاً، كانت المطابقات أكثر دقة."
+            },
+            {
+                "id": "search-filters",
+                "category": "matching",
+                "question": "كيف يمكنني استخدام فلاتر البحث المتقدمة؟",
+                "answer": "يمكنك الوصول لفلاتر البحث المتقدمة من صفحة البحث. يمكنك تحديد العمر، المستوى التعليمي، المهنة، الموقع، الحالة الاجتماعية، وتفضيلات أخرى. احفظ فلاترك المفضلة لاستخدامها لاحقاً."
+            },
+            {
+                "id": "communication-rules",
+                "category": "communication",
+                "question": "ما هي قواعد التواصل في الموقع؟",
+                "answer": "التواصل في الموقع يخضع للمراقبة لضمان الالتزام بالآداب الإسلامية. يُمنع استخدام ألفاظ غير لائقة أو مخالفة للشرع. يمكن إشراك الأهل في المحادثات، ونشجع على ذلك خاصة في المراحل المتقدمة من التعارف."
+            },
+            {
+                "id": "message-limits",
+                "category": "communication",
+                "question": "هل هناك حد أقصى لعدد الرسائل؟",
+                "answer": "الأعضاء المجانيون يمكنهم إرسال 5 رسائل يومياً. الأعضاء المميزون يحصلون على رسائل غير محدودة. يمكنك ترقية حسابك للحصول على المزيد من الميزات والرسائل غير المحدودة."
+            },
+            {
+                "id": "family-involvement",
+                "category": "communication",
+                "question": "كيف يمكن إشراك الأهل في المحادثات؟",
+                "answer": "يمكنك دعوة أحد أفراد الأسرة للانضمام للمحادثة من خلال إعدادات المحادثة. سيتم إرسال دعوة لهم عبر البريد الإلكتروني. هذه الميزة تساعد في الحفاظ على الطابع الشرعي للتعارف."
+            },
+            {
+                "id": "privacy-protection",
+                "category": "safety",
+                "question": "كيف تحمون خصوصيتي وبياناتي؟",
+                "answer": "نحن نأخذ حماية الخصوصية على محمل الجد. جميع البيانات مشفرة ومحمية، ولا نشارك معلوماتك الشخصية مع أطراف ثالثة. يمكنك التحكم في مستوى الخصوصية لملفك الشخصي ومعلومات الاتصال."
+            },
+            {
+                "id": "report-user",
+                "category": "safety",
+                "question": "كيف يمكنني الإبلاغ عن مستخدم مشبوه؟",
+                "answer": "يمكنك الإبلاغ عن أي مستخدم من خلال النقر على زر 'إبلاغ' في ملفه الشخصي أو في المحادثة. فريقنا سيراجع البلاغ خلال 24 ساعة ويتخذ الإجراء المناسب. خصوصيتك محمية عند الإبلاغ."
+            },
+            {
+                "id": "block-user",
+                "category": "safety",
+                "question": "كيف يمكنني حظر مستخدم معين؟",
+                "answer": "يمكنك حظر أي مستخدم من خلال الذهاب لملفه الشخصي والنقر على 'حظر المستخدم'. المستخدم المحظور لن يتمكن من رؤية ملفك الشخصي أو إرسال رسائل لك. يمكنك إلغاء الحظر في أي وقت."
+            },
+            {
+                "id": "islamic-guidelines",
+                "category": "islamic",
+                "question": "ما هي الضوابط الشرعية المتبعة في الموقع؟",
+                "answer": "نحن نلتزم بالضوابط الشرعية الإسلامية في جميع جوانب الخدمة، بما في ذلك: منع عرض صور النساء، مراقبة المحتوى والرسائل، إمكانية إشراك الأهل في المحادثات، والالتزام بآداب التعارف الإسلامي."
+            },
+            {
+                "id": "islamic-consultation",
+                "category": "islamic",
+                "question": "هل يمكنني الحصول على استشارة شرعية؟",
+                "answer": "نعم، لدينا فريق من المستشارين الشرعيين المتخصصين في أمور الزواج والتعارف. يمكنك طلب استشارة من خلال قسم 'الاستشارات الشرعية' في الموقع. الاستشارات مجانية لجميع الأعضاء."
+            },
+            {
+                "id": "subscription-plans",
+                "category": "billing",
+                "question": "ما هي باقات الاشتراك المتاحة؟",
+                "answer": "نوفر باقة مجانية أساسية وخطط مدفوعة (شهرية، ربع سنوية، سنوية) بميزات إضافية مثل الرسائل غير المحدودة، البحث المتقدم، وإخفاء الإعلانات. يمكنك مقارنة الباقات من صفحة 'الاشتراكات'."
+            },
+            {
+                "id": "payment-methods",
+                "category": "billing",
+                "question": "ما هي طرق الدفع المقبولة؟",
+                "answer": "نقبل جميع البطاقات الائتمانية الرئيسية (فيزا، ماستركارد، أمريكان إكسبريس)، التحويل البنكي، وطرق الدفع الرقمية مثل آبل باي وجوجل باي. جميع المعاملات آمنة ومشفرة."
+            },
+            {
+                "id": "refund-policy",
+                "category": "billing",
+                "question": "ما هي سياسة الاسترداد؟",
+                "answer": "يمكنك طلب استرداد كامل خلال 7 أيام من الاشتراك إذا لم تكن راضياً عن الخدمة. بعد هذه المدة، يمكن الاسترداد النسبي حسب المدة المتبقية. تواصل مع خدمة العملاء لطلب الاسترداد."
+            }
+        ],
+        "stillNeedHelp": {
+            "title": "لم تجد إجابة لسؤالك؟",
+            "description": "فريق الدعم الفني والشرعي متاح لمساعدتك على مدار الساعة",
+            "contactButton": "تواصل مع الدعم"
+        }
+    },
+    "islamicGuidelines": {
+        "title": "الإرشادات الشرعية",
+        "subtitle": "التوجيهات الإسلامية للزواج والتعارف الشرعي وفقاً لتعاليم الإسلام",
+        "sections": {
+            "introduction": {
+                "title": "مقدمة",
+                "content": "الزواج في الإسلام هو سنة من سنن المرسلين وآية من آيات الله في خلقه، وهو الطريق الشرعي الوحيد لتكوين الأسرة المسلمة. نحن في موقع رزقي نلتزم بالضوابط الشرعية في جميع جوانب خدماتنا لضمان بيئة آمنة ومتوافقة مع تعاليم الإسلام."
+            },
+            "courtship": {
+                "title": "آداب التعارف الشرعي",
+                "guidelines": [
+                    "التعارف يجب أن يكون بهدف الزواج وليس للتسلية أو اللهو",
+                    "الحفاظ على الحياء والوقار في جميع المحادثات",
+                    "تجنب الخلوة المحرمة والالتزام بوجود محرم عند اللقاء",
+                    "عدم الإفراط في الحديث أو التفاصيل الشخصية المفرطة",
+                    "الصدق والأمانة في عرض المعلومات الشخصية",
+                    "احترام رغبة الطرف الآخر في عدم المتابعة"
+                ]
+            },
+            "family": {
+                "title": "دور الأهل والأولياء",
+                "content": "الأهل والأولياء لهم دور مهم في عملية التعارف والزواج في الإسلام. نحن نشجع على إشراك الأهل في المراحل المناسبة من التعارف ونوفر إمكانية إضافتهم للمحادثات عند الحاجة.",
+                "points": [
+                    "استشارة الأهل في اختيار الشريك المناسب",
+                    "إشراك الولي في المراحل المتقدمة من التعارف",
+                    "احترام رأي الأهل ونصائحهم",
+                    "التواصل الشفاف مع الأسرة حول التطورات"
+                ]
+            },
+            "privacy": {
+                "title": "الخصوصية والستر",
+                "guidelines": [
+                    "عدم عرض صور النساء احتراماً للضوابط الشرعية",
+                    "حماية المعلومات الشخصية والحفاظ على الخصوصية",
+                    "عدم مشاركة تفاصيل المحادثات مع الآخرين",
+                    "الالتزام بالستر وعدم فضح الأسرار",
+                    "احترام خصوصية الطرف الآخر ومعلوماته"
+                ]
+            },
+            "communication": {
+                "title": "ضوابط التواصل",
+                "rules": [
+                    "استخدام لغة محترمة ولائقة في جميع المحادثات",
+                    "تجنب الألفاظ الغزلية أو العاطفية المفرطة",
+                    "عدم طلب معلومات شخصية حساسة في البداية",
+                    "الالتزام بالموضوعية والجدية في الحديث",
+                    "تجنب المواضيع المثيرة للجدل أو الفتنة"
+                ]
+            },
+            "verification": {
+                "title": "التحقق والمصداقية",
+                "importance": "التحقق من صحة المعلومات أمر مهم في التعارف الشرعي لضمان الشفافية والأمانة.",
+                "steps": [
+                    "التحقق من الهوية والمعلومات الأساسية",
+                    "طلب المراجع والتوصيات عند الحاجة",
+                    "التأكد من الحالة الاجتماعية والظروف الشخصية",
+                    "الاستعانة بأهل الثقة للاستفسار والتحقق"
+                ]
+            }
+        },
+        "reminders": {
+            "title": "تذكيرات مهمة",
+            "points": [
+                "الدعاء والاستخارة في جميع مراحل التعارف",
+                "الصبر وعدم الاستعجال في اتخاذ القرارات",
+                "التوكل على الله والثقة في قضائه وقدره",
+                "طلب البركة من الله في هذا الأمر المهم"
+            ]
+        },
+        "callToAction": {
+            "title": "هل لديك أسئلة حول الضوابط الشرعية؟",
+            "description": "فريق الإرشاد الشرعي متاح للإجابة على استفساراتكم",
+            "faqButton": "الأسئلة الشائعة",
+            "contactButton": "تواصل معنا"
+        }
+    },
+    "privacyPolicy": {
+        "title": "سياسة الخصوصية",
+        "subtitle": "نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية",
+        "lastUpdated": "آخر تحديث",
+        "lastUpdatedDate": "ديسمبر 2024",
+        "tableOfContents": "المحتويات",
+        "sections": {
+            "introduction": {
+                "title": "مقدمة",
+                "content": "نحن في موقع رزقي نقدر خصوصيتك ونلتزم بحماية معلوماتك الشخصية. توضح هذه السياسة كيفية جمع واستخدام وحماية بياناتك عند استخدام خدماتنا."
+            },
+            "dataCollection": {
+                "title": "البيانات التي نجمعها",
+                "intro": "نجمع الأنواع التالية من البيانات:",
+                "types": [
+                    "المعلومات الشخصية: الاسم، العمر، البريد الإلكتروني، رقم الهاتف",
+                    "معلومات الملف الشخصي: التعليم، المهنة، الحالة الاجتماعية، التفضيلات",
+                    "بيانات الاستخدام: كيفية تفاعلك مع الموقع والخدمات",
+                    "المعلومات التقنية: عنوان IP، نوع المتصفح، نظام التشغيل"
+                ]
+            },
+            "dataUsage": {
+                "title": "كيف نستخدم بياناتك",
+                "intro": "نستخدم المعلومات التي نجمعها منك لتقديم خدماتنا وتحسينها، وضمان تجربة آمنة وفعالة لجميع المستخدمين. فيما يلي الأغراض الرئيسية لاستخدام بياناتك:",
+                "purposes": [
+                    "تقديم خدمات المطابقة والبحث عن الشريك المناسب",
+                    "تحسين تجربة المستخدم وتخصيص المحتوى",
+                    "التواصل معك بخصوص الخدمات والتحديثات",
+                    "ضمان الأمان ومنع الاحتيال والاستخدام غير المشروع",
+                    "الامتثال للمتطلبات القانونية والتنظيمية"
+                ]
+            },
+            "dataSharing": {
+                "title": "مشاركة البيانات",
+                "intro": "نحن لا نبيع أو نؤجر معلوماتك الشخصية لأطراف ثالثة. قد نشارك بياناتك في الحالات التالية:",
+                "cases": [
+                    "مع مقدمي الخدمات الموثوقين الذين يساعدوننا في تشغيل الموقع",
+                    "عند الحصول على موافقتك الصريحة",
+                    "للامتثال للقوانين أو الأوامر القضائية",
+                    "لحماية حقوقنا أو سلامة المستخدمين"
+                ]
+            },
+            "dataSecurity": {
+                "title": "أمان البيانات",
+                "intro": "نتخذ تدابير أمنية صارمة لحماية بياناتك:",
+                "measures": [
+                    "تشفير البيانات الحساسة باستخدام أحدث التقنيات",
+                    "استخدام خوادم آمنة ومحمية",
+                    "مراقبة مستمرة للأنشطة المشبوهة",
+                    "تدريب الموظفين على أفضل ممارسات الأمان",
+                    "إجراء مراجعات أمنية دورية"
+                ]
+            },
+            "userRights": {
+                "title": "حقوقك",
+                "intro": "لديك الحقوق التالية فيما يتعلق ببياناتك:",
+                "rights": [
+                    "الوصول إلى بياناتك الشخصية ومراجعتها",
+                    "تصحيح أو تحديث المعلومات غير الصحيحة",
+                    "حذف حسابك وبياناتك (الحق في النسيان)",
+                    "تقييد معالجة بياناتك في ظروف معينة",
+                    "نقل بياناتك إلى خدمة أخرى",
+                    "الاعتراض على معالجة بياناتك لأغراض التسويق"
+                ]
+            },
+            "cookies": {
+                "title": "ملفات تعريف الارتباط",
+                "intro": "نستخدم ملفات تعريف الارتباط لتحسين تجربتك:",
+                "types": [
+                    "ملفات تعريف ضرورية: لتشغيل الموقع بشكل صحيح",
+                    "ملفات تعريف الأداء: لتحليل استخدام الموقع",
+                    "ملفات تعريف الوظائف: لحفظ تفضيلاتك",
+                    "ملفات تعريف التسويق: لعرض إعلانات مخصصة"
+                ],
+                "control": "يمكنك التحكم في ملفات تعريف الارتباط من خلال إعدادات المتصفح."
+            },
+            "contact": {
+                "title": "تواصل معنا",
+                "intro": "إذا كان لديك أي أسئلة حول سياسة الخصوصية، يمكنك التواصل معنا:",
+                "email": "privacy@rezge.com",
+                "emailLabel": "البريد الإلكتروني",
+                "phone": "+966582352555",
+                "phoneLabel": "الهاتف",
+                "phoneDir": "ltr",
+                "address": "الرياض، المملكة العربية السعودية",
+                "addressLabel": "العنوان"
+            }
+        }
+    },
+    "securitySettings": {
+        "title": "إعدادات الأمان والخصوصية",
+        "subtitle": "احم حسابك وتحكم في خصوصيتك",
+        "contactInfo": {
+            "title": "معلومات التواصل",
+            "description": "قم بتحديث معلومات التواصل الخاصة بك",
+            "email": "البريد الإلكتروني",
+            "emailPlaceholder": "أدخل البريد الإلكتروني",
+            "phone": "رقم الهاتف",
+            "phonePlaceholder": "أدخل رقم الهاتف",
+            "saveButton": "حفظ معلومات التواصل",
+            "saving": "جاري الحفظ...",
+            "notAvailable": "غير متاح حالياً",
+            "checkingLimits": "جاري فحص حدود الطلبات...",
+            "pendingChangeTitle": "طلب تحديث معلومات التواصل معلق",
+            "pendingChangeDescription": "تم إرسال رابط تأكيد تحديث بيانات معلومات التواصل إلى بريدك الحالي. سينتهي الطلب تلقائياً خلال 4 ساعات.",
+            "cancelRequest": "إلغاء الطلب"
+        },
+        "passwordChange": {
+            "title": "تغيير كلمة المرور",
+            "description": "قم بتحديث كلمة المرور الخاصة بك لضمان أمان حسابك",
+            "currentPassword": "كلمة المرور الحالية",
+            "currentPasswordPlaceholder": "أدخل كلمة المرور الحالية",
+            "newPassword": "كلمة المرور الجديدة",
+            "newPasswordPlaceholder": "أدخل كلمة مرور جديدة",
+            "confirmPassword": "تأكيد كلمة المرور الجديدة",
+            "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور الجديدة",
+            "updateButton": "تحديث كلمة المرور",
+            "updating": "جاري التحديث...",
+            "strengthLabel": "قوة كلمة المرور:",
+            "strengthWeak": "ضعيفة",
+            "strengthFair": "مقبولة",
+            "strengthGood": "جيدة",
+            "strengthStrong": "قوية",
+            "strengthVeryStrong": "قوية جداً"
+        },
+        "securityPrivacy": {
+            "title": "إعدادات الأمان والخصوصية",
+            "twoFactor": {
+                "title": "المصادقة الثنائية",
+                "description": "طبقة حماية إضافية لحسابك"
+            }
+        },
+        "privacySettings": {
+            "title": "إعدادات الخصوصية",
+            "contactVisibility": {
+                "title": "إظهار معلومات الاتصال",
+                "phone": "رقم الهاتف",
+                "email": "البريد الإلكتروني"
+            },
+            "profileVisibility": {
+                "title": "من يمكنه رؤية ملفك الشخصي",
+                "members": "الأعضاء المسجلين فقط",
+                "verified": "الأعضاء الموثقين فقط",
+                "private": "خاص - لا أحد يمكنه رؤية ملفي"
+            },
+            "profileImageVisibility": {
+                "title": "إعدادات الصورة الشخصية",
+                "subtitle": "تحكم في من يمكنه رؤية صورتك الشخصية",
+                "showImage": "إظهار الصورة الشخصية",
+                "showImageDesc": "السماح للأعضاء الموثقين برؤية صورتك",
+                "whoCanSee": "من يمكنه رؤية صورتك الشخصية:",
+                "verifiedMembers": "الأعضاء الموثقون",
+                "respectsPrivacy": "يحترم الخصوصية",
+                "controlledAccess": "وصول محكوم",
+                "importantNote": "ملاحظة مهمة",
+                "noteDescription": "صورتك الشخصية ستظهر فقط للأعضاء الموثقين الذين يتوافقون مع معايير البحث الخاصة بك"
+            },
+            "communication": {
+                "title": "إعدادات التواصل",
+                "allowMessages": "السماح بالرسائل",
+                "familyCanView": "السماح للأهل بالاطلاع"
+            }
+        },
+        "notifications": {
+            "title": "إعدادات الإشعارات",
+            "loginNotifications": "إشعارات تسجيل الدخول",
+            "messageNotifications": "إشعارات الرسائل الجديدة"
+        },
+        "securityTips": {
+            "title": "نصائح الأمان",
+            "strongPassword": {
+                "title": "استخدم كلمة مرور قوية",
+                "description": "اختر كلمة مرور تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز"
+            },
+            "enableTwoFactor": {
+                "title": "فعّل المصادقة الثنائية",
+                "description": "طبقة حماية إضافية تحمي حسابك من الاختراق"
+            },
+            "protectInfo": {
+                "title": "احم معلوماتك الشخصية",
+                "description": "لا تشارك معلومات حساسة مع أشخاص لا تعرفهم"
+            },
+            "reportSuspicious": {
+                "title": "أبلغ عن السلوك المشبوه",
+                "description": "ساعدنا في الحفاظ على أمان المجتمع بالإبلاغ عن أي سلوك غير مناسب"
+            }
+        },
+        "buttons": {
+            "reset": "إعادة تعيين",
+            "saveSettings": "حفظ الإعدادات",
+            "saving": "جاري الحفظ..."
+        },
+        "messages": {
+            "loginRequired": "يجب تسجيل الدخول للوصول لهذه الصفحة",
+            "loginButton": "تسجيل الدخول",
+            "contactUpdateSuccess": "تم تحديث معلومات التواصل بنجاح",
+            "passwordUpdateSuccess": "تم تحديث كلمة المرور بنجاح",
+            "twoFactorEnabled": "تم تفعيل المصادقة الثنائية بنجاح",
+            "twoFactorDisabled": "تم إلغاء المصادقة الثنائية بنجاح",
+            "settingsUpdateSuccess": "تم تحديث إعدادات الأمان والخصوصية بنجاح!",
+            "errorOccurred": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+            "invalidCurrentPassword": "كلمة المرور الحالية غير صحيحة",
+            "passwordMismatch": "كلمة المرور الجديدة وتأكيدها غير متطابقتين",
+            "weakPassword": "كلمة المرور ضعيفة جداً",
+            "emailInvalid": "البريد الإلكتروني غير صحيح",
+            "phoneInvalid": "رقم الهاتف غير صحيح",
+            "rateLimitExceeded": "تم تجاوز حد الطلبات. يرجى المحاولة لاحقاً.",
+            "twoFactorError": "فشل في تفعيل المصادقة الثنائية",
+            "authRequired": "يجب تسجيل الدخول أولاً",
+            "profileNotLoaded": "لم يتم تحميل بيانات المستخدم بعد، يرجى المحاولة مرة أخرى",
+            "waitForDataLoad": "يرجى الانتظار حتى اكتمال تحميل البيانات",
+            "twoFactorEnableError": "فشل في تفعيل المصادقة الثنائية",
+            "twoFactorDisableError": "فشل في إلغاء تفعيل المصادقة الثنائية",
+            "unexpectedError": "حدث خطأ غير متوقع",
+            "passwordUpdateError": "حدث خطأ غير متوقع أثناء تحديث كلمة المرور",
+            "settingsUpdateError": "حدث خطأ غير متوقع أثناء تحديث الإعدادات",
+            "contactUpdateError": "حدث خطأ أثناء تحديث معلومات التواصل",
+            "passwordRequired": "يجب إدخال كلمة المرور الحالية",
+            "newPasswordRequired": "يجب إدخال كلمة المرور الجديدة",
+            "passwordMinLength": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+            "passwordUpdateFailed": "فشل في تحديث كلمة المرور: ",
+            "emailDuplicate": "البريد الإلكتروني المدخل تابع لحساب آخر مسجل لدينا",
+            "phoneDuplicate": "رقم الهاتف المدخل تابع لحساب آخر مسجل بالفعل",
+            "emailCheckError": "فشل في التحقق من البريد الإلكتروني",
+            "phoneCheckError": "فشل في التحقق من رقم الهاتف",
+            "emailChangeRequestExists": "يوجد طلب تحديث بيانات معلق بالفعل. يرجى إلغاء الطلب أولاً.",
+            "emailChangeRequestCreateError": "فشل في إنشاء طلب التحديث: ",
+            "emailChangeRequestCancelError": "فشل في إلغاء طلب تحديث البريد الإلكتروني",
+            "emailChangeRequestCancelSuccess": "تم إلغاء طلب تحديث البيانات.",
+            "emailChangeRequestCancelUnexpectedError": "حدث خطأ أثناء إلغاء طلب تحديث البريد الإلكتروني",
+            "verificationLinkSent": "تم إرسال رابط تأكيد تحديث البيانات إلى بريدك الحالي.",
+            "noChangesDetected": "لم يتم إجراء أي تغييرات على معلومات التواصل.",
+            "dailyLimitReached": "تم استنفاد الحد اليومي للتحديثات ({{limit}} تحديثات). يمكنك المحاولة مرة أخرى غداً.",
+            "rateLimitCheckError": "خطأ في فحص حدود الطلبات: ",
+            "recordRequestError": "خطأ في تسجيل الطلب الناجح: "
+        }
+    },
+    "termsOfService": {
+        "title": "شروط الاستخدام",
+        "subtitle": "الشروط والأحكام التي تحكم استخدام موقع رزقي",
+        "lastUpdated": "آخر تحديث",
+        "lastUpdatedDate": "ديسمبر 2024",
+        "tableOfContents": "المحتويات",
+        "sections": {
+            "acceptance": {
+                "title": "قبول الشروط",
+                "content": "باستخدام موقع رزقي، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي من هذه الشروط، يرجى عدم استخدام الموقع."
+            },
+            "eligibility": {
+                "title": "الأهلية للاستخدام",
+                "requirements": [
+                    "يجب أن تكون بالغاً (18 سنة أو أكثر)",
+                    "يجب أن تكون مسلماً ملتزماً بتعاليم الإسلام",
+                    "يجب أن تكون غير متزوج أو في حالة طلاق أو ترمل",
+                    "يجب أن تكون جاداً في البحث عن الزواج",
+                    "يجب أن تقدم معلومات صحيحة ودقيقة"
+                ]
+            },
+            "userConduct": {
+                "title": "سلوك المستخدم",
+                "intro": "يجب على المستخدمين الالتزام بالسلوك التالي:",
+                "rules": [
+                    "احترام الضوابط الشرعية الإسلامية في جميع التفاعلات",
+                    "استخدام لغة محترمة ولائقة في المحادثات",
+                    "عدم إرسال محتوى غير لائق أو مخالف للآداب",
+                    "عدم التحرش أو إزعاج المستخدمين الآخرين",
+                    "عدم انتحال شخصية أو تقديم معلومات كاذبة",
+                    "عدم استخدام الموقع لأغراض تجارية أو ترويجية"
+                ]
+            },
+            "prohibitedActivities": {
+                "title": "الأنشطة المحظورة",
+                "intro": "يُمنع منعاً باتاً القيام بالأنشطة التالية:",
+                "activities": [
+                    "نشر أو إرسال محتوى إباحي أو جنسي",
+                    "طلب أو تبادل الصور الشخصية للنساء",
+                    "التعارف بهدف العلاقات غير الشرعية",
+                    "استخدام الموقع للاحتيال أو النصب",
+                    "انتهاك حقوق الملكية الفكرية",
+                    "محاولة اختراق أو تعطيل الموقع"
+                ]
+            },
+            "accountSecurity": {
+                "title": "أمان الحساب",
+                "intro": "أنت مسؤول عن الحفاظ على أمان حسابك:",
+                "responsibilities": [
+                    "اختيار كلمة مرور قوية وآمنة",
+                    "عدم مشاركة بيانات الدخول مع الآخرين",
+                    "إبلاغنا فوراً عن أي استخدام غير مصرح به",
+                    "تحديث معلوماتك الشخصية بانتظام",
+                    "تسجيل الخروج من الحسابات العامة"
+                ]
+            },
+            "intellectualProperty": {
+                "title": "الملكية الفكرية",
+                "content": "جميع المحتويات والعلامات التجارية والتصاميم الموجودة على الموقع مملوكة لشركة رزقي أو مرخصة لها. يُمنع نسخ أو توزيع أو استخدام أي محتوى دون إذن مكتوب."
+            },
+            "limitation": {
+                "title": "تحديد المسؤولية",
+                "intro": "نحن نسعى لتقديم أفضل خدمة، لكننا لا نضمن:",
+                "disclaimers": [
+                    "نجاح العثور على شريك الحياة",
+                    "دقة جميع المعلومات المقدمة من المستخدمين",
+                    "عدم انقطاع الخدمة أو خلوها من الأخطاء",
+                    "أمان المعلومات بنسبة 100%",
+                    "توافق الأشخاص المقترحين مع توقعاتك"
+                ]
+            },
+            "termination": {
+                "title": "إنهاء الحساب",
+                "intro": "يمكن إنهاء الحساب في الحالات التالية:",
+                "reasons": [
+                    "انتهاك شروط الاستخدام أو الضوابط الشرعية",
+                    "تقديم معلومات كاذبة أو مضللة",
+                    "سوء السلوك أو التحرش بالمستخدمين",
+                    "استخدام الموقع لأغراض غير مشروعة",
+                    "طلب المستخدم حذف حسابه"
+                ]
+            },
+            "changes": {
+                "title": "تعديل الشروط",
+                "content": "نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم إشعار المستخدمين بأي تغييرات مهمة عبر البريد الإلكتروني أو إشعار على الموقع."
+            },
+            "contact": {
+                "title": "التواصل",
+                "intro": "للاستفسارات حول شروط الاستخدام:",
+                "email": "legal@rezge.com",
+                "phone": "+966582352555",
+                "phoneDir": "ltr",
+                "emailLabel": "البريد الإلكتروني",
+                "phoneLabel": "الهاتف"
+            }
+        },
+        "importantNotice": {
+            "title": "تنبيه مهم",
+            "content": "يُرجى قراءة هذه الشروط بعناية قبل استخدام الموقع. استخدامك للموقع يعني موافقتك على جميع الشروط والأحكام المذكورة أعلاه. نحن نلتزم بتطبيق هذه الشروط بصرامة لضمان بيئة آمنة ومتوافقة مع تعاليم الإسلام لجميع المستخدمين."
+        }
+    },
+    "footer": {
+        "brand": {
+            "name": "رزقي",
+            "description": "منصة الزواج الإسلامي الأولى التي تجمع بين التقنية الحديثة والقيم الإسلامية الأصيلة لمساعدتك في العثور على شريك حياتك المثالي."
+        },
+        "quickLinks": {
+            "title": "روابط سريعة",
+            "home": "الرئيسية",
+            "features": "الميزات",
+            "about": "من نحن",
+            "search": "البحث",
+            "contact": "اتصل بنا",
+            "help": "المساعدة"
+        },
+        "support": {
+            "title": "الدعم والمساعدة",
+            "helpCenter": "مركز المساعدة",
+            "faq": "الأسئلة الشائعة",
+            "contact": "اتصل بنا",
+            "islamicGuidelines": "الضوابط الشرعية",
+            "privacyPolicy": "سياسة الخصوصية",
+            "termsOfService": "شروط الاستخدام"
+        },
+        "contactInfo": {
+            "title": "تواصل معنا",
+            "email": "info@rezge.com",
+            "phone": "+966582352555",
+            "address": "الرياض، السعودية"
+        },
+        "newsletter": {
+            "title": "اشترك في النشرة الإخبارية",
+            "placeholder": "بريدك الإلكتروني",
+            "subscribe": "اشترك"
+        },
+        "copyright": "© ٢٠٢٤ رزقي. جميع الحقوق محفوظة."
+    },
+    "validation": {
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "البريد الإلكتروني غير صحيح",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "passwordMinLength": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+        "passwordsNotMatch": "كلمات المرور غير متطابقة",
+        "nameRequired": "الاسم مطلوب",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "ageRequired": "العمر مطلوب",
+        "ageMinimum": "العمر يجب أن يكون 18 سنة على الأقل",
+        "termsRequired": "يجب الموافقة على الشروط والأحكام"
+    },
+    "loading": {
+        "verifyingIdentity": "جاري التحقق من الهوية",
+        "pleaseWait": "يرجى الانتظار...",
+        "loadingDashboard": "جاري تحميل لوحة التحكم..."
+    },
+    "dashboard": {
+        "welcome": "مرحباً، {{name}}",
+        "overview": "إليك نظرة عامة على نشاطك ومطابقاتك الجديدة",
+        "refresh": "تحديث",
+        "settings": "الإعدادات",
+        "stats": {
+            "profileViews": "مشاهدة للملف الشخصي",
+            "profileViewsDesc": "مشاهدات الملف الشخصي",
+            "profileViewsLast30Days": "آخر 30 يوم",
+            "likesReceived": "إعجاب مستلم",
+            "likesReceivedDesc": "الإعجابات المستلمة",
+            "likesTotal": "إجمالي",
+            "activeMatches": "مطابقة نشطة",
+            "activeMatchesDesc": "مطابقة نشطة",
+            "newThisWeek": "{{count}} جديدة هذا الأسبوع",
+            "messagesInConversations": "رسالة في المحادثات",
+            "messagesDesc": "الرسائل في المحادثات",
+            "unreadMessages": "{{count}} غير مقروءة",
+            "allMessagesRead": "جميع الرسائل مقروءة",
+            "responseRate": "معدل الاستجابة",
+            "excellent": "ممتاز",
+            "good": "جيد",
+            "needsImprovement": "يحتاج تحسين"
+        },
+        "profileCompletion": {
+            "title": "اكتمال الملف الشخصي",
+            "completed": "{{percentage}}% مكتمل",
+            "excellent": "ملف شخصي ممتاز!",
+            "canImprove": "يمكن تحسين ملفك الشخصي",
+            "improvementTips": "نصائح للتحسين:",
+            "viewMore": "عرض المزيد...",
+            "improveProfile": "تحسين الملف الشخصي"
+        },
+        "suggestedMatches": {
+            "title": "المطابقات المقترحة",
+            "viewAll": "عرض الكل",
+            "viewProfile": "عرض الملف الشخصي",
+            "noMatches": "لا توجد مطابقات جديدة حالياً",
+            "noMatchesDesc": "سنخبرك عندما تظهر مطابقات جديدة",
+            "notSpecified": "غير محدد",
+            "years": "سنة",
+            "compatibilityScore": "{{score}}%"
+        },
+        "quickActions": {
+            "title": "إجراءات سريعة",
+            "searchMatches": "🔍 البحث عن مطابقات جديدة",
+            "viewMessages": "💬 عرض الرسائل ({{count}} غير مقروءة)",
+            "search": {
+                "title": "البحث",
+                "subtitle": "عن مطابقات جديدة"
+            },
+            "messages": {
+                "title": "الرسائل",
+                "subtitle": "المحادثات"
+            },
+            "matches": {
+                "title": "المطابقات",
+                "subtitle": "{{count}} نشطة"
+            },
+            "likes": {
+                "title": "الإعجابات",
+                "subtitle": "{{count}} مستلمة"
+            }
+        },
+        "lastActivity": {
+            "title": "آخر نشاط",
+            "lastLogin": "آخر تسجيل دخول: {{date}}",
+            "noRecentLogin": "لم يتم تسجيل الدخول مؤخراً",
+            "tip": "💡 نصيحة: كن نشطاً لزيادة فرص المطابقة"
+        },
+        "recentActivity": {
+            "title": "النشاطات الأخيرة",
+            "viewAll": "عرض الكل",
+            "noActivity": "لا توجد نشاطات حديثة",
+            "startBrowsing": "ابدأ بتصفح المطابقات المقترحة"
+        },
+        "profileTips": {
+            "title": "نصائح لتحسين ملفك",
+            "subtitle": "اتبع هذه النصائح لزيادة فرص المطابقة",
+            "excellentProfile": "ملفك الشخصي ممتاز!",
+            "allComplete": "جميع المعلومات مكتملة",
+            "improveProfile": "تحسين الملف الشخصي",
+            "tips": {
+                "completeProfile": "أكمل ملفك الشخصي للحصول على مطابقات أفضل",
+                "addBio": "أضف نبذة شخصية مفصلة عن نفسك",
+                "addEducation": "أضف معلومات التعليم لملفك الشخصي",
+                "addOccupation": "أضف معلومات المهنة والعمل",
+                "addReligiousCommitment": "أضف معلومات الالتزام الديني",
+                "addMaritalStatus": "أضف الحالة الاجتماعية",
+                "profileExcellent": "ملفك الشخصي ممتاز! استمر في التفاعل",
+                "interactWithMatches": "تفاعل مع المطابقات المقترحة لك",
+                "beActiveInMessaging": "كن نشطاً في المراسلة والتواصل",
+                "addDetailedBio": "أضف نبذة شخصية مفصلة (أكثر من 50 حرف)",
+                "addEducationInfo": "أضف معلومات التعليم والمؤهلات",
+                "addProfessionInfo": "أضف معلومات المهنة والعمل",
+                "addReligiousInfo": "أضف معلومات الالتزام الديني",
+                "addNationality": "أضف معلومات الجنسية",
+                "addFinancialStatus": "أضف معلومات الوضع المالي",
+                "profileComplete": "ملفك الشخصي مكتمل! ممتاز",
+                "interactForSuccess": "تفاعل مع الآخرين لزيادة فرص النجاح"
+            }
+        },
+        "errors": {
+            "loadingError": "حدث خطأ في تحميل بيانات لوحة التحكم. يرجى المحاولة مرة أخرى.",
+            "retry": "إعادة المحاولة"
+        }
+    },
+    "notifications": {
+        "title": "الإشعارات",
+        "viewAll": "عرض الكل",
+        "markAsRead": "تم القراءة",
+        "noNotifications": "لا توجد إشعارات جديدة",
+        "noNotificationsDesc": "ستظهر هنا عندما يتفاعل أحد معك",
+        "page": {
+            "title": "الإشعارات",
+            "newNotifications": "{{count}} إشعار جديد",
+            "newNotifications_plural": "{{count}} إشعار جديد",
+            "loading": "جاري تحميل الإشعارات...",
+            "backToDashboard": "العودة للوحة التحكم",
+            "filters": {
+                "all": "الكل",
+                "unread": "غير مقروءة",
+                "profileView": "مشاهدات الملف",
+                "like": "الإعجابات",
+                "message": "الرسائل",
+                "match": "المطابقات"
+            },
+            "markAllAsRead": "تم قراءة الكل",
+            "noNotificationsInCategory": "لا توجد إشعارات في هذا التصنيف",
+            "noNotificationsCategoryDesc": "جرب تغيير الفلتر لرؤية إشعارات أخرى",
+            "noNotificationsAtAll": "لا توجد إشعارات",
+            "noNotificationsAtAllDesc": "ستظهر الإشعارات هنا عندما يتفاعل أحد معك أو يشاهد ملفك الشخصي",
+            "startSearching": "ابدأ البحث عن مطابقات",
+            "timeAgo": {
+                "now": "الآن",
+                "minutesAgo": "منذ {{count}} دقيقة",
+                "minutesAgo_plural": "منذ {{count}} دقيقة",
+                "hoursAgo": "منذ {{count}} ساعة",
+                "hoursAgo_plural": "منذ {{count}} ساعة",
+                "daysAgo": "منذ {{count}} يوم",
+                "daysAgo_plural": "منذ {{count}} يوم"
+            }
+        },
+        "content": {
+            "profileView": {
+                "title": "مشاهدة جديدة للملف الشخصي",
+                "message": "شاهد {{name}} ملفك الشخصي",
+                "actionText": "عرض الملف الشخصي"
+            },
+            "like": {
+                "title": "إعجاب جديد",
+                "message": "أعجب {{name}} بملفك الشخصي",
+                "actionText": "عرض الملف الشخصي"
+            },
+            "message": {
+                "title": "رسالة جديدة",
+                "message": "أرسل {{name}} رسالة جديدة",
+                "actionText": "قراءة الرسالة"
+            },
+            "match": {
+                "title": "مطابقة جديدة",
+                "message": "لديك مطابقة جديدة مع {{name}}",
+                "actionText": "بدء المحادثة"
+            },
+            "likeAccepted": {
+                "title": "تم قبول الإعجاب",
+                "message": "قبل {{name}} إعجابك بملفه الشخصي",
+                "actionText": "عرض الملف الشخصي"
+            },
+            "likeRejected": {
+                "title": "تم رفض الإعجاب",
+                "message": "رفض {{name}} إعجابك بملفه الشخصي",
+                "actionText": "عرض الملف الشخصي"
+            },
+            "system": {
+                "title": "إشعار النظام",
+                "message": "{{message}}",
+                "actionText": "عرض التفاصيل"
+            }
+        },
+        "types": {
+            "profileView": "مشاهدة الملف",
+            "like": "إعجاب",
+            "message": "رسالة",
+            "match": "مطابقة",
+            "system": "النظام"
+        }
+    },
+    "publicProfile": {
+        "loading": {
+            "message": "جاري تحميل الملف الشخصي...",
+            "title": "تحميل الملف الشخصي"
+        },
+        "error": {
+            "notFound": "لم يتم العثور على الملف الشخصي أو أنه غير متاح للعرض",
+            "doesNotExist": "الملف الشخصي غير موجود",
+            "loadingError": "حدث خطأ أثناء تحميل الملف الشخصي",
+            "unavailable": "الملف الشخصي غير متاح",
+            "profilePrivate": "هذا الملف الشخصي خاص ولا يمكن عرضه للعامة",
+            "authRequired": "يجب تسجيل الدخول لعرض الملفات الشخصية",
+            "verificationRequired": "هذا الملف الشخصي متاح للأعضاء الموثقين فقط",
+            "invalidStatus": "حسابك غير نشط أو غير صالح",
+            "sameGenderNotAllowed": "لا يُسمح بالوصول للملفات الشخصية من نفس الجنس وفقاً للضوابط الشرعية",
+            "backButton": "العودة"
+        },
+        "header": {
+            "backButton": "العودة",
+            "sendLike": "إرسال إعجاب",
+            "likeSent": "تم إرسال الإعجاب",
+            "removeLike": "إلغاء الإعجاب",
+            "sendMessage": "إرسال رسالة",
+            "sending": "جاري الإرسال...",
+            "removing": "جاري الإلغاء...",
+            "checking": "جاري الفحص...",
+            "moreOptions": "خيارات إضافية"
+        },
+        "actions": {
+            "blockUser": "حظر المستخدم",
+            "unblockUser": "فك حظر المستخدم",
+            "reportUser": "الإبلاغ عن المستخدم"
+        },
+        "block": {
+            "title": "تأكيد حظر المستخدم",
+            "message": "هل أنت متأكد من رغبتك في حظر {{name}}؟ لن تتمكن من رؤية ملفه الشخصي أو تلقي رسائل منه، ولن يتمكن هو من رؤية ملفك الشخصي أو إرسال رسائل إليك.",
+            "confirmButton": "نعم، احظر المستخدم",
+            "cancelButton": "إلغاء",
+            "success": "تم حظر المستخدم بنجاح",
+            "successDesc": "تم حظر {{name}} بنجاح. لن تتمكن من رؤية ملفه الشخصي أو تلقي رسائل منه.",
+            "error": "خطأ في حظر المستخدم",
+            "errorDesc": "حدث خطأ أثناء محاولة حظر المستخدم. يرجى المحاولة مرة أخرى."
+        },
+        "unblock": {
+            "title": "تأكيد فك حظر المستخدم",
+            "message": "هل أنت متأكد من رغبتك في فك حظر {{name}}؟ ستتمكن من رؤية ملفه الشخصي وتلقي رسائل منه مرة أخرى، وسيتمكن هو من رؤية ملفك الشخصي وإرسال رسائل إليك.",
+            "confirmButton": "نعم، فك الحظر",
+            "cancelButton": "إلغاء",
+            "success": "تم فك حظر المستخدم بنجاح",
+            "successDesc": "تم فك حظر {{name}} بنجاح. يمكنك الآن رؤية ملفه الشخصي وتلقي رسائل منه.",
+            "error": "خطأ في فك حظر المستخدم",
+            "errorDesc": "حدث خطأ أثناء محاولة فك حظر المستخدم. يرجى المحاولة مرة أخرى."
+        },
+        "report": {
+            "title": "الإبلاغ عن المستخدم",
+            "subtitle": "الإبلاغ عن {{name}}",
+            "reasonLabel": "سبب الإبلاغ",
+            "selectReason": "اختر سبب الإبلاغ",
+            "descriptionLabel": "وصف تفصيلي",
+            "descriptionPlaceholder": "يرجى وصف المشكلة بالتفصيل...",
+            "descriptionHint": "يجب أن يكون الوصف 10 أحرف على الأقل",
+            "descriptionTooShort": "الوصف قصير جداً",
+            "descriptionTooShortDesc": "يجب أن يكون الوصف 10 أحرف على الأقل",
+            "submitButton": "إرسال البلاغ",
+            "cancelButton": "إلغاء",
+            "submitting": "جاري الإرسال...",
+            "success": "تم إرسال البلاغ بنجاح",
+            "successDesc": "شكراً لك على الإبلاغ. سيتم مراجعة البلاغ من قبل فريق الإدارة.",
+            "error": "خطأ في إرسال البلاغ",
+            "errorDesc": "حدث خطأ أثناء إرسال البلاغ. يرجى المحاولة مرة أخرى.",
+            "reasons": {
+                "inappropriateBehavior": "سلوك غير مناسب",
+                "fakeProfile": "ملف شخصي مزيف",
+                "harassment": "مضايقة أو تحرش",
+                "spam": "رسائل مزعجة",
+                "inappropriateContent": "محتوى غير مناسب",
+                "scamAttempt": "محاولة احتيال",
+                "underage": "قاصر",
+                "marriedPerson": "شخص متزوج",
+                "other": "أخرى"
+            }
+        },
+        "sections": {
+            "bio": "نبذة شخصية",
+            "lookingFor": "ما أبحث عنه",
+            "basicInfo": "المعلومات الأساسية",
+            "religiousInfo": "الالتزام الديني",
+            "educationWork": "التعليم والعمل",
+            "physicalInfo": "المعلومات الجسدية",
+            "financialHealth": "الوضع المالي والصحي"
+        },
+        "fields": {
+            "maritalStatus": "الحالة الاجتماعية",
+            "marriageType": "نوع الزواج",
+            "childrenCount": "عدد الأطفال",
+            "nationality": "الجنسية",
+            "residenceLocation": "مكان الإقامة",
+            "commitmentLevel": "مستوى الالتزام",
+            "religiosityLevel": "مستوى التدين",
+            "prayerCommitment": "الالتزام بالصلاة",
+            "smoking": "التدخين",
+            "beard": "اللحية",
+            "hijab": "الحجاب",
+            "education": "التعليم",
+            "educationLevel": "المستوى التعليمي",
+            "profession": "المهنة",
+            "workField": "مجال العمل",
+            "jobTitle": "المسمى الوظيفي",
+            "height": "الطول",
+            "weight": "الوزن",
+            "skinColor": "لون البشرة",
+            "bodyType": "نوع الجسم",
+            "financialStatus": "الوضع المالي",
+            "monthlyIncome": "الدخل الشهري",
+            "healthStatus": "الحالة الصحية"
+        },
+        "values": {
+            "yearsOld": "سنة",
+            "male": "ذكر",
+            "female": "أنثى",
+            "memberSince": "عضو منذ",
+            "notSpecified": "غير محدد",
+            "yes": "نعم",
+            "no": "لا",
+            "cm": "سم",
+            "kg": "كغ",
+            "maritalStatus": {
+                "single": "أعزب/عزباء",
+                "married": "متزوج/متزوجة",
+                "divorced": "مطلق",
+                "widowed": "أرمل",
+                "unmarried": "غير متزوج",
+                "divorced_female": "مطلقة",
+                "widowed_female": "أرملة"
+            },
+            "marriageType": {
+                "first_wife": "زوجة أولى",
+                "second_wife": "زوجة ثانية",
+                "only_wife": "الزوجة الوحيدة",
+                "no_objection_polygamy": "لا مانع من التعدد"
+            },
+            "religiousCommitment": {
+                "committed": "ملتزم",
+                "conservative": "محافظ",
+                "prefer_not_say": "أفضل أن لا أقول"
+            },
+            "religiosityLevel": {
+                "not_religious": "غير متدين",
+                "somewhat_religious": "متدين إلى حد ما",
+                "religious": "متدين"
+            },
+            "prayerCommitment": {
+                "dont_pray": "لا يصلي",
+                "pray_all": "يصلي جميع الفروض",
+                "pray_sometimes": "يصلي أحياناً",
+                "prefer_not_say": "أفضل عدم الإفصاح"
+            },
+            "educationLevel": {
+                "primary": "ابتدائي",
+                "secondary": "ثانوي",
+                "diploma": "دبلوم",
+                "bachelor": "بكالوريوس",
+                "master": "ماجستير",
+                "phd": "دكتوراه"
+            },
+            "financialStatus": {
+                "poor": "ضعيف",
+                "below_average": "أقل من المتوسط",
+                "average": "متوسط",
+                "above_average": "أعلى من المتوسط",
+                "wealthy": "ميسور"
+            },
+            "monthlyIncome": {
+                "less_3000": "أقل من 3000",
+                "3000_5000": "3000 - 5000",
+                "5000_8000": "5000 - 8000",
+                "8000_12000": "8000 - 12000",
+                "12000_20000": "12000 - 20000",
+                "more_20000": "أكثر من 20000",
+                "prefer_not_say": "أفضل عدم الإفصاح"
+            },
+            "healthStatus": {
+                "excellent": "ممتاز",
+                "very_good": "جيد جداً",
+                "good": "جيد",
+                "fair": "مقبول",
+                "poor": "ضعيف",
+                "prefer_not_say": "أفضل عدم الإفصاح"
+            },
+            "hijab": {
+                "no_hijab": "بدون حجاب",
+                "hijab": "حجاب",
+                "niqab": "نقاب",
+                "prefer_not_say": "أفضل عدم الإفصاح"
+            },
+            "skinColor": {
+                "very_fair": "فاتح جداً",
+                "fair": "فاتح",
+                "medium": "متوسط",
+                "olive": "زيتوني",
+                "brown": "بني",
+                "dark": "داكن",
+                "prefer_not_say": "أفضل عدم الإفصاح"
+            },
+            "bodyType": {
+                "slim": "نحيف",
+                "average": "متوسط",
+                "athletic": "رياضي",
+                "curvy": "ممتلئ",
+                "heavy": "ثقيل",
+                "prefer_not_say": "أفضل عدم الإفصاح"
+            }
+        }
+    },
+    "articles": {
+        "loading": "جاري تحميل المقالات...",
+        "page": {
+            "title": "مقالات ونصائح الزواج الإسلامي",
+            "subtitle": "اكتشف أحدث المقالات والنصائح من خبراء الزواج والمستشارين الشرعيين لمساعدتك في رحلة البحث عن شريك الحياة"
+        },
+        "search": {
+            "placeholder": "ابحث في المقالات والنصائح..."
+        },
+        "categories": {
+            "title": "تصنيفات المقالات",
+            "subtitle": "اختر التصنيف الذي يهمك لتصفح المقالات ذات الصلة",
+            "all": "جميع المقالات",
+            "allDescription": "تصفح جميع المقالات والنصائح المتاحة",
+            "articlesCount": "مقالة"
+        },
+        "results": {
+            "showing": "عرض",
+            "articles": "مقالة",
+            "in": "في",
+            "withTag": "مع الهاشتاغ"
+        },
+        "hashtags": {
+            "title": "الهاشتاغات الشائعة",
+            "subtitle": "اكتشف المواضيع الأكثر شعبية في مقالاتنا"
+        },
+        "filters": {
+            "clear": "مسح جميع الفلاتر"
+        },
+        "sort": {
+            "latest": "الأحدث",
+            "popular": "الأكثر مشاهدة",
+            "trending": "الأكثر إعجاباً"
+        },
+        "noResults": {
+            "title": "لا توجد مقالات",
+            "description": "لم نجد أي مقالات تطابق البحث أو الفلاتر المحددة",
+            "clearFilters": "مسح الفلاتر"
+        },
+        "featured": "مميز",
+        "articleImage": "صورة المقال",
+        "readTime": "دقيقة قراءة",
+        "readMore": "اقرأ المزيد",
+        "views": "مشاهدة",
+        "comments": "تعليق",
+        "tags": "الكلمات المفتاحية",
+        "share": "مشاركة",
+        "copyLink": "نسخ الرابط",
+        "backToArticles": "العودة للمقالات",
+        "notFound": {
+            "title": "المقال غير موجود",
+            "description": "عذراً، لم نتمكن من العثور على المقال المطلوب",
+            "backToArticles": "العودة للمقالات"
+        },
+        "commentsSection": "التعليقات",
+        "viewMode": {
+            "grid": "عرض الشبكة",
+            "list": "عرض القائمة"
+        },
+        "language": {
+            "switchToArabic": "التبديل للعربية",
+            "switchToEnglish": "Switch to English",
+            "currentLanguage": "اللغة الحالية"
+        },
+        "commentsDescription": "شاركنا رأيك وتجربتك، وتفاعل مع آراء الآخرين في نقاش هادف ومفيد",
+        "addComment": "إضافة تعليق",
+        "commentPlaceholder": "شاركنا رأيك أو تجربتك...",
+        "submitComment": "نشر التعليق",
+        "noComments": "لا توجد تعليقات بعد",
+        "noCommentsDesc": "كن أول من يشارك رأيه حول هذا المقال",
+        "allComments": "جميع التعليقات",
+        "commentsCount": "تعليق",
+        "commentGuidelines": "يرجى الالتزام بالآداب الإسلامية في التعليق",
+        "reply": "رد",
+        "relatedArticles": "مقالات ذات صلة",
+        "loginToComment": "سجل دخولك للتعليق",
+        "loginToCommentDesc": "يجب تسجيل الدخول أولاً لتتمكن من إضافة تعليق على هذا المقال",
+        "loginToLike": "سجل دخولك للإعجاب بالمقال",
+        "loginToLikeComment": "سجل دخولك للإعجاب بالتعليقات",
+        "loginToViewComments": "سجل دخولك لرؤية التعليقات",
+        "loginToViewCommentsDesc": "التعليقات متاحة فقط للأعضاء المسجلين. سجل دخولك لرؤية ما يقوله الآخرون"
+    },
+    "comments": {
+        "justNow": "الآن",
+        "minutesAgo": "منذ {{count}} دقيقة",
+        "hoursAgo": "منذ {{count}} ساعة",
+        "daysAgo": "منذ {{count}} يوم",
+        "reply": "رد",
+        "replyingTo": "رد على",
+        "replyPlaceholder": "اكتب ردك هنا...",
+        "submitReply": "نشر الرد",
+        "showReplies": "عرض {{count}} رد",
+        "hideReplies": "إخفاء الردود",
+        "showMoreReplies": "عرض {{count}} رد إضافي",
+        "showLessReplies": "عرض ردود أقل",
+        "showMore": "عرض المزيد",
+        "originalComment": "التعليق الأصلي",
+        "copyContent": "نسخ المحتوى",
+        "deleteComment": "حذف التعليق",
+        "deleteReply": "حذف الرد",
+        "confirmDelete": "هل أنت متأكد من حذف هذا التعليق؟",
+        "confirmDeleteComment": "تأكيد حذف التعليق",
+        "confirmDeleteReply": "تأكيد حذف الرد",
+        "deleteCommentMessage": "هل أنت متأكد من حذف هذا التعليق؟ سيتم حذفه نهائياً ولا يمكن استرداده.",
+        "deleteReplyMessage": "هل أنت متأكد من حذف هذا الرد؟ سيتم حذفه نهائياً ولا يمكن استرداده.",
+        "deleteError": "فشل في الحذف",
+        "deleteErrorDesc": "حدث خطأ أثناء حذف التعليق. يرجى المحاولة مرة أخرى.",
+        "deleteSuccess": "تم الحذف بنجاح",
+        "deleteSuccessDesc": "تم حذف التعليق بنجاح",
+        "copySuccess": "تم النسخ بنجاح",
+        "copySuccessDesc": "تم نسخ محتوى التعليق إلى الحافظة",
+        "copyError": "فشل في النسخ",
+        "copyErrorDesc": "حدث خطأ أثناء نسخ المحتوى. يرجى المحاولة مرة أخرى.",
+        "authRequired": "تسجيل الدخول مطلوب",
+        "authRequiredDesc": "يجب تسجيل الدخول لتتمكن من حذف التعليقات",
+        "commentAdded": "تم إضافة التعليق",
+        "commentAddedDesc": "تم نشر تعليقك بنجاح",
+        "commentError": "فشل في إضافة التعليق",
+        "commentErrorDesc": "حدث خطأ أثناء نشر التعليق. يرجى المحاولة مرة أخرى.",
+        "replyAdded": "تم إضافة الرد",
+        "replyAddedDesc": "تم نشر ردك بنجاح",
+        "replyError": "فشل في إضافة الرد",
+        "replyErrorDesc": "حدث خطأ أثناء نشر الرد. يرجى المحاولة مرة أخرى.",
+        "likeAdded": "تم الإعجاب",
+        "likeAddedDesc": "تم إضافة إعجابك بالتعليق",
+        "likeError": "فشل في الإعجاب",
+        "likeErrorDesc": "حدث خطأ أثناء الإعجاب. يرجى المحاولة مرة أخرى.",
+        "loginToLikeDesc": "يجب تسجيل الدخول للإعجاب بالتعليقات"
+    }
+}
