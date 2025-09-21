@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار بسيط لنظام الإيميلات - رزقي</title>
+    <style>
+        body {
+            font-family: 'Tahoma', Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #1e40af;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #f8fafc;
+        }
+
+        .test-button {
+            background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            width: 100%;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .success {
+            background: #dcfce7;
+            border: 1px solid #16a34a;
+            color: #166534;
+        }
+
+        .error {
+            background: #fee2e2;
+            border: 1px solid #dc2626;
+            color: #991b1b;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 اختبار بسيط لنظام الإيميلات</h1>
+            <p>رزقي - منصة الزواج الإسلامي الشرعي</p>
+        </div>
+
+        <div class="test-section">
+            <h3>📧 اختبار النظام الأساسي</h3>
+            <input type="email" id="testEmail" placeholder="أدخل بريدك الإلكتروني للاختبار" value="kemooamegoo@gmail.com">
+            <br>
+            <button class="test-button" onclick="testBasicSystem()">اختبار النظام الأساسي</button>
+            <div id="basicResult" class="result" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔐 اختبار إيميل التحقق</h3>
+            <button class="test-button" onclick="testVerification()">اختبار إيميل التحقق</button>
+            <div id="verificationResult" class="result" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔑 اختبار كلمة المرور المؤقتة</h3>
+            <button class="test-button" onclick="testTemporaryPassword()">اختبار كلمة المرور المؤقتة</button>
+            <div id="tempPasswordResult" class="result" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔒 اختبار التحقق الثنائي</h3>
+            <button class="test-button" onclick="test2FA()">اختبار التحقق الثنائي</button>
+            <div id="twoFactorResult" class="result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        // استيراد المكونات الأساسية فقط
+        import { UnifiedEmailService } from './src/lib/unifiedEmailService.js';
+
+        // جعل الدالة متاحة عالمياً
+        window.UnifiedEmailService = UnifiedEmailService;
+
+        // دالة مساعدة لعرض النتائج
+        function showResult(elementId, result, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result ${isSuccess ? 'success' : 'error'}`;
+            element.textContent = JSON.stringify(result, null, 2);
+        }
+
+        // اختبار النظام الأساسي
+        window.testBasicSystem = async function() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                showResult('basicResult', { error: 'يرجى إدخال بريد إلكتروني صحيح' }, false);
+                return;
+            }
+
+            try {
+                const result = await UnifiedEmailService.testSystem(email);
+                showResult('basicResult', result, result.success);
+            } catch (error) {
+                showResult('basicResult', { error: error.message }, false);
+            }
+        };
+
+        // اختبار إيميل التحقق
+        window.testVerification = async function() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                showResult('verificationResult', { error: 'يرجى إدخال بريد إلكتروني صحيح' }, false);
+                return;
+            }
+
+            try {
+                const result = await UnifiedEmailService.sendVerificationEmail(
+                    email,
+                    'https://rezgee.vercel.app/verify?token=test123',
+                    { first_name: 'أحمد', last_name: 'محمد' }
+                );
+                showResult('verificationResult', result, result.success);
+            } catch (error) {
+                showResult('verificationResult', { error: error.message }, false);
+            }
+        };
+
+        // اختبار كلمة المرور المؤقتة
+        window.testTemporaryPassword = async function() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                showResult('tempPasswordResult', { error: 'يرجى إدخال بريد إلكتروني صحيح' }, false);
+                return;
+            }
+
+            try {
+                const result = await UnifiedEmailService.sendTemporaryPasswordEmail(
+                    email,
+                    'TempPass123',
+                    new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+                    'المستخدم'
+                );
+                showResult('tempPasswordResult', result, result.success);
+            } catch (error) {
+                showResult('tempPasswordResult', { error: error.message }, false);
+            }
+        };
+
+        // اختبار التحقق الثنائي
+        window.test2FA = async function() {
+            const email = document.getElementById('testEmail').value;
+            if (!email) {
+                showResult('twoFactorResult', { error: 'يرجى إدخال بريد إلكتروني صحيح' }, false);
+                return;
+            }
+
+            try {
+                const result = await UnifiedEmailService.send2FACodeEmail(
+                    email,
+                    '123456',
+                    'login',
+                    15
+                );
+                showResult('twoFactorResult', result, result.success);
+            } catch (error) {
+                showResult('twoFactorResult', { error: error.message }, false);
+            }
+        };
+
+        console.log('✅ تم تحميل نظام الإيميلات الأساسي بنجاح!');
+        console.log('📧 يمكنك الآن اختبار النظام الأساسي');
+    </script>
+</body>
+
+
+
+
+
+
+
