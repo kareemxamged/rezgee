@@ -167,8 +167,11 @@ class SeparateAdminAuthService {
       console.log('🔍 Checking if device is trusted for admin:', account.username);
       const deviceTrustResult = await adminTrustedDeviceService.isDeviceTrusted(account.id);
 
-      if (deviceTrustResult.success && deviceTrustResult.isTrusted) {
-        console.log('✅ Device is trusted, skipping 2FA');
+      // تعطيل مؤقت للتحقق الثنائي - اعتبار جميع الأجهزة موثوقة
+      const TEMPORARY_DISABLE_2FA = true;
+      
+      if (TEMPORARY_DISABLE_2FA || (deviceTrustResult.success && deviceTrustResult.isTrusted)) {
+        console.log('✅ Device is trusted, skipping 2FA', TEMPORARY_DISABLE_2FA ? '(2FA temporarily disabled)' : '');
 
         // إنشاء جلسة مباشرة للجهاز الموثوق
         const sessionToken = this.generateSessionToken();
@@ -231,8 +234,8 @@ class SeparateAdminAuthService {
         };
       }
 
-      // الجهاز غير موثوق، إرسال كود التحقق الإضافي
-      console.log('📧 Device not trusted, sending 2FA code for admin:', account.username);
+      // الجهاز غير موثوق، إرسال كود التحقق الإضافي (معطل مؤقتاً)
+      console.log('📧 Device not trusted, sending 2FA code for admin:', account.username, '(2FA temporarily disabled - this should not execute)');
       const twoFactorResult = await adminTwoFactorService.sendVerificationCode(account.id, account.email);
 
       if (!twoFactorResult.success) {
@@ -758,3 +761,4 @@ class SeparateAdminAuthService {
 }
 
 export const separateAdminAuth = new SeparateAdminAuthService();
+
