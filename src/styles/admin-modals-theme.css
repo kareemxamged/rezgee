@@ -1196,14 +1196,10 @@
 .dark-theme .bg-purple-100.text-purple-800.px-2.py-1.rounded-full {
     background-color: rgba(139, 92, 246, 0.15) !important;
     color: #a78bfa !important;
-}.dark-theme .max-w-4xl.w-full.max-h-\[95vh\] {
-    background-color: var(--modal-bg) !important;
-    border: 1px solid var(--modal-border) !important;
 }
 
-.dark-theme .max-w-2xl.w-full.max-h-\[90vh\] {
-    background-color: var(--modal-bg) !important;
-    border: 1px solid var(--modal-border) !important;
+background-color: var(--modal-bg) !important;
+border: 1px solid var(--modal-border) !important;
 }
 
 .dark-theme .max-w-lg.w-full {

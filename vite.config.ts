@@ -21,14 +21,46 @@ export default defineConfig({
     // Rollup options for better chunking
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Vendor chunks
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'supabase-vendor': ['@supabase/supabase-js'],
-          'ui-vendor': ['lucide-react', 'clsx'],
-          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
-          'i18n-vendor': ['i18next', 'react-i18next'],
-          'utils-vendor': ['axios', 'bcryptjs']
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor';
+            }
+            if (id.includes('@supabase')) {
+              return 'supabase-vendor';
+            }
+            if (id.includes('lucide-react') || id.includes('clsx')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+              return 'form-vendor';
+            }
+            if (id.includes('i18next')) {
+              return 'i18n-vendor';
+            }
+            if (id.includes('axios') || id.includes('bcryptjs')) {
+              return 'utils-vendor';
+            }
+            return 'vendor';
+          }
+          
+          // Application chunks
+          if (id.includes('src/components/admin')) {
+            return 'admin-components';
+          }
+          if (id.includes('src/lib') && (id.includes('email') || id.includes('Email'))) {
+            return 'email-services';
+          }
+          if (id.includes('src/lib') && (id.includes('admin') || id.includes('Admin'))) {
+            return 'admin-services';
+          }
+          if (id.includes('src/components') && !id.includes('admin')) {
+            return 'user-components';
+          }
+          if (id.includes('src/lib') && !id.includes('admin') && !id.includes('email')) {
+            return 'user-services';
+          }
         }
       }
     }
