@@ -243,7 +243,10 @@ async function simulateEmailSending(data) {
 // بدء الخادم
 server.listen(PORT, '0.0.0.0', () => {
     console.log('✅ خادم SMTP المبسط يعمل الآن!');
-    console.log(`📡 العنوان: http://0.0.0.0:${PORT}`);
+    console.log(`📡 العناوين المتاحة:`);
+    console.log(`   🌐 الشبكة: http://148.230.112.17:${PORT}`);
+    console.log(`   🏠 المحلي: http://localhost:${PORT}`);
+    console.log(`   🔗 عام: http://0.0.0.0:${PORT}`);
     console.log(`📧 جاهز لاستقبال طلبات الإرسال`);
     console.log(`⏰ الوقت: ${new Date().toLocaleString('ar-SA')}`);
     console.log('');
