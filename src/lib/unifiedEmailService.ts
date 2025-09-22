@@ -484,14 +484,19 @@ export class UnifiedEmailService {
    */
   private static async sendViaLocalSMTP(emailData: EmailData, smtpSettings?: any): Promise<EmailResult> {
     try {
-      // تخطي في بيئة الإنتاج
-      if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
+      // تخطي في بيئة الإنتاج إلا إذا كان خادم SMTP المحلي متاح
+      if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('148.230.112.17')) {
         throw new Error('Local SMTP not available in production');
       }
 
       console.log('🏠 محاولة الإرسال عبر خادم SMTP محلي...');
 
-      const response = await fetch('http://localhost:3001/send-email', {
+      // استخدام العنوان الصحيح حسب البيئة
+      const smtpUrl = window.location.hostname.includes('148.230.112.17') 
+        ? 'http://148.230.112.17:3001/send-email'
+        : 'http://localhost:3001/send-email';
+      
+      const response = await fetch(smtpUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
