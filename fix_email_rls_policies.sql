@@ -61,3 +61,8 @@ CREATE POLICY "Allow delete access to email logs" ON email_logs
 
 -- رسالة نجاح
 SELECT 'تم إصلاح سياسات RLS لجداول الإشعارات البريدية بنجاح!' as message;
+
+
+
+
+

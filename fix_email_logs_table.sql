@@ -54,3 +54,8 @@ ORDER BY ordinal_position;
 
 -- عرض رسالة النجاح
 SELECT 'تم إصلاح جدول email_logs بنجاح! 🎉' as message;
+
+
+
+
+

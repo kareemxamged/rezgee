@@ -164,3 +164,8 @@ SELECT 'الآن يمكنك تشغيل الملفات الأخرى لإضافة 
 SELECT '1. social_email_templates.sql - القوالب الاجتماعية' as step1;
 SELECT '2. admin_email_templates.sql - القوالب الإدارية' as step2;
 SELECT '3. security_email_templates.sql - القوالب الأمنية الإضافية' as step3;
+
+
+
+
+

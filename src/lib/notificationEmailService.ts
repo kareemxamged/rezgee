@@ -754,7 +754,7 @@ class NotificationEmailService {
         </div>
 
         <div style="margin-top: 30px; padding: 20px; background-color: #e3f2fd; border-radius: 6px;">
-          <p><strong>${isArabic ? '📅 تاريخ الإرسال (ميلادي):' : '📅 Sent Date (Gregorian):'}</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</p>
+          <p><strong>${isArabic ? '📅 تاريخ الإرسال :' : '📅 Sent Date :'}</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</p>
           <p><strong>${isArabic ? '📧 للرد:' : '📧 Reply To:'}</strong> ${isArabic ? `يمكنك الرد مباشرة على ${formData.email}` : `You can reply directly to ${formData.email}`}</p>
           <p><strong>${isArabic ? '🌐 المصدر:' : '🌐 Source:'}</strong> ${isArabic ? 'موقع رزقي - نموذج اتصل بنا' : 'Rezge Website - Contact Form'}</p>
         </div>
@@ -784,7 +784,7 @@ class NotificationEmailService {
 الرسالة:
 ${formData.message}
 
-تاريخ الإرسال (ميلادي): ${gregorianDate} ${gregorianTime}
+تاريخ الإرسال : ${gregorianDate} ${gregorianTime}
 المصدر: موقع رزقي - نموذج اتصل بنا
 للرد: يمكنك الرد مباشرة على ${formData.email}
       ` : `
@@ -798,7 +798,7 @@ Subject: ${formData.subject}
 Message:
 ${formData.message}
 
-Sent Date (Gregorian): ${gregorianDate} ${gregorianTime}
+Sent Date : ${gregorianDate} ${gregorianTime}
 Source: Rezge Website - Contact Form
 Reply To: You can reply directly to ${formData.email}
       `;
@@ -975,7 +975,7 @@ Reply To: You can reply directly to ${formData.email}
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل العملية:</h3>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${changeData?.timestamp ? new Date(changeData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${changeData?.timestamp ? new Date(changeData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>📧 البريد الإلكتروني:</strong> ${userEmail}</li>
             ${changeData?.ipAddress ? `<li><strong>IP:</strong> ${changeData.ipAddress}</li>` : ''}
             ${changeData?.location ? `<li><strong>📍 الموقع:</strong> ${changeData.location}</li>` : ''}
@@ -1008,7 +1008,7 @@ Reply To: You can reply directly to ${formData.email}
 تم تغيير كلمة المرور لحسابك ${changeTypeText}.
 
 تفاصيل العملية:
-- التاريخ والوقت (ميلادي): ${changeData?.timestamp ? new Date(changeData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${changeData?.timestamp ? new Date(changeData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 - البريد الإلكتروني: ${userEmail}
 ${changeData?.ipAddress ? `- IP: ${changeData.ipAddress}` : ''}
 ${changeData?.location ? `- الموقع: ${changeData.location}` : ''}
@@ -1068,7 +1068,7 @@ ${changeData?.browser ? `- المتصفح: ${changeData.browser}` : ''}
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل العملية:</h3>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${resetData?.timestamp ? new Date(resetData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(resetData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${resetData?.timestamp ? new Date(resetData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(resetData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>📧 البريد الإلكتروني:</strong> ${userEmail}</li>
             <li><strong>🔄 طريقة الإعادة:</strong> ${resetMethodText}</li>
             ${resetData?.ipAddress ? `<li><strong>🌐 عنوان IP:</strong> ${resetData.ipAddress}</li>` : ''}
@@ -1112,7 +1112,7 @@ ${changeData?.browser ? `- المتصفح: ${changeData.browser}` : ''}
 تم إعادة تعيين كلمة المرور لحسابك بنجاح ${resetMethodText} باستخدام كلمة المرور المؤقتة.
 
 تفاصيل العملية:
-- التاريخ والوقت (ميلادي): ${resetData?.timestamp ? new Date(resetData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(resetData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${resetData?.timestamp ? new Date(resetData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(resetData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 - البريد الإلكتروني: ${userEmail}
 - طريقة الإعادة: ${resetMethodText}
 ${resetData?.ipAddress ? `- عنوان IP: ${resetData.ipAddress}` : ''}
@@ -1189,7 +1189,7 @@ ${resetData?.browser ? `- المتصفح: ${resetData.browser}` : ''}
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل التحديث:</h3>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${changeDetails.timestamp ? new Date(changeDetails.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeDetails.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${changeDetails.timestamp ? new Date(changeDetails.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeDetails.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             ${changesList}
             ${changeDetails.ipAddress ? `<li><strong>🌐 عنوان IP:</strong> ${changeDetails.ipAddress}</li>` : ''}
             ${changeDetails.location ? `<li><strong>📍 الموقع:</strong> ${changeDetails.location}</li>` : ''}
@@ -1243,7 +1243,7 @@ ${resetData?.browser ? `- المتصفح: ${resetData.browser}` : ''}
 تم تحديث بيانات التواصل الخاصة بك بنجاح بعد تأكيد طلب التعديل.
 
 تفاصيل التحديث:
-- التاريخ والوقت (ميلادي): ${changeDetails.timestamp ? new Date(changeDetails.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeDetails.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${changeDetails.timestamp ? new Date(changeDetails.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date(changeDetails.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) + ' ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 ${textChangesList}${changeDetails.ipAddress ? `- عنوان IP: ${changeDetails.ipAddress}\n` : ''}${changeDetails.location ? `- الموقع: ${changeDetails.location}\n` : ''}${changeDetails.deviceType ? `- نوع الجهاز: ${changeDetails.deviceType}\n` : ''}${changeDetails.browser ? `- المتصفح: ${changeDetails.browser}\n` : ''}
 
 تم تطبيق جميع التغييرات على حسابك بعد تأكيد طلب التعديل.
@@ -1286,7 +1286,7 @@ ${textChangesList}${changeDetails.ipAddress ? `- عنوان IP: ${changeDetails.
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل التفعيل:</h3>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>📧 البريد الإلكتروني:</strong> ${userEmail}</li>
             <li><strong>🛡️ مستوى الحماية:</strong> عالي</li>
           </ul>
@@ -1314,7 +1314,7 @@ ${textChangesList}${changeDetails.ipAddress ? `- عنوان IP: ${changeDetails.
 تم تفعيل المصادقة الثنائية لحسابك لحماية إضافية.
 
 تفاصيل التفعيل:
-- التاريخ والوقت (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 - البريد الإلكتروني: ${userEmail}
 - مستوى الحماية: عالي
 
@@ -1364,7 +1364,7 @@ ${textChangesList}${changeDetails.ipAddress ? `- عنوان IP: ${changeDetails.
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل الطلب:</h3>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>📧 البريد الإلكتروني:</strong> ${userEmail}</li>
             <li><strong>📊 الحالة:</strong> ${statusText}</li>
             ${reason ? `<li><strong>📝 السبب:</strong> ${reason}</li>` : ''}
@@ -1400,7 +1400,7 @@ ${textChangesList}${changeDetails.ipAddress ? `- عنوان IP: ${changeDetails.
 تم ${statusText} طلب توثيق حسابك.
 
 تفاصيل الطلب:
-- التاريخ والوقت (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 - البريد الإلكتروني: ${userEmail}
 - الحالة: ${statusText}
 ${reason ? `- السبب: ${reason}` : ''}
@@ -1469,7 +1469,7 @@ ${isApproved ? `
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل البلاغ:</h3>
           <ul>
-            <li><strong>📅 التاريخ (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ:</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>📊 الحالة:</strong> ${statusText}</li>
             <li><strong>🏷️ نوع البلاغ:</strong> ${reportType}</li>
             ${reason ? `<li><strong>📝 السبب:</strong> ${reason}</li>` : ''}
@@ -1483,7 +1483,7 @@ ${isApproved ? `
         to: reporterEmail,
         subject: reporterSubject,
         html: reporterHtml,
-        text: `${statusText} الذي قدمته ضد ${reportedName}. التاريخ (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}`,
+        text: `${statusText} الذي قدمته ضد ${reportedName}. التاريخ: ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}`,
         type: 'report_notification'
       });
 
@@ -1502,7 +1502,7 @@ ${isApproved ? `
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
             <h3>📋 تفاصيل البلاغ:</h3>
             <ul>
-              <li><strong>📅 التاريخ (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+              <li><strong>📅 التاريخ:</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
               <li><strong>🏷️ نوع البلاغ:</strong> ${reportType}</li>
               <li><strong>📊 الحالة:</strong> قيد المراجعة</li>
             </ul>
@@ -1579,7 +1579,7 @@ ${isApproved ? `
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل الإجراء:</h3>
           <ul>
-            <li><strong>📅 التاريخ (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ:</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>🔧 نوع الإجراء:</strong> ${actionText}</li>
             ${duration ? `<li><strong>⏰ المدة:</strong> ${duration}</li>` : ''}
             <li><strong>📝 السبب:</strong> ${reason}</li>
@@ -1621,7 +1621,7 @@ ${actionText} - رزقي
 ${actionText}
 
 تفاصيل الإجراء:
-- التاريخ (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ: ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 - نوع الإجراء: ${actionText}
 ${duration ? `- المدة: ${duration}` : ''}
 - السبب: ${reason}
@@ -1662,23 +1662,9 @@ ${duration ? `- المدة: ${duration}` : ''}
     try {
       console.log('📧 بدء إرسال إشعار تسجيل الدخول الناجح باستخدام النظام الموحد...');
 
-      // محاولة استخدام النظام الموحد أولاً
-      try {
-        const result = await UnifiedEmailService.sendSuccessfulLoginNotification(userEmail, loginData);
-        
-        if (result.success) {
-          console.log('✅ تم إرسال إشعار تسجيل الدخول بنجاح عبر النظام الموحد');
-          console.log('📧 معرف الرسالة:', result.messageId);
-          return { success: true };
-        } else {
-          console.warn('⚠️ فشل النظام الموحد، التبديل للنظام القديم...');
-        }
-      } catch (unifiedError) {
-        console.warn('⚠️ خطأ في النظام الموحد، التبديل للنظام القديم:', unifiedError);
-      }
-
-      // النظام القديم كـ fallback
-      console.log('🔄 استخدام النظام القديم لإرسال إشعار تسجيل الدخول...');
+      // الأولوية الأولى: استخدام قالب قاعدة البيانات مباشرة
+      console.log('🏆 الأولوية الأولى: استخدام قالب قاعدة البيانات مباشرة...');
+      console.log('📧 بيانات تسجيل الدخول:', loginData);
 
       // جمع المعلومات المحسنة
       const enhancedData = await this.gatherEnhancedLoginData(loginData);
@@ -1704,7 +1690,127 @@ ${duration ? `- المدة: ${duration}` : ''}
       // الحصول على معلومات الأمان
       const securityIcon = this.getSecurityIcon(enhancedData.securityLevel);
       const securityText = this.getSecurityText(enhancedData.securityLevel);
+      
+      try {
+        const { DatabaseEmailService } = await import('./databaseEmailService');
+        
+        // جلب قالب login_success من قاعدة البيانات
+        const template = await DatabaseEmailService.getEmailTemplate('login_success', 'ar');
+        
+        if (template) {
+          console.log('✅ تم جلب قالب login_success من قاعدة البيانات');
+          console.log('📧 موضوع القالب:', template.subject_ar);
+          console.log('🔧 معرف القالب:', template.id);
+          
+          // جلب إعدادات SMTP المحددة في القالب
+          const { TemplateSMTPManager } = await import('./templateSMTPManager');
+          const smtpSettings = await TemplateSMTPManager.getSMTPForTemplate(template.id);
+          
+          if (!smtpSettings) {
+            console.error('❌ لم يتم العثور على إعدادات SMTP للقالب');
+            throw new Error('No SMTP settings found for template');
+          }
+          
+          console.log('✅ تم جلب إعدادات SMTP للقالب:', smtpSettings.smtp_host);
+          console.log('🔧 إعدادات SMTP المستخدمة:', {
+            id: smtpSettings.id,
+            host: smtpSettings.smtp_host,
+            port: smtpSettings.smtp_port,
+            from_email: smtpSettings.from_email,
+            from_name_ar: smtpSettings.from_name_ar,
+            is_default: smtpSettings.is_default
+          });
+          
+          // استبدال المتغيرات في القالب
+          let processedSubject = template.subject_ar;
+          let processedHtml = template.html_template_ar;
+          let processedText = template.content_ar;
+          
+          // استبدال المتغيرات الأساسية
+          const replacements = {
+            '{{userName}}': userName,
+            '{{timestamp}}': enhancedData.timestamp,
+            '{{loginDate}}': gregorianDate,
+            '{{loginTime}}': gregorianTime,
+            '{{dayName}}': dayName,
+            '{{ipAddress}}': enhancedData.ipAddress || 'غير محدد',
+            '{{location}}': enhancedData.location || 'غير محدد',
+            '{{deviceType}}': enhancedData.deviceType || 'غير محدد',
+            '{{browser}}': enhancedData.browser || 'غير محدد',
+            '{{loginMethod}}': loginMethodText,
+            '{{securityIcon}}': securityIcon,
+            '{{securityText}}': securityText
+          };
+          
+          // تطبيق الاستبدالات
+          for (const [key, value] of Object.entries(replacements)) {
+            processedSubject = processedSubject.replace(new RegExp(key, 'g'), value);
+            processedHtml = processedHtml.replace(new RegExp(key, 'g'), value);
+            processedText = processedText.replace(new RegExp(key, 'g'), value);
+          }
+          
+          console.log('📧 موضوع الإيميل المعالج:', processedSubject);
+          console.log('🔍 بداية HTML المعالج:', processedHtml.substring(0, 100) + '...');
+          
+          // تحويل إعدادات SMTP إلى تنسيق قابل للاستخدام
+          const smtpConfig = TemplateSMTPManager.formatSMTPConfig(smtpSettings);
+          
+          console.log('🔧 إعدادات SMTP المُرسلة:', smtpConfig);
+          
+          // إرسال مباشر باستخدام إعدادات SMTP المحددة في القالب
+          const { UnifiedEmailService } = await import('./unifiedEmailService');
+          
+          const emailResult = await UnifiedEmailService.sendEmail({
+            to: userEmail,
+            subject: processedSubject,
+            html: processedHtml,
+            text: processedText,
+            from: smtpSettings.from_email,
+            fromName: smtpSettings.from_name_ar,
+            templateId: template.id
+          });
+          
+          if (emailResult.success) {
+            console.log('✅ تم إرسال إشعار تسجيل الدخول بنجاح باستخدام إعدادات SMTP المحددة في القالب');
+            console.log('📧 معرف الرسالة:', emailResult.messageId);
+            console.log('🔧 الطريقة المستخدمة:', emailResult.method);
+            console.log('🔧 إعدادات SMTP المستخدمة:', {
+              host: smtpSettings.smtp_host,
+              port: smtpSettings.smtp_port,
+              from_email: smtpSettings.from_email,
+              from_name: smtpSettings.from_name_ar
+            });
+            return { success: true };
+          } else {
+            console.error('❌ فشل في إرسال الإيميل باستخدام إعدادات SMTP المحددة:', emailResult.error);
+            throw new Error(emailResult.error || 'فشل في إرسال الإيميل');
+          }
+        } else {
+          console.warn('⚠️ لم يتم العثور على قالب login_success في قاعدة البيانات');
+        }
+      } catch (dbError) {
+        console.error('❌ خطأ في استخدام قالب قاعدة البيانات:', dbError);
+      }
 
+      // الأولوية الثانية: استخدام النظام الموحد
+      try {
+        console.log('🔄 الأولوية الثانية: استخدام النظام الموحد...');
+        const result = await UnifiedEmailService.sendSuccessfulLoginNotification(userEmail, loginData);
+        
+        if (result.success) {
+          console.log('✅ تم إرسال إشعار تسجيل الدخول بنجاح عبر النظام الموحد');
+          console.log('📧 معرف الرسالة:', result.messageId);
+          return { success: true };
+        } else {
+          console.warn('⚠️ فشل النظام الموحد أيضاً:', result.error);
+        }
+      } catch (unifiedError) {
+        console.warn('⚠️ خطأ في النظام الموحد:', unifiedError);
+      }
+
+      // الأولوية الثالثة: النظام القديم مع القالب المدمج
+      console.log('🔄 الأولوية الثالثة: استخدام النظام القديم مع القالب المدمج...');
+      
       const templateData = EmailTemplates.loginNotification({
         timestamp: enhancedData.timestamp,
         loginMethod: enhancedData.loginMethod,
@@ -1712,7 +1818,7 @@ ${duration ? `- المدة: ${duration}` : ''}
       });
       const { html: htmlContent, text: textContent, subject } = createUnifiedEmailTemplate(templateData);
 
-      return await this.sendEmail({
+      return await this.sendEmailFallback({
         to: userEmail,
         subject,
         html: htmlContent,
@@ -1843,7 +1949,7 @@ ${enhancedData.loginMethod === 'two_factor' ? 'تم التحقق بالمصاد�
 إذا لم تقم بتسجيل الدخول هذا، يرجى اتخاذ إجراءات فورية لحماية النظام.
 
 تفاصيل تسجيل الدخول:
-- التاريخ (ميلادي): ${dayName} ${gregorianDate}
+- التاريخ: ${dayName} ${gregorianDate}
 - الوقت: ${gregorianTime}
 - اسم المستخدم: ${adminUsername}
 - IP: ${enhancedData.realIP || enhancedData.ipAddress || 'غير معروف'}
@@ -2010,7 +2116,7 @@ ${riskLevel === 'critical' ? 'تحذير حرج: محاولات متكررة م�
 ${riskLevel === 'high' ? 'تحذير عالي: عدد محاولات مشبوه!' : ''}
 
 تفاصيل المحاولة:
-- التاريخ (ميلادي): ${dayName} ${gregorianDate}
+- التاريخ: ${dayName} ${gregorianDate}
 - الوقت: ${gregorianTime}
 - سبب الفشل: ${failureData.failureReason}
 - IP: ${enhancedData.realIP || enhancedData.ipAddress || 'غير معروف'}
@@ -2170,7 +2276,7 @@ ${enhancedData.deviceInfo.isBot ? '- تحذير: قد يكون بوت أو بر�
 ${riskLevel === 'critical' ? 'تحذير حرج: محاولة عالية الخطورة - يُنصح بإجراءات فورية!' : ''}
 
 تفاصيل المحاولة:
-- التاريخ (ميلادي): ${dayName} ${gregorianDate}
+- التاريخ: ${dayName} ${gregorianDate}
 - الوقت: ${gregorianTime}
 - اسم المستخدم المستهدف: ${adminUsername}
 - IP: ${enhancedData.realIP || enhancedData.ipAddress || 'غير معروف'}
@@ -2245,7 +2351,7 @@ ${riskLevel === 'critical' ? '- إبلاغ السلطات المختصة في ح
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل المحاولة:</h3>
           <ul>
-            <li><strong>📅 التاريخ (ميلادي):</strong> ${new Date(failureData.timestamp).toLocaleDateString('en-GB')} ${new Date(failureData.timestamp).toLocaleDateString('ar-SA', { weekday: 'long' })}</li>
+            <li><strong>📅 التاريخ:</strong> ${new Date(failureData.timestamp).toLocaleDateString('en-GB')} ${new Date(failureData.timestamp).toLocaleDateString('ar-SA', { weekday: 'long' })}</li>
             <li><strong>🕐 الوقت:</strong> ${new Date(failureData.timestamp).toLocaleTimeString('en-GB', { hour12: false })}</li>
             ${failureData.ipAddress ? `<li><strong>IP:</strong> ${failureData.ipAddress}</li>` : ''}
             ${failureData.location ? `<li><strong>📍 الموقع:</strong> ${failureData.location}</li>` : ''}
@@ -2284,7 +2390,7 @@ ${riskLevel === 'critical' ? '- إبلاغ السلطات المختصة في ح
 تم رصد محاولة فاشلة للتحقق الثنائي في حسابك
 
 تفاصيل المحاولة:
-- التاريخ والوقت (ميلادي): ${new Date(failureData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date(failureData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${new Date(failureData.timestamp).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date(failureData.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 ${failureData.ipAddress ? `- IP: ${failureData.ipAddress}` : ''}
 ${failureData.location ? `- الموقع: ${failureData.location}` : ''}
 ${failureData.deviceType ? `- نوع الجهاز: ${failureData.deviceType}` : ''}
@@ -2331,7 +2437,7 @@ ${failureData.attemptsCount ? `- عدد المحاولات: ${failureData.attemp
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; margin: 20px 0;">
           <h3>📋 تفاصيل التعطيل:</h3>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
             <li><strong>📧 البريد الإلكتروني:</strong> ${userEmail}</li>
             <li><strong>🔒 مستوى الحماية:</strong> عادي (تم تقليله)</li>
           </ul>
@@ -2366,7 +2472,7 @@ ${failureData.attemptsCount ? `- عدد المحاولات: ${failureData.attemp
 تم تعطيل المصادقة الثنائية لحسابك
 
 تفاصيل التعطيل:
-- التاريخ والوقت (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- التاريخ والوقت : ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 - البريد الإلكتروني: ${userEmail}
 - مستوى الحماية: عادي (تم تقليله)
 
@@ -2416,7 +2522,7 @@ ${failureData.attemptsCount ? `- عدد المحاولات: ${failureData.attemp
             <li><strong>📝 الاسم:</strong> ${senderName}</li>
             ${senderCity ? `<li><strong>📍 المدينة:</strong> ${senderCity}</li>` : ''}
             ${senderAge ? `<li><strong>🎂 العمر:</strong> ${senderAge} سنة</li>` : ''}
-            <li><strong>📅 وقت الإرسال (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 وقت الإرسال :</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
           </ul>
           ${messagePreview ? `
           <div style="margin-top: 15px; padding: 15px; background-color: #e3f2fd; border-radius: 6px; border-left: 4px solid #2196f3;">
@@ -2451,7 +2557,7 @@ ${failureData.attemptsCount ? `- عدد المحاولات: ${failureData.attemp
 - الاسم: ${senderName}
 ${senderCity ? `- المدينة: ${senderCity}` : ''}
 ${senderAge ? `- العمر: ${senderAge} سنة` : ''}
-- وقت الإرسال (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+- وقت الإرسال : ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 
 ${messagePreview ? `معاينة الرسالة: "${messagePreview.length > 100 ? messagePreview.substring(0, 100) + '...' : messagePreview}"` : ''}
 
@@ -2493,7 +2599,7 @@ ${messagePreview ? `معاينة الرسالة: "${messagePreview.length > 100 
           <h3>📋 تفاصيل الإشعار:</h3>
           <p>${notificationMessage}</p>
           <ul>
-            <li><strong>📅 التاريخ والوقت (ميلادي):</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
+            <li><strong>📅 التاريخ والوقت :</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</li>
           </ul>
         </div>
 
@@ -2523,7 +2629,7 @@ ${notificationTitle}
 تفاصيل الإشعار:
 ${notificationMessage}
 
-التاريخ والوقت (ميلادي): ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
+التاريخ والوقت : ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}
 
 ${actionUrl ? `عرض التفاصيل: ${actionUrl}` : ''}
 

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Successful Login - Rezge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        /* CSS محسن للتوافق مع عملاء البريد */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            direction: ltr;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* دعم عملاء البريد المختلفة */
+        table {
+            border-collapse: collapse;
+        }
+
+        img {
+            border: 0;
+        }
+
+        /* CSS للعناصر الأساسية */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            direction: ltr;
+            text-align: left;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+            direction: ltr;
+        }
+
+        .content {
+            padding: 40px 30px;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #16a34a;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .session-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .security-note {
+            background: #fef3c7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #f59e0b;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            direction: ltr;
+        }
+
+        /* استجابة للأجهزة المحمولة */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header,
+            .content,
+            .footer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1 style="font-size: 32px; font-weight: bold; margin: 0; font-family: 'Inter', sans-serif;">✅ Rezge</h1>
+            <p style="font-size: 16px; margin: 10px 0 0 0; opacity: 0.9; font-family: 'Inter', sans-serif;">Successful Login</p>
+        </div>
+
+        <div class="content">
+            <h2 style="color: #10b981; font-size: 24px; margin: 0 0 20px 0; text-align: center; font-family: 'Inter', sans-serif;">✅ Successful Login</h2>
+
+            <p style="color: #374151; font-size: 16px; line-height: 1.6; margin: 0 0 15px 0; font-family: 'Inter', sans-serif;">Hello <strong>{{userName}}</strong>,</p>
+
+            <div class="success-box">
+                <h3 style="color: #166534; font-size: 18px; margin: 0 0 15px 0; font-family: 'Inter', sans-serif;">🎉 Login Successful!</h3>
+                <p style="color: #166534; line-height: 1.8; font-size: 15px; margin: 8px 0; font-family: 'Inter', sans-serif;">Welcome to Rezge Islamic Marriage Platform</p>
+            </div>
+
+            <div class="session-details">
+                <h3 style="color: #374151; font-size: 18px; margin: 0 0 15px 0; font-family: 'Inter', sans-serif;">📋 Session Details:</h3>
+                <ul style="color: #6b7280; line-height: 1.8; font-family: 'Inter', sans-serif;">
+                    <li style="margin-bottom: 8px;"><strong>📅 Date & Time:</strong> {{timestamp}}</li>
+                    <li style="margin-bottom: 8px;"><strong>🔐 Login Method:</strong> {{loginMethod}}</li>
+                    <li style="margin-bottom: 8px;"><strong>🌐 IP Address:</strong> {{ipAddress}}</li>
+                    <li style="margin-bottom: 8px;"><strong>📍 Location:</strong> {{location}}</li>
+                    <li style="margin-bottom: 8px;"><strong>📱 Device Type:</strong> {{deviceType}}</li>
+                    <li style="margin-bottom: 8px;"><strong>🌐 Browser:</strong> {{browser}}</li>
+                </ul>
+            </div>
+
+            <div class="security-note">
+                <p style="color: #92400e; margin: 0; line-height: 1.6; font-size: 14px; font-family: 'Inter', sans-serif;">🔒 Your account is secure and protected. If you did not log in, please contact us immediately at {{contactEmail}}</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="font-family: 'Inter', sans-serif; margin: 0;">Rezge Team - Islamic Marriage Platform</p>
+            <p style="font-size: 12px; margin: 5px 0 0 0; opacity: 0.8; font-family: 'Inter', sans-serif;">This is an automated email, please do not reply directly</p>
+        </div>
+    </div>
+</body>
+
+
+
+
+

@@ -121,3 +121,8 @@ INSERT INTO email_notification_types (name, name_ar, name_en, description_ar, de
 );
 
 SELECT 'تم رفع جميع قوالب ومحتوى الإيميلات المستخدمة فعلياً بنجاح!' as message;
+
+
+
+
+

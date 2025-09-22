@@ -16,7 +16,7 @@
 
 #### **بعد الإصلاح**:
 ```typescript
-<p><strong>${isArabic ? '📅 تاريخ الإرسال (ميلادي):' : '📅 Sent Date (Gregorian):'}</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</p>
+<p><strong>${isArabic ? '📅 تاريخ الإرسال :' : '📅 Sent Date :'}</strong> ${new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })}</p>
 ```
 
 ### 2. **📝 إصلاح Text Content**
@@ -46,10 +46,10 @@ const gregorianTime = currentDate.toLocaleTimeString('en-GB', {
 });
 
 // العربية
-تاريخ الإرسال (ميلادي): ${gregorianDate} ${gregorianTime}
+تاريخ الإرسال : ${gregorianDate} ${gregorianTime}
 
 // الإنجليزية
-Sent Date (Gregorian): ${gregorianDate} ${gregorianTime}
+Sent Date : ${gregorianDate} ${gregorianTime}
 ```
 
 ## 🎯 التنسيق الجديد
@@ -79,7 +79,7 @@ Sent Date (Gregorian): ${gregorianDate} ${gregorianTime}
 ### **المحتوى HTML**:
 ```html
 <div style="margin-top: 30px; padding: 20px; background-color: #e3f2fd; border-radius: 6px;">
-  <p><strong>📅 تاريخ الإرسال (ميلادي):</strong> 15/12/2024 14:30:25</p>
+  <p><strong>📅 تاريخ الإرسال :</strong> 15/12/2024 14:30:25</p>
   <p><strong>📧 للرد:</strong> يمكنك الرد مباشرة على ahmed@example.com</p>
   <p><strong>🌐 المصدر:</strong> موقع رزقي - نموذج اتصل بنا</p>
 </div>
@@ -97,7 +97,7 @@ Sent Date (Gregorian): ${gregorianDate} ${gregorianTime}
 الرسالة:
 مرحباً، أريد الاستفسار عن الخدمات المتاحة وكيفية الاشتراك.
 
-تاريخ الإرسال (ميلادي): 15/12/2024 14:30:25
+تاريخ الإرسال : 15/12/2024 14:30:25
 المصدر: موقع رزقي - نموذج اتصل بنا
 للرد: يمكنك الرد مباشرة على ahmed@example.com
 ```
@@ -133,10 +133,10 @@ gregorianTime = "14:30:25"
 ### 3. **الاستخدام في النص**:
 ```typescript
 // HTML
-`📅 تاريخ الإرسال (ميلادي): ${gregorianDate} ${gregorianTime}`
+`📅 تاريخ الإرسال : ${gregorianDate} ${gregorianTime}`
 
 // Text
-`تاريخ الإرسال (ميلادي): ${gregorianDate} ${gregorianTime}`
+`تاريخ الإرسال : ${gregorianDate} ${gregorianTime}`
 ```
 
 ## 🌍 مقارنة التنسيقات
@@ -171,7 +171,7 @@ gregorianTime = "14:30:25"
 - توافق مع المعايير الدولية
 
 ### 4. **📧 وضوح في الإيميل**:
-- عنوان واضح "(ميلادي)"
+- عنوان واضح ""
 - تمييز عن التواريخ الهجرية
 - معلومات دقيقة للمتلقي
 
@@ -228,8 +228,8 @@ ${new Date().toLocaleDateString('en-GB', {...})} ${new Date().toLocaleTimeString
 ### `src/lib/notificationEmailService.ts`
 - ✅ تحديث HTML content في دالة `sendContactMessage`
 - ✅ تحديث Text content مع متغيرات منفصلة للتاريخ والوقت
-- ✅ إضافة توضيح "(ميلادي)" في النصوص العربية
-- ✅ إضافة توضيح "(Gregorian)" في النصوص الإنجليزية
+- ✅ إضافة توضيح "" في النصوص العربية
+- ✅ إضافة توضيح "" في النصوص الإنجليزية
 
 ## 🔮 تحسينات مستقبلية
 
@@ -284,7 +284,7 @@ private formatGregorianDateTime(date: Date, language: string): string {
 
 - ✅ **تاريخ ميلادي مؤكد** باستخدام `en-GB`
 - ✅ **تنسيق واضح ودقيق** DD/MM/YYYY HH:MM:SS
-- ✅ **توضيح في النص** "(ميلادي)" و "(Gregorian)"
+- ✅ **توضيح في النص** "" و ""
 - ✅ **توحيد التنسيق** للغتين العربية والإنجليزية
 - ✅ **دقة في الوقت** بتنسيق 24 ساعة
 

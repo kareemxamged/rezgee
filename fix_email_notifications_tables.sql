@@ -220,3 +220,6 @@ CREATE POLICY "System can insert email logs" ON email_logs
 SELECT 'تم إصلاح جداول نظام الإشعارات البريدية بنجاح!' as message;
 
 
+
+
+

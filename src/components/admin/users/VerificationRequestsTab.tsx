@@ -504,7 +504,7 @@ const VerificationRequestsTab = forwardRef<VerificationRequestsTabRef, Verificat
     }
   };
 
-  // دالة تنسيق التاريخ (ميلادي)
+  // دالة تنسيق التاريخ
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-GB', {
       year: 'numeric',

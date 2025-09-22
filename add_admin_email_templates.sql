@@ -190,3 +190,8 @@ INSERT INTO email_notification_types (
     (SELECT id FROM email_templates WHERE name = 'user_ban_notification' LIMIT 1),
     true
 );
+
+
+
+
+

@@ -7,17 +7,17 @@ export class EmailNotificationsAdminService {
   static async getNotificationTypes(): Promise<any[]> {
     try {
       console.log('محاولة جلب أنواع الإشعارات...');
-      const { data, error } = await supabase
-        .from('email_notification_types')
-        .select('*')
-        .order('created_at', { ascending: false });
+    const { data, error } = await supabase
+      .from('email_notification_types')
+      .select('*')
+      .order('created_at', { ascending: false });
 
       console.log('نتيجة جلب أنواع الإشعارات:', { data, error });
       if (error) {
         console.error('خطأ في جلب أنواع الإشعارات:', error);
         throw error;
       }
-      return data || [];
+    return data || [];
     } catch (error: any) {
       console.error('خطأ في جلب أنواع الإشعارات:', error);
       throw new Error(error.message || 'فشل في جلب أنواع الإشعارات');
@@ -27,7 +27,7 @@ export class EmailNotificationsAdminService {
   static async createNotificationType(data: any): Promise<any> {
     try {
       const { data: result, error } = await supabase
-        .from('email_notification_types')
+      .from('email_notification_types')
         .insert([{
           name: data.name || '',
           name_ar: data.name_ar || '',
@@ -38,10 +38,10 @@ export class EmailNotificationsAdminService {
           is_active: data.is_active ?? true,
           template_id: data.template_id || ''
         }])
-        .select()
-        .single();
+      .select()
+      .single();
 
-      if (error) throw error;
+    if (error) throw error;
       return result;
     } catch (error: any) {
       console.error('خطأ في إنشاء نوع الإشعار:', error);
@@ -52,7 +52,7 @@ export class EmailNotificationsAdminService {
   static async updateNotificationType(id: string, data: any): Promise<any> {
     try {
       const { data: result, error } = await supabase
-        .from('email_notification_types')
+      .from('email_notification_types')
         .update({
           name: data.name,
           name_ar: data.name_ar,
@@ -64,11 +64,11 @@ export class EmailNotificationsAdminService {
           template_id: data.template_id,
           updated_at: new Date().toISOString()
         })
-        .eq('id', id)
-        .select()
-        .single();
+      .eq('id', id)
+      .select()
+      .single();
 
-      if (error) throw error;
+    if (error) throw error;
       return result;
     } catch (error: any) {
       console.error('خطأ في تحديث نوع الإشعار:', error);
@@ -76,17 +76,22 @@ export class EmailNotificationsAdminService {
     }
   }
 
-  static async deleteNotificationType(id: string): Promise<void> {
+  static async deleteNotificationType(id: string): Promise<{ success: boolean; error?: string }> {
     try {
       const { error } = await supabase
         .from('email_notification_types')
         .delete()
         .eq('id', id);
 
-      if (error) throw error;
+      if (error) {
+        console.error('خطأ في حذف نوع الإشعار:', error);
+        return { success: false, error: error.message || 'فشل في حذف نوع الإشعار' };
+      }
+      
+      return { success: true };
     } catch (error: any) {
       console.error('خطأ في حذف نوع الإشعار:', error);
-      throw new Error(error.message || 'فشل في حذف نوع الإشعار');
+      return { success: false, error: error.message || 'فشل في حذف نوع الإشعار' };
     }
   }
 
@@ -94,17 +99,17 @@ export class EmailNotificationsAdminService {
   static async getEmailTemplates(): Promise<any[]> {
     try {
       console.log('محاولة جلب قوالب الإيميلات...');
-      const { data, error } = await supabase
-        .from('email_templates')
-        .select('*')
-        .order('created_at', { ascending: false });
+    const { data, error } = await supabase
+      .from('email_templates')
+      .select('*')
+      .order('created_at', { ascending: false });
 
       console.log('نتيجة جلب قوالب الإيميلات:', { data, error });
       if (error) {
         console.error('خطأ في جلب قوالب الإيميلات:', error);
         throw error;
       }
-      return data || [];
+    return data || [];
     } catch (error: any) {
       console.error('خطأ في جلب قوالب الإيميلات:', error);
       throw new Error(error.message || 'فشل في جلب قوالب الإيميلات');
@@ -113,8 +118,10 @@ export class EmailNotificationsAdminService {
 
   static async createEmailTemplate(data: any): Promise<{ success: boolean; error?: string; data?: any }> {
     try {
+      console.log('📝 إنشاء قالب إيميل جديد:', data);
+      
       const { data: result, error } = await supabase
-        .from('email_templates')
+      .from('email_templates')
         .insert([{
           name: data.name || '',
           name_ar: data.name_ar || '',
@@ -125,27 +132,33 @@ export class EmailNotificationsAdminService {
           content_en: data.content_en || '',
           html_template_ar: data.html_template_ar || '',
           html_template_en: data.html_template_en || '',
-          is_active: data.is_active ?? true
+          is_active: data.is_active ?? true,
+          smtp_settings_id: data.smtp_settings_id || null,
+          contact_smtp_send_id: data.contact_smtp_send_id || null,
+          contact_smtp_receive_id: data.contact_smtp_receive_id || null
         }])
-        .select()
-        .single();
+      .select()
+      .single();
 
       if (error) {
-        console.error('خطأ في إنشاء قالب الإيميل:', error);
+        console.error('❌ خطأ في إنشاء قالب الإيميل:', error);
         return { success: false, error: error.message || 'فشل في إنشاء قالب الإيميل' };
       }
       
+      console.log('✅ تم إنشاء قالب الإيميل بنجاح:', result);
       return { success: true, data: result };
     } catch (error: any) {
-      console.error('خطأ في إنشاء قالب الإيميل:', error);
+      console.error('❌ خطأ في إنشاء قالب الإيميل:', error);
       return { success: false, error: error.message || 'فشل في إنشاء قالب الإيميل' };
     }
   }
 
   static async updateEmailTemplate(id: string, data: any): Promise<{ success: boolean; error?: string; data?: any }> {
     try {
+      console.log('📝 تحديث قالب إيميل:', { id, data });
+      
       const { data: result, error } = await supabase
-        .from('email_templates')
+      .from('email_templates')
         .update({
           name: data.name,
           name_ar: data.name_ar,
@@ -157,30 +170,34 @@ export class EmailNotificationsAdminService {
           html_template_ar: data.html_template_ar,
           html_template_en: data.html_template_en,
           is_active: data.is_active,
+          smtp_settings_id: data.smtp_settings_id || null,
+          contact_smtp_send_id: data.contact_smtp_send_id || null,
+          contact_smtp_receive_id: data.contact_smtp_receive_id || null,
           updated_at: new Date().toISOString()
         })
-        .eq('id', id)
-        .select()
-        .single();
+      .eq('id', id)
+      .select()
+      .single();
 
       if (error) {
-        console.error('خطأ في تحديث قالب الإيميل:', error);
+        console.error('❌ خطأ في تحديث قالب الإيميل:', error);
         return { success: false, error: error.message || 'فشل في تحديث قالب الإيميل' };
       }
       
+      console.log('✅ تم تحديث قالب الإيميل بنجاح:', result);
       return { success: true, data: result };
     } catch (error: any) {
-      console.error('خطأ في تحديث قالب الإيميل:', error);
+      console.error('❌ خطأ في تحديث قالب الإيميل:', error);
       return { success: false, error: error.message || 'فشل في تحديث قالب الإيميل' };
     }
   }
 
   static async deleteEmailTemplate(id: string): Promise<{ success: boolean; error?: string }> {
     try {
-      const { error } = await supabase
-        .from('email_templates')
-        .delete()
-        .eq('id', id);
+    const { error } = await supabase
+      .from('email_templates')
+      .delete()
+      .eq('id', id);
 
       if (error) {
         console.error('خطأ في حذف قالب الإيميل:', error);
@@ -198,17 +215,17 @@ export class EmailNotificationsAdminService {
   static async getEmailSettings(): Promise<any[]> {
     try {
       console.log('محاولة جلب إعدادات الإيميلات...');
-      const { data, error } = await supabase
-        .from('email_settings')
-        .select('*')
-        .order('created_at', { ascending: false });
+    const { data, error } = await supabase
+      .from('email_settings')
+      .select('*')
+      .order('created_at', { ascending: false });
 
       console.log('نتيجة جلب إعدادات الإيميلات:', { data, error });
       if (error) {
         console.error('خطأ في جلب إعدادات الإيميلات:', error);
         throw error;
       }
-      return data || [];
+    return data || [];
     } catch (error: any) {
       console.error('خطأ في جلب إعدادات الإيميلات:', error);
       throw new Error(error.message || 'فشل في جلب إعدادات الإيميلات');
@@ -217,26 +234,46 @@ export class EmailNotificationsAdminService {
 
   static async createEmailSettings(data: any): Promise<any> {
     try {
+      console.log('📝 إنشاء إعدادات إيميل جديدة:', data);
+      
+      const insertData = {
+        smtp_host: data.smtp_host || '',
+        smtp_port: data.smtp_port || 587,
+        smtp_username: data.smtp_username || '',
+        smtp_password: data.smtp_password || '',
+        from_name_ar: data.from_name_ar || 'منصة رزقي',
+        from_name_en: data.from_name_en || 'Rezge Platform',
+        from_email: data.from_email || '',
+        reply_to: data.reply_to || '',
+        is_active: data.is_active ?? true,
+        is_default: data.is_default ?? false,
+        created_at: data.created_at || new Date().toISOString()
+      };
+      
+      // التحقق من صحة البيانات المطلوبة
+      if (!insertData.smtp_host || !insertData.smtp_username || !insertData.from_email) {
+        throw new Error('الحقول المطلوبة مفقودة: عنوان الخادم، اسم المستخدم، أو البريد الإلكتروني');
+      }
+      
+      console.log('📤 البيانات المرسلة لقاعدة البيانات:', insertData);
+      
       const { data: result, error } = await supabase
         .from('email_settings')
-        .insert([{
-          smtp_host: data.smtp_host || '',
-          smtp_port: data.smtp_port || 587,
-          smtp_username: data.smtp_username || '',
-          smtp_password: data.smtp_password || '',
-          from_name_ar: data.from_name_ar || '',
-          from_name_en: data.from_name_en || '',
-          from_email: data.from_email || '',
-          reply_to: data.reply_to || '',
-          is_active: data.is_active ?? true
-        }])
+        .insert([insertData])
         .select()
         .single();
 
-      if (error) throw error;
+      console.log('📊 نتيجة الاستعلام:', { result, error });
+
+      if (error) {
+        console.error('❌ خطأ من Supabase:', error);
+        throw error;
+      }
+      
+      console.log('✅ تم إنشاء الإعدادات بنجاح:', result);
       return result;
     } catch (error: any) {
-      console.error('خطأ في إنشاء إعدادات الإيميل:', error);
+      console.error('❌ خطأ في إنشاء إعدادات الإيميل:', error);
       throw new Error(error.message || 'فشل في إنشاء إعدادات الإيميل');
     }
   }
@@ -244,7 +281,7 @@ export class EmailNotificationsAdminService {
   static async updateEmailSettings(id: string, data: any): Promise<any> {
     try {
       const { data: result, error } = await supabase
-        .from('email_settings')
+      .from('email_settings')
         .update({
           smtp_host: data.smtp_host,
           smtp_port: data.smtp_port,
@@ -255,13 +292,14 @@ export class EmailNotificationsAdminService {
           from_email: data.from_email,
           reply_to: data.reply_to,
           is_active: data.is_active,
+          is_default: data.is_default,
           updated_at: new Date().toISOString()
         })
-        .eq('id', id)
-        .select()
-        .single();
+      .eq('id', id)
+      .select()
+      .single();
 
-      if (error) throw error;
+    if (error) throw error;
       return result;
     } catch (error: any) {
       console.error('خطأ في تحديث إعدادات الإيميل:', error);
@@ -269,30 +307,118 @@ export class EmailNotificationsAdminService {
     }
   }
 
-  static async deleteEmailSettings(id: string): Promise<void> {
+  static async deleteEmailSettings(id: string): Promise<{ success: boolean; error?: string }> {
     try {
       const { error } = await supabase
         .from('email_settings')
         .delete()
         .eq('id', id);
 
-      if (error) throw error;
+      if (error) {
+        console.error('خطأ في حذف إعدادات الإيميل:', error);
+        return { success: false, error: error.message || 'فشل في حذف إعدادات الإيميل' };
+      }
+      
+      return { success: true };
     } catch (error: any) {
       console.error('خطأ في حذف إعدادات الإيميل:', error);
-      throw new Error(error.message || 'فشل في حذف إعدادات الإيميل');
+      return { success: false, error: error.message || 'فشل في حذف إعدادات الإيميل' };
+    }
+  }
+
+  // تعيين إعدادات SMTP كافتراضي
+  static async setAsDefault(id: string): Promise<{ success: boolean; error?: string }> {
+    try {
+      console.log('🔧 تعيين إعدادات SMTP كافتراضي:', id);
+      
+      // إلغاء تعيين جميع الإعدادات الأخرى كافتراضي
+      await this.unsetAllDefaults();
+      
+      // تعيين الإعداد المحدد كافتراضي
+      const { data: result, error } = await supabase
+        .from('email_settings')
+        .update({
+          is_default: true,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (error) {
+        console.error('❌ خطأ في تعيين الإعداد كافتراضي:', error);
+        return { success: false, error: error.message || 'فشل في تعيين الإعداد كافتراضي' };
+      }
+      
+      console.log('✅ تم تعيين الإعداد كافتراضي بنجاح:', result);
+      return { success: true };
+    } catch (error: any) {
+      console.error('❌ خطأ في تعيين الإعداد كافتراضي:', error);
+      return { success: false, error: error.message || 'فشل في تعيين الإعداد كافتراضي' };
+    }
+  }
+
+  // إلغاء تعيين جميع الإعدادات كافتراضي
+  static async unsetAllDefaults(): Promise<{ success: boolean; error?: string }> {
+    try {
+      console.log('🔧 إلغاء تعيين جميع الإعدادات كافتراضي...');
+      
+      const { error } = await supabase
+        .from('email_settings')
+        .update({
+          is_default: false,
+          updated_at: new Date().toISOString()
+        })
+        .eq('is_default', true);
+
+      if (error) {
+        console.error('❌ خطأ في إلغاء تعيين الإعدادات الافتراضية:', error);
+        return { success: false, error: error.message || 'فشل في إلغاء تعيين الإعدادات الافتراضية' };
+      }
+      
+      console.log('✅ تم إلغاء تعيين جميع الإعدادات الافتراضية بنجاح');
+      return { success: true };
+    } catch (error: any) {
+      console.error('❌ خطأ في إلغاء تعيين الإعدادات الافتراضية:', error);
+      return { success: false, error: error.message || 'فشل في إلغاء تعيين الإعدادات الافتراضية' };
+    }
+  }
+
+  // الحصول على الإعدادات الافتراضية
+  static async getDefaultEmailSettings(): Promise<any> {
+    try {
+      console.log('🔍 جلب الإعدادات الافتراضية...');
+      
+      const { data: result, error } = await supabase
+        .from('email_settings')
+        .select('*')
+        .eq('is_default', true)
+        .eq('is_active', true)
+        .single();
+
+      if (error) {
+        console.error('❌ خطأ في جلب الإعدادات الافتراضية:', error);
+        return null;
+      }
+      
+      console.log('✅ تم جلب الإعدادات الافتراضية بنجاح:', result);
+      return result;
+    } catch (error: any) {
+      console.error('❌ خطأ في جلب الإعدادات الافتراضية:', error);
+      return null;
     }
   }
 
   // إدارة سجلات الإيميلات
   static async getEmailLogs(): Promise<any[]> {
     try {
-      const { data, error } = await supabase
-        .from('email_logs')
-        .select('*')
-        .order('created_at', { ascending: false });
+    const { data, error } = await supabase
+      .from('email_logs')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-      if (error) throw error;
-      return data || [];
+    if (error) throw error;
+    return data || [];
     } catch (error: any) {
       console.error('خطأ في جلب سجلات الإيميلات:', error);
       throw new Error(error.message || 'فشل في جلب سجلات الإيميلات');
@@ -302,43 +428,43 @@ export class EmailNotificationsAdminService {
   // إحصائيات الإيميلات
   static async getEmailStats(): Promise<any> {
     try {
-      // إجمالي الإيميلات المرسلة
+    // إجمالي الإيميلات المرسلة
       const { count: totalSent } = await supabase
-        .from('email_logs')
+      .from('email_logs')
         .select('*', { count: 'exact', head: true })
-        .eq('status', 'sent');
+      .eq('status', 'sent');
 
-      // إجمالي الإيميلات الفاشلة
+    // إجمالي الإيميلات الفاشلة
       const { count: totalFailed } = await supabase
-        .from('email_logs')
+      .from('email_logs')
         .select('*', { count: 'exact', head: true })
-        .eq('status', 'failed');
+      .eq('status', 'failed');
 
-      // إيميلات اليوم
+    // إيميلات اليوم
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       const tomorrow = new Date(today);
       tomorrow.setDate(tomorrow.getDate() + 1);
 
       const { count: todaySent } = await supabase
-        .from('email_logs')
+      .from('email_logs')
         .select('*', { count: 'exact', head: true })
-        .eq('status', 'sent')
+      .eq('status', 'sent')
         .gte('created_at', today.toISOString())
         .lt('created_at', tomorrow.toISOString());
 
       const { count: todayFailed } = await supabase
-        .from('email_logs')
+      .from('email_logs')
         .select('*', { count: 'exact', head: true })
-        .eq('status', 'failed')
+      .eq('status', 'failed')
         .gte('created_at', today.toISOString())
         .lt('created_at', tomorrow.toISOString());
 
       // الإحصائيات حسب القالب
       const { data: byTemplate } = await supabase
-        .from('email_logs')
+      .from('email_logs')
         .select('*')
-        .eq('status', 'sent');
+      .eq('status', 'sent');
 
       const templateStats = byTemplate?.reduce((acc: any, log: any) => {
         const templateName = log.template_name || 'غير محدد';
@@ -353,7 +479,7 @@ export class EmailNotificationsAdminService {
 
       // الإحصائيات حسب الحالة
       const { data: byStatus } = await supabase
-        .from('email_logs')
+      .from('email_logs')
         .select('status');
 
       const statusStats = byStatus?.reduce((acc: any, log: any) => {
@@ -369,7 +495,7 @@ export class EmailNotificationsAdminService {
       const total = (totalSent || 0) + (totalFailed || 0);
       const successRate = total > 0 ? Math.round(((totalSent || 0) / total) * 100) : 0;
 
-      return {
+    return {
         totalSent: totalSent || 0,
         totalFailed: totalFailed || 0,
         successRate: successRate,
@@ -423,6 +549,9 @@ export class EmailNotificationsAdminService {
 
       if (logError) throw logError;
 
+      // تخزين log.id للمرجع في catch
+      const logId = log?.id;
+
       // إرسال الإيميل (هنا يمكن استخدام UnifiedEmailService)
       // const emailService = new UnifiedEmailService();
       // await emailService.sendEmail({
@@ -439,24 +568,24 @@ export class EmailNotificationsAdminService {
           status: 'sent',
           sent_at: new Date().toISOString()
         })
-        .eq('id', log.id);
+        .eq('id', logId);
 
       return {
         success: true,
         message: 'تم إرسال الإيميل بنجاح',
-        logId: log.id
+        logId: logId
       };
 
     } catch (error: any) {
       // تحديث السجل بالفشل
-      if (log?.id) {
+      if (logId) {
         await supabase
           .from('email_logs')
           .update({
             status: 'failed',
             error_message: error.message
           })
-          .eq('id', log.id);
+          .eq('id', logId);
       }
 
       return {

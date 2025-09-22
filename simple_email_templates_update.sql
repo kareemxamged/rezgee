@@ -160,3 +160,8 @@ LEFT JOIN email_templates et ON et.id = ent.template_id
 ORDER BY ent.created_at;
 
 SELECT 'تم الانتهاء من تحديث جميع قوالب الإيميلات بنجاح! 🎉' as final_message;
+
+
+
+
+

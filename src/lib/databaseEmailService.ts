@@ -62,10 +62,17 @@ export class DatabaseEmailService {
         .select('*')
         .eq('name', templateName)
         .eq('is_active', true)
+        .order('created_at', { ascending: false })
+        .limit(1)
         .maybeSingle();
 
       if (error) {
         console.error('❌ خطأ في جلب قالب الإيميل:', error);
+        return null;
+      }
+
+      if (!data) {
+        console.warn(`⚠️ لم يتم العثور على قالب الإيميل: ${templateName}`);
         return null;
       }
 
@@ -189,7 +196,7 @@ export class DatabaseEmailService {
       // جلب القالب من قاعدة البيانات
       const template = await this.getEmailTemplate(templateName, language);
       if (!template) {
-        throw new Error(`لم يتم العثور على القالب: ${templateName}`);
+        throw new Error(`لم يتم العثور على القالب النشط: ${templateName}. تأكد من وجود القالب وأنه مفعل في قاعدة البيانات.`);
       }
 
       // جلب إعدادات SMTP من قاعدة البيانات
@@ -325,6 +332,13 @@ export class DatabaseEmailService {
       console.error('❌ خطأ في جلب إحصائيات الإيميلات:', error);
       return { totalSent: 0, totalFailed: 0, successRate: 0, dailySends: 0 };
     }
+  }
+
+  /**
+   * جلب عميل Supabase للاستخدام في الخدمات الأخرى
+   */
+  static get supabase() {
+    return supabase;
   }
 
   /**

@@ -100,3 +100,8 @@ INSERT INTO email_notification_types (name, name_ar, name_en, description_ar, de
 );
 
 SELECT 'تم رفع القوالب الإضافية بنجاح!' as message;
+
+
+
+
+

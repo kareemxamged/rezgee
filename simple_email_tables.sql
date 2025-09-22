@@ -150,3 +150,6 @@ CREATE POLICY "System can insert email logs" ON email_logs
 SELECT 'تم إنشاء جداول الإشعارات البريدية بنجاح!' as message;
 
 
+
+
+

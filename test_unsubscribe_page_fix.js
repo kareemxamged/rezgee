@@ -5,41 +5,47 @@ console.log('🔧 اختبار إصلاح مشكلة UnsubscribePage...\n');
 
 // محاكاة مكون UnsubscribePage
 const UnsubscribePage = {
-  // محاكاة الحالات المختلفة
-  states: {
-    idle: 'idle',
-    loading: 'loading', 
-    success: 'success',
-    error: 'error'
-  },
+    // محاكاة الحالات المختلفة
+    states: {
+        idle: 'idle',
+        loading: 'loading',
+        success: 'success',
+        error: 'error'
+    },
 
-  // محاكاة استخراج المعاملات من URL
-  extractUrlParams: (url) => {
-    const params = new URLSearchParams(url.split('?')[1] || '');
-    return {
-      email: params.get('email'),
-      token: params.get('token')
-    };
-  },
+    // محاكاة استخراج المعاملات من URL
+    extractUrlParams: (url) => {
+        const params = new URLSearchParams(url.split('?')[1] || '');
+        return {
+            email: params.get('email'),
+            token: params.get('token')
+        };
+    },
 
-  // محاكاة عملية إلغاء الاشتراك
-  handleUnsubscribe: async (email, token) => {
-    console.log(`📧 إلغاء الاشتراك:`);
-    console.log(`   البريد الإلكتروني: ${email}`);
-    console.log(`   الرمز المميز: ${token}`);
-    
-    // محاكاة نجاح العملية
-    return { success: true, message: 'تم إلغاء الاشتراك بنجاح!' };
-  },
+    // محاكاة عملية إلغاء الاشتراك
+    handleUnsubscribe: async (email, token) => {
+        console.log(`📧 إلغاء الاشتراك:`);
+        console.log(`   البريد الإلكتروني: ${email}`);
+        console.log(`   الرمز المميز: ${token}`);
 
-  // محاكاة عملية إعادة الاشتراك
-  handleResubscribe: async (email) => {
-    console.log(`📧 إعادة الاشتراك:`);
-    console.log(`   البريد الإلكتروني: ${email}`);
-    
-    // محاكاة نجاح العملية
-    return { success: true, message: 'تم إعادة الاشتراك بنجاح!' };
-  }
+        // محاكاة نجاح العملية
+        return {
+            success: true,
+            message: 'تم إلغاء الاشتراك بنجاح!'
+        };
+    },
+
+    // محاكاة عملية إعادة الاشتراك
+    handleResubscribe: async (email) => {
+        console.log(`📧 إعادة الاشتراك:`);
+        console.log(`   البريد الإلكتروني: ${email}`);
+
+        // محاكاة نجاح العملية
+        return {
+            success: true,
+            message: 'تم إعادة الاشتراك بنجاح!'
+        };
+    }
 };
 
 console.log('🧪 اختبار جميع الوظائف:\n');
@@ -64,14 +70,14 @@ console.log('\n' + '='.repeat(80) + '\n');
 console.log('📱 حالات المكون:\n');
 
 const componentStates = [
-  'idle - الحالة الافتراضية',
-  'loading - جاري المعالجة',
-  'success - نجحت العملية',
-  'error - حدث خطأ'
+    'idle - الحالة الافتراضية',
+    'loading - جاري المعالجة',
+    'success - نجحت العملية',
+    'error - حدث خطأ'
 ];
 
 componentStates.forEach((state, index) => {
-  console.log(`${index + 1}. ${state}`);
+    console.log(`${index + 1}. ${state}`);
 });
 
 console.log('\n' + '='.repeat(80) + '\n');
@@ -80,18 +86,18 @@ console.log('\n' + '='.repeat(80) + '\n');
 console.log('🎯 المميزات الجديدة:\n');
 
 const features = [
-  '✅ صفحة إلغاء الاشتراك كاملة',
-  '✅ استخراج تلقائي للمعاملات من URL',
-  '✅ واجهة مستخدم احترافية',
-  '✅ دعم إعادة الاشتراك',
-  '✅ معالجة شاملة للأخطاء',
-  '✅ تصميم متجاوب',
-  '✅ رسائل حالة واضحة',
-  '✅ روابط العودة للصفحة الرئيسية'
+    '✅ صفحة إلغاء الاشتراك كاملة',
+    '✅ استخراج تلقائي للمعاملات من URL',
+    '✅ واجهة مستخدم احترافية',
+    '✅ دعم إعادة الاشتراك',
+    '✅ معالجة شاملة للأخطاء',
+    '✅ تصميم متجاوب',
+    '✅ رسائل حالة واضحة',
+    '✅ روابط العودة للصفحة الرئيسية'
 ];
 
 features.forEach(feature => {
-  console.log(`   ${feature}`);
+    console.log(`   ${feature}`);
 });
 
 console.log('\n' + '='.repeat(80) + '\n');
@@ -109,15 +115,15 @@ console.log('   - معالجة شاملة للأخطاء');
 console.log('\n🔧 الوظائف المُضافة:\n');
 
 const functions = [
-  'extractUrlParams - استخراج المعاملات من URL',
-  'handleUnsubscribe - إلغاء الاشتراك',
-  'handleResubscribe - إعادة الاشتراك',
-  'getStatusIcon - عرض أيقونة الحالة',
-  'getStatusColor - تحديد لون الحالة'
+    'extractUrlParams - استخراج المعاملات من URL',
+    'handleUnsubscribe - إلغاء الاشتراك',
+    'handleResubscribe - إعادة الاشتراك',
+    'getStatusIcon - عرض أيقونة الحالة',
+    'getStatusColor - تحديد لون الحالة'
 ];
 
 functions.forEach((func, index) => {
-  console.log(`${index + 1}. ${func}`);
+    console.log(`${index + 1}. ${func}`);
 });
 
 console.log('\n' + '='.repeat(80) + '\n');
@@ -126,14 +132,14 @@ console.log('\n' + '='.repeat(80) + '\n');
 console.log('📊 أنواع الحالات المدعومة:\n');
 
 const statusTypes = [
-  'idle - الحالة الافتراضية (رمادي)',
-  'loading - جاري المعالجة (أزرق)',
-  'success - نجحت العملية (أخضر)',
-  'error - حدث خطأ (أحمر)'
+    'idle - الحالة الافتراضية (رمادي)',
+    'loading - جاري المعالجة (أزرق)',
+    'success - نجحت العملية (أخضر)',
+    'error - حدث خطأ (أحمر)'
 ];
 
 statusTypes.forEach((type, index) => {
-  console.log(`${index + 1}. ${type}`);
+    console.log(`${index + 1}. ${type}`);
 });
 
 console.log('\n' + '='.repeat(80) + '\n');
@@ -142,15 +148,15 @@ console.log('\n' + '='.repeat(80) + '\n');
 console.log('🔗 التكامل مع النظام:\n');
 
 const integrations = [
-  'NewsletterService - خدمة النشرة الإخبارية',
-  'App.tsx - التطبيق الرئيسي',
-  'URL Parameters - معاملات الرابط',
-  'Email Templates - قوالب الإيميل',
-  'Error Handling - معالجة الأخطاء'
+    'NewsletterService - خدمة النشرة الإخبارية',
+    'App.tsx - التطبيق الرئيسي',
+    'URL Parameters - معاملات الرابط',
+    'Email Templates - قوالب الإيميل',
+    'Error Handling - معالجة الأخطاء'
 ];
 
 integrations.forEach((integration, index) => {
-  console.log(`${index + 1}. ${integration}`);
+    console.log(`${index + 1}. ${integration}`);
 });
 
 console.log('\n' + '='.repeat(80) + '\n');
@@ -159,13 +165,13 @@ console.log('\n' + '='.repeat(80) + '\n');
 console.log('💡 أمثلة على الاستخدام:\n');
 
 const examples = [
-  'https://rezgee.com/unsubscribe?email=user@example.com&token=abc123',
-  'https://rezgee.com/unsubscribe?email=test@gmail.com&token=xyz789',
-  'https://rezgee.com/unsubscribe?email=admin@rezgee.com&token=def456'
+    'https://rezgee.com/unsubscribe?email=user@example.com&token=abc123',
+    'https://rezgee.com/unsubscribe?email=test@gmail.com&token=xyz789',
+    'https://rezgee.com/unsubscribe?email=admin@rezgee.com&token=def456'
 ];
 
 examples.forEach((example, index) => {
-  console.log(`${index + 1}. ${example}`);
+    console.log(`${index + 1}. ${example}`);
 });
 
 console.log('\n' + '='.repeat(80) + '\n');
@@ -181,5 +187,3 @@ console.log('\n✨ النظام مكتمل وجاهز للاستخدام!');
 console.log('🎉 مشكلة UnsubscribePage تم حلها بنجاح');
 console.log('📧 صفحة إلغاء الاشتراك تعمل بشكل مثالي');
 console.log('🔧 التكامل مع النظام مكتمل');
-
-

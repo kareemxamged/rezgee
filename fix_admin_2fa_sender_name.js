@@ -60,6 +60,3 @@ try {
 } catch (error) {
     console.error('❌ خطأ في إصلاح الملف:', error.message);
 }
-
-
-

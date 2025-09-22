@@ -45,6 +45,11 @@ import SubscriptionBanner from './components/SubscriptionBanner';
 import SubscriptionPage from './components/SubscriptionPage';
 import PaymentPage from './components/PaymentPage';
 import SecuritySettingsPage from './components/SecuritySettingsPage';
+import AdminArticlesPage from './pages/admin/ArticlesPage';
+import CategoriesPage from './pages/admin/CategoriesPage';
+import CommentsPage from './pages/admin/CommentsPage';
+import ContentAnalyticsPage from './pages/admin/ContentAnalyticsPage';
+import ContentManagementPage from './pages/admin/ContentManagementPage';
 
 import VerifyEmailChangePage from './components/VerifyEmailChangePage';
 import FeaturesPage from './components/FeaturesPage';
@@ -125,6 +130,11 @@ function App() {
             <Route path="/admin/*" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="users" element={<UnifiedUsersManagement />} />
+              <Route path="content" element={<ContentManagementPage />} />
+              <Route path="articles" element={<AdminArticlesPage />} />
+              <Route path="categories" element={<CategoriesPage />} />
+              <Route path="comments" element={<CommentsPage />} />
+              <Route path="content-analytics" element={<ContentAnalyticsPage />} />
               <Route path="newsletter" element={<NewsletterManagement />} />
               <Route path="email-notifications" element={<EmailNotificationsManagement />} />
               <Route path="subscriptions" element={<SubscriptionManagement />} />

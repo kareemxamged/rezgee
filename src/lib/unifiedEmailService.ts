@@ -12,6 +12,8 @@ export interface EmailData {
   type?: string;
   from?: string;
   replyTo?: string;
+  fromName?: string;
+  templateId?: string;
 }
 
 export interface EmailResult {
@@ -22,15 +24,26 @@ export interface EmailResult {
 }
 
 export class UnifiedEmailService {
-  private static readonly fromEmail = 'manage@kareemamged.com';
-  private static readonly fromName = 'رزقي - منصة الزواج الإسلامي الشرعي';
-  private static readonly fromNameEn = 'Rezge - Islamic Marriage Platform';
+  // إزالة الإعدادات الثابتة - سيتم جلبها من قاعدة البيانات
 
   /**
-   * الحصول على اسم المرسل حسب اللغة
+   * الحصول على اسم المرسل حسب اللغة من قاعدة البيانات
    */
-  private static getSenderName(language: 'ar' | 'en' = 'ar'): string {
-    return language === 'ar' ? this.fromName : this.fromNameEn;
+  private static async getSenderName(language: 'ar' | 'en' = 'ar'): Promise<string> {
+    try {
+      const { DatabaseSMTPManager } = await import('./databaseSMTPManager');
+      const settings = await DatabaseSMTPManager.getDefaultSMTPSettings();
+      
+      if (settings) {
+        return language === 'ar' ? settings.from_name_ar : settings.from_name_en;
+      }
+      
+      // إعدادات افتراضية في حالة عدم وجود إعدادات في قاعدة البيانات
+      return language === 'ar' ? 'رزقي - منصة الزواج الإسلامي الشرعي' : 'Rezge - Islamic Marriage Platform';
+    } catch (error) {
+      console.error('❌ خطأ في جلب اسم المرسل:', error);
+      return language === 'ar' ? 'رزقي - منصة الزواج الإسلامي الشرعي' : 'Rezge - Islamic Marriage Platform';
+    }
   }
 
   /**
@@ -41,20 +54,77 @@ export class UnifiedEmailService {
     console.log(`📬 إلى: ${emailData.to}`);
     console.log(`📝 الموضوع: ${emailData.subject}`);
 
-    // إضافة اسم المرسل حسب اللغة مع البريد الإلكتروني
-    const senderName = this.getSenderName(language);
+    // إذا كان هناك templateId، جلب إعدادات SMTP المحددة في القالب
+    if (emailData.templateId) {
+      console.log(`🔧 جلب إعدادات SMTP للقالب: ${emailData.templateId}`);
+      try {
+        const { TemplateSMTPManager } = await import('./templateSMTPManager');
+        const smtpSettings = await TemplateSMTPManager.getSMTPForTemplate(emailData.templateId);
+        
+        if (smtpSettings) {
+          console.log(`✅ تم جلب إعدادات SMTP للقالب: ${smtpSettings.smtp_host}:${smtpSettings.smtp_port}`);
+          console.log(`🔧 إعدادات SMTP المستخدمة:`, {
+            id: smtpSettings.id,
+            host: smtpSettings.smtp_host,
+            port: smtpSettings.smtp_port,
+            from_email: smtpSettings.from_email,
+            from_name_ar: smtpSettings.from_name_ar,
+            is_default: smtpSettings.is_default
+          });
+          
+          // استخدام إعدادات SMTP المحددة في القالب
     const enhancedEmailData = {
       ...emailData,
-      from: emailData.from || senderName, // استخدام اسم المرسل فقط بدون البريد الإلكتروني
-      replyTo: 'support@rezge.com'
-    };
+            from: smtpSettings.from_email,
+            fromName: smtpSettings.from_name_ar,
+            replyTo: smtpSettings.reply_to || smtpSettings.from_email
+          };
+
+          console.log(`👤 من: ${enhancedEmailData.fromName} <${enhancedEmailData.from}>`);
+
+          // إرسال باستخدام الخادم المحلي مع إعدادات SMTP المحددة
+          const result = await this.sendViaLocalSMTP(enhancedEmailData, smtpSettings);
+          if (result.success) {
+            console.log(`✅ تم إرسال الإيميل بنجاح باستخدام إعدادات SMTP المحددة في القالب`);
+            return result;
+          }
+        }
+      } catch (error) {
+        console.error('❌ خطأ في جلب إعدادات SMTP للقالب:', error);
+      }
+    }
+
+    // جلب إعدادات SMTP من قاعدة البيانات
+    const { DatabaseSMTPManager } = await import('./databaseSMTPManager');
+    const smtpSettings = await DatabaseSMTPManager.getDefaultSMTPSettings();
+    
+    let enhancedEmailData;
+    
+    if (smtpSettings) {
+      console.log('✅ تم جلب إعدادات SMTP من قاعدة البيانات:', smtpSettings.smtp_host);
+      const senderName = await this.getSenderName(language);
+      enhancedEmailData = {
+        ...emailData,
+        from: emailData.from || smtpSettings.from_email,
+        fromName: emailData.fromName || senderName,
+        replyTo: emailData.replyTo || smtpSettings.reply_to || smtpSettings.from_email
+      };
+    } else {
+      console.warn('⚠️ لم يتم العثور على إعدادات SMTP في قاعدة البيانات، استخدام الإعدادات الافتراضية');
+      const senderName = await this.getSenderName(language);
+      enhancedEmailData = {
+        ...emailData,
+        from: emailData.from || 'manage@kareemamged.com',
+        fromName: emailData.fromName || senderName,
+        replyTo: emailData.replyTo || 'support@rezge.com'
+      };
+    }
 
     console.log(`👤 من: ${enhancedEmailData.from}`);
 
-    // ترتيب الأولويات: خادم محلي (3001) → Supabase Custom SMTP → Resend → FormSubmit
+    // ترتيب الأولويات: خادم محلي (3001) أولاً → Resend → FormSubmit (تجنب Supabase بسبب CORS)
     const methods = [
       () => this.sendViaLocalSMTP(enhancedEmailData),
-      () => this.sendViaSupabaseCustomSMTP(enhancedEmailData),
       () => this.sendViaResend(enhancedEmailData),
       () => this.sendViaFormSubmit(enhancedEmailData)
     ];
@@ -350,9 +420,32 @@ export class UnifiedEmailService {
   /**
    * إرسال عبر Supabase Custom SMTP (الأولوية الأولى)
    */
-  private static async sendViaSupabaseCustomSMTP(emailData: EmailData): Promise<EmailResult> {
+  private static async sendViaSupabaseCustomSMTP(emailData: EmailData, smtpSettings?: any): Promise<EmailResult> {
     try {
       console.log('🚀 محاولة الإرسال عبر Supabase Custom SMTP...');
+
+      const requestBody: any = {
+        to: emailData.to,
+        subject: emailData.subject,
+        html: emailData.html,
+        text: emailData.text
+      };
+
+      // إذا كانت هناك إعدادات SMTP محددة، أضفها للطلب
+      if (smtpSettings) {
+        console.log('🔧 استخدام إعدادات SMTP المحددة في القالب');
+        const { TemplateSMTPManager } = await import('./templateSMTPManager');
+        requestBody.smtpConfig = TemplateSMTPManager.formatSMTPConfig(smtpSettings);
+      } else {
+        // استخدام إعدادات SMTP الافتراضية من قاعدة البيانات
+        console.log('🔧 استخدام إعدادات SMTP الافتراضية من قاعدة البيانات');
+        const { DatabaseSMTPManager } = await import('./databaseSMTPManager');
+        const defaultSettings = await DatabaseSMTPManager.getDefaultSMTPSettings();
+        
+        if (defaultSettings) {
+          requestBody.smtpConfig = DatabaseSMTPManager.formatSMTPConfig(defaultSettings);
+        }
+      }
 
       const response = await fetch('https://sbtzngewizgeqzfbhfjy.supabase.co/functions/v1/send-custom-smtp', {
         method: 'POST',
@@ -360,12 +453,7 @@ export class UnifiedEmailService {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
         },
-        body: JSON.stringify({
-          to: emailData.to,
-          subject: emailData.subject,
-          html: emailData.html,
-          text: emailData.text
-        })
+        body: JSON.stringify(requestBody)
       });
 
       if (response.ok) {
@@ -394,7 +482,7 @@ export class UnifiedEmailService {
   /**
    * إرسال عبر خادم SMTP محلي (للتطوير)
    */
-  private static async sendViaLocalSMTP(emailData: EmailData): Promise<EmailResult> {
+  private static async sendViaLocalSMTP(emailData: EmailData, smtpSettings?: any): Promise<EmailResult> {
     try {
       // تخطي في بيئة الإنتاج
       if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
@@ -413,9 +501,22 @@ export class UnifiedEmailService {
           subject: emailData.subject,
           html: emailData.html,
           text: emailData.text,
-          from: `${emailData.from} <${this.fromEmail}>`,
-          fromEmail: this.fromEmail,
-          fromName: emailData.from
+          from: emailData.from || 'manage@kareemamged.com',
+          fromEmail: emailData.from || 'manage@kareemamged.com',
+          fromName: emailData.fromName || 'رزقي - منصة الزواج الإسلامي الشرعي',
+          smtpConfig: smtpSettings ? {
+            host: smtpSettings.smtp_host,
+            port: smtpSettings.smtp_port,
+            secure: smtpSettings.secure || smtpSettings.smtp_port === 465,
+            auth: {
+              user: smtpSettings.smtp_username,
+              pass: smtpSettings.smtp_password
+            },
+            from: {
+              name: smtpSettings.from_name_ar,
+              email: smtpSettings.from_email
+            }
+          } : undefined
         })
       });
 
@@ -458,7 +559,7 @@ export class UnifiedEmailService {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: `${emailData.from} <${this.fromEmail}>`,
+          from: `${emailData.fromName || 'رزقي'} <${emailData.from || 'manage@kareemamged.com'}>`,
           to: [emailData.to],
           subject: emailData.subject,
           html: emailData.html,
@@ -520,6 +621,178 @@ export class UnifiedEmailService {
         success: false,
         error: `FormSubmit error: ${error}`,
         method: 'FormSubmit'
+      };
+    }
+  }
+
+  /**
+   * إرسال إشعار تسجيل الدخول الناجح
+   */
+  static async sendSuccessfulLoginNotification(
+    userEmail: string,
+    loginData: {
+      timestamp: string;
+      ipAddress?: string;
+      location?: string;
+      deviceType?: string;
+      browser?: string;
+      userAgent?: string;
+      loginMethod?: 'normal' | 'trusted_device' | 'two_factor';
+    }
+  ): Promise<EmailResult> {
+    try {
+      console.log('📧 UnifiedEmailService: إرسال إشعار تسجيل الدخول الناجح...');
+      
+      // محاولة 1: استخدام النظام الجديد المتصل بقاعدة البيانات
+      try {
+        const { AuthEmailServiceDatabase } = await import('./authEmailServiceDatabase');
+        
+        const result = await AuthEmailServiceDatabase.sendSuccessfulLoginNotification(
+          userEmail,
+          'مستخدم', // سيتم تحديثه لاحقاً
+          {
+            timestamp: loginData.timestamp,
+            ipAddress: loginData.ipAddress || 'غير محدد',
+            location: loginData.location || 'غير محدد',
+            device: loginData.deviceType || 'غير محدد',
+            browser: loginData.browser || 'غير محدد'
+          }
+        );
+        
+        if (result.success) {
+          console.log('✅ تم إرسال إشعار تسجيل الدخول بنجاح عبر قاعدة البيانات');
+          return {
+            success: true,
+            method: 'Database Email Service',
+            messageId: 'db_' + Date.now()
+          };
+        } else {
+          console.warn('⚠️ فشل النظام المتصل بقاعدة البيانات:', result.error);
+        }
+      } catch (dbError) {
+        console.warn('⚠️ خطأ في النظام المتصل بقاعدة البيانات:', dbError);
+      }
+      
+      // محاولة 2: استخدام قالب قاعدة البيانات مباشرة
+      console.log('🔄 محاولة استخدام قالب قاعدة البيانات مباشرة...');
+      
+      try {
+        const { DatabaseEmailService } = await import('./databaseEmailService');
+        
+        // جلب قالب login_success من قاعدة البيانات
+        const template = await DatabaseEmailService.getEmailTemplate('login_success', 'ar');
+        
+        if (template) {
+          console.log('✅ تم جلب قالب login_success من قاعدة البيانات');
+          console.log('📧 موضوع القالب:', template.subject_ar);
+          
+          // استبدال المتغيرات في القالب
+          let processedSubject = template.subject_ar;
+          let processedHtml = template.html_template_ar;
+          let processedText = template.content_ar;
+          
+          // استبدال المتغيرات الأساسية
+          const replacements = {
+            '{{userName}}': 'مستخدم',
+            '{{timestamp}}': loginData.timestamp,
+            '{{loginDate}}': new Date(loginData.timestamp).toLocaleDateString('en-GB'),
+            '{{loginTime}}': new Date(loginData.timestamp).toLocaleTimeString('en-GB', { hour12: false }),
+            '{{ipAddress}}': loginData.ipAddress || 'غير محدد',
+            '{{location}}': loginData.location || 'غير محدد',
+            '{{deviceType}}': loginData.deviceType || 'غير محدد',
+            '{{browser}}': loginData.browser || 'غير محدد',
+            '{{loginMethod}}': 'تسجيل دخول عادي'
+          };
+          
+          // تطبيق الاستبدالات
+          for (const [key, value] of Object.entries(replacements)) {
+            processedSubject = processedSubject.replace(new RegExp(key, 'g'), value);
+            processedHtml = processedHtml.replace(new RegExp(key, 'g'), value);
+            processedText = processedText.replace(new RegExp(key, 'g'), value);
+          }
+          
+          console.log('📧 موضوع الإيميل المعالج:', processedSubject);
+          
+          // إرسال مباشر عبر الخادم المحلي
+          const response = await fetch('http://localhost:3001/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              to: userEmail,
+              subject: processedSubject,
+              html: processedHtml,
+              text: processedText,
+              from: 'manage@kareemamged.com',
+              fromName: 'رزقي - موقع الزواج الإسلامي'
+            })
+          });
+          
+          if (response.ok) {
+            const result = await response.json();
+            if (result.success) {
+              console.log('✅ تم إرسال إشعار تسجيل الدخول بنجاح باستخدام قالب قاعدة البيانات');
+              return {
+                success: true,
+                method: 'Database Template + Local SMTP',
+                messageId: result.messageId
+              };
+            } else {
+              console.error('❌ فشل في إرسال الإيميل عبر الخادم المحلي:', result.error);
+            }
+          } else {
+            console.error('❌ خطأ في الاتصال بالخادم المحلي:', response.status);
+          }
+        } else {
+          console.warn('⚠️ لم يتم العثور على قالب login_success في قاعدة البيانات');
+        }
+      } catch (dbError) {
+        console.error('❌ خطأ في استخدام قالب قاعدة البيانات:', dbError);
+      }
+      
+      // محاولة 3: استخدام القالب المدمج كـ fallback أخير
+      console.log('🔄 استخدام القالب المدمج كـ fallback أخير...');
+      
+      const { EmailTemplates, createUnifiedEmailTemplate } = await import('./unifiedEmailTemplate');
+      
+      const templateData = EmailTemplates.loginNotification({
+        timestamp: loginData.timestamp,
+        loginMethod: loginData.loginMethod || 'normal',
+        userName: 'مستخدم',
+        ipAddress: loginData.ipAddress,
+        location: loginData.location,
+        deviceType: loginData.deviceType,
+        browser: loginData.browser
+      });
+      
+      const { html, text, subject } = createUnifiedEmailTemplate(templateData);
+      
+      const emailData = {
+        to: userEmail,
+        subject,
+        html,
+        text,
+        type: 'login_success'
+      };
+      
+      // إرسال باستخدام النظام الموحد
+      const result = await this.sendEmail(emailData, 'login_success');
+      
+      if (result.success) {
+        console.log('✅ تم إرسال إشعار تسجيل الدخول بنجاح عبر القالب المدمج');
+        return result;
+      } else {
+        console.error('❌ فشل في إرسال إشعار تسجيل الدخول عبر القالب المدمج:', result.error);
+        return result;
+      }
+      
+    } catch (error) {
+      console.error('❌ خطأ في UnifiedEmailService.sendSuccessfulLoginNotification:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'خطأ غير معروف',
+        method: 'Error'
       };
     }
   }

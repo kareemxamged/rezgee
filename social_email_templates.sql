@@ -100,3 +100,8 @@ INSERT INTO email_notification_types (name, name_ar, name_en, description_ar, de
 );
 
 SELECT 'تم إضافة القوالب الاجتماعية بنجاح! 🎉' as message;
+
+
+
+
+

@@ -941,6 +941,74 @@ class ArticleService {
     }
   }
 
+  // Create new article
+  async createArticle(articleData: Omit<Article, 'id' | 'created_at' | 'updated_at' | 'views' | 'likes' | 'comments_count'>): Promise<Article> {
+    try {
+      const { data, error } = await supabase
+        .from('articles')
+        .insert([{
+          ...articleData,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          views: 0,
+          likes: 0,
+          comments_count: 0
+        }])
+        .select()
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      return data;
+    } catch (error) {
+      console.error('Error creating article:', error);
+      throw error;
+    }
+  }
+
+  // Update existing article
+  async updateArticle(id: string, articleData: Partial<Article>): Promise<Article> {
+    try {
+      const { data, error } = await supabase
+        .from('articles')
+        .update({
+          ...articleData,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      return data;
+    } catch (error) {
+      console.error('Error updating article:', error);
+      throw error;
+    }
+  }
+
+  // Delete article
+  async deleteArticle(id: string): Promise<void> {
+    try {
+      const { error } = await supabase
+        .from('articles')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      console.error('Error deleting article:', error);
+      throw error;
+    }
+  }
+
   // Fix likes count for all articles (sync with actual likes from article_likes table)
   async fixAllArticlesLikesCount(): Promise<void> {
     try {

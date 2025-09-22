@@ -53,7 +53,7 @@ const VerificationDetailsModal: React.FC<VerificationDetailsModalProps> = ({
     }
   };
 
-  // دالة تنسيق التاريخ (ميلادي)
+  // دالة تنسيق التاريخ
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-GB', {
       year: 'numeric',

@@ -88,24 +88,9 @@ const ModernAdminSidebar: React.FC<ModernAdminSidebarProps> = ({
       id: 'content',
       label: 'إدارة المحتوى',
       icon: <FileText className="w-5 h-5" />,
+      path: '/admin/content',
       permission: 'view_articles',
-      color: 'text-purple-600',
-      children: [
-        {
-          id: 'articles',
-          label: 'المقالات',
-          icon: <FileText className="w-4 h-4" />,
-          path: '/admin/articles',
-          permission: 'view_articles'
-        },
-        {
-          id: 'categories',
-          label: 'التصنيفات',
-          icon: <Palette className="w-4 h-4" />,
-          path: '/admin/categories',
-          permission: 'manage_categories'
-        }
-      ]
+      color: 'text-purple-600'
     },
     {
       id: 'messages',

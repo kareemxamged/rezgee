@@ -14,19 +14,41 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// إعداد Nodemailer مع Hostinger SMTP
-const transporter = nodemailer.createTransport({
-    host: 'smtp.hostinger.com',
-    port: 465,
-    secure: true, // استخدام SSL
-    auth: {
-        user: 'manage@kareemamged.com',
-        pass: 'Kk170404#' // كلمة مرور Hostinger الصحيحة
-    },
-    tls: {
-        rejectUnauthorized: false // تجاهل شهادات SSL غير الموثقة
+// دالة إنشاء transporter ديناميكي
+function createTransporter(smtpConfig) {
+    if (smtpConfig) {
+        console.log('🔧 إنشاء transporter مع إعدادات مخصصة:', {
+            host: smtpConfig.host,
+            port: smtpConfig.port,
+            user: smtpConfig.auth ? .user,
+            passLength: smtpConfig.auth ? .pass ? .length
+        });
+
+        return nodemailer.createTransport({
+            host: smtpConfig.host,
+            port: smtpConfig.port,
+            secure: smtpConfig.secure,
+            auth: smtpConfig.auth,
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
+    } else {
+        console.log('🔧 استخدام إعدادات SMTP الافتراضية');
+        return nodemailer.createTransport({
+            host: 'smtp.hostinger.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: 'manage@kareemamged.com',
+                pass: 'Kk170404#'
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
     }
-});
+}
 
 // دالة إرسال الإيميل
 app.post('/send-email', async (req, res) => {
@@ -43,7 +65,8 @@ app.post('/send-email', async (req, res) => {
             text,
             from,
             fromName,
-            fromEmail
+            fromEmail,
+            smtpConfig
         } = req.body;
 
         console.log('📧 استلام طلب إرسال إيميل:');
@@ -51,14 +74,43 @@ app.post('/send-email', async (req, res) => {
         console.log(`📝 الموضوع: ${subject}`);
         console.log(`👤 من: ${from}`);
 
+        // إنشاء transporter مع إعدادات SMTP المحددة
+        const transporter = createTransporter(smtpConfig);
+
+        // تسجيل إعدادات transporter المستخدمة فعلياً
+        console.log('🔧 إعدادات Transporter المستخدمة فعلياً:');
+        console.log(`  - Host: ${transporter.options.host}`);
+        console.log(`  - Port: ${transporter.options.port}`);
+        console.log(`  - User: ${transporter.options.auth?.user}`);
+        console.log(`  - Secure: ${transporter.options.secure}`);
+
         // اختبار الاتصال بـ SMTP
         console.log('🔍 اختبار الاتصال بـ SMTP...');
         await transporter.verify();
         console.log('✅ تم التحقق من اتصال SMTP بنجاح');
 
-        // تحديد اسم المرسل والبريد الإلكتروني
-        const senderName = fromName || 'رزقي - منصة الزواج الإسلامي الشرعي';
-        const senderEmail = fromEmail || 'manage@kareemamged.com';
+        // تحديد اسم المرسل والبريد الإلكتروني من إعدادات SMTP أو البيانات المرسلة
+        const senderName = smtpConfig ? .from ? .name || fromName || 'رزقي - منصة الزواج الإسلامي الشرعي';
+        const senderEmail = smtpConfig ? .from ? .email || fromEmail || from || 'manage@kareemamged.com';
+
+        console.log('🔧 إعدادات SMTP المستخدمة:');
+        console.log(`🔐 SMTP Host: ${smtpConfig?.host || 'smtp.hostinger.com'}:${smtpConfig?.port || 465}`);
+        console.log(`👤 SMTP User: ${smtpConfig?.auth?.user || 'manage@kareemamged.com'}`);
+        console.log(`🔑 SMTP Pass: ${smtpConfig?.auth?.pass ? smtpConfig.auth.pass.substring(0, 3) + '***' : 'Kk1***'}`);
+        console.log(`📧 Sender Email: ${senderEmail}`);
+        console.log(`👤 Sender Name: ${senderName}`);
+
+        // تسجيل مفصل للإعدادات المرسلة
+        if (smtpConfig) {
+            console.log('📋 إعدادات SMTP المرسلة من القالب:');
+            console.log(`  - Host: ${smtpConfig.host}`);
+            console.log(`  - Port: ${smtpConfig.port}`);
+            console.log(`  - User: ${smtpConfig.auth?.user}`);
+            console.log(`  - From Email: ${smtpConfig.from?.email}`);
+            console.log(`  - From Name: ${smtpConfig.from?.name}`);
+        } else {
+            console.log('⚠️ لا توجد إعدادات SMTP مخصصة، استخدام الإعدادات الافتراضية');
+        }
 
         const mailOptions = {
             from: {
