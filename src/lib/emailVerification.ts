@@ -211,7 +211,7 @@ class EmailVerificationService {
       const verificationUrl = `${window.location.origin}/verify?token=${token}`;
 
       // استخدام الخادم المستقل
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

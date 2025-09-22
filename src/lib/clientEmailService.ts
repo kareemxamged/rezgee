@@ -112,7 +112,7 @@ export class ClientEmailService {
 
       // إرسال مباشر عبر الخادم المستقل (نفس طريقة رموز التحقق)
       console.log('🚀 إرسال مباشر عبر SMTP Server...');
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ export class ClientEmailService {
 
       // إرسال مباشر عبر الخادم المستقل (نفس طريقة كلمة المرور المؤقتة)
       console.log('🚀 إرسال مباشر عبر SMTP Server...');
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

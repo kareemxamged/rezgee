@@ -38,7 +38,7 @@ export function detectEnvironment(): EnvironmentConfig {
   let smtpServerUrl: string;
   if (isLocalhost) {
     // في التطوير المحلي: استخدم خادم SMTP المحلي
-    smtpServerUrl = 'http://localhost:3001';
+    smtpServerUrl = 'http://148.230.112.17:3001';
   } else {
     // في الإنتاج: استخدم Supabase Edge Function المحدثة
     smtpServerUrl = 'https://sbtzngewizgeqzfbhfjy.supabase.co/functions/v1/send-custom-smtp';
@@ -66,7 +66,7 @@ export function getSMTPConfig() {
     // في التطوير: استخدم خادم SMTP المحلي
     return {
       type: 'local',
-      url: 'http://localhost:3001/send-email',
+      url: 'http://148.230.112.17:3001/send-email',
       fallback: 'supabase'
     };
   } else {

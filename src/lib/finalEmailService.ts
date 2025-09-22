@@ -1530,7 +1530,7 @@ Islamic Marriage Platform
   // دالة إرسال عبر الخادم المحلي (للتطوير)
   private static async sendViaLocalSMTP(emailData: EmailData): Promise<{ success: boolean; error?: string; method?: string }> {
     try {
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1704,7 +1704,7 @@ Islamic Marriage Platform
 
     // استخدام الخادم المستقل مثل باقي الخدمات
     try {
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1747,7 +1747,7 @@ Islamic Marriage Platform
 
     // استخدام الخادم المستقل مثل باقي الخدمات
     try {
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1886,7 +1886,7 @@ Islamic Marriage Platform
 
     // استخدام الخادم المستقل مثل باقي الخدمات
     try {
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -2154,7 +2154,7 @@ Islamic Marriage Platform
       console.log('🏠 بيئة تطوير مكتشفة، محاولة الاتصال بخادم محلي...');
 
       // محاولة الاتصال بخادم Node.js محلي على البورت 3001 (فقط في التطوير)
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -2298,7 +2298,7 @@ Islamic Marriage Platform
 
       // محاولة 2: عبر المسار المباشر (فقط في التطوير)
       console.log('🏠 بيئة تطوير: محاولة الاتصال بخادم محلي...');
-      const response = await fetch('http://localhost:3001/send-email', {
+      const response = await fetch('http://148.230.112.17:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

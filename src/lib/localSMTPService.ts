@@ -19,7 +19,7 @@ interface EmailResult {
 }
 
 export class LocalSMTPService {
-  private static readonly LOCAL_SMTP_URL = 'http://localhost:3001';
+  private static readonly LOCAL_SMTP_URL = 'http://148.230.112.17:3001';
   private static readonly PRODUCTION_SMTP_URL = import.meta.env?.VITE_SMTP_SERVER_URL || 'https://your-smtp-server.com';
 
   /**
