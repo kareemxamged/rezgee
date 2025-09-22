@@ -13,5 +13,24 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api\/smtp/, '')
       }
     }
+  },
+  build: {
+    // Chunk size warning limit
+    chunkSizeWarningLimit: 2000,
+    
+    // Rollup options for better chunking
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'supabase-vendor': ['@supabase/supabase-js'],
+          'ui-vendor': ['lucide-react', 'clsx'],
+          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          'i18n-vendor': ['i18next', 'react-i18next'],
+          'utils-vendor': ['axios', 'bcryptjs']
+        }
+      }
+    }
   }
 })

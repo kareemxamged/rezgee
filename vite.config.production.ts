@@ -20,7 +20,7 @@ export default defineConfig({
     sourcemap: false, // Disable source maps in production for security
     
     // Chunk size warning limit
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 2000,
     
     // Rollup options
     rollupOptions: {
@@ -36,7 +36,23 @@ export default defineConfig({
           'ui-vendor': ['lucide-react', 'clsx'],
           'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
           'i18n-vendor': ['i18next', 'react-i18next'],
-          'utils-vendor': ['axios', 'bcryptjs']
+          'utils-vendor': ['axios', 'bcryptjs'],
+          // Email services chunk
+          'email-services': [
+            './src/lib/emailService.ts',
+            './src/lib/finalEmailService.ts',
+            './src/lib/unifiedEmailService.ts',
+            './src/lib/notificationEmailService.ts',
+            './src/lib/databaseEmailService.ts',
+            './src/lib/unifiedDatabaseEmailService.ts'
+          ],
+          // Admin services chunk
+          'admin-services': [
+            './src/lib/adminAuthService.ts',
+            './src/lib/adminUsersService.ts',
+            './src/lib/adminDashboardService.ts',
+            './src/lib/adminTwoFactorService.ts'
+          ]
         },
         // File naming for better caching
         chunkFileNames: 'assets/js/[name]-[hash].js',

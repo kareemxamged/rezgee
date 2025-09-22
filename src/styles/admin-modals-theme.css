@@ -72,50 +72,12 @@
     background-color: var(--modal-bg-secondary);
     color: var(--modal-text-secondary);
     border: 1px solid var(--modal-border);
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
 }
 
 .modal-button-secondary:hover {
     background-color: var(--modal-bg-tertiary);
     border-color: #6366f1;
     color: var(--modal-text-primary);
-    transform: translateY(-1px);
-}
-
-.modal-button-primary {
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
-}
-
-.modal-button-primary:hover {
-    background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-
-.modal-button-primary:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
 }
 
 /* أزرار التحكم في الجداول */
@@ -1201,6 +1163,45 @@
 }
 
 .dark-theme .max-w-2xl.w-full.max-h-\\[90vh\\] {
+    background-color: var(--modal-bg) !important;
+    border: 1px solid var(--modal-border) !important;
+}
+
+.dark-theme .max-w-lg.w-full {
+    background-color: var(--modal-bg) !important;
+    border: 1px solid var(--modal-border) !important;
+}
+
+/* تحسينات للشارات */
+.dark-theme .bg-green-100.text-green-800.px-2.py-1.rounded-full {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+}
+
+.dark-theme .bg-red-100.text-red-800.px-2.py-1.rounded-full {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #f87171 !important;
+}
+
+.dark-theme .bg-yellow-100.text-yellow-800.px-2.py-1.rounded-full {
+    background-color: rgba(245, 158, 11, 0.15) !important;
+    color: #fbbf24 !important;
+}
+
+.dark-theme .bg-blue-100.text-blue-800.px-2.py-1.rounded-full {
+    background-color: rgba(99, 102, 241, 0.15) !important;
+    color: #818cf8 !important;
+}
+
+.dark-theme .bg-purple-100.text-purple-800.px-2.py-1.rounded-full {
+    background-color: rgba(139, 92, 246, 0.15) !important;
+    color: #a78bfa !important;
+}.dark-theme .max-w-4xl.w-full.max-h-\[95vh\] {
+    background-color: var(--modal-bg) !important;
+    border: 1px solid var(--modal-border) !important;
+}
+
+.dark-theme .max-w-2xl.w-full.max-h-\[90vh\] {
     background-color: var(--modal-bg) !important;
     border: 1px solid var(--modal-border) !important;
 }
