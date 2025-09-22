@@ -20,6 +20,16 @@ export default defineConfig({
     
     // Rollup options for better chunking
     rollupOptions: {
+      onwarn(warning, warn) {
+        // Suppress specific warnings
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+          return;
+        }
+        if (warning.message.includes('dynamic import will not move module into another chunk')) {
+          return;
+        }
+        warn(warning);
+      },
       output: {
         manualChunks: (id) => {
           // Vendor chunks
@@ -45,20 +55,30 @@ export default defineConfig({
             return 'vendor';
           }
           
-          // Application chunks
+          // Application chunks - more specific to avoid dynamic import conflicts
           if (id.includes('src/components/admin')) {
             return 'admin-components';
           }
-          if (id.includes('src/lib') && (id.includes('email') || id.includes('Email'))) {
+          if (id.includes('src/lib/email') || id.includes('src/lib/Email') || 
+              id.includes('src/lib/finalEmailService') || 
+              id.includes('src/lib/unifiedEmailService') ||
+              id.includes('src/lib/notificationEmailService') ||
+              id.includes('src/lib/databaseEmailService')) {
             return 'email-services';
           }
-          if (id.includes('src/lib') && (id.includes('admin') || id.includes('Admin'))) {
+          if (id.includes('src/lib/admin') && !id.includes('email')) {
             return 'admin-services';
+          }
+          if (id.includes('src/lib/subscriptionService')) {
+            return 'subscription-services';
+          }
+          if (id.includes('src/lib/supabase') && !id.includes('email')) {
+            return 'supabase-services';
           }
           if (id.includes('src/components') && !id.includes('admin')) {
             return 'user-components';
           }
-          if (id.includes('src/lib') && !id.includes('admin') && !id.includes('email')) {
+          if (id.includes('src/lib') && !id.includes('admin') && !id.includes('email') && !id.includes('subscription') && !id.includes('supabase')) {
             return 'user-services';
           }
         }

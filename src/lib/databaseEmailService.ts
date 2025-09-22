@@ -31,6 +31,7 @@ export interface DatabaseEmailSettings {
   updated_at: string;
 }
 
+
 export interface DatabaseEmailNotificationType {
   id: string;
   name: string;

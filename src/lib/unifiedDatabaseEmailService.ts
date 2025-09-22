@@ -1,4 +1,4 @@
-import { DatabaseEmailService, DatabaseEmailTemplate, DatabaseEmailSettings } from './databaseEmailService';
+import { DatabaseEmailTemplate, DatabaseEmailSettings } from './databaseEmailService';
 import { UnifiedEmailService } from './unifiedEmailService';
 
 export interface EmailTemplateData {
