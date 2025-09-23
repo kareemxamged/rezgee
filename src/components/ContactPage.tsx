@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import CaptchaComponent from './CaptchaComponent';
 import CaptchaService, { type CaptchaVerificationResult } from '../lib/captchaService';
+import RecaptchaComponent from './RecaptchaComponent';
 import { notificationEmailService } from '../lib/notificationEmailService';
 
 
@@ -406,15 +407,18 @@ const ContactPage: React.FC = () => {
                   )}
                 </div>
 
-                {/* CAPTCHA للمستخدمين غير المسجلين فقط */}
+                {/* Security Verification للمستخدمين غير المسجلين فقط */}
                 {!isLoggedIn && CaptchaService.isEnabled() && (
                   <div className="space-y-4">
                     <label className="block text-slate-700 font-medium mb-2">
                       {t('contact.form.captcha')}
                     </label>
-                    <CaptchaComponent
+                    <RecaptchaComponent
+                      action="contact"
                       onVerify={handleCaptchaVerify}
                       onError={handleCaptchaError}
+                      size="normal"
+                      theme="light"
                     />
                     {captchaResult && !captchaResult.success && (
                       <p className="text-red-600 text-sm">{captchaResult.message}</p>

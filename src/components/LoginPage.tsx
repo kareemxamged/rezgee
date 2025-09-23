@@ -9,6 +9,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useAuthStorage } from '../hooks/useLocalStorage';
 import CaptchaComponent from './CaptchaComponent';
 import CaptchaService, { type CaptchaVerificationResult } from '../lib/captchaService';
+import RecaptchaComponent from './RecaptchaComponent';
 
 
 type LoginFormData = {
@@ -389,20 +390,20 @@ const LoginPage: React.FC = () => {
                 to="/forgot-password"
                 className="text-primary-600 hover:text-primary-700 text-sm font-medium transition-colors"
               >
-                نسيت كلمة المرور؟
+                {t('auth.login.forgotPassword', 'نسيت كلمة المرور؟')}
               </Link>
             </div>
 
-            {/* Captcha Component */}
+            {/* Security Verification Component */}
             {CaptchaService.isEnabled() && (
               <div className="space-y-2">
-                <CaptchaComponent
+                <RecaptchaComponent
                   action="login"
                   onVerify={handleCaptchaVerify}
                   onError={handleCaptchaError}
                   disabled={isSubmitting || !attemptsInfo.canAttempt}
                   size="normal"
-                  theme="auto"
+                  theme="light"
                   showScore={false}
                   autoExecute={false}
                   userId={watchedEmail} // استخدام البريد الإلكتروني كمعرف مؤقت

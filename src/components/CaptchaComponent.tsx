@@ -18,6 +18,7 @@ interface CaptchaComponentProps {
   autoExecute?: boolean;
   userId?: string; // معرف المستخدم لنظام الثقة
   sessionId?: string; // معرف الجلسة لنظام الثقة
+  hideLabels?: boolean; // إخفاء النصوص والعناوين
 }
 
 /**
@@ -34,7 +35,8 @@ const CaptchaComponent: React.FC<CaptchaComponentProps> = ({
   showScore = false,
   autoExecute = false,
   userId,
-  sessionId
+  sessionId,
+  hideLabels = false
 }) => {
   const { t, i18n } = useTranslation();
   const [challenge, setChallenge] = useState<CaptchaChallenge | null>(null);
@@ -173,12 +175,14 @@ const CaptchaComponent: React.FC<CaptchaComponentProps> = ({
     <div className={`captcha-component ${className}`}>
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 space-y-3">
         {/* رأس المكون */}
-        <div className="flex items-center gap-2 text-gray-700">
-          <Shield className="w-5 h-5 text-blue-600" />
-          <span className={`font-medium ${sizeClasses[size]}`}>
-            {t('captcha.title', 'التحقق الأمني')}
-          </span>
-        </div>
+        {!hideLabels && (
+          <div className="flex items-center gap-2 text-gray-700">
+            <Shield className="w-5 h-5 text-blue-600" />
+            <span className={`font-medium ${sizeClasses[size]}`}>
+              {t('captcha.title', 'التحقق الأمني')}
+            </span>
+          </div>
+        )}
 
         {/* التحدي الرياضي */}
         {challenge && !isVerified && (
@@ -253,9 +257,11 @@ const CaptchaComponent: React.FC<CaptchaComponentProps> = ({
         )}
 
         {/* معلومات إضافية */}
-        <div className="text-xs text-gray-500 text-center">
-          {t('captcha.description', 'حل المسألة الرياضية للمتابعة')}
-        </div>
+        {!hideLabels && (
+          <div className="text-xs text-gray-500 text-center">
+            {t('captcha.description', 'حل المسألة الرياضية للمتابعة')}
+          </div>
+        )}
       </div>
     </div>
   );

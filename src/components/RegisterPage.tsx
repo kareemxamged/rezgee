@@ -13,6 +13,7 @@ import { protectFormsFromExtensions } from '../utils/extensionProtection';
 import { getCountriesForLanguage } from '../data/countriesEnglish';
 import CaptchaComponent from './CaptchaComponent';
 import CaptchaService, { type CaptchaVerificationResult } from '../lib/captchaService';
+import RecaptchaComponent from './RecaptchaComponent';
 import { useToast } from './ToastContainer';
 
 
@@ -946,16 +947,16 @@ const RegisterPage: React.FC = () => {
               )}
             </div>
 
-            {/* Captcha Component */}
+            {/* Security Verification Component */}
             {CaptchaService.isEnabled() && (
               <div className="space-y-2">
-                <CaptchaComponent
+                <RecaptchaComponent
                   action="register"
                   onVerify={handleCaptchaVerify}
                   onError={handleCaptchaError}
                   disabled={isLoading}
                   size="normal"
-                  theme="auto"
+                  theme="light"
                   showScore={false}
                   autoExecute={false}
                   userId={watch('email')} // استخدام البريد الإلكتروني كمعرف مؤقت

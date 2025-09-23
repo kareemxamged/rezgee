@@ -271,7 +271,7 @@ class AdminTwoFactorService {
       const { html: message, text: textMessage, subject } = createUnifiedEmailTemplate(templateData);
 
       // إرسال عبر الخادم المستقل
-      const response = await fetch('http://148.230.112.17:3001/send-email', {
+      const response = await fetch('http://localhost:3001/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

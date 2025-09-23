@@ -260,3 +260,5 @@ function simulateEmailSending($template, $recipientEmail, $smtpSettings) {
 ?>
 
 
+
+

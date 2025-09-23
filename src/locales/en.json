@@ -1602,7 +1602,8 @@
             "invalidPhone": "Please enter a valid phone number",
             "messageMinLength": "Message must be at least 10 characters long",
             "autoFilled": "Auto-filled from your account",
-            "captcha": "Security Verification"
+            "captcha": "Security Verification",
+            "loadcaptcha": "Loading security verification..."
         },
         "info": {
             "title": "Contact Information",

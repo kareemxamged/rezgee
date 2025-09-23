@@ -9,6 +9,7 @@ import { sendTemporaryPasswordViaSupabase } from '../lib/temporaryPasswordServic
 import { translateSupabaseError } from '../utils/errorHandler';
 import CaptchaComponent from './CaptchaComponent';
 import CaptchaService, { type CaptchaVerificationResult } from '../lib/captchaService';
+import RecaptchaComponent from './RecaptchaComponent';
 
 // نوع بيانات النموذج
 type ForgotPasswordFormData = {
@@ -256,16 +257,16 @@ const ForgotPasswordPage: React.FC = () => {
               </div>
             )}
 
-            {/* Captcha Component */}
+            {/* Security Verification Component */}
             {CaptchaService.isEnabled() && (
               <div className="space-y-2">
-                <CaptchaComponent
+                <RecaptchaComponent
                   action="forgot_password"
                   onVerify={handleCaptchaVerify}
                   onError={handleCaptchaError}
                   disabled={isSubmitting || !watchedEmail || !!waitTime}
                   size="normal"
-                  theme="auto"
+                  theme="light"
                   showScore={false}
                   autoExecute={false}
                   userId={watchedEmail} // استخدام البريد الإلكتروني كمعرف مؤقت
