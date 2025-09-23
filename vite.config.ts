@@ -14,10 +14,14 @@ export default defineConfig({
       }
     }
   },
+  preview: {
+    host: true,
+    allowedHosts: ['rezgee.com', 'localhost', '127.0.0.1']
+  },
   build: {
     // Chunk size warning limit
     chunkSizeWarningLimit: 2000,
-    
+
     // Rollup options for better chunking
     rollupOptions: {
       onwarn(warning, warn) {
@@ -54,16 +58,16 @@ export default defineConfig({
             }
             return 'vendor';
           }
-          
+
           // Application chunks - more specific to avoid dynamic import conflicts
           if (id.includes('src/components/admin')) {
             return 'admin-components';
           }
-          if (id.includes('src/lib/email') || id.includes('src/lib/Email') || 
-              id.includes('src/lib/finalEmailService') || 
-              id.includes('src/lib/unifiedEmailService') ||
-              id.includes('src/lib/notificationEmailService') ||
-              id.includes('src/lib/databaseEmailService')) {
+          if (id.includes('src/lib/email') || id.includes('src/lib/Email') ||
+            id.includes('src/lib/finalEmailService') ||
+            id.includes('src/lib/unifiedEmailService') ||
+            id.includes('src/lib/notificationEmailService') ||
+            id.includes('src/lib/databaseEmailService')) {
             return 'email-services';
           }
           if (id.includes('src/lib/admin') && !id.includes('email')) {
