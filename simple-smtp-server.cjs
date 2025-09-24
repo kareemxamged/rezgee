@@ -8,8 +8,8 @@
 const {
     createServer
 } = require('http');
+const https = require('https');
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 const path = require('path');
 const {
     createClient
@@ -322,13 +322,22 @@ async function simulateEmailSending(data) {
     }
 }
 
+// إعداد SSL
+const sslOptions = {
+    key: fs.readFileSync('/etc/ssl/smtp/smtp-key.pem'),
+    cert: fs.readFileSync('/etc/ssl/smtp/smtp-cert.pem')
+};
+
+// إنشاء خادم HTTPS
+const httpsServer = https.createServer(sslOptions, server);
+
 // بدء الخادم
-server.listen(PORT, '0.0.0.0', () => {
+httpsServer.listen(PORT, '0.0.0.0', () => {
     console.log('✅ خادم SMTP المبسط يعمل الآن!');
     console.log(`📡 العناوين المتاحة:`);
-    console.log(`   🌐 الشبكة: http://148.230.112.17:${PORT}`);
-    console.log(`   🏠 المحلي: http://localhost:${PORT}`);
-    console.log(`   🔗 عام: http://0.0.0.0:${PORT}`);
+    console.log(`   🌐 الشبكة HTTPS: https://148.230.112.17:${PORT}`);
+    console.log(`   🏠 المحلي HTTPS: https://localhost:${PORT}`);
+    console.log(`   🔗 عام HTTPS: https://0.0.0.0:${PORT}`);
     console.log(`📧 جاهز لاستقبال طلبات الإرسال`);
     console.log(`⏰ الوقت: ${new Date().toLocaleString('ar-SA')}`);
     console.log('');
