@@ -21,11 +21,12 @@ const HomePage: React.FC = () => {
     const loadFeaturedArticles = async () => {
       try {
         setLoadingArticles(true);
-        const articles = await articleService.getFeaturedArticles(3);
-        console.log('Loaded featured articles:', articles); // للتشخيص
+        const currentLanguage = i18n.language as 'ar' | 'en';
+        const articles = await articleService.getFeaturedArticles(3, currentLanguage);
+        // console.log('Loaded featured articles:', articles); // للتشخيص
         setFeaturedArticles(articles);
       } catch (error) {
-        console.error('Error loading featured articles:', error);
+        // console.error('Error loading featured articles:', error);
         setFeaturedArticles([]); // تأكد من إعادة تعيين المصفوفة في حالة الخطأ
       } finally {
         setLoadingArticles(false);
@@ -33,7 +34,7 @@ const HomePage: React.FC = () => {
     };
 
     loadFeaturedArticles();
-  }, []);
+  }, [i18n.language]);
 
   // Load subscription plans
   useEffect(() => {
@@ -43,7 +44,7 @@ const HomePage: React.FC = () => {
         const plans = await SubscriptionService.getAvailablePlans();
         setSubscriptionPlans(plans);
       } catch (error) {
-        console.error('Error loading subscription plans:', error);
+        // console.error('Error loading subscription plans:', error);
         setSubscriptionPlans([]);
       } finally {
         setLoadingPlans(false);
@@ -61,7 +62,7 @@ const HomePage: React.FC = () => {
         // This should be replaced with actual user check when auth is available
         setCanStartTrial(true);
       } catch (error) {
-        console.error('Error checking trial eligibility:', error);
+        // console.error('Error checking trial eligibility:', error);
         setCanStartTrial(false);
       }
     };

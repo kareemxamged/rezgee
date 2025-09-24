@@ -95,7 +95,7 @@ class VerificationService {
         .limit(1);
 
       if (error) {
-        console.error('Error checking active request:', error);
+        // console.error('Error checking active request:', error);
         return false;
       }
 
@@ -111,7 +111,7 @@ class VerificationService {
 
       if (requestDate < thirtyDaysAgo) {
         // الطلب قديم جداً، احذفه تلقائياً
-        console.log('Removing expired verification request:', request.id);
+        // console.log('Removing expired verification request:', request.id);
         await supabase
           .from('verification_requests')
           .delete()

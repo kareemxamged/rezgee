@@ -172,7 +172,7 @@ const NotificationsPage: React.FC = () => {
       const userNotifications = await notificationService.getAllNotificationsWithAlerts(userProfile.id, 50);
       setNotifications(userNotifications);
     } catch (error) {
-      console.error('Error loading notifications:', error);
+      // console.error('Error loading notifications:', error);
     } finally {
       setIsLoading(false);
     }

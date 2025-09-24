@@ -178,6 +178,8 @@ interface EmailSettings {
   reply_to: string;
   is_active: boolean;
   is_default: boolean;
+  secure: boolean; // استخدام SSL/TLS
+  require_tls: boolean; // طلب TLS
   created_at: string;
   updated_at: string;
 }
@@ -797,6 +799,8 @@ const EmailNotificationsManagement: React.FC = () => {
         reply_to: settingsFormData.from_email,
         is_active: settingsFormData.is_active,
         is_default: settingsFormData.is_default,
+        secure: settingsFormData.secure || false, // إضافة إعدادات الأمان
+        require_tls: settingsFormData.require_tls || false, // إضافة إعدادات الأمان
         updated_at: new Date().toISOString()
       };
 
@@ -949,8 +953,8 @@ const EmailNotificationsManagement: React.FC = () => {
     setSettingsFormData({
       host: settings.smtp_host || '',
       port: settings.smtp_port || 587,
-      secure: settings.secure || false,
-      require_tls: settings.require_tls || false,
+      secure: settings.secure || false, // تحميل إعدادات الأمان
+      require_tls: settings.require_tls || false, // تحميل إعدادات الأمان
       username: settings.smtp_username || '',
       password: settings.smtp_password || '',
       from_email: settings.from_email || '',
@@ -2884,7 +2888,7 @@ const EmailNotificationsManagement: React.FC = () => {
                         value={settingsFormData.from_email}
                         onChange={(e) => setSettingsFormData(prev => ({ ...prev, from_email: e.target.value }))}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent modal-input"
-                        placeholder="noreply@rezge.com"
+                        placeholder="noreply@rezgee.com"
                       />
                     </div>
                   </div>

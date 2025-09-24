@@ -183,8 +183,8 @@ export class TemplateBasedEmailService {
     const defaultData = {
       currentYear: new Date().getFullYear(),
       platformName: language === 'ar' ? 'رزقي' : 'Rezge',
-      supportEmail: 'support@rezge.com',
-      contactEmail: 'contact@rezge.com',
+      supportEmail: 'support@rezgee.com',
+      contactEmail: 'contact@rezgee.com',
       baseUrl: typeof window !== 'undefined' ? window.location.origin : 'https://rezge.vercel.app',
       ...templateData
     };

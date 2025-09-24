@@ -15,7 +15,6 @@ interface UserData {
   nationality?: string;
   weight?: number;
   height?: number;
-  religiosity_level?: string;
   prayer_commitment?: string;
   smoking?: string;
   beard?: string;
@@ -177,25 +176,6 @@ class EmailVerificationService {
     }
   }
 
-  // دالة لتحويل قيم مستوى التدين من نموذج التسجيل إلى قاعدة البيانات
-  private static mapReligiosityLevel(religiosityValue?: string): string | null {
-    if (!religiosityValue) return null;
-
-    // تحويل القيم القديمة إلى القيم الجديدة المطابقة لقاعدة البيانات
-    switch (religiosityValue) {
-      case 'somewhat_religious':
-        return 'slightly_religious';
-      case 'not_religious':
-      case 'slightly_religious':
-      case 'religious':
-      case 'very_religious':
-      case 'prefer_not_say':
-        return religiosityValue; // القيم صحيحة بالفعل
-      default:
-        console.warn(`⚠️ Unknown religiosity level: ${religiosityValue}, setting to null`);
-        return null;
-    }
-  }
 
   // إرسال بريد التحقق - تم تعطيله بناءً على طلب المستخدم
   async sendVerificationEmail(email: string, token: string): Promise<{ success: boolean; error?: string }> {
@@ -567,7 +547,6 @@ class EmailVerificationService {
         nationality: verification.user_data.nationality || null,
         weight: verification.user_data.weight || null,
         height: verification.user_data.height || null,
-        religiosity_level: verification.user_data.religiosity_level || null,
         prayer_commitment: verification.user_data.prayer_commitment || null,
         smoking: verification.user_data.smoking || null,
         beard: verification.user_data.beard || null,
@@ -598,7 +577,7 @@ class EmailVerificationService {
 
       // تسجيل البيانات الواردة للتشخيص
       console.log('📊 User data received:', verification.user_data);
-      console.log('🔍 Religiosity level value:', verification.user_data.religiosity_level);
+      // console.log('🔍 Religiosity level value:', verification.user_data.religiosity_level);
 
       // إنشاء الملف الشخصي مباشرة مع جميع البيانات
       const profileData = {
@@ -621,7 +600,6 @@ class EmailVerificationService {
         weight: verification.user_data.weight || null,
         height: verification.user_data.height || null,
         // تطبيق تحويل القيم للتأكد من المطابقة مع قاعدة البيانات
-        religiosity_level: EmailVerificationService.mapReligiosityLevel(verification.user_data.religiosity_level),
         prayer_commitment: verification.user_data.prayer_commitment || null,
         smoking: EmailVerificationService.mapSmokingValue(verification.user_data.smoking) || null,
         beard: EmailVerificationService.mapBeardValue(verification.user_data.beard) || null,

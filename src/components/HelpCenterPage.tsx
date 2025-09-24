@@ -105,7 +105,7 @@ const HelpCenterPage: React.FC = () => {
       key: 'email',
       icon: Mail,
       color: 'from-emerald-500 to-emerald-600',
-      redirect: 'mailto:info@rezge.com'
+      redirect: 'mailto:info@rezgee.com'
     },
     {
       key: 'phone',

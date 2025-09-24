@@ -56,7 +56,7 @@ const ArticlesPage: React.FC = () => {
       } as unknown as Category));
       setCategories(categoriesWithIcons);
     } catch (error) {
-      console.error('Error loading categories:', error);
+      // console.error('Error loading categories:', error);
     }
   };
 
@@ -65,7 +65,7 @@ const ArticlesPage: React.FC = () => {
       const tags = await articleService.getPopularTags(currentLanguage, 15);
       setPopularTags(tags);
     } catch (error) {
-      console.error('Error loading popular tags:', error);
+      // console.error('Error loading popular tags:', error);
     }
   };
 
@@ -83,7 +83,7 @@ const ArticlesPage: React.FC = () => {
       // تطبيق الفلترة الأولية
       setArticles(result.articles);
     } catch (error) {
-      console.error('Error loading articles:', error);
+      // console.error('Error loading articles:', error);
     } finally {
       setLoading(false);
     }

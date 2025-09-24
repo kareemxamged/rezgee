@@ -21,22 +21,22 @@ BEGIN
     IF sample_user_id IS NULL THEN
         -- Create Dr. Layla Al-Ansari - Marriage Counselor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.layla@rezge.com', 'د. ليلى الأنصاري', 'مستشارة زواج وعلاقات أسرية', 'دكتورة في علم النفس الأسري، مستشارة زواج معتمدة، لها خبرة 18 عاماً في مجال الاستشارات الزوجية والأسرية، مؤلفة كتاب "أسرار الحياة الزوجية السعيدة"')
+        ('dr.layla@rezgee.com', 'د. ليلى الأنصاري', 'مستشارة زواج وعلاقات أسرية', 'دكتورة في علم النفس الأسري، مستشارة زواج معتمدة، لها خبرة 18 عاماً في مجال الاستشارات الزوجية والأسرية، مؤلفة كتاب "أسرار الحياة الزوجية السعيدة"')
         RETURNING id INTO dr_layla_id;
         
         -- Create Dr. Khalid Al-Rashid - Family Therapist
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.khalid@rezge.com', 'د. خالد الراشد', 'معالج أسري ومستشار زواج', 'دكتور في العلاج الأسري، متخصص في حل النزاعات الزوجية، له خبرة 15 عاماً في العلاج النفسي والأسري، حاصل على شهادات دولية في الإرشاد الزوجي')
+        ('dr.khalid@rezgee.com', 'د. خالد الراشد', 'معالج أسري ومستشار زواج', 'دكتور في العلاج الأسري، متخصص في حل النزاعات الزوجية، له خبرة 15 عاماً في العلاج النفسي والأسري، حاصل على شهادات دولية في الإرشاد الزوجي')
         RETURNING id INTO dr_khalid_id;
         
         -- Create Dr. Maryam Al-Zahra - Relationship Expert
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.maryam@rezge.com', 'د. مريم الزهراء', 'خبيرة العلاقات الزوجية', 'دكتورة في علم الاجتماع الأسري، خبيرة في تطوير العلاقات الزوجية، مدربة معتمدة في التواصل الفعال، لها عدة مؤلفات في مجال الأسرة والزواج')
+        ('dr.maryam@rezgee.com', 'د. مريم الزهراء', 'خبيرة العلاقات الزوجية', 'دكتورة في علم الاجتماع الأسري، خبيرة في تطوير العلاقات الزوجية، مدربة معتمدة في التواصل الفعال، لها عدة مؤلفات في مجال الأسرة والزواج')
         RETURNING id INTO dr_maryam_id;
         
         -- Create Sara Al-Mahmoud - Certified Counselor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('sara.mahmoud@rezge.com', 'أ. سارة المحمود', 'مستشارة أسرية معتمدة', 'مستشارة أسرية معتمدة، متخصصة في الإرشاد الزوجي والأسري، حاصلة على ماجستير في الإرشاد النفسي، لها خبرة 12 عاماً في مساعدة الأزواج')
+        ('sara.mahmoud@rezgee.com', 'أ. سارة المحمود', 'مستشارة أسرية معتمدة', 'مستشارة أسرية معتمدة، متخصصة في الإرشاد الزوجي والأسري، حاصلة على ماجستير في الإرشاد النفسي، لها خبرة 12 عاماً في مساعدة الأزواج')
         RETURNING id INTO counselor_sara_id;
         
         -- Set default author

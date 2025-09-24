@@ -21,7 +21,7 @@ BEGIN
     -- If no user exists, create a sample author
     IF sample_user_id IS NULL THEN
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('author@rezge.com', 'د. أحمد الشريف', 'دكتور في الشريعة الإسلامية', 'دكتور في الشريعة الإسلامية من جامعة الأزهر، متخصص في فقه الأسرة والمعاملات')
+        ('author@rezgee.com', 'د. أحمد الشريف', 'دكتور في الشريعة الإسلامية', 'دكتور في الشريعة الإسلامية من جامعة الأزهر، متخصص في فقه الأسرة والمعاملات')
         RETURNING id INTO sample_user_id;
     END IF;
     

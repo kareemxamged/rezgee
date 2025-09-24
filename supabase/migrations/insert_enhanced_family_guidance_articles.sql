@@ -21,22 +21,22 @@ BEGIN
     IF sample_user_id IS NULL THEN
         -- Create Dr. Ibrahim Al-Mansouri - Family Counselor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.ibrahim@rezge.com', 'د. إبراهيم المنصوري', 'مستشار أسري ومختص في التوجيه الأسري', 'دكتور في علم النفس الأسري، مختص في التوجيه الأسري والعلاقات بين الأجيال، له خبرة 22 عاماً في مجال الاستشارات الأسرية، مؤلف كتاب "دور الأهل في بناء الأسرة"')
+        ('dr.ibrahim@rezgee.com', 'د. إبراهيم المنصوري', 'مستشار أسري ومختص في التوجيه الأسري', 'دكتور في علم النفس الأسري، مختص في التوجيه الأسري والعلاقات بين الأجيال، له خبرة 22 عاماً في مجال الاستشارات الأسرية، مؤلف كتاب "دور الأهل في بناء الأسرة"')
         RETURNING id INTO dr_ibrahim_id;
         
         -- Create Dr. Aisha Al-Qasimi - Family Dynamics Expert
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.aisha@rezge.com', 'د. عائشة القاسمي', 'خبيرة في ديناميكيات الأسرة', 'دكتورة في علم الاجتماع الأسري، متخصصة في دراسة العلاقات الأسرية والتوازن بين الأجيال، لها أبحاث متعددة في مجال التوجيه الأسري')
+        ('dr.aisha@rezgee.com', 'د. عائشة القاسمي', 'خبيرة في ديناميكيات الأسرة', 'دكتورة في علم الاجتماع الأسري، متخصصة في دراسة العلاقات الأسرية والتوازن بين الأجيال، لها أبحاث متعددة في مجال التوجيه الأسري')
         RETURNING id INTO dr_aisha_id;
         
         -- Create Nadia Al-Zahra - Certified Family Counselor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('nadia.zahra@rezge.com', 'أ. نادية الزهراء', 'مستشارة أسرية معتمدة', 'مستشارة أسرية معتمدة، متخصصة في التوسط الأسري وحل النزاعات، حاصلة على ماجستير في الإرشاد الأسري، لها خبرة 16 عاماً في مساعدة الأسر')
+        ('nadia.zahra@rezgee.com', 'أ. نادية الزهراء', 'مستشارة أسرية معتمدة', 'مستشارة أسرية معتمدة، متخصصة في التوسط الأسري وحل النزاعات، حاصلة على ماجستير في الإرشاد الأسري، لها خبرة 16 عاماً في مساعدة الأسر')
         RETURNING id INTO counselor_nadia_id;
         
         -- Create Prof. Hassan Al-Rashid - Family Studies Professor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('prof.hassan@rezge.com', 'أ.د. حسن الراشد', 'أستاذ الدراسات الأسرية', 'أستاذ الدراسات الأسرية في الجامعة، باحث في مجال الأسرة والمجتمع، له عدة مؤلفات في مجال التوجيه الأسري والعلاقات الأسرية')
+        ('prof.hassan@rezgee.com', 'أ.د. حسن الراشد', 'أستاذ الدراسات الأسرية', 'أستاذ الدراسات الأسرية في الجامعة، باحث في مجال الأسرة والمجتمع، له عدة مؤلفات في مجال التوجيه الأسري والعلاقات الأسرية')
         RETURNING id INTO prof_hassan_id;
         
         -- Set default author

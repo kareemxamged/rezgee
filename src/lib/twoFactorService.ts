@@ -65,7 +65,7 @@ class TwoFactorService {
    */
   async resetUserAttempts(userId: string): Promise<boolean> {
     try {
-      console.log('🗑️ Resetting all 2FA attempts for user:', userId);
+      // console.log('🗑️ Resetting all 2FA attempts for user:', userId);
 
       const { error } = await supabase
         .from('two_factor_codes')
@@ -73,7 +73,7 @@ class TwoFactorService {
         .eq('user_id', userId);
 
       if (error) {
-        console.error('❌ Error resetting user attempts:', error);
+        // console.error('❌ Error resetting user attempts:', error);
         return false;
       }
 

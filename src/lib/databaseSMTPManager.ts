@@ -32,11 +32,11 @@ export class DatabaseSMTPManager {
    */
   static async getDefaultSMTPSettings(): Promise<DatabaseSMTPConfig | null> {
     try {
-      console.log('🔍 جلب إعدادات SMTP الافتراضية من قاعدة البيانات...');
+      // console.log('🔍 جلب إعدادات SMTP الافتراضية من قاعدة البيانات...');
       
       // التحقق من الكاش أولاً
       if (this.cachedSettings && Date.now() < this.cacheExpiry) {
-        console.log('✅ استخدام إعدادات SMTP من الكاش');
+        // console.log('✅ استخدام إعدادات SMTP من الكاش');
         return this.cachedSettings;
       }
 

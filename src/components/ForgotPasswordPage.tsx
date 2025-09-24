@@ -74,8 +74,8 @@ const ForgotPasswordPage: React.FC = () => {
 
   // دالة إرسال طلب كلمة المرور المؤقتة
   const onSubmit = async (data: ForgotPasswordFormData) => {
-    console.log('🚀 === بدء عملية إرسال نموذج نسيت الباسوورد ===');
-    console.log('📧 البريد الإلكتروني من النموذج:', data.email);
+    // console.log('🚀 === بدء عملية إرسال نموذج نسيت الباسوورد ===');
+    // console.log('📧 البريد الإلكتروني من النموذج:', data.email);
 
     setIsSubmitting(true);
     setErrorMessage('');
@@ -83,22 +83,22 @@ const ForgotPasswordPage: React.FC = () => {
 
     // التحقق من Captcha إذا كان مفعلاً
     if (CaptchaService.isEnabled() && !captchaVerified) {
-      console.log('❌ فشل التحقق من Captcha');
+      // console.log('❌ فشل التحقق من Captcha');
       setErrorMessage(t('captcha.required'));
       setIsSubmitting(false);
       return;
     }
 
-    console.log('✅ تم تجاوز فحص Captcha');
+    // console.log('✅ تم تجاوز فحص Captcha');
     setWaitTime(null);
     setIsBlocked(false);
     setCurrentTempPassword(null);
 
     try {
-      console.log('🔄 استدعاء دالة إرسال كلمة المرور المؤقتة...');
+      // console.log('🔄 استدعاء دالة إرسال كلمة المرور المؤقتة...');
       // إرسال كلمة المرور المؤقتة باستخدام Supabase Custom SMTP
       const result = await sendTemporaryPasswordViaSupabase(data.email);
-      console.log('📨 نتيجة إرسال كلمة المرور المؤقتة:', result);
+      // console.log('📨 نتيجة إرسال كلمة المرور المؤقتة:', result);
 
       if (result.success) {
         // حفظ كلمة المرور المؤقتة للاستخدام في الرابط (إذا كانت متوفرة)
@@ -131,7 +131,7 @@ const ForgotPasswordPage: React.FC = () => {
         }
       }
     } catch (error: any) {
-      console.error('Error in forgot password:', error);
+      // console.error('Error in forgot password:', error);
 
       // ترجمة أخطاء Supabase
       const currentLang = i18n.language === 'ar' ? 'ar' : 'en';

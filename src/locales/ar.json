@@ -479,11 +479,6 @@
             "hijabNiqab": "منتقبة",
             "hijabPreferNotSay": "أفضل أن لا أقول",
             "personalReligiousInfoTitle": "معلومات شخصية ودينية",
-            "religiosityLevel": "مستوى التدين",
-            "religiosityLevelPlaceholder": "اختر مستوى التدين",
-            "religiosityLevelNotReligious": "غير متدين",
-            "religiosityLevelSomewhatReligious": "متدين إلى حد ما",
-            "religiosityLevelReligious": "متدين",
             "financialStatus": "الوضع المالي",
             "financialStatusPlaceholder": "اختر الوضع المالي",
             "financialStatusPoor": "ضعيف",
@@ -1286,7 +1281,7 @@
                 },
                 "q2": {
                     "question": "كيف تضمنون الالتزام بالقيم الإسلامية؟",
-                    "answer": "لدينا فريق متخصص من العلماء والمستشارين الشرعيين يشرفون على جميع جوانب الموقع. كما نراقب المحتوى باستمرار ونطبق إرشادات صارمة للتواصل المحترم."
+                    "answer": "من أساسيات موقعنا الاهتمام بالقيم الإسلامية والمسائل الشرعية، ونحرص على مراقبة المحتوى والتواصل بما يتوافق مع هذه المبادئ. نحن في مراحلنا الأولى ونعمل على تطوير فريق من المختصين لضمان الامتثال الكامل للقيم الشرعية."
                 },
                 "q3": {
                     "question": "هل يمكن للأهل المشاركة في العملية؟",
@@ -1667,7 +1662,7 @@
             },
             "email": {
                 "title": "البريد الإلكتروني",
-                "value": "info@rezge.com"
+                "value": "info@rezgee.com"
             },
             "hours": {
                 "title": "ساعات العمل",
@@ -1677,21 +1672,21 @@
         "support": {
             "title": "الدعم الفني",
             "description": "فريق الدعم الفني متاح لمساعدتك في أي استفسارات تقنية",
-            "email": "support@rezge.com",
+            "email": "support@rezgee.com",
             "phone": "+966582352555",
             "phoneDir": "ltr"
         },
         "sales": {
             "title": "المبيعات والاشتراكات",
             "description": "للاستفسار عن الباقات المدفوعة والاشتراكات المميزة",
-            "email": "sales@rezge.com",
+            "email": "sales@rezgee.com",
             "phone": "+966582352555",
             "phoneDir": "ltr"
         },
         "legal": {
             "title": "الشؤون القانونية",
             "description": "للاستفسارات القانونية والشكاوى الرسمية",
-            "email": "legal@rezge.com"
+            "email": "legal@rezgee.com"
         },
         "social": {
             "title": "تابعنا على وسائل التواصل",
@@ -2080,7 +2075,7 @@
             "contact": {
                 "title": "تواصل معنا",
                 "intro": "إذا كان لديك أي أسئلة حول سياسة الخصوصية، يمكنك التواصل معنا:",
-                "email": "privacy@rezge.com",
+                "email": "privacy@rezgee.com",
                 "emailLabel": "البريد الإلكتروني",
                 "phone": "+966582352555",
                 "phoneLabel": "الهاتف",
@@ -2368,7 +2363,7 @@
             "contact": {
                 "title": "التواصل",
                 "intro": "للاستفسارات حول شروط الاستخدام:",
-                "email": "legal@rezge.com",
+                "email": "legal@rezgee.com",
                 "phone": "+966582352555",
                 "phoneDir": "ltr",
                 "emailLabel": "البريد الإلكتروني",
@@ -2405,9 +2400,9 @@
         },
         "contactInfo": {
             "title": "تواصل معنا",
-            "email": "info@rezge.com",
+            "email": "info@rezgee.com",
             "phone": "+966582352555",
-            "address": "الرياض، السعودية"
+            "address": "المملكة العربية السعودية"
         },
         "newsletter": {
             "title": "اشترك في النشرة الإخبارية",
@@ -2893,7 +2888,6 @@
             "nationality": "الجنسية",
             "residenceLocation": "مكان الإقامة",
             "commitmentLevel": "مستوى الالتزام",
-            "religiosityLevel": "مستوى التدين",
             "prayerCommitment": "الالتزام بالصلاة",
             "smoking": "التدخين",
             "beard": "اللحية",
@@ -2940,11 +2934,6 @@
                 "committed": "ملتزم",
                 "conservative": "محافظ",
                 "prefer_not_say": "أفضل أن لا أقول"
-            },
-            "religiosityLevel": {
-                "not_religious": "غير متدين",
-                "somewhat_religious": "متدين إلى حد ما",
-                "religious": "متدين"
             },
             "prayerCommitment": {
                 "dont_pray": "لا يصلي",

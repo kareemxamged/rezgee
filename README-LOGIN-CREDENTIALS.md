@@ -66,16 +66,16 @@
 
 | الاسم | البريد الإلكتروني | كلمة المرور | الجنس |
 |-------|------------------|-------------|--------|
-| فاطمة التست | test.female@rezge.com | `TestFemaleRezge123!` | أنثى |
-| اختبار البحث | test.search@rezge.com | `TestSearchRezge123!` | أنثى |
-| علي المنصوري | ali.almansouri@rezge.com | `AliMansouri123!` | ذكر |
-| محمد الدوسري | mohammed.aldosari@rezge.com | `MohammedDosari123!` | ذكر |
-| عبدالله الحربي | abdullah.alharbi@rezge.com | `AbdullahHarbi123!` | ذكر |
-| يوسف حسن | youssef.hassan@rezge.com | `YoussefHassan123!` | ذكر |
-| أحمد خوري | ahmad.khouri@rezge.com | `AhmadKhouri123!` | ذكر |
-| خالد الراشد | khalid.alrashid@rezge.com | `KhalidRashid123!` | ذكر |
-| حسن المنصوري | hassan.almansouri@rezge.com | `HassanMansouri123!` | ذكر |
-| إبراهيم محمد | ibrahim.mohamed@rezge.com | `IbrahimMohamed123!` | ذكر |
+| فاطمة التست | test.female@rezgee.com | `TestFemaleRezge123!` | أنثى |
+| اختبار البحث | test.search@rezgee.com | `TestSearchRezge123!` | أنثى |
+| علي المنصوري | ali.almansouri@rezgee.com | `AliMansouri123!` | ذكر |
+| محمد الدوسري | mohammed.aldosari@rezgee.com | `MohammedDosari123!` | ذكر |
+| عبدالله الحربي | abdullah.alharbi@rezgee.com | `AbdullahHarbi123!` | ذكر |
+| يوسف حسن | youssef.hassan@rezgee.com | `YoussefHassan123!` | ذكر |
+| أحمد خوري | ahmad.khouri@rezgee.com | `AhmadKhouri123!` | ذكر |
+| خالد الراشد | khalid.alrashid@rezgee.com | `KhalidRashid123!` | ذكر |
+| حسن المنصوري | hassan.almansouri@rezgee.com | `HassanMansouri123!` | ذكر |
+| إبراهيم محمد | ibrahim.mohamed@rezgee.com | `IbrahimMohamed123!` | ذكر |
 
 ### 👤 الحسابات الحقيقية (مستخدمين فعليين)
 

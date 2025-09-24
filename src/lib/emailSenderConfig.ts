@@ -399,8 +399,8 @@ export class EmailSenderManager {
 
     return {
       name: senderName,
-      email: 'noreply@rezge.com',
-      replyTo: 'support@rezge.com'
+      email: 'noreply@rezgee.com',
+      replyTo: 'support@rezgee.com'
     };
   }
 

@@ -91,7 +91,7 @@ const ContactPage: React.FC = () => {
       setValue('email', email);
       setValue('phone', phone);
 
-      console.log('👤 مستخدم مسجل دخول - تم ملء البيانات تلقائياً:', { name, email, phone });
+      // console.log('👤 مستخدم مسجل دخول - تم ملء البيانات تلقائياً:', { name, email, phone });
     } else {
       setIsLoggedIn(false);
       setUserName('');
@@ -103,7 +103,7 @@ const ContactPage: React.FC = () => {
       setValue('email', '');
       setValue('phone', '');
 
-      console.log('🚪 لا يوجد مستخدم مسجل دخول');
+      // console.log('🚪 لا يوجد مستخدم مسجل دخول');
     }
   }, [user, userProfile, setValue]);
 
@@ -129,39 +129,39 @@ const ContactPage: React.FC = () => {
   };
 
   const onSubmit = async (data: ContactFormData) => {
-    console.log('🚀 بدء عملية إرسال النموذج...', data);
+    // console.log('🚀 بدء عملية إرسال النموذج...', data);
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     // التحقق من Captcha فقط للمستخدمين غير المسجلين
     if (!isLoggedIn && CaptchaService.isEnabled() && !captchaVerified) {
-      console.log('❌ Captcha غير محقق للمستخدم غير المسجل');
+      // console.log('❌ Captcha غير محقق للمستخدم غير المسجل');
       setSubmitStatus('error');
       setIsSubmitting(false);
       return;
     }
 
     if (isLoggedIn) {
-      console.log('✅ مستخدم مسجل دخول - تخطي تحقق CAPTCHA');
+      // console.log('✅ مستخدم مسجل دخول - تخطي تحقق CAPTCHA');
     }
 
     try {
-      console.log('📧 إرسال رسالة التواصل...', {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        subject: data.subject,
-        messageLength: data.message.length,
-        language: i18n.language
-      });
+      // console.log('📧 إرسال رسالة التواصل...', {
+      //   name: data.name,
+      //   email: data.email,
+      //   phone: data.phone,
+      //   subject: data.subject,
+      //   messageLength: data.message.length,
+      //   language: i18n.language
+      // });
 
       const result = await notificationEmailService.sendContactMessage(data, i18n.language);
 
-      console.log('📬 نتيجة الإرسال:', result);
+      // console.log('📬 نتيجة الإرسال:', result);
 
       if (result && result.success) {
-        console.log('✅ تم إرسال رسالة التواصل بنجاح');
+        // console.log('✅ تم إرسال رسالة التواصل بنجاح');
         setSubmitStatus('success');
         reset();
 
@@ -169,18 +169,18 @@ const ContactPage: React.FC = () => {
         setCaptchaVerified(false);
         setCaptchaResult(null);
       } else {
-        console.error('❌ فشل في إرسال رسالة التواصل:', result?.error || 'نتيجة غير صحيحة');
+        // console.error('❌ فشل في إرسال رسالة التواصل:', result?.error || 'نتيجة غير صحيحة');
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('❌ خطأ في إرسال رسالة التواصل:', error);
-      console.error('❌ تفاصيل الخطأ:', {
-        message: error instanceof Error ? error.message : 'خطأ غير معروف',
-        stack: error instanceof Error ? error.stack : undefined
-      });
+      // console.error('❌ خطأ في إرسال رسالة التواصل:', error);
+      // console.error('❌ تفاصيل الخطأ:', {
+      //   message: error instanceof Error ? error.message : 'خطأ غير معروف',
+      //   stack: error instanceof Error ? error.stack : undefined
+      // });
       setSubmitStatus('error');
     } finally {
-      console.log('🏁 انتهاء عملية الإرسال');
+      // console.log('🏁 انتهاء عملية الإرسال');
       setIsSubmitting(false);
     }
   };
@@ -608,7 +608,7 @@ const ContactPage: React.FC = () => {
                 {t('contact.quickContact.callButton')}
               </a>
               <a
-                href="mailto:support@rezge.com"
+                href="mailto:support@rezgee.com"
                 className="bg-white/10 backdrop-blur-lg text-white border border-white/20 px-8 py-4 rounded-xl font-medium text-lg hover:bg-white/20 transition-all duration-200 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-3"
               >
                 <MessageCircle className="w-5 h-5" />

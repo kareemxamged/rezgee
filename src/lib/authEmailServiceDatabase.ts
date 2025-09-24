@@ -23,7 +23,7 @@ export class AuthEmailServiceDatabase {
         temporaryPassword,
         expiryDate,
         timestamp: new Date().toLocaleString('ar-SA'),
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -77,7 +77,7 @@ export class AuthEmailServiceDatabase {
         browser: resetDetails.browser || 'غير محدد',
         resetMethod: resetDetails.resetMethod === 'forgot_password' ? 
           'صفحة نسيت كلمة المرور' : 'صفحة إعدادات الأمان والخصوصية',
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -124,7 +124,7 @@ export class AuthEmailServiceDatabase {
                  'تعطيل المصادقة الثنائية',
         validityPeriod: '10 دقائق',
         timestamp: new Date().toLocaleString('ar-SA'),
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -165,7 +165,7 @@ export class AuthEmailServiceDatabase {
         userName,
         userEmail,
         timestamp: new Date().toLocaleString('ar-SA'),
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -206,7 +206,7 @@ export class AuthEmailServiceDatabase {
         userName,
         userEmail,
         timestamp: new Date().toLocaleString('ar-SA'),
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -257,7 +257,7 @@ export class AuthEmailServiceDatabase {
         device: loginDetails.device || 'غير محدد',
         browser: loginDetails.browser || 'غير محدد',
         ipAddress: loginDetails.ipAddress || 'غير محدد',
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -307,7 +307,7 @@ export class AuthEmailServiceDatabase {
         attemptsCount: loginDetails.attemptsCount,
         riskLevel: loginDetails.riskLevel === 'high' ? 'عالي' : 
                   loginDetails.riskLevel === 'medium' ? 'متوسط' : 'منخفض',
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(
@@ -346,7 +346,7 @@ export class AuthEmailServiceDatabase {
       
       const templateData = {
         userName,
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
       };
       
       const result = await UnifiedDatabaseEmailService.sendEmail(

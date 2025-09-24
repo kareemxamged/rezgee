@@ -83,7 +83,7 @@ const ArticleDetailPage: React.FC = () => {
           // Check if user liked this article
           if (isAuthenticated && user) {
             const userLiked = await articleService.checkUserLikedArticle(id, user.id);
-            console.log('User liked status:', userLiked);
+            // console.log('User liked status:', userLiked);
             setLiked(userLiked);
           }
 
@@ -104,7 +104,7 @@ const ArticleDetailPage: React.FC = () => {
           setComments(commentsData);
         }
       } catch (error) {
-        console.error('Error loading article:', error);
+        // console.error('Error loading article:', error);
       } finally {
         setLoading(false);
       }
@@ -141,7 +141,7 @@ const ArticleDetailPage: React.FC = () => {
           // If no similar article found, keep showing current article
           // No navigation or loading screen needed
         } catch (error) {
-          console.error('Error finding similar article in new language:', error);
+          // console.error('Error finding similar article in new language:', error);
           // Keep showing current article on error
         }
       }
@@ -173,7 +173,7 @@ const ArticleDetailPage: React.FC = () => {
 
       // التحقق من صحة التاريخ
       if (isNaN(date.getTime())) {
-        console.warn('Invalid date:', dateString);
+        // console.warn('Invalid date:', dateString);
         return t('common.unknown');
       }
 
@@ -185,7 +185,7 @@ const ArticleDetailPage: React.FC = () => {
         day: 'numeric'
       });
     } catch (error) {
-      console.error('Error formatting date:', error, dateString);
+      // console.error('Error formatting date:', error, dateString);
       return t('common.unknown');
     }
   };
@@ -200,7 +200,7 @@ const ArticleDetailPage: React.FC = () => {
     try {
       // تبديل حالة الإعجاب باستخدام خدمة المقالات
       const result = await articleService.toggleLike(article.id, user.id);
-      console.log('Toggle like result:', result);
+      // console.log('Toggle like result:', result);
 
       // تحديث الحالة المحلية
       setLiked(result.liked);
@@ -212,9 +212,9 @@ const ArticleDetailPage: React.FC = () => {
         likes: result.totalLikes
       } : null);
 
-      console.log('Like toggled successfully:', { liked: result.liked, totalLikes: result.totalLikes });
+      // console.log('Like toggled successfully:', { liked: result.liked, totalLikes: result.totalLikes });
     } catch (error) {
-      console.error('Error toggling like:', error);
+      // console.error('Error toggling like:', error);
       // يمكن إضافة toast notification هنا
     }
   };

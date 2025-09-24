@@ -334,7 +334,7 @@ export class DynamicLanguageEmailService {
         title: 'إشعار تسجيل دخول ناجح - رزقي',
         greeting: 'تم تسجيل الدخول بنجاح!',
         mainContent: `مرحباً ${data.firstName || 'المستخدم'}،<br><br>تم تسجيل الدخول إلى حسابك في موقع رزقي بنجاح.<br><br><strong>تفاصيل الجلسة:</strong><br>📅 التاريخ والوقت: ${data.dateTime || 'غير محدد'}<br>💻 نوع الجهاز: ${data.deviceType || 'غير محدد'}<br>🌐 المتصفح: ${data.browser || 'غير محدد'}<br>📍 الموقع: ${data.location || 'غير محدد'}`,
-        warning: 'إذا لم تقم بتسجيل الدخول في هذا الوقت، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezge.com',
+        warning: 'إذا لم تقم بتسجيل الدخول في هذا الوقت، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezgee.com',
         footer: 'فريق رزقي - موقع الزواج الإسلامي الشرعي'
       };
     } else {
@@ -342,7 +342,7 @@ export class DynamicLanguageEmailService {
         title: 'Successful Login Notification - Rezge',
         greeting: 'Login Successful!',
         mainContent: `Hello ${data.firstName || 'User'},<br><br>You have successfully logged into your Rezge account.<br><br><strong>Session Details:</strong><br>📅 Date & Time: ${data.dateTime || 'Not specified'}<br>💻 Device Type: ${data.deviceType || 'Not specified'}<br>🌐 Browser: ${data.browser || 'Not specified'}<br>📍 Location: ${data.location || 'Not specified'}`,
-        warning: 'If you did not log in at this time, please change your password immediately and contact us at support@rezge.com',
+        warning: 'If you did not log in at this time, please change your password immediately and contact us at support@rezgee.com',
         footer: 'Rezge Team - Islamic Marriage Platform'
       };
     }
@@ -378,7 +378,7 @@ export class DynamicLanguageEmailService {
         title: 'تنبيه أمني - رزقي',
         greeting: '⚠️ تنبيه أمني',
         mainContent: `مرحباً ${data.firstName || 'المستخدم'}،<br><br>تم اكتشاف نشاط غير عادي على حسابك في رزقي. ننصحك بمراجعة نشاط حسابك وتغيير كلمة المرور إذا لزم الأمر.<br><br><strong>تفاصيل التنبيه:</strong><br>${data.alertDetails || 'نشاط غير عادي تم اكتشافه'}`,
-        warning: 'إذا لم تقم بهذا النشاط، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezge.com',
+        warning: 'إذا لم تقم بهذا النشاط، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezgee.com',
         footer: 'فريق رزقي - منصة الزواج الإسلامي الشرعي'
       };
     } else {
@@ -386,7 +386,7 @@ export class DynamicLanguageEmailService {
         title: 'Security Alert - Rezge',
         greeting: '⚠️ Security Alert',
         mainContent: `Hello ${data.firstName || 'User'},<br><br>Unusual activity has been detected on your Rezge account. We recommend reviewing your account activity and changing your password if necessary.<br><br><strong>Alert Details:</strong><br>${data.alertDetails || 'Unusual activity detected'}`,
-        warning: 'If you did not perform this activity, please change your password immediately and contact us at support@rezge.com',
+        warning: 'If you did not perform this activity, please change your password immediately and contact us at support@rezgee.com',
         footer: 'Rezge Team - Islamic Marriage Platform'
       };
     }

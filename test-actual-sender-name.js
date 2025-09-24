@@ -37,8 +37,8 @@ const modernNames = {
 
 const senderConfig = {
     name: modernNames[emailType] ? . [language] || `${platformName[language]} | منصة الزواج الإسلامي الشرعي`,
-    email: 'noreply@rezge.com',
-    replyTo: 'support@rezge.com'
+    email: 'noreply@rezgee.com',
+    replyTo: 'support@rezgee.com'
 };
 
 console.log('\n🔧 senderConfig من EmailSenderManager:');

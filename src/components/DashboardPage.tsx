@@ -74,7 +74,7 @@ const DashboardPage: React.FC = () => {
       setNotifications(userNotifications);
 
     } catch (error) {
-      console.error('Error loading dashboard data:', error);
+      // console.error('Error loading dashboard data:', error);
       setError('حدث خطأ في تحميل بيانات لوحة التحكم. يرجى المحاولة مرة أخرى.');
     } finally {
       setIsLoading(false);

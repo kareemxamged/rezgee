@@ -22,7 +22,7 @@ const testData = {
         status: 'تم قبول البلاغ',
         timestamp: new Date().toLocaleString('ar-SA'),
         isAccepted: true,
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
     },
 
     // بيانات قالب تحديث حالة البلاغ (مرفوض)
@@ -32,7 +32,7 @@ const testData = {
         status: 'تم رفض البلاغ',
         timestamp: new Date().toLocaleString('ar-SA'),
         isAccepted: false,
-        contactEmail: 'support@rezge.com'
+        contactEmail: 'support@rezgee.com'
     }
 };
 
@@ -400,11 +400,3 @@ function runAllTests() {
 
 // تشغيل الاختبارات
 runAllTests();
-
-
-
-
-
-
-
-

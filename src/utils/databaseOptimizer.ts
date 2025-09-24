@@ -168,7 +168,6 @@ export const databaseOptimizer = {
           weight,
           education_level,
           financial_status,
-          religiosity_level,
           prayer_commitment,
           smoking,
           beard,

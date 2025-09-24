@@ -107,7 +107,7 @@ const MatchesPage: React.FC = () => {
 
       const { data, error } = await MatchingService.findMatches(userProfile.id, 20, preferences);
       if (error) {
-        console.error('Error loading matches:', error);
+        // console.error('Error loading matches:', error);
         showError(
           t('matches.errors.loadingError'),
           t('matches.errors.loadingErrorDesc'),
@@ -139,7 +139,7 @@ const MatchesPage: React.FC = () => {
         }
       }
     } catch (error) {
-      console.error('Error loading matches:', error);
+      // console.error('Error loading matches:', error);
       showError(
         'خطأ غير متوقع',
         'حدث خطأ غير متوقع. تأكد من اتصالك بالإنترنت وحاول مرة أخرى.',
@@ -191,7 +191,7 @@ const MatchesPage: React.FC = () => {
         const image = await profileImageService.getUserPrimaryImage(match.user.id);
         return { userId: match.user.id, image };
       } catch (error) {
-        console.error(`Error loading profile image for user ${match.user.id}:`, error);
+        // console.error(`Error loading profile image for user ${match.user.id}:`, error);
         return { userId: match.user.id, image: null };
       }
     });
@@ -242,7 +242,7 @@ const MatchesPage: React.FC = () => {
         );
 
         if (!saveResult.success) {
-          console.warn('Failed to save match:', saveResult.error);
+          // console.warn('Failed to save match:', saveResult.error);
           // لا نعرض خطأ للمستخدم لأن الإعجاب تم إرساله بنجاح
         }
 
@@ -268,7 +268,7 @@ const MatchesPage: React.FC = () => {
         );
       }
     } catch (error) {
-      console.error('Error sending like:', error);
+      // console.error('Error sending like:', error);
       showError(
         t('matches.errors.sendingError'),
         t('matches.errors.sendingErrorDesc'),
@@ -325,7 +325,7 @@ const MatchesPage: React.FC = () => {
 
       const { data, error } = await MatchingService.findMatches(userProfile.id, 20, preferences);
       if (error) {
-        console.error('Error loading more matches:', error);
+        // console.error('Error loading more matches:', error);
         showError(
           t('matches.errors.loadingError'),
           t('matches.errors.loadingErrorDesc'),
@@ -359,7 +359,7 @@ const MatchesPage: React.FC = () => {
         }
       }
     } catch (error) {
-      console.error('Error loading more matches:', error);
+      // console.error('Error loading more matches:', error);
       showError(
         t('matches.errors.loadingError'),
         t('matches.errors.loadingErrorDesc'),
@@ -439,7 +439,7 @@ const MatchesPage: React.FC = () => {
       );
 
       if (error) {
-        console.error('Error creating conversation:', error);
+        // console.error('Error creating conversation:', error);
 
         // Show appropriate error message
         const errorMessage = typeof error === 'string' ? error : error.message || 'Unknown error';
@@ -471,7 +471,7 @@ const MatchesPage: React.FC = () => {
         navigate('/messages');
       }, 1000);
     } catch (err) {
-      console.error('Error starting conversation:', err);
+      // console.error('Error starting conversation:', err);
       showError(
         t('messages.errors.conversationUnexpectedError'),
         t('messages.errors.unexpectedSendingError'),

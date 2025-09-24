@@ -76,7 +76,7 @@ const SubscriptionPage: React.FC = () => {
       setCanStartTrial(canTrial);
 
     } catch (error) {
-      console.error('Error loading subscription data:', error);
+      // console.error('Error loading subscription data:', error);
     } finally {
       setLoading(false);
     }
@@ -99,7 +99,7 @@ const SubscriptionPage: React.FC = () => {
       if (error) throw error;
       setTransactions(data || []);
     } catch (error) {
-      console.error('Error loading transactions:', error);
+      // console.error('Error loading transactions:', error);
     }
   };
 
@@ -118,7 +118,7 @@ const SubscriptionPage: React.FC = () => {
         alert(result.error || t('subscription.trial.error'));
       }
     } catch (error) {
-      console.error('Error starting trial:', error);
+      // console.error('Error starting trial:', error);
       alert(t('subscription.trial.error'));
     } finally {
       setStartingTrial(false);
@@ -148,7 +148,7 @@ const SubscriptionPage: React.FC = () => {
         navigate(`/payment?plan=${plan.id}`);
       }
     } catch (error) {
-      console.error('Error selecting plan:', error);
+      // console.error('Error selecting plan:', error);
       alert('حدث خطأ في اختيار الباقة');
       setStartingTrial(false);
     }

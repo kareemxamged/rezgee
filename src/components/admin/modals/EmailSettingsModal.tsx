@@ -297,7 +297,7 @@ const EmailSettingsModal: React.FC<EmailSettingsModalProps> = ({
                   type="email"
                   value={formData.from_email}
                   onChange={(e) => handleInputChange('from_email', e.target.value)}
-                  placeholder="noreply@rezge.com"
+                  placeholder="no-reply@rezgee.com"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
@@ -311,7 +311,7 @@ const EmailSettingsModal: React.FC<EmailSettingsModalProps> = ({
                   type="email"
                   value={formData.reply_to}
                   onChange={(e) => handleInputChange('reply_to', e.target.value)}
-                  placeholder="support@rezge.com"
+                  placeholder="support@rezgee.com"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>

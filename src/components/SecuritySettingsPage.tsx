@@ -184,21 +184,21 @@ const SecuritySettingsPage: React.FC = () => {
   useEffect(() => {
     const stateMessage = location.state?.message;
     if (stateMessage) {
-      console.log('📧 Received success message from verification page:', stateMessage);
+      // // console.log('📧 Received success message from verification page:', stateMessage);
       // عرض الرسالة في أعلى الصفحة فقط
       setSuccessMessage(stateMessage);
 
       // إعادة تحميل بيانات المستخدم لضمان ظهور التحديثات
-      console.log('🔄 Refreshing profile after receiving verification message...');
+      // // console.log('🔄 Refreshing profile after receiving verification message...');
       refreshProfile().then(() => {
-        console.log('✅ Profile refreshed after email verification');
+        // // console.log('✅ Profile refreshed after email verification');
         // إعادة تحميل البيانات في النموذج أيضاً
         if (userProfile) {
           setValue('email', userProfile.email || '');
           setPhoneNumber(userProfile.phone || '');
         }
       }).catch((error) => {
-        console.error('❌ Error refreshing profile:', error);
+        // // console.error('❌ Error refreshing profile:', error);
       });
 
       // إخفاء الرسالة بعد 5 ثوان
@@ -214,10 +214,10 @@ const SecuritySettingsPage: React.FC = () => {
   // مراقبة تغييرات userProfile وتحديث النموذج (فقط للحقول الأساسية)
   useEffect(() => {
     if (userProfile) {
-      console.log('🔄 UserProfile changed, updating basic form fields:', {
-        email: userProfile.email,
-        phone: userProfile.phone
-      });
+      // // console.log('🔄 UserProfile changed, updating basic form fields:', {
+      //   email: userProfile.email,
+      //   phone: userProfile.phone
+      // });
       setValue('email', userProfile.email || '');
       setPhoneNumber(userProfile.phone || '');
     }
@@ -226,13 +226,13 @@ const SecuritySettingsPage: React.FC = () => {
   // تحميل بيانات المستخدم عند تحميل الصفحة
   useEffect(() => {
     if (userProfile) {
-      console.log('🔄 SecuritySettingsPage: Loading user profile data:', {
-        phone: userProfile.phone,
-        email: userProfile.email,
-        id: userProfile.id,
-        allow_messages: userProfile.allow_messages
-      });
-      console.log('🔍 recentlyUpdatedFields:', Array.from(recentlyUpdatedFields));
+      // // console.log('🔄 SecuritySettingsPage: Loading user profile data:', {
+      //   phone: userProfile.phone,
+      //   email: userProfile.email,
+      //   id: userProfile.id,
+      //   allow_messages: userProfile.allow_messages
+      // });
+      // // console.log('🔍 recentlyUpdatedFields:', Array.from(recentlyUpdatedFields));
 
       // تحديث الحقول فقط إذا لم يتم تحديثها مؤخراً
       if (!recentlyUpdatedFields.has('email')) {
@@ -248,11 +248,11 @@ const SecuritySettingsPage: React.FC = () => {
         setValue('showEmail', userProfile.show_email ?? false);
       }
       if (!recentlyUpdatedFields.has('allowMessages')) {
-        console.log('🔄 تحديث allowMessages في النموذج:', userProfile.allow_messages);
+        // // console.log('🔄 تحديث allowMessages في النموذج:', userProfile.allow_messages);
         // استخدام القيمة الفعلية من قاعدة البيانات (افتراضي true فقط إذا كانت undefined/null)
         setValue('allowMessages', userProfile.allow_messages ?? true);
       } else {
-        console.log('⏭️ تم تخطي تحديث allowMessages (محدث مؤخراً)');
+        // // console.log('⏭️ تم تخطي تحديث allowMessages (محدث مؤخراً)');
       }
       if (!recentlyUpdatedFields.has('familyCanView')) {
         setValue('familyCanView', userProfile.family_can_view ?? false);
@@ -271,7 +271,7 @@ const SecuritySettingsPage: React.FC = () => {
       }
 
       const phoneValue = userProfile.phone || '';
-      console.log('SecuritySettingsPage: Setting phone number to:', phoneValue);
+      // // console.log('SecuritySettingsPage: Setting phone number to:', phoneValue);
       setPhoneNumber(phoneValue);
       setIsPhoneValid(!!phoneValue);
     }
@@ -282,7 +282,7 @@ const SecuritySettingsPage: React.FC = () => {
     if (!user) return;
 
     try {
-      console.log('🧹 Cleaning up expired email change requests...');
+      // console.log('🧹 Cleaning up expired email change requests...');
       const now = new Date().toISOString();
 
       const { error } = await supabase
@@ -293,12 +293,12 @@ const SecuritySettingsPage: React.FC = () => {
         .lt('expires_at', now);
 
       if (error) {
-        console.error('Error cleaning up expired requests:', error);
+        // console.error('Error cleaning up expired requests:', error);
       } else {
-        console.log('✅ Expired requests cleaned up');
+        // console.log('✅ Expired requests cleaned up');
       }
     } catch (error) {
-      console.error('Error in cleanup process:', error);
+      // console.error('Error in cleanup process:', error);
     }
   };
 
@@ -322,22 +322,22 @@ const SecuritySettingsPage: React.FC = () => {
           .limit(1);
 
         if (error) {
-          console.error('Error checking pending email change:', error);
+          // console.error('Error checking pending email change:', error);
           return;
         }
 
         if (data && data.length > 0) {
           const request = data[0];
-          console.log('📧 Found pending email change request:', request);
+          // console.log('📧 Found pending email change request:', request);
           setPendingEmailChange(request.new_email);
           setEmailChangeToken(request.verification_token);
         } else {
-          console.log('✅ No pending email change requests found');
+          // console.log('✅ No pending email change requests found');
           setPendingEmailChange(null);
           setEmailChangeToken(null);
         }
       } catch (error) {
-        console.error('Error checking pending email change:', error);
+        // console.error('Error checking pending email change:', error);
       }
     };
 
@@ -347,7 +347,7 @@ const SecuritySettingsPage: React.FC = () => {
     // إضافة دالة مساعدة للكونسول (للتطوير)
     if (typeof window !== 'undefined') {
       (window as any).resetRateLimit = resetRateLimit;
-      console.log('🔧 دالة resetRateLimit() متاحة في الكونسول للاستخدام السريع');
+      // console.log('🔧 دالة resetRateLimit() متاحة في الكونسول للاستخدام السريع');
     }
   }, [user]);
 
@@ -357,14 +357,14 @@ const SecuritySettingsPage: React.FC = () => {
 
     try {
       setIsCheckingRateLimit(true);
-      console.log('🔍 Checking contact update rate limit...');
+      // console.log('🔍 Checking contact update rate limit...');
 
       const result = await ContactUpdateRateLimitService.checkRateLimit(user.id);
       setRateLimitInfo(result);
 
-      console.log('✅ Rate limit check completed:', result);
+      // console.log('✅ Rate limit check completed:', result);
     } catch (error) {
-      console.error('❌ Error checking rate limit:', error);
+      // console.error('❌ Error checking rate limit:', error);
       setRateLimitInfo(null);
     } finally {
       setIsCheckingRateLimit(false);
@@ -376,22 +376,22 @@ const SecuritySettingsPage: React.FC = () => {
     if (!user?.email) return;
 
     try {
-      console.log('🗑️ بدء حذف حدود الطلبات اليومية...');
+      // console.log('🗑️ بدء حذف حدود الطلبات اليومية...');
       
       const result = await RateLimitService.resetDailyLimitForUser(user.email);
       
       if (result.success) {
-        console.log('✅ تم حذف حدود الطلبات بنجاح');
+        // console.log('✅ تم حذف حدود الطلبات بنجاح');
         alert('✅ تم حذف حدود الطلبات اليومية بنجاح!\nيمكنك الآن المحاولة مرة أخرى.');
         
         // إعادة فحص الحدود
         await checkRateLimit();
       } else {
-        console.error('❌ فشل في حذف حدود الطلبات:', result.message);
+        // console.error('❌ فشل في حذف حدود الطلبات:', result.message);
         alert('❌ فشل في حذف حدود الطلبات:\n' + result.message);
       }
     } catch (error) {
-      console.error('💥 خطأ في حذف حدود الطلبات:', error);
+      // console.error('💥 خطأ في حذف حدود الطلبات:', error);
       alert('💥 خطأ في حذف حدود الطلبات:\n' + (error instanceof Error ? error.message : 'خطأ غير معروف'));
     }
   };
@@ -411,22 +411,22 @@ const SecuritySettingsPage: React.FC = () => {
         .limit(1);
 
       if (error) {
-        console.error('Error rechecking pending requests:', error);
+        // console.error('Error rechecking pending requests:', error);
         return;
       }
 
       if (data && data.length > 0) {
         const request = data[0];
-        console.log('🔄 Rechecked - Found pending request:', request);
+        // console.log('🔄 Rechecked - Found pending request:', request);
         setPendingEmailChange(request.new_email);
         setEmailChangeToken(request.verification_token);
       } else {
-        console.log('🔄 Rechecked - No pending requests');
+        // console.log('🔄 Rechecked - No pending requests');
         setPendingEmailChange(null);
         setEmailChangeToken(null);
       }
     } catch (error) {
-      console.error('Error rechecking pending requests:', error);
+      // console.error('Error rechecking pending requests:', error);
     }
   };
 
@@ -461,17 +461,17 @@ const SecuritySettingsPage: React.FC = () => {
       const emailChanged = newEmail && newEmail !== (currentEmail || userProfile?.email);
       const phoneChanged = newPhone !== (currentPhone || userProfile?.phone);
 
-      console.log('📧 Creating change request with details:', {
-        emailChanged,
-        phoneChanged,
-        newEmail: emailChanged ? newEmail : 'لم يتغير',
-        newPhone: phoneChanged ? newPhone : 'لم يتغير',
-        currentEmail: currentEmail || userProfile?.email,
-        currentPhone: currentPhone || userProfile?.phone
-      });
+      // console.log('📧 Creating change request with details:', {
+      //   emailChanged,
+      //   phoneChanged,
+      //   newEmail: emailChanged ? newEmail : 'لم يتغير',
+      //   newPhone: phoneChanged ? newPhone : 'لم يتغير',
+      //   currentEmail: currentEmail || userProfile?.email,
+      //   currentPhone: currentPhone || userProfile?.phone
+      // });
 
       // التحقق من وجود طلب موجود بالفعل
-      console.log('🔍 Checking for existing email change requests...');
+      // console.log('🔍 Checking for existing email change requests...');
       const { data: existingRequests, error: checkError } = await supabase
         .from('email_change_requests')
         .select('id, new_email, new_phone, expires_at, created_at, verification_token')
@@ -482,13 +482,13 @@ const SecuritySettingsPage: React.FC = () => {
         .limit(1);
 
       if (checkError) {
-        console.error('Error checking existing requests:', checkError);
+        // console.error('Error checking existing requests:', checkError);
         throw new Error(t('securitySettings.messages.emailCheckError'));
       }
 
       if (existingRequests && existingRequests.length > 0) {
         const existingRequest = existingRequests[0];
-        console.log('❌ Found existing request:', existingRequest);
+        // console.log('❌ Found existing request:', existingRequest);
 
         // تحديث حالة الواجهة لإظهار التنبيه
         setPendingEmailChange(existingRequest.new_email);
@@ -497,7 +497,7 @@ const SecuritySettingsPage: React.FC = () => {
         throw new Error(t('securitySettings.messages.emailChangeRequestExists'));
       }
 
-      console.log('✅ No existing requests found, creating new one...');
+      // console.log('✅ No existing requests found, creating new one...');
 
       // إنشاء token فريد
       const token = crypto.randomUUID();
@@ -518,7 +518,7 @@ const SecuritySettingsPage: React.FC = () => {
         });
 
       if (error) {
-        console.error('Error inserting email change request:', error);
+        // console.error('Error inserting email change request:', error);
         throw new Error(t('securitySettings.messages.emailChangeRequestCreateError') + error.message);
       }
 
@@ -526,7 +526,7 @@ const SecuritySettingsPage: React.FC = () => {
       const confirmationUrl = `${window.location.origin}/verify-email-change?token=${token}`;
 
       // إرسال إيميل تأكيد باستخدام النظام الموحد الجديد
-      console.log('📧 إرسال إيميل تأكيد تغيير البيانات عبر النظام الموحد الجديد...');
+      // console.log('📧 إرسال إيميل تأكيد تغيير البيانات عبر النظام الموحد الجديد...');
       
       // تحديد نوع التغيير
       let changeType: 'email' | 'phone' | 'both';
@@ -549,7 +549,7 @@ const SecuritySettingsPage: React.FC = () => {
       );
 
       if (!emailResult.success) {
-        console.error('❌ فشل النظام الموحد، محاولة بديلة باستخدام النظام القديم...');
+        // console.error('❌ فشل النظام الموحد، محاولة بديلة باستخدام النظام القديم...');
         
         // محاولة بديلة باستخدام النظام القديم
         const fallbackResult = await AdvancedEmailService.sendEmailChangeConfirmation(
@@ -570,19 +570,19 @@ const SecuritySettingsPage: React.FC = () => {
           throw new Error(t('securitySettings.messages.emailSendError') + ': ' + (fallbackResult.error || 'Unknown error'));
         }
         
-        console.log('✅ تم الإرسال بنجاح عبر النظام القديم (fallback)');
+        // console.log('✅ تم الإرسال بنجاح عبر النظام القديم (fallback)');
       } else {
-        console.log('✅ تم الإرسال بنجاح عبر النظام الموحد الجديد');
-        console.log('📧 معرف الرسالة:', emailResult.messageId);
+        // console.log('✅ تم الإرسال بنجاح عبر النظام الموحد الجديد');
+        // console.log('📧 معرف الرسالة:', emailResult.messageId);
       }
 
       setPendingEmailChange(newEmail);
       setEmailChangeToken(token);
 
-      console.log('✅ Contact change request created successfully');
+      // console.log('✅ Contact change request created successfully');
       return true;
     } catch (error) {
-      console.error('Error creating contact change request:', error);
+      // console.error('Error creating contact change request:', error);
       throw error;
     }
   };
@@ -599,7 +599,7 @@ const SecuritySettingsPage: React.FC = () => {
         .eq('verification_token', emailChangeToken);
 
       if (error) {
-        console.error('Error canceling email change request:', error);
+        // console.error('Error canceling email change request:', error);
         setContactErrorMessage(t('securitySettings.messages.emailChangeRequestCancelError'));
         return;
       }
@@ -612,7 +612,7 @@ const SecuritySettingsPage: React.FC = () => {
         setContactSuccessMessage('');
       }, 3000);
     } catch (error) {
-      console.error('Error canceling email change request:', error);
+      // console.error('Error canceling email change request:', error);
       setContactErrorMessage(t('securitySettings.messages.emailChangeRequestCancelUnexpectedError'));
     }
   };
@@ -624,7 +624,7 @@ const SecuritySettingsPage: React.FC = () => {
 
       // فحص البريد الإلكتروني
       if (email && email !== userProfile?.email) {
-        console.log('🔍 Checking email duplication for:', email);
+        // console.log('🔍 Checking email duplication for:', email);
         const { data: emailExists, error: emailError } = await supabase
           .from('users')
           .select('id')
@@ -633,20 +633,20 @@ const SecuritySettingsPage: React.FC = () => {
           .limit(1);
 
         if (emailError) {
-          console.error('Error checking email duplication:', emailError);
+          // console.error('Error checking email duplication:', emailError);
           throw new Error(t('securitySettings.messages.emailCheckError'));
         }
 
         if (emailExists && emailExists.length > 0) {
           errors.push(t('securitySettings.messages.emailDuplicate'));
         } else {
-          console.log('✅ Email is available');
+          // console.log('✅ Email is available');
         }
       }
 
       // فحص رقم الهاتف
       if (phone && phone !== userProfile?.phone) {
-        console.log('🔍 Checking phone duplication for:', phone);
+        // console.log('🔍 Checking phone duplication for:', phone);
         const { data: phoneExists, error: phoneError } = await supabase
           .from('users')
           .select('id')
@@ -655,14 +655,14 @@ const SecuritySettingsPage: React.FC = () => {
           .limit(1);
 
         if (phoneError) {
-          console.error('Error checking phone duplication:', phoneError);
+          // console.error('Error checking phone duplication:', phoneError);
           throw new Error(t('securitySettings.messages.phoneCheckError'));
         }
 
         if (phoneExists && phoneExists.length > 0) {
           errors.push(t('securitySettings.messages.phoneDuplicate'));
         } else {
-          console.log('✅ Phone is available');
+          // console.log('✅ Phone is available');
         }
       }
 
@@ -696,9 +696,9 @@ const SecuritySettingsPage: React.FC = () => {
       const newEmail = formData.get('email') as string;
       const currentEmail = userProfile?.email || user.email; // استخدام البريد من قاعدة البيانات أولاً
 
-      console.log('Updating contact info for user:', user.id);
-      console.log('Phone:', phoneNumber);
-      console.log('Email change:', currentEmail, '->', newEmail);
+      // console.log('Updating contact info for user:', user.id);
+      // console.log('Phone:', phoneNumber);
+      // console.log('Email change:', currentEmail, '->', newEmail);
 
       // التحقق من التغييرات
       const emailChanged = newEmail && newEmail !== currentEmail;
@@ -706,7 +706,7 @@ const SecuritySettingsPage: React.FC = () => {
 
       if (emailChanged || phoneChanged) {
         // فحص حدود الطلبات أولاً
-        console.log('🔍 Checking rate limits before processing request...');
+        // console.log('🔍 Checking rate limits before processing request...');
         const rateLimitResult = await ContactUpdateRateLimitService.checkRateLimit(user.id);
 
         if (!rateLimitResult.allowed) {
@@ -715,28 +715,28 @@ const SecuritySettingsPage: React.FC = () => {
         }
 
         // فحص تكرار البيانات قبل المتابعة
-        console.log('🔍 Checking data duplication before proceeding...', {
-          emailToCheck: emailChanged ? newEmail : '',
-          phoneToCheck: phoneChanged ? phoneNumber : ''
-        });
+        // console.log('🔍 Checking data duplication before proceeding...', {
+        //   emailToCheck: emailChanged ? newEmail : '',
+        //   phoneToCheck: phoneChanged ? phoneNumber : ''
+        // });
 
         await checkDataDuplication(
           emailChanged ? newEmail : '',
           phoneChanged ? phoneNumber : ''
         );
 
-        console.log('✅ No data duplication found, proceeding with update...');
+        // console.log('✅ No data duplication found, proceeding with update...');
 
         // إنشاء طلب تحديث يتضمن البريد الإلكتروني الجديد و/أو رقم الهاتف الجديد
         const emailToUpdate = emailChanged ? newEmail : currentEmail;
         const phoneToUpdate = phoneChanged ? phoneNumber : userProfile?.phone;
 
-        console.log('📧 Creating change request:', {
-          emailChanged,
-          phoneChanged,
-          emailToUpdate,
-          phoneToUpdate
-        });
+        // console.log('📧 Creating change request:', {
+        //   emailChanged,
+        //   phoneChanged,
+        //   emailToUpdate,
+        //   phoneToUpdate
+        // });
 
         await createEmailChangeRequest(
           emailToUpdate || currentEmail || '',
@@ -746,9 +746,9 @@ const SecuritySettingsPage: React.FC = () => {
         );
 
         // تسجيل الطلب الناجح في نظام حدود الطلبات
-        console.log('📝 Recording successful contact update request...');
+        // console.log('📝 Recording successful contact update request...');
         const recordResult = await ContactUpdateRateLimitService.recordSuccessfulRequest(user.id);
-        console.log('✅ Successful request recorded:', recordResult);
+        // console.log('✅ Successful request recorded:', recordResult);
 
         // تحديث معلومات حدود الطلبات
         await checkRateLimit();
@@ -765,7 +765,7 @@ const SecuritySettingsPage: React.FC = () => {
         setContactSuccessMessage('');
       }, 5000);
     } catch (error) {
-      console.error('Contact update error:', error);
+      // console.error('Contact update error:', error);
 
       // إعادة فحص الطلبات المعلقة لتحديث الواجهة
       await recheckPendingRequests();
@@ -783,7 +783,7 @@ const SecuritySettingsPage: React.FC = () => {
 
   // معالج تغيير حالة المصادقة الثنائية
   const handleTwoFactorToggle = async (enabled: boolean) => {
-    console.log('handleTwoFactorToggle called:', { enabled, authLoading, isAuthenticated, hasUser: !!user, hasUserProfile: !!userProfile });
+    // console.log('handleTwoFactorToggle called:', { enabled, authLoading, isAuthenticated, hasUser: !!user, hasUserProfile: !!userProfile });
 
     // التحقق من حالة المصادقة أولاً
     if (authLoading) {
@@ -810,10 +810,10 @@ const SecuritySettingsPage: React.FC = () => {
 
     try {
       if (enabled) {
-        console.log('Attempting to enable 2FA...');
+        // console.log('Attempting to enable 2FA...');
         // تفعيل المصادقة الثنائية
         const result = await enableTwoFactor();
-        console.log('Enable 2FA result:', result);
+        // console.log('Enable 2FA result:', result);
 
         if (result.success) {
           // التوجه لصفحة التحقق
@@ -829,10 +829,10 @@ const SecuritySettingsPage: React.FC = () => {
           setValue('twoFactorEnabled', false); // إعادة تعيين المفتاح
         }
       } else {
-        console.log('Attempting to disable 2FA...');
+        // console.log('Attempting to disable 2FA...');
         // إلغاء تفعيل المصادقة الثنائية
         const result = await disableTwoFactor();
-        console.log('Disable 2FA result:', result);
+        // console.log('Disable 2FA result:', result);
 
         if (result.success) {
           // التوجه لصفحة التحقق
@@ -849,7 +849,7 @@ const SecuritySettingsPage: React.FC = () => {
         }
       }
     } catch (error) {
-      console.error('Two factor toggle error:', error);
+      // console.error('Two factor toggle error:', error);
       setErrorMessage(t('securitySettings.messages.unexpectedError'));
       setValue('twoFactorEnabled', !enabled); // إعادة تعيين المفتاح
     } finally {
@@ -891,7 +891,7 @@ const SecuritySettingsPage: React.FC = () => {
         try {
           await profileImageService.updateImageVisibility(userProfile.id, data.profileImageVisible);
         } catch (imageError) {
-          console.error('خطأ في تحديث إعدادات الصورة:', imageError);
+          // console.error('خطأ في تحديث إعدادات الصورة:', imageError);
           // لا نوقف العملية، فقط نسجل الخطأ
         }
 
@@ -912,7 +912,7 @@ const SecuritySettingsPage: React.FC = () => {
         setErrorMessage(result.error || t('securitySettings.messages.settingsUpdateError'));
       }
     } catch (error) {
-      console.error('Security update error:', error);
+      // console.error('Security update error:', error);
       setErrorMessage(t('securitySettings.messages.settingsUpdateError'));
     } finally {
       setIsLoading(false);
@@ -990,9 +990,9 @@ const SecuritySettingsPage: React.FC = () => {
           userProfile.email,
           userProfile.first_name || 'المستخدم'
         );
-        console.log('✅ تم إرسال إشعار تغيير كلمة المرور');
+        // console.log('✅ تم إرسال إشعار تغيير كلمة المرور');
       } catch (emailError) {
-        console.error('⚠️ فشل في إرسال إشعار تغيير كلمة المرور:', emailError);
+        // console.error('⚠️ فشل في إرسال إشعار تغيير كلمة المرور:', emailError);
         // لا نعرض خطأ للمستخدم لأن كلمة المرور تم تغييرها بنجاح
       }
 
@@ -1007,7 +1007,7 @@ const SecuritySettingsPage: React.FC = () => {
       }, 5000);
 
     } catch (error) {
-      console.error('Password update error:', error);
+      // console.error('Password update error:', error);
       setPasswordErrorMessage(t('securitySettings.messages.passwordUpdateError'));
     } finally {
       setIsPasswordLoading(false);
@@ -1164,7 +1164,7 @@ const SecuritySettingsPage: React.FC = () => {
                 <PhoneInput
                   value={phoneNumber}
                   onChange={(fullPhone, isValid) => {
-                    console.log('SecuritySettingsPage: PhoneInput onChange:', { fullPhone, isValid });
+                    // console.log('SecuritySettingsPage: PhoneInput onChange:', { fullPhone, isValid });
                     setPhoneNumber(fullPhone);
                     setIsPhoneValid(isValid);
                   }}
@@ -1614,8 +1614,8 @@ const SecuritySettingsPage: React.FC = () => {
                             onChange: async (e) => {
                               // تحديث فوري للإعداد
                               const newValue = e.target.checked;
-                              console.log('🔄 تغيير إعداد السماح بالرسائل:', newValue);
-                              console.log('🔍 القيمة الحالية في userProfile:', userProfile?.allow_messages);
+                              // console.log('🔄 تغيير إعداد السماح بالرسائل:', newValue);
+                              // console.log('🔍 القيمة الحالية في userProfile:', userProfile?.allow_messages);
 
                               // إضافة الحقل للقائمة المحدثة مؤخراً
                               setRecentlyUpdatedFields(prev => new Set(prev).add('allowMessages'));
@@ -1625,17 +1625,17 @@ const SecuritySettingsPage: React.FC = () => {
                                   allow_messages: newValue
                                 };
 
-                                console.log('📤 إرسال تحديث إلى قاعدة البيانات:', updates);
+                                // console.log('📤 إرسال تحديث إلى قاعدة البيانات:', updates);
                                 const result = await updateProfile(updates);
 
                                 if (result.success) {
-                                  console.log('✅ تم تحديث إعداد السماح بالرسائل بنجاح');
-                                  console.log('🔍 القيمة الجديدة في userProfile:', userProfile?.allow_messages);
+                                  // console.log('✅ تم تحديث إعداد السماح بالرسائل بنجاح');
+                                  // console.log('🔍 القيمة الجديدة في userProfile:', userProfile?.allow_messages);
 
                                   // التحقق من أن القيمة تم تحديثها فعلاً
                                   if (userProfile?.allow_messages !== newValue) {
-                                    console.warn('⚠️ القيمة في userProfile لا تطابق القيمة المطلوبة!');
-                                    console.log('المطلوب:', newValue, 'الموجود:', userProfile?.allow_messages);
+                                    // console.warn('⚠️ القيمة في userProfile لا تطابق القيمة المطلوبة!');
+                                    // console.log('المطلوب:', newValue, 'الموجود:', userProfile?.allow_messages);
                                   }
 
                                   // إزالة الحقل من القائمة بعد 3 ثوان
@@ -1645,10 +1645,10 @@ const SecuritySettingsPage: React.FC = () => {
                                       newSet.delete('allowMessages');
                                       return newSet;
                                     });
-                                    console.log('🧹 تم إزالة allowMessages من قائمة الحقول المحدثة مؤخراً');
+                                    // console.log('🧹 تم إزالة allowMessages من قائمة الحقول المحدثة مؤخراً');
                                   }, 3000);
                                 } else {
-                                  console.error('❌ فشل في تحديث إعداد السماح بالرسائل:', result.error);
+                                  // console.error('❌ فشل في تحديث إعداد السماح بالرسائل:', result.error);
                                   // إعادة القيمة السابقة في حالة الفشل
                                   setValue('allowMessages', !newValue);
                                   // إزالة الحقل من القائمة المحدثة
@@ -1659,7 +1659,7 @@ const SecuritySettingsPage: React.FC = () => {
                                   });
                                 }
                               } catch (error) {
-                                console.error('❌ خطأ في تحديث إعداد السماح بالرسائل:', error);
+                                // console.error('❌ خطأ في تحديث إعداد السماح بالرسائل:', error);
                                 // إعادة القيمة السابقة في حالة الفشل
                                 setValue('allowMessages', !newValue);
                                 // إزالة الحقل من القائمة المحدثة

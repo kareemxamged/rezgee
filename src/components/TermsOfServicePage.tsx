@@ -183,7 +183,7 @@ const TermsOfServicePage: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <Link to="mailto:info@rezge.com">
+              <Link to="mailto:info@rezgee.com">
                 <div className="text-center p-4 bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1">
                   <Mail className="w-8 h-8 mx-auto mb-3 text-blue-100" />
                   <p className="font-medium mb-1">{t('termsOfService.sections.contact.emailLabel')}</p>

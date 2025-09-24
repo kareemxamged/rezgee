@@ -130,7 +130,7 @@ const MessagesPage: React.FC = () => {
   const { userStatuses } = useMultipleUserStatus(conversationUserIds);
 
   // Debug logging
-  console.log('MessagesPage rendered, showMoreMenu:', showMoreMenu, 'activeConversation:', activeConversation?.id);
+  // console.log('MessagesPage rendered, showMoreMenu:', showMoreMenu, 'activeConversation:', activeConversation?.id);
 
   // Scroll to bottom function with enhanced smoothness
   const scrollToBottom = (smooth = true, duration = 800) => {
@@ -202,7 +202,7 @@ const MessagesPage: React.FC = () => {
   useEffect(() => {
     if (!activeConversation?.id || !userProfile?.id) return;
 
-    console.log('🔔 Setting up real-time subscription for conversation:', activeConversation.id);
+    // console.log('🔔 Setting up real-time subscription for conversation:', activeConversation.id);
 
     const subscription = supabase
       .channel(`messages-${activeConversation.id}`)

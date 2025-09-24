@@ -310,7 +310,7 @@ console.log('حالة المراقب:', status);
 
 For any inquiries or technical issues, please contact the development team.
 
-**البريد الإلكتروني:** support@rezge.com  
+**البريد الإلكتروني:** support@rezgee.com  
 **الموقع:** https://rezge.com
 
 ---

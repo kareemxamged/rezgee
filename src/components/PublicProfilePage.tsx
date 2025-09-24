@@ -55,7 +55,6 @@ interface PublicUserProfile {
   height?: number;
   skin_color?: string;
   body_type?: string;
-  religiosity_level?: string;
   prayer_commitment?: string;
   profile_image_url?: string;
   profile_image_visible?: boolean;
@@ -563,10 +562,6 @@ const PublicProfilePage: React.FC = () => {
     return t(`publicProfile.values.religiousCommitment.${level}`, { defaultValue: level });
   };
 
-  const getReligiosityLevelText = (level?: string) => {
-    if (!level) return '';
-    return t(`publicProfile.values.religiosityLevel.${level}`, { defaultValue: '' });
-  };
 
   const getPrayerCommitmentText = (commitment?: string) => {
     if (!commitment) return '';
@@ -987,7 +982,7 @@ const PublicProfilePage: React.FC = () => {
             <div className="lg:col-span-1 xl:col-span-1 space-y-6 sm:space-y-8 order-2">
 
               {/* Religious Information */}
-              {(profile.religious_commitment || profile.religiosity_level || profile.prayer_commitment || profile.smoking || profile.beard || profile.hijab) && (
+              {(profile.religious_commitment || profile.prayer_commitment || profile.smoking || profile.beard || profile.hijab) && (
                 <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-white/20 p-4 sm:p-5">
                   <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-3 sm:mb-4 flex items-center gap-2">
                     <Star className="w-4 h-4 sm:w-5 sm:h-5 text-primary-600 flex-shrink-0" />
@@ -1001,12 +996,6 @@ const PublicProfilePage: React.FC = () => {
                       </div>
                     )}
 
-                    {profile.religiosity_level && (
-                      <div>
-                        <span className="font-medium text-slate-700 block mb-1">{t('publicProfile.fields.religiosityLevel')}</span>
-                        <p className="text-slate-600">{getReligiosityLevelText(profile.religiosity_level)}</p>
-                      </div>
-                    )}
 
                     {profile.prayer_commitment && (
                       <div>

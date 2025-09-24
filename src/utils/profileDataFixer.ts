@@ -81,7 +81,6 @@ export const profileDataFixer = {
           { original: 'weight', current: userProfile.weight },
           { original: 'education_level', current: userProfile.education_level },
           { original: 'financial_status', current: userProfile.financial_status },
-          { original: 'religiosity_level', current: userProfile.religiosity_level },
           { original: 'prayer_commitment', current: userProfile.prayer_commitment },
           { original: 'smoking', current: userProfile.smoking },
           { original: 'beard', current: userProfile.beard },

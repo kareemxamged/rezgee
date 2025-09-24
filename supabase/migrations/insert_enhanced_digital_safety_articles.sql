@@ -21,22 +21,22 @@ BEGIN
     IF sample_user_id IS NULL THEN
         -- Create Dr. Omar Al-Techni - Cybersecurity Expert
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.omar.tech@rezge.com', 'د. عمر التقني', 'خبير أمن المعلومات والأمان الرقمي', 'دكتور في أمن المعلومات، خبير في الأمان الرقمي والحماية من الجرائم الإلكترونية، له خبرة 15 عاماً في مجال أمن المعلومات، مؤلف عدة كتب في الأمان الرقمي')
+        ('dr.omar.tech@rezgee.com', 'د. عمر التقني', 'خبير أمن المعلومات والأمان الرقمي', 'دكتور في أمن المعلومات، خبير في الأمان الرقمي والحماية من الجرائم الإلكترونية، له خبرة 15 عاماً في مجال أمن المعلومات، مؤلف عدة كتب في الأمان الرقمي')
         RETURNING id INTO dr_omar_tech_id;
         
         -- Create Layla Al-Amani - Digital Safety Expert
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('layla.amani@rezge.com', 'أ. ليلى الأماني', 'خبيرة الأمان الرقمي والحماية الإلكترونية', 'خبيرة في الأمان الرقمي والحماية من الاحتيال الإلكتروني، متخصصة في أمان مواقع التواصل والزواج، لها خبرة 12 عاماً في مجال الأمان الرقمي')
+        ('layla.amani@rezgee.com', 'أ. ليلى الأماني', 'خبيرة الأمان الرقمي والحماية الإلكترونية', 'خبيرة في الأمان الرقمي والحماية من الاحتيال الإلكتروني، متخصصة في أمان مواقع التواصل والزواج، لها خبرة 12 عاماً في مجال الأمان الرقمي')
         RETURNING id INTO expert_layla_id;
         
         -- Create Ahmed Al-Himaya - Security Specialist
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('ahmed.himaya@rezge.com', 'أ. أحمد الحماية', 'مختص في أمان المواقع الإلكترونية', 'مختص في أمان المواقع الإلكترونية والحماية من الاختراق، مستشار أمني معتمد، له خبرة واسعة في حماية البيانات الشخصية')
+        ('ahmed.himaya@rezgee.com', 'أ. أحمد الحماية', 'مختص في أمان المواقع الإلكترونية', 'مختص في أمان المواقع الإلكترونية والحماية من الاختراق، مستشار أمني معتمد، له خبرة واسعة في حماية البيانات الشخصية')
         RETURNING id INTO specialist_ahmed_id;
         
         -- Create Fatima Al-Waayi - Awareness Consultant
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('fatima.waayi@rezge.com', 'أ. فاطمة الواعي', 'مستشارة التوعية الرقمية', 'مستشارة في التوعية الرقمية والحماية من الاحتيال الإلكتروني، متخصصة في تثقيف المستخدمين حول الأمان الرقمي، لها برامج توعوية متعددة')
+        ('fatima.waayi@rezgee.com', 'أ. فاطمة الواعي', 'مستشارة التوعية الرقمية', 'مستشارة في التوعية الرقمية والحماية من الاحتيال الإلكتروني، متخصصة في تثقيف المستخدمين حول الأمان الرقمي، لها برامج توعوية متعددة')
         RETURNING id INTO consultant_fatima_id;
         
         -- Set default author

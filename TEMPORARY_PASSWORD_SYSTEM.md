@@ -223,7 +223,7 @@ CREATE POLICY "Allow insert temporary passwords" ON temporary_passwords
 ## الدعم والمساعدة
 
 للحصول على المساعدة أو الإبلاغ عن مشاكل:
-- **البريد الإلكتروني**: support@rezge.com
+- **البريد الإلكتروني**: support@rezgee.com
 - **التوثيق**: راجع هذا الملف للتفاصيل الكاملة
 - **الكود المصدري**: `src/lib/temporaryPasswordService.ts`
 

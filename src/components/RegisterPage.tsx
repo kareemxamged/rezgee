@@ -36,7 +36,6 @@ type RegisterFormData = {
   weight?: number;
   educationLevel?: 'primary' | 'secondary' | 'diploma' | 'bachelor' | 'master' | 'phd';
   financialStatus?: 'poor' | 'below_average' | 'average' | 'above_average' | 'wealthy';
-  religiosityLevel?: 'not_religious' | 'slightly_religious' | 'religious' | 'very_religious' | 'prefer_not_say';
   prayerCommitment?: 'dont_pray' | 'pray_all' | 'pray_sometimes' | 'prefer_not_say';
   smoking?: 'yes' | 'no';
   beard?: 'yes' | 'no'; // للذكور فقط
@@ -68,7 +67,6 @@ const RegisterPage: React.FC = () => {
     weight: z.number().min(30).max(300).optional(),
     educationLevel: z.enum(['primary', 'secondary', 'diploma', 'bachelor', 'master', 'phd']).optional(),
     financialStatus: z.enum(['poor', 'below_average', 'average', 'above_average', 'wealthy']).optional(),
-    religiosityLevel: z.enum(['not_religious', 'slightly_religious', 'religious', 'very_religious', 'prefer_not_say']).optional(),
     prayerCommitment: z.enum(['dont_pray', 'pray_all', 'pray_sometimes', 'prefer_not_say']).optional(),
     smoking: z.enum(['yes', 'no']).optional(),
     beard: z.enum(['yes', 'no']).optional(),
@@ -121,7 +119,7 @@ const RegisterPage: React.FC = () => {
         .limit(1);
 
       if (error) {
-        console.error('Error checking email:', error);
+        // console.error('Error checking email:', error);
         setEmailCheckStatus('idle');
         setEmailCheckMessage('');
         return;
@@ -135,7 +133,7 @@ const RegisterPage: React.FC = () => {
         setEmailCheckMessage('البريد الإلكتروني متاح ✓');
       }
     } catch (error) {
-      console.error('Error checking email availability:', error);
+      // console.error('Error checking email availability:', error);
       setEmailCheckStatus('idle');
       setEmailCheckMessage('');
     }
@@ -160,7 +158,7 @@ const RegisterPage: React.FC = () => {
         .limit(1);
 
       if (error) {
-        console.error('Error checking phone:', error);
+        // console.error('Error checking phone:', error);
         setPhoneCheckStatus('idle');
         setPhoneCheckMessage('');
         return;
@@ -174,7 +172,7 @@ const RegisterPage: React.FC = () => {
         setPhoneCheckMessage(''); // لا نعرض رسالة النجاح
       }
     } catch (error) {
-      console.error('Error checking phone availability:', error);
+      // console.error('Error checking phone availability:', error);
       setPhoneCheckStatus('idle');
       setPhoneCheckMessage('');
     }
@@ -240,9 +238,9 @@ const RegisterPage: React.FC = () => {
 
   const onSubmit = async (data: any) => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('Form submitted with data:', data);
-      console.log('Phone number:', phoneNumber);
-      console.log('Is phone valid:', isPhoneValid);
+      // console.log('Form submitted with data:', data);
+      // console.log('Phone number:', phoneNumber);
+      // console.log('Is phone valid:', isPhoneValid);
     }
 
     // مسح الرسائل السابقة
@@ -302,7 +300,6 @@ const RegisterPage: React.FC = () => {
         ...(data.weight && { weight: data.weight }),
         ...(data.educationLevel && { education_level: data.educationLevel }),
         ...(data.financialStatus && { financial_status: data.financialStatus }),
-        ...(data.religiosityLevel && { religiosity_level: data.religiosityLevel }),
         ...(data.prayerCommitment && { prayer_commitment: data.prayerCommitment }),
         ...(data.smoking && { smoking: data.smoking }),
         ...(data.beard && { beard: data.beard }),
@@ -373,7 +370,7 @@ const RegisterPage: React.FC = () => {
         );
       }
     } catch (error: any) {
-      console.error('Registration error:', error);
+      // console.error('Registration error:', error);
       showError(
         '❌ خطأ غير متوقع',
         t('auth.register.messages.generalError') + ': ' + error.message
@@ -773,27 +770,6 @@ const RegisterPage: React.FC = () => {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                {/* Religiosity Level */}
-                <div>
-                  <label className="block text-slate-700 font-medium mb-2">
-                    {t('auth.register.religiosityLevel')}
-                  </label>
-                  <select
-                    {...register('religiosityLevel')}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">{t('auth.register.religiosityLevelPlaceholder')}</option>
-                    <option value="not_religious">{t('auth.register.religiosityLevelNotReligious')}</option>
-                    <option value="slightly_religious">{t('auth.register.religiosityLevelSlightlyReligious', 'متدين قليلاً')}</option>
-                    <option value="religious">{t('auth.register.religiosityLevelReligious')}</option>
-                    <option value="very_religious">{t('auth.register.religiosityLevelVeryReligious', 'متدين جداً')}</option>
-                    <option value="prefer_not_say">{t('auth.register.religiosityLevelPreferNotSay', 'أفضل عدم الإجابة')}</option>
-                  </select>
-                  {errors.religiosityLevel && (
-                    <p className="text-red-500 text-sm mt-1">{errors.religiosityLevel.message}</p>
-                  )}
-                </div>
-
                 {/* Prayer Commitment */}
                 <div>
                   <label className="block text-slate-700 font-medium mb-2">

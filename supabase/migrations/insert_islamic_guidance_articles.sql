@@ -20,22 +20,22 @@ BEGIN
     IF sample_user_id IS NULL THEN
         -- Create Dr. Ahmed Al-Sharif - Islamic Law Expert
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.ahmed@rezge.com', 'د. أحمد الشريف', 'دكتور في الشريعة الإسلامية', 'دكتور في الشريعة الإسلامية من جامعة الأزهر، متخصص في فقه الأسرة والمعاملات، له أكثر من 15 عاماً في مجال الإفتاء والاستشارات الشرعية')
+        ('dr.ahmed@rezgee.com', 'د. أحمد الشريف', 'دكتور في الشريعة الإسلامية', 'دكتور في الشريعة الإسلامية من جامعة الأزهر، متخصص في فقه الأسرة والمعاملات، له أكثر من 15 عاماً في مجال الإفتاء والاستشارات الشرعية')
         RETURNING id INTO dr_ahmed_id;
 
         -- Create Dr. Fatima Al-Zahra - Islamic Family Counselor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.fatima@rezge.com', 'د. فاطمة الزهراء', 'دكتورة في الدراسات الإسلامية', 'دكتورة في الدراسات الإسلامية والأسرة، متخصصة في الإرشاد الأسري الإسلامي، مؤلفة عدة كتب في مجال الأسرة المسلمة')
+        ('dr.fatima@rezgee.com', 'د. فاطمة الزهراء', 'دكتورة في الدراسات الإسلامية', 'دكتورة في الدراسات الإسلامية والأسرة، متخصصة في الإرشاد الأسري الإسلامي، مؤلفة عدة كتب في مجال الأسرة المسلمة')
         RETURNING id INTO dr_fatima_id;
 
         -- Create Dr. Omar Al-Fiqhi - Marriage Counselor
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('dr.omar@rezge.com', 'د. عمر الفقهي', 'مستشار زواج إسلامي', 'دكتور في الفقه الإسلامي، مستشار زواج معتمد، له خبرة 20 عاماً في مجال الاستشارات الزوجية والأسرية')
+        ('dr.omar@rezgee.com', 'د. عمر الفقهي', 'مستشار زواج إسلامي', 'دكتور في الفقه الإسلامي، مستشار زواج معتمد، له خبرة 20 عاماً في مجال الاستشارات الزوجية والأسرية')
         RETURNING id INTO dr_omar_id;
 
         -- Create Sheikh Hassan - Islamic Scholar
         INSERT INTO users (email, full_name, title, bio) VALUES
-        ('sheikh.hassan@rezge.com', 'الشيخ حسن المبارك', 'عالم شرعي', 'عالم شرعي متخصص في فقه الأسرة، خريج الجامعة الإسلامية بالمدينة المنورة، إمام وخطيب جامع الهدى')
+        ('sheikh.hassan@rezgee.com', 'الشيخ حسن المبارك', 'عالم شرعي', 'عالم شرعي متخصص في فقه الأسرة، خريج الجامعة الإسلامية بالمدينة المنورة، إمام وخطيب جامع الهدى')
         RETURNING id INTO sheikh_hassan_id;
 
         -- Set default author

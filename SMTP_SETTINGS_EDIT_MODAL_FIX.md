@@ -114,7 +114,7 @@
         value={settingsFormData.from_email}
         onChange={(e) => setSettingsFormData(prev => ({ ...prev, from_email: e.target.value }))}
         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent modal-input"
-        placeholder="noreply@rezge.com"
+        placeholder="noreply@rezgee.com"
       />
     </div>
   </div>

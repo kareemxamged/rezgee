@@ -24,7 +24,6 @@ export interface UserProfile {
   profession?: string;
   work_field?: string;
   religious_commitment?: string;
-  religiosity_level?: string;
   prayer_commitment?: string;
   bio?: string;
   looking_for?: string;

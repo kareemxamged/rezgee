@@ -41,7 +41,7 @@ export class UnifiedEmailService {
       // إعدادات افتراضية في حالة عدم وجود إعدادات في قاعدة البيانات
       return language === 'ar' ? 'رزقي - منصة الزواج الإسلامي الشرعي' : 'Rezge - Islamic Marriage Platform';
     } catch (error) {
-      console.error('❌ خطأ في جلب اسم المرسل:', error);
+      // console.error('❌ خطأ في جلب اسم المرسل:', error);
       return language === 'ar' ? 'رزقي - منصة الزواج الإسلامي الشرعي' : 'Rezge - Islamic Marriage Platform';
     }
   }
@@ -50,27 +50,27 @@ export class UnifiedEmailService {
    * إرسال إيميل عام باستخدام التيمبليت الموحد
    */
   static async sendEmail(emailData: EmailData, _emailType: string = 'system', language: 'ar' | 'en' = 'ar'): Promise<EmailResult> {
-    console.log('📧 UnifiedEmailService: بدء إرسال الإيميل...');
-    console.log(`📬 إلى: ${emailData.to}`);
-    console.log(`📝 الموضوع: ${emailData.subject}`);
+    // console.log('📧 UnifiedEmailService: بدء إرسال الإيميل...');
+    // console.log(`📬 إلى: ${emailData.to}`);
+    // console.log(`📝 الموضوع: ${emailData.subject}`);
 
     // إذا كان هناك templateId، جلب إعدادات SMTP المحددة في القالب
     if (emailData.templateId) {
-      console.log(`🔧 جلب إعدادات SMTP للقالب: ${emailData.templateId}`);
+      // console.log(`🔧 جلب إعدادات SMTP للقالب: ${emailData.templateId}`);
       try {
         const { TemplateSMTPManager } = await import('./templateSMTPManager');
         const smtpSettings = await TemplateSMTPManager.getSMTPForTemplate(emailData.templateId);
         
         if (smtpSettings) {
-          console.log(`✅ تم جلب إعدادات SMTP للقالب: ${smtpSettings.smtp_host}:${smtpSettings.smtp_port}`);
-          console.log(`🔧 إعدادات SMTP المستخدمة:`, {
-            id: smtpSettings.id,
-            host: smtpSettings.smtp_host,
-            port: smtpSettings.smtp_port,
-            from_email: smtpSettings.from_email,
-            from_name_ar: smtpSettings.from_name_ar,
-            is_default: smtpSettings.is_default
-          });
+          // console.log(`✅ تم جلب إعدادات SMTP للقالب: ${smtpSettings.smtp_host}:${smtpSettings.smtp_port}`);
+          // console.log(`🔧 إعدادات SMTP المستخدمة:`, {
+          //   id: smtpSettings.id,
+          //   host: smtpSettings.smtp_host,
+          //   port: smtpSettings.smtp_port,
+          //   from_email: smtpSettings.from_email,
+          //   from_name_ar: smtpSettings.from_name_ar,
+          //   is_default: smtpSettings.is_default
+          // });
           
           // استخدام إعدادات SMTP المحددة في القالب
           const enhancedEmailData = {
@@ -116,7 +116,7 @@ export class UnifiedEmailService {
         ...emailData,
         from: emailData.from || 'manage@kareemamged.com',
         fromName: emailData.fromName || senderName,
-        replyTo: emailData.replyTo || 'support@rezge.com'
+        replyTo: emailData.replyTo || 'support@rezgee.com'
       };
     }
 
@@ -514,6 +514,7 @@ export class UnifiedEmailService {
             host: smtpSettings.smtp_host,
             port: smtpSettings.smtp_port,
             secure: smtpSettings.secure || smtpSettings.smtp_port === 465,
+            requireTLS: smtpSettings.require_tls || false,
             auth: {
               user: smtpSettings.smtp_username,
               pass: smtpSettings.smtp_password

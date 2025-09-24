@@ -11,7 +11,7 @@ export class TemplateSMTPManager {
    */
   static async getSMTPForTemplate(templateId: string): Promise<any> {
     try {
-      console.log('🔍 جلب إعدادات SMTP للقالب:', templateId);
+      // console.log('🔍 جلب إعدادات SMTP للقالب:', templateId);
       
       // جلب القالب مع إعدادات SMTP المحددة
       const { data: template, error: templateError } = await supabase
@@ -21,11 +21,11 @@ export class TemplateSMTPManager {
         .single();
 
       if (templateError) {
-        console.error('❌ خطأ في جلب القالب:', templateError);
+        // console.error('❌ خطأ في جلب القالب:', templateError);
         return await this.getDefaultSMTP();
       }
 
-      console.log('📋 القالب المستخدم:', template);
+      // console.log('📋 القالب المستخدم:', template);
 
       // تحديد نوع القالب (تواصل أم عادي)
       const isContactTemplate = template.name_ar?.includes('تواصل') || 
@@ -38,12 +38,12 @@ export class TemplateSMTPManager {
       if (isContactTemplate) {
         // قالب التواصل - استخدام إعدادات الإرسال
         smtpSettingsId = template.contact_smtp_send_id;
-        console.log('📞 قالب التواصل - إعدادات الإرسال:', smtpSettingsId);
-        console.log('📞 قالب التواصل - إعدادات الاستقبال:', template.contact_smtp_receive_id);
+        // console.log('📞 قالب التواصل - إعدادات الإرسال:', smtpSettingsId);
+        // console.log('📞 قالب التواصل - إعدادات الاستقبال:', template.contact_smtp_receive_id);
       } else {
         // قالب عادي - استخدام إعدادات SMTP العادية
         smtpSettingsId = template.smtp_settings_id;
-        console.log('📧 قالب عادي - إعدادات SMTP:', smtpSettingsId);
+        // console.log('📧 قالب عادي - إعدادات SMTP:', smtpSettingsId);
       }
 
       // إذا لم تكن هناك إعدادات محددة، استخدم الإعدادات الافتراضية
@@ -125,7 +125,8 @@ export class TemplateSMTPManager {
     return {
       host: smtpSettings.smtp_host,
       port: smtpSettings.smtp_port,
-      secure: smtpSettings.smtp_port === 465, // المنفذ 465 يستخدم SSL
+      secure: smtpSettings.secure || smtpSettings.smtp_port === 465, // استخدام إعدادات الأمان من قاعدة البيانات
+      requireTLS: smtpSettings.require_tls || false, // استخدام إعدادات TLS من قاعدة البيانات
       auth: {
         user: smtpSettings.smtp_username,
         pass: smtpSettings.smtp_password

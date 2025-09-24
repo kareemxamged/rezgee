@@ -147,13 +147,13 @@ function createTemplateData(templateType, data, language) {
                 title: 'إشعار تسجيل دخول ناجح - رزقي',
                 greeting: 'تم تسجيل الدخول بنجاح!',
                 mainContent: `مرحباً ${data.firstName || 'المستخدم'}،<br><br>تم تسجيل الدخول إلى حسابك في موقع رزقي بنجاح.<br><br><strong>تفاصيل الجلسة:</strong><br>📅 التاريخ والوقت: ${data.dateTime || 'غير محدد'}<br>💻 نوع الجهاز: ${data.deviceType || 'غير محدد'}<br>🌐 المتصفح: ${data.browser || 'غير محدد'}<br>📍 الموقع: ${data.location || 'غير محدد'}`,
-                warning: 'إذا لم تقم بتسجيل الدخول في هذا الوقت، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezge.com',
+                warning: 'إذا لم تقم بتسجيل الدخول في هذا الوقت، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezgee.com',
                 footer: 'فريق رزقي - موقع الزواج الإسلامي الشرعي'
             } : {
                 title: 'Successful Login Notification - Rezge',
                 greeting: 'Login Successful!',
                 mainContent: `Hello ${data.firstName || 'User'},<br><br>You have successfully logged into your Rezge account.<br><br><strong>Session Details:</strong><br>📅 Date & Time: ${data.dateTime || 'Not specified'}<br>💻 Device Type: ${data.deviceType || 'Not specified'}<br>🌐 Browser: ${data.browser || 'Not specified'}<br>📍 Location: ${data.location || 'Not specified'}`,
-                warning: 'If you did not log in at this time, please change your password immediately and contact us at support@rezge.com',
+                warning: 'If you did not log in at this time, please change your password immediately and contact us at support@rezgee.com',
                 footer: 'Rezge Team - Islamic Marriage Platform'
             };
 

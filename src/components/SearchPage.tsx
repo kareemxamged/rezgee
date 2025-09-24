@@ -158,44 +158,44 @@ const SearchPage: React.FC = () => {
       const inferredGender = inferGenderFromProfile(userProfile);
 
       if (inferredGender) {
-        console.log('تحميل البيانات الأولية للبحث - المستخدم:', userProfile.id, 'الجنس:', inferredGender);
+        // console.log('تحميل البيانات الأولية للبحث - المستخدم:', userProfile.id, 'الجنس:', inferredGender);
         loadUsers();
       } else {
-        console.log('المستخدم مصادق والملف الشخصي محمل لكن لا يمكن تحديد الجنس');
+        // console.log('المستخدم مصادق والملف الشخصي محمل لكن لا يمكن تحديد الجنس');
       }
     } else if (isAuthenticated && !userProfile) {
-      console.log('المستخدم مصادق لكن الملف الشخصي لم يتم تحميله بعد');
+      // console.log('المستخدم مصادق لكن الملف الشخصي لم يتم تحميله بعد');
     }
   }, [isAuthenticated, userProfile]);
 
   const loadUsers = async () => {
     if (!userProfile) {
-      console.log('لا يمكن تحميل المستخدمين - الملف الشخصي غير محمل');
+      // console.log('لا يمكن تحميل المستخدمين - الملف الشخصي غير محمل');
       return;
     }
 
     const inferredGender = inferGenderFromProfile(userProfile);
 
     if (!inferredGender) {
-      console.log('لا يمكن تحميل المستخدمين - لا يمكن تحديد الجنس من الملف الشخصي');
-      console.log('userProfile:', userProfile);
-      console.log('userProfile.gender:', userProfile?.gender);
-      console.log('userProfile.beard:', userProfile?.beard);
-      console.log('userProfile.hijab:', userProfile?.hijab);
+      // console.log('لا يمكن تحميل المستخدمين - لا يمكن تحديد الجنس من الملف الشخصي');
+      // console.log('userProfile:', userProfile);
+      // console.log('userProfile.gender:', userProfile?.gender);
+      // console.log('userProfile.beard:', userProfile?.beard);
+      // console.log('userProfile.hijab:', userProfile?.hijab);
 
       // محاولة إعادة تحميل الملف الشخصي
       try {
         await refreshProfile();
-        console.log('تم إعادة تحميل الملف الشخصي');
+        // console.log('تم إعادة تحميل الملف الشخصي');
       } catch (error) {
-        console.error('خطأ في إعادة تحميل الملف الشخصي:', error);
+        // console.error('خطأ في إعادة تحميل الملف الشخصي:', error);
       }
       return;
     }
 
     setIsLoading(true);
     try {
-      console.log('تحميل المستخدمين للمستخدم:', userProfile.id, 'الجنس:', inferredGender);
+      // console.log('تحميل المستخدمين للمستخدم:', userProfile.id, 'الجنس:', inferredGender);
 
       // استخدام الدالة الجديدة للبحث المفلتر حسب الجنس
       const { data, error } = await userService.searchUsersForMatching(
@@ -205,27 +205,27 @@ const SearchPage: React.FC = () => {
       );
 
       if (error) {
-        console.error('خطأ في البحث:', error);
-        console.error('تفاصيل الخطأ:', error);
+        // console.error('خطأ في البحث:', error);
+        // console.error('تفاصيل الخطأ:', error);
         throw error;
       }
 
-      console.log('نتائج البحث الخام:', data);
+      // console.log('نتائج البحث الخام:', data);
 
       // فحص التكرارات في البيانات المحملة
       const uniqueData = data ? data.filter((user, index, self) =>
         index === self.findIndex(u => u.id === user.id)
       ) : [];
 
-      console.log('فحص التكرارات في التحميل الأولي:', {
-        originalCount: data?.length || 0,
-        uniqueCount: uniqueData.length,
-        duplicatesFound: (data?.length || 0) - uniqueData.length
-      });
+      // console.log('فحص التكرارات في التحميل الأولي:', {
+      //   originalCount: data?.length || 0,
+      //   uniqueCount: uniqueData.length,
+      //   duplicatesFound: (data?.length || 0) - uniqueData.length
+      // });
 
       const sortedData = sortResults(uniqueData, sortBy);
       setSearchResults(sortedData);
-      console.log(`تم تحميل ${uniqueData.length} مستخدم فريد وترتيبهم حسب: ${sortBy}`);
+      // console.log(`تم تحميل ${uniqueData.length} مستخدم فريد وترتيبهم حسب: ${sortBy}`);
 
       // التحقق من حالة الإعجابات للمستخدمين الجدد
       if (uniqueData.length > 0 && userProfile?.id) {
@@ -234,11 +234,11 @@ const SearchPage: React.FC = () => {
 
       // إضافة تسجيل مفصل للنتائج
       if (data && data.length > 0) {
-        console.log('أول 3 نتائج:', data.slice(0, 3));
+        // console.log('أول 3 نتائج:', data.slice(0, 3));
       }
     } catch (error) {
-      console.error('Error loading users:', error);
-      console.error('Stack trace:', error);
+      // console.error('Error loading users:', error);
+      // console.error('Stack trace:', error);
       // عرض رسالة خطأ للمستخدم
       setSearchResults([]);
     } finally {
@@ -248,7 +248,7 @@ const SearchPage: React.FC = () => {
 
   const onSubmit = async (data: SearchFormData) => {
     if (!userProfile) {
-      console.error('لا يمكن البحث - الملف الشخصي غير محمل');
+      // console.error('لا يمكن البحث - الملف الشخصي غير محمل');
       alert(t('search.messages.loginRequired'));
       return;
     }
@@ -256,7 +256,7 @@ const SearchPage: React.FC = () => {
     const inferredGender = inferGenderFromProfile(userProfile);
 
     if (!inferredGender) {
-      console.error('لا يمكن البحث - لا يمكن تحديد الجنس من الملف الشخصي');
+      // console.error('لا يمكن البحث - لا يمكن تحديد الجنس من الملف الشخصي');
       alert(t('search.messages.completeProfileMessage'));
       return;
     }
@@ -300,14 +300,14 @@ const SearchPage: React.FC = () => {
 
       setActiveFilters(filters);
 
-      console.log('البحث مع الفلاتر للمستخدم:', userProfile.id, 'الجنس:', userProfile.gender);
-      console.log('فلاتر البحث:', {
-        ageMin: data.ageMin,
-        ageMax: data.ageMax,
-        city: data.city,
-        maritalStatus: data.maritalStatus,
-        religiousCommitment: data.religiousCommitment
-      });
+      // console.log('البحث مع الفلاتر للمستخدم:', userProfile.id, 'الجنس:', userProfile.gender);
+      // console.log('فلاتر البحث:', {
+      //   ageMin: data.ageMin,
+      //   ageMax: data.ageMax,
+      //   city: data.city,
+      //   maritalStatus: data.maritalStatus,
+      //   religiousCommitment: data.religiousCommitment
+      // });
 
       // البحث مع فلترة الجنس المقابل
       const { data: results, error } = await userService.searchUsersForMatching(
@@ -324,11 +324,11 @@ const SearchPage: React.FC = () => {
       );
 
       if (error) {
-        console.error('خطأ في البحث مع الفلاتر:', error);
+        // console.error('خطأ في البحث مع الفلاتر:', error);
         throw error;
       }
 
-      console.log('نتائج البحث مع الفلاتر:', results);
+      // console.log('نتائج البحث مع الفلاتر:', results);
 
       // تم إزالة فلترة الحسابات المكتملة - عرض جميع الحسابات
       // const completeProfiles = filterCompleteProfiles(results || []);
@@ -339,20 +339,20 @@ const SearchPage: React.FC = () => {
         index === self.findIndex(u => u.id === user.id)
       ) : [];
 
-      console.log('فحص التكرارات:', {
-        originalCount: results?.length || 0,
-        uniqueCount: uniqueResults.length,
-        duplicatesFound: (results?.length || 0) - uniqueResults.length
-      });
+      // console.log('فحص التكرارات:', {
+      //   originalCount: results?.length || 0,
+      //   uniqueCount: uniqueResults.length,
+      //   duplicatesFound: (results?.length || 0) - uniqueResults.length
+      // });
 
       const sortedResults = sortResults(uniqueResults, sortBy);
       setSearchResults(sortedResults);
       setCurrentPage(1); // إعادة تعيين الصفحة الحالية إلى الأولى عند البحث الجديد
 
-      console.log(`تم العثور على ${uniqueResults.length} نتيجة فريدة وترتيبها حسب: ${sortBy}`);
+      // console.log(`تم العثور على ${uniqueResults.length} نتيجة فريدة وترتيبها حسب: ${sortBy}`);
     } catch (error) {
-      console.error('Search error:', error);
-      console.error('تفاصيل خطأ البحث:', error);
+      // console.error('Search error:', error);
+      // console.error('تفاصيل خطأ البحث:', error);
       alert(t('search.messages.searchError'));
     } finally {
       setIsLoading(false);
@@ -364,9 +364,9 @@ const SearchPage: React.FC = () => {
     setIsRefreshingProfile(true);
     try {
       await refreshProfile();
-      console.log(t('search.messages.profileRefreshSuccess'));
+      // console.log(t('search.messages.profileRefreshSuccess'));
     } catch (error) {
-      console.error(t('search.messages.profileRefreshError'), error);
+      // console.error(t('search.messages.profileRefreshError'), error);
     } finally {
       setIsRefreshingProfile(false);
     }
@@ -400,7 +400,7 @@ const SearchPage: React.FC = () => {
     setSortBy(newSortBy as 'newest' | 'age' | 'rating' | 'lastSeen');
     const sortedResults = sortResults(searchResults, newSortBy);
     setSearchResults(sortedResults);
-    console.log(`تم ترتيب النتائج حسب: ${newSortBy}`);
+    // console.log(`تم ترتيب النتائج حسب: ${newSortBy}`);
   };
 
   const clearFilters = () => {
@@ -434,9 +434,9 @@ const SearchPage: React.FC = () => {
       });
 
       setSentLikes(newSentLikes);
-      console.log('تم فحص حالة الإعجابات:', likeChecks);
+      // console.log('تم فحص حالة الإعجابات:', likeChecks);
     } catch (error) {
-      console.error('خطأ في فحص حالة الإعجابات:', error);
+      // console.error('خطأ في فحص حالة الإعجابات:', error);
     } finally {
       setCheckingLikes(new Set());
     }
@@ -450,7 +450,7 @@ const SearchPage: React.FC = () => {
     }
 
     try {
-      console.log('إنشاء محادثة جديدة مع المستخدم:', targetUserId);
+      // console.log('إنشاء محادثة جديدة مع المستخدم:', targetUserId);
 
       const { data, error } = await messageService.createConversation(
         userProfile.id,
@@ -458,7 +458,7 @@ const SearchPage: React.FC = () => {
       );
 
       if (error) {
-        console.error('خطأ في إنشاء المحادثة:', error);
+        // console.error('خطأ في إنشاء المحادثة:', error);
 
         // Show appropriate error message
         const errorMessage = typeof error === 'string' ? error : error.message || 'Unknown error';
@@ -472,12 +472,12 @@ const SearchPage: React.FC = () => {
         return;
       }
 
-      console.log('تم إنشاء المحادثة بنجاح:', data);
+      // console.log('تم إنشاء المحادثة بنجاح:', data);
 
       // الانتقال إلى صفحة الرسائل
       navigate('/messages');
     } catch (error) {
-      console.error('خطأ غير متوقع في إنشاء المحادثة:', error);
+      // console.error('خطأ غير متوقع في إنشاء المحادثة:', error);
       alert(t('search.messages.unexpectedError'));
     }
   };
@@ -528,9 +528,9 @@ const SearchPage: React.FC = () => {
             newSet.delete(targetUserId);
             return newSet;
           });
-          console.log('تم إلغاء الإعجاب بنجاح!');
+          // console.log('تم إلغاء الإعجاب بنجاح!');
         } else {
-          console.error('فشل في إلغاء الإعجاب:', result.error);
+          // console.error('فشل في إلغاء الإعجاب:', result.error);
         }
       } else {
         // إرسال إعجاب جديد
@@ -544,14 +544,14 @@ const SearchPage: React.FC = () => {
           if (result.isMatch) {
             alert('🎉 تهانينا! لديكم إعجاب متبادل!');
           } else {
-            console.log('تم إرسال الإعجاب بنجاح!');
+            // console.log('تم إرسال الإعجاب بنجاح!');
           }
         } else {
-          console.error('فشل في إرسال الإعجاب:', result.error);
+          // console.error('فشل في إرسال الإعجاب:', result.error);
         }
       }
     } catch (error) {
-      console.error('خطأ في إرسال/إلغاء الإعجاب:', error);
+      // console.error('خطأ في إرسال/إلغاء الإعجاب:', error);
     } finally {
       // إزالة المستخدم من قائمة المعالجة
       setLikingUsers(prev => {
@@ -572,22 +572,22 @@ const SearchPage: React.FC = () => {
   const currentPageIds = currentPageResults.map(user => user.id);
   const uniqueCurrentPageIds = [...new Set(currentPageIds)];
   if (currentPageIds.length !== uniqueCurrentPageIds.length) {
-    console.warn('⚠️ تم العثور على تكرارات في الصفحة الحالية!', {
-      totalIds: currentPageIds.length,
-      uniqueIds: uniqueCurrentPageIds.length,
-      duplicates: currentPageIds.length - uniqueCurrentPageIds.length
-    });
+    // console.warn('⚠️ تم العثور على تكرارات في الصفحة الحالية!', {
+    //   totalIds: currentPageIds.length,
+    //   uniqueIds: uniqueCurrentPageIds.length,
+    //   duplicates: currentPageIds.length - uniqueCurrentPageIds.length
+    // });
   }
 
   // فحص شامل للتكرارات في جميع النتائج
   const allResultIds = searchResults.map(user => user.id);
   const uniqueAllResultIds = [...new Set(allResultIds)];
   if (allResultIds.length !== uniqueAllResultIds.length) {
-    console.warn('⚠️ تم العثور على تكرارات في جميع النتائج!', {
-      totalResults: allResultIds.length,
-      uniqueResults: uniqueAllResultIds.length,
-      duplicates: allResultIds.length - uniqueAllResultIds.length
-    });
+    // console.warn('⚠️ تم العثور على تكرارات في جميع النتائج!', {
+    //   totalResults: allResultIds.length,
+    //   uniqueResults: uniqueAllResultIds.length,
+    //   duplicates: allResultIds.length - uniqueAllResultIds.length
+    // });
   }
 
   const getMaritalStatusText = (status: string) => {

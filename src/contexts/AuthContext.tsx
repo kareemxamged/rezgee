@@ -101,7 +101,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const proactiveRefreshInterval = setInterval(async () => {
       try {
-        console.log('🔄 Running proactive session refresh check...');
+        // console.log('🔄 Running proactive session refresh check...');
         await proactiveSessionRefresh();
 
         // تحديث حالة صحة الجلسة
@@ -113,10 +113,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }));
 
         if (!isValid) {
-          console.warn('⚠️ Session became invalid during proactive check');
+          // console.warn('⚠️ Session became invalid during proactive check');
         }
       } catch (error) {
-        console.error('❌ Error in proactive session refresh:', error);
+        // console.error('❌ Error in proactive session refresh:', error);
         setSessionHealth(prev => ({
           ...prev,
           isValid: false,
@@ -504,7 +504,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           height,
           skin_color,
           body_type,
-          religiosity_level,
           prayer_commitment,
           smoking,
           beard,
@@ -1570,7 +1569,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const criticalFields = [
           'education', 'profession', 'religious_commitment', 'bio', 'looking_for',
           'nationality', 'height', 'weight', 'education_level', 'financial_status',
-          'religiosity_level', 'prayer_commitment', 'smoking', 'beard', 'hijab'
+          'prayer_commitment', 'smoking', 'beard', 'hijab'
         ];
 
         for (const field of criticalFields) {

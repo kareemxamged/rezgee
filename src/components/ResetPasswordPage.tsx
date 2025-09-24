@@ -54,7 +54,7 @@ const ResetPasswordPage: React.FC = () => {
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error) {
-          console.error('Error getting session:', error);
+          // console.error('Error getting session:', error);
           setErrorMessage(t('auth.resetPassword.messages.invalidSession'));
           return;
         }
@@ -65,7 +65,7 @@ const ResetPasswordPage: React.FC = () => {
           setErrorMessage(t('auth.resetPassword.messages.invalidSession'));
         }
       } catch (error) {
-        console.error('Error checking session:', error);
+        // console.error('Error checking session:', error);
         setErrorMessage(t('auth.resetPassword.messages.unexpectedError'));
       }
     };
@@ -85,7 +85,7 @@ const ResetPasswordPage: React.FC = () => {
       });
 
       if (error) {
-        console.error('Error updating password:', error);
+        // console.error('Error updating password:', error);
         setErrorMessage(t('auth.resetPassword.messages.updateError'));
         return;
       }
@@ -98,7 +98,7 @@ const ResetPasswordPage: React.FC = () => {
       }, 3000);
 
     } catch (error) {
-      console.error('Error in password reset:', error);
+      // console.error('Error in password reset:', error);
       setErrorMessage(t('auth.resetPassword.messages.unexpectedError'));
     } finally {
       setIsSubmitting(false);

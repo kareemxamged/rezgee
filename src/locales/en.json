@@ -480,11 +480,6 @@
             "hijabNiqab": "Niqab",
             "hijabPreferNotSay": "Prefer not to say",
             "personalReligiousInfoTitle": "Personal & Religious Information",
-            "religiosityLevel": "Religiosity Level",
-            "religiosityLevelPlaceholder": "Select religiosity level",
-            "religiosityLevelNotReligious": "Not Religious",
-            "religiosityLevelSomewhatReligious": "Somewhat Religious",
-            "religiosityLevelReligious": "Religious",
             "financialStatus": "Financial Status",
             "financialStatusPlaceholder": "Select financial status",
             "financialStatusPoor": "Poor",
@@ -1280,7 +1275,7 @@
                 },
                 "q2": {
                     "question": "How do you ensure adherence to Islamic values?",
-                    "answer": "We have a specialized team of scholars and Islamic counselors who oversee all aspects of the website. We also continuously monitor content and apply strict guidelines for respectful communication."
+                    "answer": "Our platform is built on a foundation of Islamic values. While still in the early stages, we prioritize careful content monitoring to uphold these principles."
                 },
                 "q3": {
                     "question": "Can families participate in the process?",
@@ -1618,7 +1613,7 @@
             },
             "email": {
                 "title": "Email",
-                "value": "info@rezge.com"
+                "value": "info@rezgee.com"
             },
             "hours": {
                 "title": "Business Hours",
@@ -1628,21 +1623,21 @@
         "support": {
             "title": "Technical Support",
             "description": "Our technical support team is available to help you with any technical inquiries",
-            "email": "support@rezge.com",
+            "email": "support@rezgee.com",
             "phone": "+966582352555",
             "phoneDir": "ltr"
         },
         "sales": {
             "title": "Sales & Subscriptions",
             "description": "For inquiries about premium plans and special subscriptions",
-            "email": "sales@rezge.com",
+            "email": "sales@rezgee.com",
             "phone": "+966582352555",
             "phoneDir": "ltr"
         },
         "legal": {
             "title": "Legal Affairs",
             "description": "For legal inquiries and official complaints",
-            "email": "legal@rezge.com"
+            "email": "legal@rezgee.com"
         },
         "social": {
             "title": "Follow us on social media",
@@ -2039,7 +2034,7 @@
             "contact": {
                 "title": "Contact Us",
                 "intro": "If you have any questions about this privacy policy, you can contact us:",
-                "email": "privacy@rezge.com",
+                "email": "privacy@rezgee.com",
                 "emailLabel": "Email",
                 "phone": "+966582352555",
                 "phoneLabel": "Phone",
@@ -2327,7 +2322,7 @@
             "contact": {
                 "title": "Contact",
                 "intro": "For inquiries about terms of service:",
-                "email": "legal@rezge.com",
+                "email": "legal@rezgee.com",
                 "phone": "+966582352555",
                 "phoneDir": "ltr",
                 "emailLabel": "Email",
@@ -2364,9 +2359,9 @@
         },
         "contactInfo": {
             "title": "Contact Us",
-            "email": "info@rezge.com",
+            "email": "info@rezgee.com",
             "phone": "+966582352555",
-            "address": "Riyadh, Saudi Arabia"
+            "address": "Kingdom of Saudi Arabia"
         },
         "newsletter": {
             "title": "Subscribe to Newsletter",
@@ -2828,7 +2823,6 @@
             "nationality": "Nationality",
             "residenceLocation": "Residence Location",
             "commitmentLevel": "Commitment Level",
-            "religiosityLevel": "Religiosity Level",
             "prayerCommitment": "Prayer Commitment",
             "smoking": "Smoking",
             "beard": "Beard",
@@ -2875,11 +2869,6 @@
                 "committed": "Committed",
                 "conservative": "Conservative",
                 "prefer_not_say": "Prefer not to say"
-            },
-            "religiosityLevel": {
-                "not_religious": "Not Religious",
-                "somewhat_religious": "Somewhat Religious",
-                "religious": "Religious"
             },
             "prayerCommitment": {
                 "dont_pray": "Doesn't Pray",

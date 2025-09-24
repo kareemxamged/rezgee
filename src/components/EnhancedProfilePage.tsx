@@ -52,7 +52,6 @@ const createEnhancedProfileSchema = (t: any) => z.object({
   bodyType: z.enum(['slim', 'average', 'athletic', 'heavy']).optional().or(z.literal('')),
 
   // الالتزام الديني المطور
-  religiosityLevel: z.enum(['not_religious', 'somewhat_religious', 'religious']).optional().or(z.literal('')),
   prayerCommitment: z.enum(['dont_pray', 'pray_all', 'pray_sometimes', 'prefer_not_say']).optional().or(z.literal('')),
   smoking: z.enum(['yes', 'no']).optional().or(z.literal('')),
 
@@ -99,7 +98,6 @@ const getEnhancedDisplayData = (userProfile: any): EnhancedProfileFormData => {
       height: undefined,
       skinColor: '',
       bodyType: '',
-      religiosityLevel: '',
       prayerCommitment: '',
       smoking: '',
       beard: '',
@@ -134,7 +132,6 @@ const getEnhancedDisplayData = (userProfile: any): EnhancedProfileFormData => {
     height: userProfile.height,
     skinColor: userProfile.skin_color || '',
     bodyType: userProfile.body_type || '',
-    religiosityLevel: userProfile.religiosity_level || '',
     prayerCommitment: userProfile.prayer_commitment || '',
     smoking: userProfile.smoking || '',
     beard: userProfile.beard || '',
@@ -187,11 +184,6 @@ const getMarriageTypeOptions = (gender: 'male' | 'female', t: any) => {
   }
 };
 
-const getReligiosityLevelOptions = (t: any) => [
-  { value: 'not_religious', label: t('profile.religiousSection.religiosityOptions.notReligious') },
-  { value: 'somewhat_religious', label: t('profile.religiousSection.religiosityOptions.somewhatReligious') },
-  { value: 'religious', label: t('profile.religiousSection.religiosityOptions.religious') }
-];
 
 const getPrayerCommitmentOptions = (t: any) => [
   { value: 'dont_pray', label: t('profile.religiousSection.prayerOptions.dontPray') },
@@ -321,26 +313,26 @@ const EnhancedProfilePage: React.FC = () => {
                               !userProfile.bio;
 
         if (hasMissingData) {
-          console.log('🔧 Auto-fixing missing/incorrect profile data...');
-          console.log('📊 Current profile state:', {
-            membership_number: userProfile.membership_number,
-            first_name: userProfile.first_name,
-            last_name: userProfile.last_name,
-            education: userProfile.education,
-            profession: userProfile.profession,
-            bio: userProfile.bio
-          });
+          // console.log('🔧 Auto-fixing missing/incorrect profile data...');
+          // console.log('📊 Current profile state:', {
+          //   membership_number: userProfile.membership_number,
+          //   first_name: userProfile.first_name,
+          //   last_name: userProfile.last_name,
+          //   education: userProfile.education,
+          //   profession: userProfile.profession,
+          //   bio: userProfile.bio
+          // });
 
           try {
             const result = await fixMissingProfileData();
             if (result.success) {
-              console.log('✅ Auto-fix completed:', result.message);
+              // console.log('✅ Auto-fix completed:', result.message);
             }
           } catch (error) {
-            console.error('❌ Auto-fix failed:', error);
+            // console.error('❌ Auto-fix failed:', error);
           }
         } else {
-          console.log('✅ Profile data appears complete, no auto-fix needed');
+          // console.log('✅ Profile data appears complete, no auto-fix needed');
         }
       };
 
@@ -354,13 +346,13 @@ const EnhancedProfilePage: React.FC = () => {
     if (userProfile) {
       const updatedDisplayData = getEnhancedDisplayData(userProfile);
       setDisplayData(updatedDisplayData);
-      console.log('🔄 Updated displayData from userProfile change (jobTitle focus):', {
-        jobTitle: updatedDisplayData.jobTitle,
-        profession: updatedDisplayData.profession,
-        userProfileJobTitle: userProfile.job_title,
-        userProfileProfession: userProfile.profession,
-        timestamp: new Date().toISOString()
-      });
+      // console.log('🔄 Updated displayData from userProfile change (jobTitle focus):', {
+      //   jobTitle: updatedDisplayData.jobTitle,
+      //   profession: updatedDisplayData.profession,
+      //   userProfileJobTitle: userProfile.job_title,
+      //   userProfileProfession: userProfile.profession,
+      //   timestamp: new Date().toISOString()
+      // });
     }
   }, [userProfile]);
 
@@ -397,7 +389,7 @@ const EnhancedProfilePage: React.FC = () => {
       //   setIsImageVisible(userProfile.profile_image_visible);
       // }
     } catch (error) {
-      console.error('خطأ في تحميل الصورة الشخصية:', error);
+      // console.error('خطأ في تحميل الصورة الشخصية:', error);
       setCurrentProfileImage(null);
     } finally {
       setIsLoadingImage(false);
@@ -406,21 +398,21 @@ const EnhancedProfilePage: React.FC = () => {
 
   // معالجة تحديث الصورة
   const handleImageUpdate = (image: ProfileImage | null) => {
-    console.log('تحديث الصورة في الصفحة:', image);
+    // console.log('تحديث الصورة في الصفحة:', image);
     setCurrentProfileImage(image);
   };
 
   // تشخيص البيانات
-  console.log('🔍 Enhanced Profile Debug:', {
-    userProfile,
-    displayData,
-    isLoading,
-    membershipNumber: userProfile?.membership_number,
-    errors,
-    isValid,
-    isFormValid: isFormValid(),
-    watchedGender
-  });
+  // console.log('🔍 Enhanced Profile Debug:', {
+  //   userProfile,
+  //   displayData,
+  //   isLoading,
+  //   membershipNumber: userProfile?.membership_number,
+  //   errors,
+  //   isValid,
+  //   isFormValid: isFormValid(),
+  //   watchedGender
+  // });
 
   if (!userProfile) {
     return (
@@ -442,15 +434,15 @@ const EnhancedProfilePage: React.FC = () => {
   }
 
   const onSubmit = async (data: EnhancedProfileFormData) => {
-    console.log('✅ Starting enhanced profile update...');
-    console.log('📊 Form data:', data);
-    console.log('👤 User gender:', watchedGender);
-    console.log('📝 Form validation status:', {
-      isValid,
-      isFormValid: isFormValid(),
-      isPhoneValid,
-      errors
-    });
+    // console.log('✅ Starting enhanced profile update...');
+    // console.log('📊 Form data:', data);
+    // console.log('👤 User gender:', watchedGender);
+    // console.log('📝 Form validation status:', {
+    //   isValid,
+    //   isFormValid: isFormValid(),
+    //   isPhoneValid,
+    //   errors
+    // });
 
     try {
       // دالة مساعدة لتحويل القيم الفارغة إلى undefined
@@ -473,7 +465,6 @@ const EnhancedProfilePage: React.FC = () => {
         height: data.height,
         skin_color: convertEmptyToUndefined(data.skinColor),
         body_type: convertEmptyToUndefined(data.bodyType),
-        religiosity_level: convertEmptyToUndefined(data.religiosityLevel),
         prayer_commitment: convertEmptyToUndefined(data.prayerCommitment),
         smoking: convertEmptyToUndefined(data.smoking),
         beard: convertEmptyToUndefined(data.beard),
@@ -493,7 +484,7 @@ const EnhancedProfilePage: React.FC = () => {
       });
 
       if (result.success) {
-        console.log('✅ Profile updated successfully');
+        // console.log('✅ Profile updated successfully');
         // تحديث displayData فوراً بالبيانات الجديدة مع التركيز على حقل الوظيفة
         const updatedDisplayData = {
           ...data,
@@ -504,31 +495,31 @@ const EnhancedProfilePage: React.FC = () => {
         setDisplayData(updatedDisplayData);
         setIsEditing(false);
 
-        console.log('🔄 Updated displayData immediately (jobTitle focus):', {
-          jobTitle: updatedDisplayData.jobTitle,
-          profession: updatedDisplayData.profession,
-          originalJobTitle: data.jobTitle,
-          originalProfession: data.profession
-        });
+        // console.log('🔄 Updated displayData immediately (jobTitle focus):', {
+        //   jobTitle: updatedDisplayData.jobTitle,
+        //   profession: updatedDisplayData.profession,
+        //   originalJobTitle: data.jobTitle,
+        //   originalProfession: data.profession
+        // });
       } else {
-        console.error('❌ Profile update failed:', result.error);
+        // console.error('❌ Profile update failed:', result.error);
       }
     } catch (error) {
-      console.error('❌ Unexpected error during profile update:', error);
+      // console.error('❌ Unexpected error during profile update:', error);
     }
   };
 
   const onError = (errors: any) => {
-    console.log('❌ Form validation errors:', errors);
-    console.log('👤 Current gender:', watchedGender);
-    console.log('📝 Form is valid according to custom logic:', isFormValid());
+    // console.log('❌ Form validation errors:', errors);
+    // console.log('👤 Current gender:', watchedGender);
+    // console.log('📝 Form is valid according to custom logic:', isFormValid());
 
     // تفصيل الأخطاء حسب الجنس
     if (watchedGender === 'male' && errors.hijab) {
-      console.log('⚠️ Hijab error for male user (should be ignored):', errors.hijab);
+      // console.log('⚠️ Hijab error for male user (should be ignored):', errors.hijab);
     }
     if (watchedGender === 'female' && errors.beard) {
-      console.log('⚠️ Beard error for female user (should be ignored):', errors.beard);
+      // console.log('⚠️ Beard error for female user (should be ignored):', errors.beard);
     }
   };
 
@@ -544,7 +535,7 @@ const EnhancedProfilePage: React.FC = () => {
 
   // دالة إصلاح يدوي للحالات الطارئة
   const handleManualFix = async () => {
-    console.log('🔧 Manual fix requested by user');
+    // console.log('🔧 Manual fix requested by user');
     try {
       const result = await fixMissingProfileData();
       if (result.success) {
@@ -553,7 +544,7 @@ const EnhancedProfilePage: React.FC = () => {
         alert(`❌ ${result.message}`);
       }
     } catch (error) {
-      console.error('Error in manual fix:', error);
+      // console.error('Error in manual fix:', error);
       alert(t('profile.errorDuringFix'));
     }
   };
@@ -621,14 +612,14 @@ const EnhancedProfilePage: React.FC = () => {
                     {(() => {
                       // عرض حقل "الوظيفة" من النموذج (jobTitle) لأنه الحقل الموجود فعلياً
                       const jobToShow = displayData.jobTitle || displayData.profession || t('profile.professionNotSpecified');
-                      console.log('🎯 Displaying job title from form:', {
-                        jobToShow,
-                        displayDataJobTitle: displayData.jobTitle,
-                        displayDataProfession: displayData.profession,
-                        userProfileJobTitle: userProfile?.job_title,
-                        userProfileProfession: userProfile?.profession,
-                        timestamp: new Date().toISOString()
-                      });
+                      // console.log('🎯 Displaying job title from form:', {
+                      //   jobToShow,
+                      //   displayDataJobTitle: displayData.jobTitle,
+                      //   displayDataProfession: displayData.profession,
+                      //   userProfileJobTitle: userProfile?.job_title,
+                      //   userProfileProfession: userProfile?.profession,
+                      //   timestamp: new Date().toISOString()
+                      // });
                       return jobToShow;
                     })()}
                   </p>
@@ -950,26 +941,6 @@ const EnhancedProfilePage: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                   {/* التدين */}
-                  <div>
-                    <label className="block text-slate-700 font-medium mb-1.5 md:mb-2 text-sm md:text-base">
-                      {t('profile.religiousSection.religiosity')}
-                    </label>
-                    <select
-                      {...register('religiosityLevel')}
-                      disabled={!isEditing}
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 disabled:bg-slate-50 disabled:text-slate-600"
-                    >
-                      <option value="">{t('profile.choose')}</option>
-                      {getReligiosityLevelOptions(t).map(option => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.religiosityLevel && (
-                      <p className="text-red-500 text-sm mt-1">{errors.religiosityLevel.message}</p>
-                    )}
-                  </div>
 
                   {/* الصلاة */}
                   <div>

@@ -109,7 +109,7 @@ const PaymentPage: React.FC = () => {
       await loadBankInfo();
 
     } catch (error) {
-      console.error('Error loading payment data:', error);
+      // console.error('Error loading payment data:', error);
       setError('حدث خطأ في تحميل بيانات الدفع');
     } finally {
       setLoading(false);
@@ -142,7 +142,7 @@ const PaymentPage: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error('Error loading bank info:', error);
+      // console.error('Error loading bank info:', error);
     }
   };
 
@@ -152,7 +152,7 @@ const PaymentPage: React.FC = () => {
       setCopied(field);
       setTimeout(() => setCopied(''), 2000);
     } catch (error) {
-      console.error('Failed to copy:', error);
+      // console.error('Failed to copy:', error);
     }
   };
 
@@ -223,7 +223,7 @@ const PaymentPage: React.FC = () => {
       }
 
     } catch (error) {
-      console.error('Payment error:', error);
+      // console.error('Payment error:', error);
       setError('حدث خطأ في معالجة الدفع');
     } finally {
       setProcessing(false);

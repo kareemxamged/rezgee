@@ -48,7 +48,6 @@ interface NewUserData {
   weight?: number;
   educationLevel?: 'primary' | 'secondary' | 'diploma' | 'bachelor' | 'master' | 'phd';
   financialStatus?: 'poor' | 'below_average' | 'average' | 'above_average' | 'wealthy';
-  religiosityLevel?: 'not_religious' | 'slightly_religious' | 'religious' | 'very_religious' | 'prefer_not_say';
   prayerCommitment?: 'dont_pray' | 'pray_all' | 'pray_sometimes' | 'prefer_not_say';
   smoking?: 'yes' | 'no';
   beard?: 'yes' | 'no';
@@ -78,7 +77,6 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, onClose, onUserAdde
     weight: undefined,
     educationLevel: undefined,
     financialStatus: undefined,
-    religiosityLevel: undefined,
     prayerCommitment: undefined,
     smoking: undefined,
     beard: undefined,
@@ -167,7 +165,6 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, onClose, onUserAdde
       weight: undefined,
       educationLevel: undefined,
       financialStatus: undefined,
-      religiosityLevel: undefined,
       prayerCommitment: undefined,
       smoking: undefined,
       beard: undefined,
@@ -508,23 +505,6 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, onClose, onUserAdde
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    مستوى التدين
-                  </label>
-                  <select
-                    value={formData.religiosityLevel || ''}
-                    onChange={(e) => handleInputChange('religiosityLevel', e.target.value || undefined)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">اختر مستوى التدين</option>
-                    <option value="not_religious">غير متدين</option>
-                    <option value="slightly_religious">متدين إلى حد ما</option>
-                    <option value="religious">متدين</option>
-                    <option value="very_religious">متدين جداً</option>
-                    <option value="prefer_not_say">أفضل عدم الإجابة</option>
-                  </select>
-                </div>
               </div>
             </div>
 

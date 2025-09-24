@@ -135,8 +135,8 @@ export class UnifiedDatabaseEmailService {
       timestamp: new Date().toLocaleString(language === 'ar' ? 'ar-SA' : 'en-GB'),
       currentYear: new Date().getFullYear(),
       platformName: language === 'ar' ? 'رزقي' : 'Rezge',
-      supportEmail: 'support@rezge.com',
-      contactEmail: 'contact@rezge.com',
+      supportEmail: 'support@rezgee.com',
+      contactEmail: 'contact@rezgee.com',
       baseUrl: typeof window !== 'undefined' ? window.location.origin : 'https://rezge.vercel.app',
       ...templateData
     };
@@ -160,7 +160,7 @@ export class UnifiedDatabaseEmailService {
       textContent: processedTextContent,
       fromEmail: templateSMTPSettings?.from_email || 'manage@kareemamged.com',
       fromName: language === 'ar' ? (templateSMTPSettings?.from_name_ar || 'رزقي') : (templateSMTPSettings?.from_name_en || 'Rezge'),
-      replyTo: templateSMTPSettings?.reply_to || 'support@rezge.com'
+      replyTo: templateSMTPSettings?.reply_to || 'support@rezgee.com'
     };
   }
   

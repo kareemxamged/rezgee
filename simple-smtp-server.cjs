@@ -164,7 +164,8 @@ async function sendRealEmail(data) {
                 smtpConfig = {
                     host: process.env.VITE_SMTP_HOST || 'smtp.hostinger.com',
                     port: parseInt(process.env.VITE_SMTP_PORT) || 587,
-                    secure: false,
+                    secure: process.env.VITE_SMTP_SECURE === 'true' || parseInt(process.env.VITE_SMTP_PORT) === 465,
+                    requireTLS: process.env.VITE_SMTP_REQUIRE_TLS === 'true' || false,
                     auth: {
                         user: process.env.VITE_SMTP_USER || 'manage@rezgee.com',
                         pass: process.env.VITE_SMTP_PASS || 'R3zG89&Secure'
@@ -175,7 +176,8 @@ async function sendRealEmail(data) {
                 smtpConfig = {
                     host: defaultSettings.smtp_host,
                     port: defaultSettings.smtp_port,
-                    secure: defaultSettings.smtp_port === 465,
+                    secure: defaultSettings.secure || defaultSettings.smtp_port === 465,
+                    requireTLS: defaultSettings.require_tls || false,
                     auth: {
                         user: defaultSettings.smtp_username,
                         pass: defaultSettings.smtp_password

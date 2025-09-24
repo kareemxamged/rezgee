@@ -741,7 +741,7 @@ class ArticleService {
   }
 
   // Get featured articles
-  async getFeaturedArticles(limit: number = 3): Promise<ArticleWithDetails[]> {
+  async getFeaturedArticles(limit: number = 3, language: 'ar' | 'en' = 'ar'): Promise<ArticleWithDetails[]> {
     const { data, error } = await supabase
       .from('articles')
       .select(`
@@ -751,6 +751,7 @@ class ArticleService {
       `)
       .eq('status', 'published')
       .eq('featured', true)
+      .eq('language', language)
       .order('published_at', { ascending: false })
       .limit(limit);
 

@@ -174,7 +174,6 @@ export interface User {
   body_type?: 'slim' | 'average' | 'athletic' | 'heavy';
 
   // الالتزام الديني المطور
-  religiosity_level?: 'not_religious' | 'slightly_religious' | 'religious' | 'very_religious' | 'prefer_not_say';
   prayer_commitment?: 'dont_pray' | 'pray_all' | 'pray_sometimes' | 'prefer_not_say';
   smoking?: 'yes' | 'no';
   beard?: 'yes' | 'no'; // للذكور فقط
@@ -728,7 +727,6 @@ export const userService = {
           height,
           skin_color,
           body_type,
-          religiosity_level,
           prayer_commitment,
           smoking,
           beard,

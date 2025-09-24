@@ -108,7 +108,7 @@ const LoginPage: React.FC = () => {
             }
           }
         } catch (error) {
-          console.error('Error checking device security:', error);
+          // console.error('Error checking device security:', error);
           setAttemptsInfo({ canAttempt: true });
           setErrorMessage('');
         }
@@ -209,18 +209,18 @@ const LoginPage: React.FC = () => {
         // التوجه للصفحة المطلوبة أو لوحة التحكم
         const returnUrl = searchParams.get('returnUrl') || '/dashboard';
 
-        console.log('Login successful, redirecting to:', returnUrl);
+        // console.log('Login successful, redirecting to:', returnUrl);
 
         // تأخير أقصر لإظهار رسالة النجاح ثم التوجيه الفوري
         setTimeout(() => {
-          console.log('Navigating to:', returnUrl);
+          // console.log('Navigating to:', returnUrl);
           navigate(returnUrl, { replace: true });
         }, 500); // تقليل التأخير من 1000 إلى 500 مللي ثانية
       } else {
         setErrorMessage(result.error || t('auth.login.messages.loginError'));
       }
     } catch (error: any) {
-      console.error('Login error:', error);
+      // console.error('Login error:', error);
       setErrorMessage(t('auth.login.messages.unexpectedError'));
     } finally {
       setIsSubmitting(false);

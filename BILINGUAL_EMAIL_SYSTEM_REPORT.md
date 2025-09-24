@@ -47,7 +47,7 @@ const content = {
   location: '📍 الموقع:',
   ipAddress: '🌍 عنوان IP:',
   securityWarning: '⚠️ تحذير أمني',
-  warningText: 'إذا لم تقم بتسجيل الدخول في هذا الوقت، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezge.com',
+  warningText: 'إذا لم تقم بتسجيل الدخول في هذا الوقت، يرجى تغيير كلمة المرور فوراً والتواصل معنا على support@rezgee.com',
   footer: 'فريق رزقي - موقع الزواج الإسلامي الشرعي',
   subject: 'إشعار تسجيل دخول ناجح - رزقي'
 };
@@ -67,7 +67,7 @@ const content = {
   location: '📍 Location:',
   ipAddress: '🌍 IP Address:',
   securityWarning: '⚠️ Security Warning',
-  warningText: 'If you did not log in at this time, please change your password immediately and contact us at support@rezge.com',
+  warningText: 'If you did not log in at this time, please change your password immediately and contact us at support@rezgee.com',
   footer: 'Rezge Team - Islamic Marriage Platform',
   subject: 'Successful Login Notification - Rezge'
 };

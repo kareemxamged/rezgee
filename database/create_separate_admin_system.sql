@@ -72,7 +72,7 @@ INSERT INTO admin_accounts (
     is_active
 ) VALUES (
     'superadmin',
-    'admin@rezge.com',
+    'admin@rezgee.com',
     '$2b$12$LQv3c1yqBwlVHpPjrEyXCO.4mLUoEHD9HpVllSEVHs9r6aaI9NiP6', -- كلمة المرور: Admin@123
     'مشرف',
     'عام',
@@ -255,7 +255,7 @@ INSERT INTO admin_accounts (
     is_active
 ) VALUES (
     'testadmin',
-    'testadmin@rezge.com',
+    'testadmin@rezgee.com',
     '$2b$12$LQv3c1yqBwlVHpPjrEyXCO.4mLUoEHD9HpVllSEVHs9r6aaI9NiP6', -- كلمة المرور: Admin@123
     'مشرف',
     'تجريبي',

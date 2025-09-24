@@ -51,7 +51,6 @@ export interface User {
   marriage_type?: string;
   residence_location?: string;
   // معلومات دينية
-  religiosity_level?: string;
   prayer_commitment?: string;
   hijab?: string;
   beard?: string;
@@ -319,7 +318,6 @@ class AdminUsersService {
         weight: userData.weight || null,
         education_level: userData.educationLevel || null,
         financial_status: userData.financialStatus || null,
-        religiosity_level: userData.religiosityLevel || null,
         prayer_commitment: userData.prayerCommitment || null,
         smoking: userData.smoking || null,
         beard: userData.beard || null,
@@ -580,7 +578,6 @@ class AdminUsersService {
         children_count: user.children_count,
         marriage_type: user.marriage_type,
         residence_location: user.residence_location,
-        religiosity_level: user.religiosity_level,
         prayer_commitment: user.prayer_commitment,
         hijab: user.hijab,
         beard: user.beard,
@@ -718,7 +715,6 @@ class AdminUsersService {
         children_count: data.children_count,
         marriage_type: data.marriage_type,
         residence_location: data.residence_location,
-        religiosity_level: data.religiosity_level,
         prayer_commitment: data.prayer_commitment,
         hijab: data.hijab,
         beard: data.beard,

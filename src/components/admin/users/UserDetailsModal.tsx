@@ -94,17 +94,6 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
     }
   };
 
-  // دالة لتحويل مستوى التدين إلى نص عربي
-  const getReligiosityLevelText = (level: string) => {
-    switch (level) {
-      case 'very_religious': return 'متدين جداً';
-      case 'religious': return 'متدين';
-      case 'moderately_religious': return 'متدين بشكل متوسط';
-      case 'slightly_religious': return 'متدين قليلاً';
-      case 'not_religious': return 'غير متدين';
-      default: return level;
-    }
-  };
 
   // دالة لتحويل الالتزام بالصلاة إلى نص عربي
   const getPrayerCommitmentText = (commitment: string) => {
@@ -377,19 +366,10 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
                 </div>
 
                 {/* المعلومات الدينية */}
-                {(user.prayer_commitment || user.hijab || user.beard || user.religiosity_level) && (
+                {(user.prayer_commitment || user.hijab || user.beard) && (
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">المعلومات الدينية</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {user.religiosity_level && (
-                        <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                          <Church className="w-5 h-5 text-gray-400" />
-                          <div>
-                            <div className="text-sm text-gray-500">مستوى التدين</div>
-                            <div className="font-medium">{getReligiosityLevelText(user.religiosity_level)}</div>
-                          </div>
-                        </div>
-                      )}
 
                       {user.prayer_commitment && (
                         <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">

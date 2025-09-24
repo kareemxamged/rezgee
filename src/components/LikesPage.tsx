@@ -60,7 +60,7 @@ const LikesPage: React.FC = () => {
         loadProfileImages(data);
       }
     } catch (error) {
-      console.error('Error loading received likes:', error);
+      // console.error('Error loading received likes:', error);
       showError(
         t('likes.errors.loadingError'),
         t('likes.errors.loadingErrorDesc')
@@ -77,7 +77,7 @@ const LikesPage: React.FC = () => {
           const image = await profileImageService.getUserPrimaryImage(like.liker.id);
           return { userId: like.liker.id, image };
         } catch (error) {
-          console.error(`Error loading profile image for user ${like.liker.id}:`, error);
+          // console.error(`Error loading profile image for user ${like.liker.id}:`, error);
           return { userId: like.liker.id, image: null };
         }
       }
@@ -156,7 +156,7 @@ const LikesPage: React.FC = () => {
         );
       }
     } catch (error) {
-      console.error('Error responding to like:', error);
+      // console.error('Error responding to like:', error);
       // On error, restore original state
       setReceivedLikes(prevLikes =>
         prevLikes.map(like =>

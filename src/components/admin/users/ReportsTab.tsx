@@ -371,7 +371,7 @@ const ReportsTab: React.FC<ReportsTabProps> = ({
                 reviewer: {
                   first_name: 'Super',
                   last_name: 'Admin',
-                  email: 'admin@rezge.com'
+                  email: 'admin@rezgee.com'
                 }
               }
             : report

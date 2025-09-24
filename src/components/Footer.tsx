@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
             <div className="space-y-3 md:space-y-4">
               <div className={`flex items-center gap-3 ${i18n.language === 'ar' ? 'justify-start' : 'justify-start'}`}>
                 <Mail className="w-4 h-4 md:w-5 md:h-5 text-primary-400" />
-                <Link to="mailto:info@rezge.com">
+                <Link to="mailto:info@rezgee.com">
                   <span className="text-slate-300 text-sm md:text-base">{t('footer.contactInfo.email')}</span>
                 </Link>
               </div>
