@@ -11,8 +11,17 @@ const {
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
+const {
+    createClient
+} = require('@supabase/supabase-js');
 
 const PORT = process.env.PORT || 3001;
+
+// Initialize Supabase client
+const supabase = createClient(
+    process.env.VITE_SUPABASE_URL || 'https://sbtzngewizgeqzfbhfjy.supabase.co',
+    process.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNidHpuZ2V3aXpnZXF6ZmJoZmp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTExMzc5MTMsImV4cCI6MjA2NjcxMzkxM30.T8iv9C4OeKAb-e4Oz6uw3tFnMrgFK3SKN6fVCrBEUGo'
+);
 
 // Load environment variables from .env.production
 function loadEnvFile() {
@@ -130,16 +139,54 @@ async function sendRealEmail(data) {
     try {
         console.log('📧 بدء إرسال إيميل حقيقي...');
 
-        // إعدادات SMTP الصحيحة - استخدام إعدادات SMTP المرسلة من القالب أو البيئة
-        const smtpConfig = data.smtpConfig || data.config || {
-            host: process.env.VITE_SMTP_HOST || 'smtp.hostinger.com',
-            port: parseInt(process.env.VITE_SMTP_PORT) || 465,
-            secure: true,
-            auth: {
-                user: process.env.VITE_SMTP_USER || 'noreply@rezgee.com',
-                pass: process.env.VITE_SMTP_PASS || 'R3zG89&Secure'
+        // جلب إعدادات SMTP من قاعدة البيانات أو البيانات المرسلة
+        let smtpConfig;
+
+        if (data.smtpConfig || data.config) {
+            // استخدام إعدادات SMTP المرسلة من القالب
+            smtpConfig = data.smtpConfig || data.config;
+            console.log('🔧 استخدام إعدادات SMTP المرسلة من القالب');
+        } else {
+            // جلب الإعدادات الافتراضية من قاعدة البيانات
+            console.log('🔍 جلب الإعدادات الافتراضية من قاعدة البيانات...');
+            const {
+                data: defaultSettings,
+                error
+            } = await supabase
+                .from('email_settings')
+                .select('*')
+                .eq('is_active', true)
+                .eq('is_default', true)
+                .single();
+
+            if (error || !defaultSettings) {
+                console.log('⚠️ لم يتم العثور على إعدادات افتراضية، استخدام إعدادات البيئة');
+                smtpConfig = {
+                    host: process.env.VITE_SMTP_HOST || 'smtp.hostinger.com',
+                    port: parseInt(process.env.VITE_SMTP_PORT) || 587,
+                    secure: false,
+                    auth: {
+                        user: process.env.VITE_SMTP_USER || 'manage@rezgee.com',
+                        pass: process.env.VITE_SMTP_PASS || 'R3zG89&Secure'
+                    }
+                };
+            } else {
+                console.log('✅ تم جلب الإعدادات الافتراضية من قاعدة البيانات');
+                smtpConfig = {
+                    host: defaultSettings.smtp_host,
+                    port: defaultSettings.smtp_port,
+                    secure: defaultSettings.smtp_port === 465,
+                    auth: {
+                        user: defaultSettings.smtp_username,
+                        pass: defaultSettings.smtp_password
+                    },
+                    from: {
+                        name: defaultSettings.from_name_ar,
+                        email: defaultSettings.from_email
+                    }
+                };
             }
-        };
+        }
 
         console.log('🔧 إعدادات SMTP المستخدمة:');
         console.log(`  - Host: ${smtpConfig.host}`);
@@ -149,7 +196,7 @@ async function sendRealEmail(data) {
         console.log(`  - From Name: ${data.fromName}`);
 
         // إنشاء transporter - استخدام طريقة آمنة لتجنب أخطاء syntax
-        const authUser = (smtpConfig.auth && smtpConfig.auth.user) || smtpConfig.user || 'noreply@rezgee.com';
+        const authUser = (smtpConfig.auth && smtpConfig.auth.user) || smtpConfig.user || 'manage@rezgee.com';
         const authPass = (smtpConfig.auth && smtpConfig.auth.pass) || smtpConfig.pass || 'R3zG89&Secure';
 
         const transporterConfig = {
@@ -183,9 +230,9 @@ async function sendRealEmail(data) {
         console.log('📬 to:', emailData && emailData.to);
         console.log('📝 subject:', emailData && emailData.subject);
 
-        // استخدام البريد الإلكتروني الصحيح من إعدادات SMTP المرسلة
+        // استخدام البريد الإلكتروني الصحيح من إعدادات SMTP المرسلة أو قاعدة البيانات
         const fromEmail = data.from || data.fromEmail || (smtpConfig.from && smtpConfig.from.email) || (smtpConfig.auth && smtpConfig.auth.user) || transporterConfig.auth.user;
-        const fromName = data.fromName || (smtpConfig.from && smtpConfig.from.name) || smtpConfig.fromName || 'رزقي';
+        const fromName = data.fromName || (smtpConfig.from && smtpConfig.from.name) || smtpConfig.fromName || 'رزقي - منصة الزواج الإسلامي الشرعي';
 
         const mailOptions = {
             from: `${fromName} <${fromEmail}>`,
@@ -294,9 +341,10 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log('');
     console.log('🔧 إعدادات SMTP الحالية:');
     console.log(`   Host: ${process.env.VITE_SMTP_HOST || 'smtp.hostinger.com'}`);
-    console.log(`   Port: ${process.env.VITE_SMTP_PORT || '465'}`);
-    console.log(`   User: ${process.env.VITE_SMTP_USER || 'noreply@rezgee.com'}`);
+    console.log(`   Port: ${process.env.VITE_SMTP_PORT || '587'}`);
+    console.log(`   User: ${process.env.VITE_SMTP_USER || 'manage@rezgee.com'}`);
     console.log(`   Pass: ${(process.env.VITE_SMTP_PASS || 'R3zG89&Secure').substring(0, 3)}***`);
+    console.log('💡 ملاحظة: سيتم جلب الإعدادات من قاعدة البيانات عند الإرسال');
     console.log('');
 });
 
