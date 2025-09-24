@@ -5,12 +5,47 @@
  * يعمل بجانب خادم Vite تلقائياً
  */
 
-import {
+const {
     createServer
-} from 'http';
-import nodemailer from 'nodemailer';
+} = require('http');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
+
+// Load environment variables from .env.production
+function loadEnvFile() {
+    try {
+        const envPath = path.join(__dirname, '.env.production');
+        if (fs.existsSync(envPath)) {
+            const envContent = fs.readFileSync(envPath, 'utf8');
+            const lines = envContent.split('\n');
+
+            lines.forEach(line => {
+                const trimmedLine = line.trim();
+                if (trimmedLine && !trimmedLine.startsWith('#')) {
+                    const [key, ...valueParts] = trimmedLine.split('=');
+                    if (key && valueParts.length > 0) {
+                        const value = valueParts.join('=').trim();
+                        if (!process.env[key]) {
+                            process.env[key] = value;
+                        }
+                    }
+                }
+            });
+
+            console.log('✅ تم تحميل متغيرات البيئة من .env.production');
+        } else {
+            console.log('⚠️ ملف .env.production غير موجود');
+        }
+    } catch (error) {
+        console.error('❌ خطأ في تحميل متغيرات البيئة:', error.message);
+    }
+}
+
+// Load environment variables
+loadEnvFile();
 
 console.log('🚀 بدء تشغيل خادم SMTP المبسط...');
 
@@ -95,14 +130,14 @@ async function sendRealEmail(data) {
     try {
         console.log('📧 بدء إرسال إيميل حقيقي...');
 
-        // إعدادات SMTP الصحيحة - استخدام إعدادات SMTP المرسلة من القالب
+        // إعدادات SMTP الصحيحة - استخدام إعدادات SMTP المرسلة من القالب أو البيئة
         const smtpConfig = data.smtpConfig || data.config || {
-            host: 'smtp.hostinger.com',
-            port: 465,
+            host: process.env.VITE_SMTP_HOST || 'smtp.hostinger.com',
+            port: parseInt(process.env.VITE_SMTP_PORT) || 465,
             secure: true,
             auth: {
-                user: 'manage@kareemamged.com',
-                pass: 'Kk170404#'
+                user: process.env.VITE_SMTP_USER || 'noreply@rezgee.com',
+                pass: process.env.VITE_SMTP_PASS || 'R3zG89&Secure'
             }
         };
 
@@ -114,8 +149,8 @@ async function sendRealEmail(data) {
         console.log(`  - From Name: ${data.fromName}`);
 
         // إنشاء transporter - استخدام طريقة آمنة لتجنب أخطاء syntax
-        const authUser = (smtpConfig.auth && smtpConfig.auth.user) || smtpConfig.user || 'manage@kareemamged.com';
-        const authPass = (smtpConfig.auth && smtpConfig.auth.pass) || smtpConfig.pass || 'Kk170404#';
+        const authUser = (smtpConfig.auth && smtpConfig.auth.user) || smtpConfig.user || 'noreply@rezgee.com';
+        const authPass = (smtpConfig.auth && smtpConfig.auth.pass) || smtpConfig.pass || 'R3zG89&Secure';
 
         const transporterConfig = {
             host: smtpConfig.host,
@@ -256,6 +291,12 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log('');
     console.log('💡 ملاحظة: خادم إرسال حقيقي مع fallback للمحاكاة');
     console.log('   يحاول الإرسال الحقيقي أولاً، ثم المحاكاة عند الفشل');
+    console.log('');
+    console.log('🔧 إعدادات SMTP الحالية:');
+    console.log(`   Host: ${process.env.VITE_SMTP_HOST || 'smtp.hostinger.com'}`);
+    console.log(`   Port: ${process.env.VITE_SMTP_PORT || '465'}`);
+    console.log(`   User: ${process.env.VITE_SMTP_USER || 'noreply@rezgee.com'}`);
+    console.log(`   Pass: ${(process.env.VITE_SMTP_PASS || 'R3zG89&Secure').substring(0, 3)}***`);
     console.log('');
 });
 

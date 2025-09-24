@@ -1,13 +1,14 @@
-# 🚀 توتوريال النشر المفصل - رزقي على VPS Hostinger
-## Step-by-Step Deployment Tutorial - Rezge on Hostinger VPS
+# 🚀 توتوريال النشر الشامل - رزقي على VPS Hostinger (Root Only)
+## Complete Deployment Tutorial - Rezge on Hostinger VPS (Root Only)
 
 <div align="center">
 
 [![Tutorial](https://img.shields.io/badge/Tutorial-Step_by_Step-blue?style=for-the-badge)](https://github.com)
 [![VPS](https://img.shields.io/badge/VPS-Hostinger-green?style=for-the-badge)](https://hostinger.com)
-[![Time](https://img.shields.io/badge/Time-60_Minutes-orange?style=for-the-badge)](https://github.com)
+[![Root](https://img.shields.io/badge/Root-Only-red?style=for-the-badge)](https://github.com)
+[![Time](https://img.shields.io/badge/Time-45_Minutes-orange?style=for-the-badge)](https://github.com)
 
-**توتوريال مفصل خطوة بخطوة لرفع مشروع رزقي على VPS Hostinger**
+**توتوريال مفصل خطوة بخطوة لرفع مشروع رزقي على VPS Hostinger باستخدام المستخدم root فقط**
 
 </div>
 
@@ -20,6 +21,7 @@
 - **IP الخادم:** `148.230.112.17`
 - **النطاق:** `rezgee.com`
 - **نظام التشغيل:** Ubuntu 22.04 LTS
+- **المستخدم:** root فقط
 
 ---
 
@@ -40,8 +42,6 @@ ssh -i /path/to/your/key root@148.230.112.17
 
 ### **الخطوة 2: تحديث النظام**
 
-قم بتحديث النظام وتثبيت المتطلبات الأساسية:
-
 ```bash
 # تحديث النظام
 apt update && apt upgrade -y
@@ -53,10 +53,13 @@ apt install -y curl wget git unzip software-properties-common apt-transport-http
 ### **الخطوة 3: تثبيت Node.js 20.x**
 
 ```bash
-# إضافة مستودع Node.js
+# حذف Node.js القديم إذا كان موجوداً
+apt remove -y nodejs npm
+
+# إضافة مستودع Node.js 20.x
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
-# تثبيت Node.js
+# تثبيت Node.js 20.x
 apt-get install -y nodejs
 
 # التحقق من التثبيت
@@ -92,21 +95,7 @@ npm install -g pm2
 pm2 --version
 ```
 
-### **الخطوة 6: تثبيت PostgreSQL (اختياري)**
-
-```bash
-# تثبيت PostgreSQL
-apt install -y postgresql postgresql-contrib
-
-# تفعيل وبدء PostgreSQL
-systemctl enable postgresql
-systemctl start postgresql
-
-# التحقق من حالة PostgreSQL
-systemctl status postgresql
-```
-
-### **الخطوة 7: تثبيت Certbot للـ SSL**
+### **الخطوة 6: تثبيت Certbot للـ SSL**
 
 ```bash
 # تثبيت Certbot
@@ -116,14 +105,14 @@ apt install -y certbot python3-certbot-nginx
 certbot --version
 ```
 
-### **الخطوة 8: تثبيت أدوات إضافية**
+### **الخطوة 7: تثبيت أدوات إضافية**
 
 ```bash
 # تثبيت أدوات مفيدة
 apt install -y htop nano vim ufw fail2ban
 ```
 
-### **الخطوة 9: إعداد الجدار الناري**
+### **الخطوة 8: إعداد الجدار الناري**
 
 ```bash
 # تفعيل الجدار الناري
@@ -142,20 +131,7 @@ ufw allow 3000
 ufw status
 ```
 
-### **الخطوة 10: إنشاء مستخدم للمشروع**
-
-```bash
-# إنشاء مستخدم rezgee
-adduser --disabled-password --gecos "" rezgee
-
-# إضافة المستخدم لمجموعة sudo
-usermod -aG sudo rezgee
-
-# التحقق من إنشاء المستخدم
-id rezgee
-```
-
-### **الخطوة 11: إنشاء مجلدات المشروع**
+### **الخطوة 9: إنشاء مجلدات المشروع**
 
 ```bash
 # إنشاء مجلد المشروع
@@ -164,11 +140,7 @@ mkdir -p /var/www/rezgee
 # إنشاء مجلد السجلات
 mkdir -p /var/log/pm2
 
-# تغيير ملكية المجلدات
-chown -R rezgee:rezgee /var/www/rezgee
-chown -R rezgee:rezgee /var/log/pm2
-
-# التحقق من الأذونات
+# التحقق من المجلدات
 ls -la /var/www/
 ls -la /var/log/pm2
 ```
@@ -177,7 +149,7 @@ ls -la /var/log/pm2
 
 ## **المرحلة الثانية: رفع المشروع عبر Git** 📁
 
-### **الخطوة 12: إعداد مستودع Git**
+### **الخطوة 10: إعداد مستودع Git**
 
 **أولاً، تأكد من أن مشروعك موجود على GitHub أو GitLab:**
 
@@ -185,7 +157,7 @@ ls -la /var/log/pm2
 2. أنشئ مستودع جديد أو استخدم المستودع الموجود
 3. ارفع جميع ملفات المشروع إلى المستودع
 
-### **الخطوة 13: استنساخ المشروع على الخادم**
+### **الخطوة 11: استنساخ المشروع على الخادم**
 
 ```bash
 # على الخادم، الانتقال إلى مجلد المشروع
@@ -194,14 +166,11 @@ cd /var/www/rezgee
 # استنساخ المشروع من Git
 git clone https://github.com/kareemxamged/rezgee.git .
 
-# أو إذا كان المستودع خاص، استخدم SSH:
-# git clone git@github.com:https://github.com/kareemxamged/rezgee.git .
-
 # التحقق من الملفات
 ls -la
 ```
 
-### **الخطوة 14: إنشاء ملف PM2**
+### **الخطوة 12: إنشاء ملف PM2**
 
 ```bash
 # إنشاء ملف PM2
@@ -236,7 +205,7 @@ module.exports = {
 
 **حفظ الملف:** اضغط `Ctrl + X` ثم `Y` ثم `Enter`
 
-### **الخطوة 15: تثبيت التبعيات**
+### **الخطوة 13: تثبيت التبعيات**
 
 ```bash
 # تثبيت التبعيات
@@ -246,7 +215,7 @@ npm ci --only=production
 npm list --depth=0
 ```
 
-### **الخطوة 16: بناء المشروع**
+### **الخطوة 14: بناء المشروع**
 
 ```bash
 # بناء المشروع للإنتاج
@@ -256,58 +225,11 @@ npm run build
 ls -la dist/
 ```
 
-### **الخطوة 17: إعداد Git للاستخدام المستقبلي (اختياري)**
-
-```bash
-# إعداد Git للمستخدم rezgee
-sudo -u rezgee git config --global user.name "Rezgee Admin"
-sudo -u rezgee git config --global user.email "admin@rezgee.com"
-
-# إعداد SSH key للوصول للمستودعات الخاصة (إذا لزم الأمر)
-# sudo -u rezgee ssh-keygen -t rsa -b 4096 -C "admin@rezgee.com"
-# sudo -u rezgee cat /home/rezgee/.ssh/id_rsa.pub
-```
-
-### **الخطوة 18: إنشاء سكريبت التحديث التلقائي**
-
-```bash
-# إنشاء سكريبت لتحديث المشروع
-nano /var/www/rezgee/update-project.sh
-```
-
-**أدخل المحتوى التالي:**
-
-```bash
-#!/bin/bash
-cd /var/www/rezgee
-
-# سحب التحديثات من Git
-git pull origin main
-
-# تثبيت التبعيات الجديدة
-npm ci --only=production
-
-# بناء المشروع
-npm run build
-
-# إعادة تشغيل التطبيق
-sudo -u rezgee pm2 restart rezgee-app
-
-echo "Project updated successfully!"
-```
-
-**حفظ الملف:** اضغط `Ctrl + X` ثم `Y` ثم `Enter`
-
-```bash
-# جعل السكريبت قابل للتنفيذ
-chmod +x /var/www/rezgee/update-project.sh
-```
-
 ---
 
 ## **المرحلة الثالثة: إعداد البيئة** 🔧
 
-### **الخطوة 19: تحديث ملف البيئة**
+### **الخطوة 15: تحديث ملف البيئة**
 
 ```bash
 # تعديل ملف البيئة
@@ -335,11 +257,34 @@ VITE_APP_NAME=رزقي - Rezge
 VITE_APP_DESCRIPTION=منصة الزواج الإسلامي الشرعي
 VITE_APP_VERSION=1.0.0
 NODE_ENV=production
+
+# Security Configuration
+VITE_ENABLE_2FA=true
+VITE_ENABLE_CAPTCHA=true
+VITE_SESSION_TIMEOUT=3600000
+VITE_MAX_LOGIN_ATTEMPTS=5
+
+# Feature Flags
+VITE_ENABLE_NOTIFICATIONS=true
+VITE_ENABLE_VERIFICATION=true
+VITE_ENABLE_PAYMENTS=true
+VITE_ENABLE_ARTICLES=true
+VITE_ENABLE_COMMENTS=true
+
+# Development/Testing
+VITE_DEBUG_MODE=false
+VITE_MOCK_DATA=false
+VITE_VERBOSE_LOGGING=false
+
+# Server Configuration
+PORT=3000
+HOST=0.0.0.0
+NODE_ENV=production
 ```
 
 **حفظ الملف:** اضغط `Ctrl + X` ثم `Y` ثم `Enter`
 
-### **الخطوة 20: بناء المشروع على الخادم**
+### **الخطوة 16: بناء المشروع على الخادم**
 
 ```bash
 # بناء المشروع
@@ -353,7 +298,7 @@ ls -la dist/
 
 ## **المرحلة الرابعة: إعداد Nginx** 🌐
 
-### **الخطوة 21: إنشاء ملف إعداد Nginx**
+### **الخطوة 17: إنشاء ملف إعداد Nginx**
 
 ```bash
 # إنشاء ملف إعداد Nginx
@@ -380,7 +325,7 @@ server {
     gzip on;
     gzip_vary on;
     gzip_min_length 1024;
-    gzip_proxied expired no-cache no-store private must-revalidate auth;
+    gzip_proxied expired no-cache no-store private auth;
     gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml+rss application/javascript;
 
     # Static files caching
@@ -433,7 +378,7 @@ server {
 
 **حفظ الملف:** اضغط `Ctrl + X` ثم `Y` ثم `Enter`
 
-### **الخطوة 22: تفعيل الموقع**
+### **الخطوة 18: تفعيل الموقع**
 
 ```bash
 # تفعيل الموقع
@@ -448,7 +393,7 @@ nginx -t
 
 **النتيجة المتوقعة:** `nginx: configuration file /etc/nginx/nginx.conf test is successful`
 
-### **الخطوة 23: إعادة تحميل Nginx**
+### **الخطوة 19: إعادة تحميل Nginx**
 
 ```bash
 # إعادة تحميل Nginx
@@ -462,46 +407,46 @@ systemctl status nginx
 
 ## **المرحلة الخامسة: إعداد PM2** 🔄
 
-### **الخطوة 24: إعداد PM2 للبدء التلقائي**
+### **الخطوة 20: إعداد PM2 للبدء التلقائي**
 
 ```bash
 # إعداد PM2 للبدء التلقائي
-sudo -u rezgee pm2 startup systemd -u rezgee --hp /home/rezgee
+pm2 startup systemd
+
+# اتبع التعليمات التي تظهر على الشاشة
 ```
 
-**اتبع التعليمات التي تظهر على الشاشة**
-
-### **الخطوة 25: بدء التطبيق**
+### **الخطوة 21: بدء التطبيق**
 
 ```bash
 # الانتقال إلى مجلد المشروع
 cd /var/www/rezgee
 
 # بدء التطبيق مع PM2
-sudo -u rezgee pm2 start ecosystem.config.js
+pm2 start ecosystem.config.js
 
 # حفظ إعدادات PM2
-sudo -u rezgee pm2 save
+pm2 save
 ```
 
-### **الخطوة 26: التحقق من حالة التطبيق**
+### **الخطوة 22: التحقق من حالة التطبيق**
 
 ```bash
 # فحص حالة PM2
-sudo -u rezgee pm2 status
+pm2 status
 
 # فحص السجلات
-sudo -u rezgee pm2 logs rezgee-app
+pm2 logs rezgee-app
 
 # فحص استخدام الموارد
-sudo -u rezgee pm2 monit
+pm2 monit
 ```
 
 ---
 
 ## **المرحلة السادسة: إعداد SSL** 🔒
 
-### **الخطوة 27: الحصول على شهادة SSL**
+### **الخطوة 23: الحصول على شهادة SSL**
 
 ```bash
 # الحصول على شهادة SSL
@@ -514,14 +459,14 @@ certbot --nginx -d rezgee.com -d www.rezgee.com
 3. اختر ما إذا كنت تريد مشاركة بريدك الإلكتروني
 4. اختر إعادة توجيه HTTP إلى HTTPS
 
-### **الخطوة 28: اختبار التجديد التلقائي**
+### **الخطوة 24: اختبار التجديد التلقائي**
 
 ```bash
 # اختبار التجديد التلقائي
 certbot renew --dry-run
 ```
 
-### **الخطوة 29: إعداد التجديد التلقائي**
+### **الخطوة 25: إعداد التجديد التلقائي**
 
 ```bash
 # إضافة مهمة cron للتجديد التلقائي
@@ -539,7 +484,7 @@ crontab -e
 
 ## **المرحلة السابعة: إعداد DNS** 🌍
 
-### **الخطوة 30: تحديث DNS في لوحة تحكم النطاق**
+### **الخطوة 26: تحديث DNS في لوحة تحكم النطاق**
 
 اذهب إلى لوحة تحكم النطاق وأضف السجلات التالية:
 
@@ -555,7 +500,7 @@ Value: 148.230.112.17
 TTL: 3600
 ```
 
-### **الخطوة 31: انتظار انتشار DNS**
+### **الخطوة 27: انتظار انتشار DNS**
 
 ```bash
 # فحص DNS
@@ -572,20 +517,20 @@ curl -I http://rezgee.com
 
 ## **المرحلة الثامنة: الاختبار والتحقق** ✅
 
-### **الخطوة 32: فحص الخدمات**
+### **الخطوة 28: فحص الخدمات**
 
 ```bash
 # فحص حالة Nginx
 systemctl status nginx
 
 # فحص حالة PM2
-sudo -u rezgee pm2 status
+pm2 status
 
 # فحص حالة PostgreSQL (إذا كان مُثبت)
 systemctl status postgresql
 ```
 
-### **الخطوة 33: اختبار الموقع**
+### **الخطوة 29: اختبار الموقع**
 
 ```bash
 # اختبار HTTP
@@ -598,7 +543,7 @@ curl -I https://rezgee.com
 # اذهب إلى: https://rezgee.com
 ```
 
-### **الخطوة 34: اختبار الميزات**
+### **الخطوة 30: اختبار الميزات**
 
 1. **اختبار الصفحة الرئيسية**
 2. **اختبار تسجيل الدخول**
@@ -610,7 +555,7 @@ curl -I https://rezgee.com
 
 ## **المرحلة التاسعة: الصيانة والمراقبة** 🔧
 
-### **الخطوة 35: إنشاء سكريبت النسخ الاحتياطي**
+### **الخطوة 31: إنشاء سكريبت النسخ الاحتياطي**
 
 ```bash
 # إنشاء سكريبت النسخ الاحتياطي
@@ -630,12 +575,8 @@ mkdir -p $BACKUP_DIR
 # Backup project files
 tar -czf $BACKUP_DIR/rezgee-backup-$DATE.tar.gz -C $PROJECT_DIR .
 
-# Backup database (if using local PostgreSQL)
-# sudo -u postgres pg_dump rezgee_db > $BACKUP_DIR/rezgee-db-$DATE.sql
-
 # Remove old backups (older than 7 days)
 find $BACKUP_DIR -name "rezgee-backup-*.tar.gz" -mtime +7 -delete
-find $BACKUP_DIR -name "rezgee-db-*.sql" -mtime +7 -delete
 
 echo "Backup completed: rezgee-backup-$DATE.tar.gz"
 ```
@@ -655,7 +596,7 @@ crontab -e
 0 2 * * * /root/backup-rezgee.sh
 ```
 
-### **الخطوة 36: إنشاء سكريبت مراقبة النظام**
+### **الخطوة 32: إنشاء سكريبت مراقبة النظام**
 
 ```bash
 # إنشاء سكريبت المراقبة
@@ -674,11 +615,9 @@ free -h
 echo "Disk Usage:"
 df -h
 echo "PM2 Status:"
-sudo -u rezgee pm2 status
+pm2 status
 echo "Nginx Status:"
 systemctl status nginx --no-pager -l
-echo "PostgreSQL Status:"
-systemctl status postgresql --no-pager -l
 ```
 
 **حفظ الملف:** اضغط `Ctrl + X` ثم `Y` ثم `Enter`
@@ -708,24 +647,68 @@ npm ci --only=production
 npm run build
 
 # إعادة تشغيل التطبيق
-sudo -u rezgee pm2 restart rezgee-app
+pm2 restart rezgee-app
 ```
 
-### **طريقة التحديث التلقائي:**
+### **إنشاء سكريبت التحديث التلقائي:**
 
 ```bash
-# استخدام السكريبت المُعد مسبقاً
+# إنشاء سكريبت التحديث
+nano /var/www/rezgee/update-project.sh
+```
+
+**أدخل المحتوى التالي:**
+```bash
+#!/bin/bash
+#!/bin/bash
+echo "�� Starting project update..."
+
+# Navigate to project directory
+cd /var/www/rezgee
+
+# Check for available updates
+echo "🔍 Checking for available updates..."
+git fetch origin
+
+# Display available updates
+UPDATES=$(git log HEAD..origin/main --oneline)
+if [ -z "$UPDATES" ]; then
+    echo "✅ No new updates available"
+    exit 0
+fi
+
+echo "📥 Available updates:"
+echo "$UPDATES"
+
+# Pull updates from GitHub
+echo "📥 Pulling updates from GitHub..."
+git pull origin main
+
+# Install new dependencies
+echo "📦 Installing dependencies..."
+npm ci --only=production
+
+# Build the project
+echo "🏗️ Building project..."
+npm run build
+
+# Restart the application
+echo "🔄 Restarting application..."
+pm2 restart rezgee-app
+
+# Check application status
+echo "✅ Checking application status..."
+pm2 status
+
+echo "🎉 Project updated successfully!"
+```
+
+```bash
+# جعل السكريبت قابل للتنفيذ
+chmod +x /var/www/rezgee/update-project.sh
+
+# استخدام السكريبت
 /var/www/rezgee/update-project.sh
-```
-
-### **إعداد التحديث التلقائي عبر Cron:**
-
-```bash
-# إضافة مهمة cron للتحديث التلقائي (اختياري)
-crontab -e
-
-# إضافة السطر التالي للتحديث كل يوم في الساعة 3:00 صباحاً:
-# 0 3 * * * /var/www/rezgee/update-project.sh
 ```
 
 ---
@@ -740,14 +723,14 @@ systemctl status nginx
 nginx -t
 
 # فحص PM2
-sudo -u rezgee pm2 status
-sudo -u rezgee pm2 logs rezgee-app
+pm2 status
+pm2 logs rezgee-app
 
 # فحص الجدار الناري
 ufw status
 
 # إعادة تشغيل الخدمات
-sudo -u rezgee pm2 restart all
+pm2 restart all
 systemctl restart nginx
 ```
 
@@ -769,13 +752,13 @@ certbot --nginx -d rezgee.com -d www.rezgee.com --force-renewal
 
 ```bash
 # فحص سجلات PM2
-sudo -u rezgee pm2 logs rezgee-app
+pm2 logs rezgee-app
 
 # فحص سجلات Nginx
 tail -f /var/log/nginx/error.log
 
 # إعادة تشغيل التطبيق
-sudo -u rezgee pm2 restart rezgee-app
+pm2 restart rezgee-app
 ```
 
 ### **المشكلة 4: خطأ في البريد الإلكتروني**
@@ -785,7 +768,7 @@ sudo -u rezgee pm2 restart rezgee-app
 telnet smtp.hostinger.com 465
 
 # فحص السجلات
-sudo -u rezgee pm2 logs rezgee-app | grep -i smtp
+pm2 logs rezgee-app | grep -i smtp
 
 # اختبار إرسال بريد
 curl -X POST https://rezgee.com/api/test-email
@@ -801,8 +784,8 @@ curl -X POST https://rezgee.com/api/test-email
 systemctl status nginx postgresql
 
 # حالة PM2
-sudo -u rezgee pm2 status
-sudo -u rezgee pm2 logs rezgee-app
+pm2 status
+pm2 logs rezgee-app
 
 # استخدام الموارد
 htop
@@ -816,10 +799,10 @@ free -h
 systemctl restart nginx
 
 # إعادة تشغيل PM2
-sudo -u rezgee pm2 restart all
+pm2 restart all
 
 # إعادة تشغيل كل شيء
-sudo -u rezgee pm2 restart all && systemctl restart nginx
+pm2 restart all && systemctl restart nginx
 ```
 
 ### **فحص السجلات:**
@@ -829,7 +812,7 @@ tail -f /var/log/nginx/access.log
 tail -f /var/log/nginx/error.log
 
 # سجلات PM2
-sudo -u rezgee pm2 logs rezgee-app
+pm2 logs rezgee-app
 tail -f /var/log/pm2/rezgee-error.log
 ```
 
@@ -891,6 +874,8 @@ tail -f /var/log/pm2/rezgee-error.log
 
 **آخر تحديث:** يناير 2025  
 **المشروع:** رزقي - Rezge للزواج الإسلامي  
-**الخادم:** VPS Hostinger - 148.230.112.17
+**الخادم:** VPS Hostinger - 148.230.112.17  
+**المستخدم:** root فقط
 
 </div>
+
