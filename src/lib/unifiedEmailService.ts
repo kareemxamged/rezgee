@@ -73,8 +73,8 @@ export class UnifiedEmailService {
           });
           
           // استخدام إعدادات SMTP المحددة في القالب
-    const enhancedEmailData = {
-      ...emailData,
+          const enhancedEmailData = {
+            ...emailData,
             from: smtpSettings.from_email,
             fromName: smtpSettings.from_name_ar,
             replyTo: smtpSettings.reply_to || smtpSettings.from_email
@@ -212,7 +212,8 @@ export class UnifiedEmailService {
         subject: template.subject,
         html: template.htmlContent,
         text: template.textContent,
-        type: 'temporary_password'
+        type: 'temporary_password',
+        templateId: '6e62d3d0-fa05-469b-8709-f17d221db3e9' // معرف قالب كلمة المرور المؤقتة
       }, 'security', language);
     } catch (error) {
       console.error('❌ خطأ في إرسال كلمة المرور المؤقتة:', error);
