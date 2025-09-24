@@ -4,14 +4,14 @@
 module.exports = {
     apps: [{
             // Application name
-            name: 'rezge-app',
+            name: 'rezgee-app',
 
             // Script to run
             script: 'npm',
             args: 'run preview',
 
             // Working directory
-            cwd: '/var/www/rezge',
+            cwd: '/var/www/rezgee',
 
             // Number of instances (1 for VPS, more for load balancing)
             instances: 1,
@@ -40,9 +40,9 @@ module.exports = {
             },
 
             // Log files
-            error_file: '/var/log/pm2/rezge-error.log',
-            out_file: '/var/log/pm2/rezge-out.log',
-            log_file: '/var/log/pm2/rezge-combined.log',
+            error_file: '/var/log/pm2/rezgee-error.log',
+            out_file: '/var/log/pm2/rezgee-out.log',
+            log_file: '/var/log/pm2/rezgee-combined.log',
 
             // Log rotation
             log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
@@ -74,21 +74,25 @@ module.exports = {
 
         // SMTP Server (if running locally)
         {
-            name: 'rezge-smtp',
+            name: 'rezgee-smtp',
             script: 'node',
-            args: 'simple-smtp-server.js',
-            cwd: '/var/www/rezge',
+            args: 'simple-smtp-server.cjs',
+            cwd: '/var/www/rezgee',
             instances: 1,
             autorestart: true,
             watch: false,
             max_memory_restart: '512M',
             env: {
                 NODE_ENV: 'production',
-                PORT: 3001
+                PORT: 3001,
+                VITE_SMTP_HOST: 'smtp.hostinger.com',
+                VITE_SMTP_PORT: '465',
+                VITE_SMTP_USER: 'noreply@rezgee.com',
+                VITE_SMTP_PASS: 'R3zG89&Secure'
             },
-            error_file: '/var/log/pm2/rezge-smtp-error.log',
-            out_file: '/var/log/pm2/rezge-smtp-out.log',
-            log_file: '/var/log/pm2/rezge-smtp-combined.log',
+            error_file: '/var/log/pm2/rezgee-smtp-error.log',
+            out_file: '/var/log/pm2/rezgee-smtp-out.log',
+            log_file: '/var/log/pm2/rezgee-smtp-combined.log',
             log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
             time: true,
             merge_logs: true
@@ -98,11 +102,11 @@ module.exports = {
     // Deployment configuration
     deploy: {
         production: {
-            user: 'rezge',
-            host: 'YOUR_VPS_IP',
+            user: 'root',
+            host: '148.230.112.17',
             ref: 'origin/main',
-            repo: 'https://github.com/your-username/rezge-islamic-marriage.git',
-            path: '/var/www/rezge',
+            repo: 'https://github.com/kareemxamged/rezgee.git',
+            path: '/var/www/rezgee',
             'pre-deploy-local': '',
             'post-deploy': 'npm ci --only=production && npm run build && pm2 reload ecosystem.config.js --env production',
             'pre-setup': ''
