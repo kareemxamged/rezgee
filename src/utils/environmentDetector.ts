@@ -38,8 +38,8 @@ export function detectEnvironment(): EnvironmentConfig {
   // تحديد URL خادم SMTP
   let smtpServerUrl: string;
   if (isLocalhost || isRezgeeDomain) {
-    // في التطوير المحلي أو دومين رزقي: استخدم خادم SMTP المحلي
-    smtpServerUrl = 'http://148.230.112.17:3001';
+    // في التطوير المحلي أو دومين رزقي: استخدم خادم SMTP المحلي عبر Nginx
+    smtpServerUrl = 'https://rezgee.com/smtp';
   } else {
     // في الإنتاج: استخدم Supabase Edge Function المحدثة
     smtpServerUrl = 'https://sbtzngewizgeqzfbhfjy.supabase.co/functions/v1/send-custom-smtp';
@@ -67,7 +67,7 @@ export function getSMTPConfig() {
     // في التطوير أو دومين رزقي: استخدم خادم SMTP المحلي
     return {
       type: 'local',
-      url: 'http://148.230.112.17:3001/send-email',
+      url: 'https://rezgee.com/smtp/send-email',
       fallback: 'supabase'
     };
   } else {

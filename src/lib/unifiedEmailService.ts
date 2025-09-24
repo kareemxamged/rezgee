@@ -493,7 +493,7 @@ export class UnifiedEmailService {
 
       // استخدام العنوان الصحيح حسب البيئة
       const smtpUrl = (window.location.hostname.includes('148.230.112.17') || window.location.hostname.includes('rezgee.com'))
-        ? 'http://148.230.112.17:3001/send-email'
+        ? 'https://rezgee.com/smtp/send-email'
         : 'http://localhost:3001/send-email';
       
       const response = await fetch(smtpUrl, {
