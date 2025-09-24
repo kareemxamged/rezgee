@@ -11,8 +11,8 @@ export function getSMTPUrl(): string {
 
   const hostname = window.location.hostname;
   
-  // إذا كان localhost أو VPS IP
-  if (hostname.includes('localhost') || hostname.includes('148.230.112.17')) {
+  // إذا كان localhost أو VPS IP أو الدومين
+  if (hostname.includes('localhost') || hostname.includes('148.230.112.17') || hostname.includes('rezgee.com')) {
     return 'http://148.230.112.17:3001/send-email';
   }
   

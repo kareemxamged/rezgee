@@ -485,14 +485,14 @@ export class UnifiedEmailService {
   private static async sendViaLocalSMTP(emailData: EmailData, smtpSettings?: any): Promise<EmailResult> {
     try {
       // تخطي في بيئة الإنتاج إلا إذا كان خادم SMTP المحلي متاح
-      if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('148.230.112.17')) {
+      if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('148.230.112.17') && !window.location.hostname.includes('rezgee.com')) {
         throw new Error('Local SMTP not available in production');
       }
 
       console.log('🏠 محاولة الإرسال عبر خادم SMTP محلي...');
 
       // استخدام العنوان الصحيح حسب البيئة
-      const smtpUrl = window.location.hostname.includes('148.230.112.17') 
+      const smtpUrl = (window.location.hostname.includes('148.230.112.17') || window.location.hostname.includes('rezgee.com'))
         ? 'http://148.230.112.17:3001/send-email'
         : 'http://localhost:3001/send-email';
       
@@ -506,8 +506,8 @@ export class UnifiedEmailService {
           subject: emailData.subject,
           html: emailData.html,
           text: emailData.text,
-          from: emailData.from || 'manage@kareemamged.com',
-          fromEmail: emailData.from || 'manage@kareemamged.com',
+          from: emailData.from || 'noreply@rezgee.com',
+          fromEmail: emailData.from || 'noreply@rezgee.com',
           fromName: emailData.fromName || 'رزقي - منصة الزواج الإسلامي الشرعي',
           smtpConfig: smtpSettings ? {
             host: smtpSettings.smtp_host,

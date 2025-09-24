@@ -26,6 +26,7 @@ export function detectEnvironment(): EnvironmentConfig {
   // تحديد نوع البيئة
   const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
   const isVercel = hostname.includes('.vercel.app');
+  const isRezgeeDomain = hostname.includes('rezgee.com') || hostname.includes('148.230.112.17');
   const isDevelopment = isLocalhost || process.env.NODE_ENV === 'development';
   const isProduction = !isDevelopment;
   
@@ -36,8 +37,8 @@ export function detectEnvironment(): EnvironmentConfig {
   
   // تحديد URL خادم SMTP
   let smtpServerUrl: string;
-  if (isLocalhost) {
-    // في التطوير المحلي: استخدم خادم SMTP المحلي
+  if (isLocalhost || isRezgeeDomain) {
+    // في التطوير المحلي أو دومين رزقي: استخدم خادم SMTP المحلي
     smtpServerUrl = 'http://148.230.112.17:3001';
   } else {
     // في الإنتاج: استخدم Supabase Edge Function المحدثة
@@ -62,8 +63,8 @@ export function detectEnvironment(): EnvironmentConfig {
 export function getSMTPConfig() {
   const env = detectEnvironment();
   
-  if (env.isLocalhost) {
-    // في التطوير: استخدم خادم SMTP المحلي
+  if (env.isLocalhost || env.currentDomain.includes('rezgee.com') || env.currentDomain.includes('148.230.112.17')) {
+    // في التطوير أو دومين رزقي: استخدم خادم SMTP المحلي
     return {
       type: 'local',
       url: 'http://148.230.112.17:3001/send-email',

@@ -61,7 +61,7 @@ export class LocalSMTPService {
           subject: emailData.subject,
           html: emailData.html,
           text: emailData.text,
-          from: 'رزقي - موقع الزواج الإسلامي <manage@kareemamged.com>'
+          from: 'رزقي - موقع الزواج الإسلامي <noreply@rezgee.com>'
         })
       });
 
@@ -108,8 +108,8 @@ export class LocalSMTPService {
    * تحديد URL خادم SMTP حسب البيئة
    */
   private static getSMTPServerURL(): string {
-    // في البيئة المحلية
-    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    // في البيئة المحلية أو دومين رزقي
+    if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname.includes('rezgee.com') || window.location.hostname.includes('148.230.112.17'))) {
       return this.LOCAL_SMTP_URL;
     }
 
