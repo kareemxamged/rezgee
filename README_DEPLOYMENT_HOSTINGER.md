@@ -29,63 +29,44 @@
 ssh root@148.230.112.17
 ```
 
-### 2️⃣ **تحديث النظام وتثبيت المتطلبات**
+### 2️⃣ **تشغيل سكريبت الإعداد التلقائي**
 ```bash
-# تحديث النظام
-apt update && apt upgrade -y
+# رفع سكريبت الإعداد
+scp setup-vps.sh root@148.230.112.17:/tmp/
 
-# تثبيت Node.js 20.x
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-apt-get install -y nodejs
-
-# تثبيت Nginx
-apt install -y nginx
-
-# تثبيت PM2 لإدارة العمليات
-npm install -g pm2
-
-# تثبيت PostgreSQL (إذا كنت تحتاجه محلياً)
-apt install -y postgresql postgresql-contrib
-
-# تثبيت Git
-apt install -y git
-
-# تثبيت Certbot للـ SSL
-apt install -y certbot python3-certbot-nginx
-
-# تثبيت أدوات إضافية
-apt install -y unzip wget curl
+# تشغيل السكريبت
+ssh root@148.230.112.17
+chmod +x /tmp/setup-vps.sh
+/tmp/setup-vps.sh
 ```
 
-### 3️⃣ **إنشاء مستخدم للمشروع**
+### 3️⃣ **التحقق من الإعداد**
 ```bash
-# إنشاء مستخدم rezge
-adduser rezge
-usermod -aG sudo rezge
-
-# إنشاء مجلد المشروع
-mkdir -p /var/www/rezge
-chown -R rezge:rezge /var/www/rezge
+# فحص الخدمات
+systemctl status nginx postgresql
+sudo -u rezge pm2 --version
+node --version
 ```
 
 ---
 
 ## **المرحلة الثانية: رفع ملفات المشروع** 📁
 
-### 1️⃣ **إعداد المشروع محلياً أولاً**
+### 1️⃣ **إعداد المشروع محلياً**
 
 #### أ. تشغيل سكريبت النشر:
 ```bash
-# على الكمبيوتر المحلي
-./deploy.sh
-# أو على Windows
-deploy.bat
+# على Linux/Mac
+./deploy-hostinger.sh
+
+# على Windows
+deploy-hostinger.bat
 ```
 
 #### ب. رفع الملف المضغوط:
 ```bash
 # رفع الملف المضغوط إلى الخادم
-scp rezge-deploy-*.tar.gz root@148.230.112.17:/tmp/
+scp rezge-hostinger-deploy-*.tar.gz root@148.230.112.17:/tmp/
 ```
 
 ### 2️⃣ **استخراج وتركيب المشروع على الخادم**
@@ -94,7 +75,7 @@ scp rezge-deploy-*.tar.gz root@148.230.112.17:/tmp/
 cd /var/www/rezge
 
 # استخراج الملفات
-tar -xzf /tmp/rezge-deploy-*.tar.gz --strip-components=1
+tar -xzf /tmp/rezge-hostinger-deploy-*.tar.gz --strip-components=1
 
 # تثبيت التبعيات
 npm ci --only=production
@@ -107,22 +88,19 @@ npm run build
 
 ## **المرحلة الثالثة: إعداد البيئة** 🔧
 
-### 1️⃣ **إنشاء ملف البيئة**
+### 1️⃣ **تحديث ملف البيئة**
 ```bash
-# نسخ ملف البيئة من المثال
-cp env.production.example .env.production
-
 # تعديل الملف
-nano .env.production
+nano /var/www/rezge/.env.production
 ```
 
-### 2️⃣ **تحديث إعدادات البيئة**
+### 2️⃣ **إعدادات البيئة المطلوبة**
 ```env
 # Supabase Configuration
 VITE_SUPABASE_URL=your_supabase_url_here
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 
-# SMTP Email Configuration
+# SMTP Email Configuration - Hostinger
 VITE_SMTP_HOST=smtp.hostinger.com
 VITE_SMTP_PORT=465
 VITE_SMTP_USER=noreply@rezgee.com
@@ -154,151 +132,62 @@ VITE_ENABLE_COMMENTS=true
 VITE_DEBUG_MODE=false
 VITE_MOCK_DATA=false
 VITE_VERBOSE_LOGGING=false
+
+# Server Configuration
+PORT=3000
+HOST=0.0.0.0
+NODE_ENV=production
 ```
 
 ---
 
 ## **المرحلة الرابعة: إعداد Nginx** 🌐
 
-### 1️⃣ **إنشاء ملف إعداد Nginx**
+### 1️⃣ **تطبيق إعدادات Nginx**
 ```bash
-# إنشاء ملف الإعداد
+# نسخ ملف الإعداد
+cp nginx.conf /etc/nginx/sites-available/rezgee.com
+
+# تحديث النطاق في الملف
 nano /etc/nginx/sites-available/rezgee.com
-```
+# تأكد من أن server_name يحتوي على rezgee.com www.rezgee.com
 
-### 2️⃣ **إعدادات Nginx**
-```nginx
-server {
-    listen 80;
-    server_name rezgee.com www.rezgee.com;
-    root /var/www/rezge/dist;
-    index index.html;
-
-    # Security headers
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Referrer-Policy "no-referrer-when-downgrade" always;
-    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
-
-    # Gzip compression
-    gzip on;
-    gzip_vary on;
-    gzip_min_length 1024;
-    gzip_proxied expired no-cache no-store private must-revalidate auth;
-    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml+rss application/javascript;
-
-    # Static files caching
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-        try_files $uri =404;
-    }
-
-    # Main application
-    location / {
-        try_files $uri $uri/ /index.html;
-        
-        # Security
-        add_header X-Frame-Options "SAMEORIGIN" always;
-        add_header X-XSS-Protection "1; mode=block" always;
-        add_header X-Content-Type-Options "nosniff" always;
-    }
-
-    # API proxy (if needed)
-    location /api/ {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
-    }
-
-    # Error pages
-    error_page 404 /index.html;
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
-}
-```
-
-### 3️⃣ **تفعيل الموقع**
-```bash
 # تفعيل الموقع
-ln -s /etc/nginx/sites-available/rezgee.com /etc/nginx/sites-enabled/
-
-# إزالة الموقع الافتراضي
-rm /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/rezgee.com /etc/nginx/sites-enabled/
 
 # اختبار التكوين
 nginx -t
 
 # إعادة تحميل Nginx
 systemctl reload nginx
-systemctl enable nginx
 ```
 
 ---
 
 ## **المرحلة الخامسة: إعداد PM2** 🔄
 
-### 1️⃣ **تحديث ملف PM2**
-```bash
-# تعديل ملف PM2
-nano /var/www/rezge/ecosystem.config.js
-```
-
-### 2️⃣ **إعدادات PM2 المحدثة**
-```javascript
-module.exports = {
-    apps: [{
-        name: 'rezge-app',
-        script: 'npm',
-        args: 'run preview',
-        cwd: '/var/www/rezge',
-        instances: 1,
-        autorestart: true,
-        watch: false,
-        max_memory_restart: '1G',
-        env: {
-            NODE_ENV: 'production',
-            PORT: 3000,
-            HOST: '0.0.0.0'
-        },
-        error_file: '/var/log/pm2/rezge-error.log',
-        out_file: '/var/log/pm2/rezge-out.log',
-        log_file: '/var/log/pm2/rezge-combined.log',
-        log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
-        time: true,
-        merge_logs: true,
-        kill_timeout: 5000,
-        wait_ready: true,
-        listen_timeout: 10000,
-        restart_delay: 4000,
-        max_restarts: 10,
-        min_uptime: '10s'
-    }]
-};
-```
-
-### 3️⃣ **بدء التطبيق**
+### 1️⃣ **بدء التطبيق**
 ```bash
 # إنشاء مجلد السجلات
 mkdir -p /var/log/pm2
 
 # بدء التطبيق
-pm2 start ecosystem.config.js
+sudo -u rezge pm2 start ecosystem.config.js
 
 # حفظ إعدادات PM2
-pm2 save
+sudo -u rezge pm2 save
 
 # إعداد بدء تلقائي
-pm2 startup
+sudo -u rezge pm2 startup
+```
+
+### 2️⃣ **التحقق من حالة التطبيق**
+```bash
+# فحص حالة PM2
+sudo -u rezge pm2 status
+
+# فحص السجلات
+sudo -u rezge pm2 logs rezge-app
 ```
 
 ---
@@ -357,10 +246,10 @@ dig rezgee.com
 systemctl status nginx
 
 # فحص حالة PM2
-pm2 status
+sudo -u rezge pm2 status
 
 # فحص السجلات
-pm2 logs rezgee-app
+sudo -u rezge pm2 logs rezge-app
 tail -f /var/log/nginx/error.log
 ```
 
@@ -380,53 +269,24 @@ curl -I https://rezgee.com
 
 ## **المرحلة التاسعة: الصيانة والمراقبة** 🔧
 
-### 1️⃣ **إعداد النسخ الاحتياطي**
+### 1️⃣ **مراقبة النظام**
 ```bash
-# إنشاء سكريبت النسخ الاحتياطي
-nano /root/backup-rezgee.sh
-```
+# تشغيل سكريبت المراقبة
+/root/monitor-system.sh
 
-```bash
-#!/bin/bash
-DATE=$(date +%Y%m%d_%H%M%S)
-BACKUP_DIR="/root/backups"
-PROJECT_DIR="/var/www/rezgee"
-
-mkdir -p $BACKUP_DIR
-
-# نسخ احتياطي للمشروع
-tar -czf $BACKUP_DIR/rezge-backup-$DATE.tar.gz -C $PROJECT_DIR .
-
-# نسخ احتياطي لقاعدة البيانات (إذا كانت محلية)
-# pg_dump -U postgres rezge_db > $BACKUP_DIR/rezge-db-$DATE.sql
-
-# حذف النسخ القديمة (أكثر من 7 أيام)
-find $BACKUP_DIR -name "rezge-backup-*.tar.gz" -mtime +7 -delete
-
-echo "Backup completed: rezge-backup-$DATE.tar.gz"
-```
-
-```bash
-# جعل السكريبت قابل للتنفيذ
-chmod +x /root/backup-rezge.sh
-
-# إضافة مهمة cron للنسخ الاحتياطي اليومي
-crontab -e
-
-# إضافة السطر التالي:
-0 2 * * * /root/backup-rezge.sh
-```
-
-### 2️⃣ **مراقبة الأداء**
-```bash
-# مراقبة استخدام الذاكرة والمعالج
+# مراقبة استخدام الموارد
 htop
 
-# مراقبة مساحة القرص
-df -h
-
 # مراقبة PM2
-pm2 monit
+sudo -u rezge pm2 monit
+```
+
+### 2️⃣ **النسخ الاحتياطي**
+```bash
+# تشغيل النسخ الاحتياطي يدوياً
+/root/backup-rezge.sh
+
+# النسخ الاحتياطي التلقائي يعمل يومياً في الساعة 2:00 صباحاً
 ```
 
 ---
@@ -440,8 +300,8 @@ systemctl status nginx
 nginx -t
 
 # فحص PM2
-pm2 status
-pm2 logs rezge-app
+sudo -u rezge pm2 status
+sudo -u rezge pm2 logs rezge-app
 
 # فحص الجدار الناري
 ufw status
@@ -473,7 +333,7 @@ curl -I https://your-supabase-url.supabase.co
 telnet smtp.hostinger.com 465
 
 # فحص السجلات
-pm2 logs rezge-app | grep -i smtp
+sudo -u rezge pm2 logs rezge-app | grep -i smtp
 ```
 
 ---
@@ -486,8 +346,8 @@ pm2 logs rezge-app | grep -i smtp
 systemctl status nginx postgresql
 
 # حالة PM2
-pm2 status
-pm2 logs rezge-app
+sudo -u rezge pm2 status
+sudo -u rezge pm2 logs rezge-app
 
 # استخدام الموارد
 htop
@@ -501,10 +361,10 @@ free -h
 systemctl restart nginx
 
 # إعادة تشغيل PM2
-pm2 restart all
+sudo -u rezge pm2 restart all
 
 # إعادة تشغيل كل شيء
-pm2 restart all && systemctl restart nginx
+sudo -u rezge pm2 restart all && systemctl restart nginx
 ```
 
 ### **فحص السجلات:**
@@ -514,7 +374,7 @@ tail -f /var/log/nginx/access.log
 tail -f /var/log/nginx/error.log
 
 # سجلات PM2
-pm2 logs rezge-app
+sudo -u rezge pm2 logs rezge-app
 tail -f /var/log/pm2/rezge-error.log
 ```
 
