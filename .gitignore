@@ -241,3 +241,16 @@ test-verification-system.html
 
 # YoYo AI version control directory
 .yoyo/
+
+# GitHub specific files (keep these in repository)
+# .github/ISSUE_TEMPLATE/
+# .github/workflows/
+# PULL_REQUEST_TEMPLATE.md
+# CONTRIBUTING.md
+# SECURITY.md
+# CHANGELOG.md
+# LICENSE
+
+# Backup files
+*.backup
+README.md.backup
