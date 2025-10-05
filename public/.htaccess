@@ -127,6 +127,17 @@
     AddType image/webp .webp
 </IfModule>
 
+# السماح بملفات sitemap و robots.txt
+<Files "sitemap.xml">
+    Allow from all
+</Files>
+<Files "sitemap-images.xml">
+    Allow from all
+</Files>
+<Files "robots.txt">
+    Allow from all
+</Files>
+
 # منع الوصول للملفات الحساسة
 <FilesMatch "\.(env|config|log|sql|bak|backup)$">
     Order allow,deny

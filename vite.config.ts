@@ -1,10 +1,25 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import { copyFileSync, existsSync } from 'fs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Plugin مخصص لنسخ ملف .htaccess
+    {
+      name: 'copy-htaccess',
+      writeBundle() {
+        const htaccessPath = resolve(__dirname, 'public/.htaccess');
+        const distPath = resolve(__dirname, 'dist/.htaccess');
+        if (existsSync(htaccessPath)) {
+          copyFileSync(htaccessPath, distPath);
+          console.log('✅ تم نسخ ملف .htaccess إلى مجلد البناء');
+        }
+      }
+    }
+  ],
   
   // إعدادات الأداء
   build: {
