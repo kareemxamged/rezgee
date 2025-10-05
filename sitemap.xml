@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+
+  <!-- Homepage - Default Arabic -->
+  <url>
+    <loc>https://rezgee.com/</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rezgee.com/"/>
+  </url>
+
+  <!-- Arabic Version -->
+  <url>
+    <loc>https://rezgee.com/ar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rezgee.com/"/>
+  </url>
+
+  <!-- English Version -->
+  <url>
+    <loc>https://rezgee.com/en</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rezgee.com/"/>
+  </url>
+
+  <!-- Legacy Language URLs -->
+  <url>
+    <loc>https://rezgee.com/?lang=ar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/?lang=en</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/en"/>
+  </url>
+
+  <!-- Public Pages (الصفحات العامة) -->
+  <url>
+    <loc>https://rezgee.com/features</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/features?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/features?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/about</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/about?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/about?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/contact</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/contact?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/contact?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/help-center</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/help-center?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/help-center?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/faq</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/faq?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/faq?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/articles</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/articles?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/articles?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/islamic-guidelines</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/islamic-guidelines?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/islamic-guidelines?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/privacy-policy</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/privacy-policy?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/privacy-policy?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/terms-of-service</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/terms-of-service?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/terms-of-service?lang=en"/>
+  </url>
+
+  <!-- Guest Only Pages (صفحات للزوار فقط) -->
+  <url>
+    <loc>https://rezgee.com/register</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/register?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/register?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/login</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/login?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/login?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/forgot-password</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/forgot-password?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/forgot-password?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/temporary-password-login</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/temporary-password-login?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/temporary-password-login?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/reset-password</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/reset-password?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/reset-password?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/set-password</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/set-password?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/set-password?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/two-factor-verification</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/two-factor-verification?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/two-factor-verification?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/verify-email-change</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/verify-email-change?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/verify-email-change?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/unsubscribe</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/unsubscribe?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/unsubscribe?lang=en"/>
+  </url>
+
+  <!-- Protected Pages (الصفحات المحمية) - Lower priority as they require login -->
+  <url>
+    <loc>https://rezgee.com/dashboard</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/dashboard?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/dashboard?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/search</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/search?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/search?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/messages</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/messages?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/messages?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/matches</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/matches?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/matches?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/likes</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/likes?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/likes?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/profile</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/profile?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/profile?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/notifications</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/notifications?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/notifications?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/security</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/security?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/security?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/subscription</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/subscription?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/subscription?lang=en"/>
+  </url>
+
+  <url>
+    <loc>https://rezgee.com/payment</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://rezgee.com/payment?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rezgee.com/payment?lang=en"/>
+  </url>
+
+</urlset>

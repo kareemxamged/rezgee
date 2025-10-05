@@ -1,0 +1,65 @@
+{
+    "name": "رزقي - موقع الزواج الإسلامي",
+    "short_name": "رزقي",
+    "description": "رزقي - أول منصة زواج إسلامية موثوقة للتعارف الجاد والزواج الشرعي",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4A90E2",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "ar",
+    "dir": "rtl",
+    "categories": ["social", "lifestyle", "dating"],
+    "icons": [{
+            "src": "/main-16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/main-32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/main-96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/main.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/main.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [{
+            "src": "/screenshots/desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "رزقي - الصفحة الرئيسية"
+        },
+        {
+            "src": "/screenshots/mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "رزقي - تطبيق الجوال"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "launch_handler": {
+        "client_mode": "focus-existing"
+    }
+}

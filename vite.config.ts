@@ -1,9 +1,77 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  
+  // إعدادات الأداء
+  build: {
+    // تحسين حجم البناء
+    target: 'es2015',
+    minify: 'terser',
+    
+    // تقسيم الكود
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // مكتبة React
+          'react-vendor': ['react', 'react-dom'],
+          
+          // مكتبة React Router
+          'router-vendor': ['react-router-dom'],
+          
+          // مكتبة i18n
+          'i18n-vendor': ['react-i18next', 'i18next'],
+          
+          // مكتبة UI
+          'ui-vendor': ['lucide-react'],
+          
+          // مكتبة Supabase
+          'supabase-vendor': ['@supabase/supabase-js'],
+          
+          // مكتبة Forms
+          'forms-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          
+          // مكتبة Utils
+          'utils-vendor': ['date-fns', 'clsx', 'tailwind-merge'],
+          
+          // مكتبة HTTP
+          'http-vendor': ['axios'],
+          
+          // مكتبة Validation
+          'validation-vendor': ['zod'],
+        },
+        // تحسين أسماء الملفات
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`;
+          }
+          if (/css/i.test(ext)) {
+            return `assets/css/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
+      },
+    },
+    
+    // إعدادات إضافية
+    sourcemap: false,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 1000,
+    
+    // تحسين الأداء
+    cssCodeSplit: true,
+    assetsInlineLimit: 4096,
+  },
+  
+  // إعدادات الخادم
   server: {
     port: 5173,
     proxy: {
@@ -14,79 +82,78 @@ export default defineConfig({
       }
     }
   },
+  
+  // إعدادات المعاينة
   preview: {
+    port: 4173,
     host: true,
-    allowedHosts: ['rezgee.com', 'localhost', '127.0.0.1']
+    allowedHosts: ['rezgee.com', 'localhost', '127.0.0.1'],
+    cors: true,
   },
-  build: {
-    // Chunk size warning limit
-    chunkSizeWarningLimit: 2000,
-
-    // Rollup options for better chunking
-    rollupOptions: {
-      onwarn(warning, warn) {
-        // Suppress specific warnings
-        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
-          return;
-        }
-        if (warning.message.includes('dynamic import will not move module into another chunk')) {
-          return;
-        }
-        warn(warning);
-      },
-      output: {
-        manualChunks: (id) => {
-          // Vendor chunks
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'react-vendor';
-            }
-            if (id.includes('@supabase')) {
-              return 'supabase-vendor';
-            }
-            if (id.includes('lucide-react') || id.includes('clsx')) {
-              return 'ui-vendor';
-            }
-            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
-              return 'form-vendor';
-            }
-            if (id.includes('i18next')) {
-              return 'i18n-vendor';
-            }
-            if (id.includes('axios') || id.includes('bcryptjs')) {
-              return 'utils-vendor';
-            }
-            return 'vendor';
-          }
-
-          // Application chunks - more specific to avoid dynamic import conflicts
-          if (id.includes('src/components/admin')) {
-            return 'admin-components';
-          }
-          if (id.includes('src/lib/email') || id.includes('src/lib/Email') ||
-            id.includes('src/lib/finalEmailService') ||
-            id.includes('src/lib/unifiedEmailService') ||
-            id.includes('src/lib/notificationEmailService') ||
-            id.includes('src/lib/databaseEmailService')) {
-            return 'email-services';
-          }
-          if (id.includes('src/lib/admin') && !id.includes('email')) {
-            return 'admin-services';
-          }
-          if (id.includes('src/lib/subscriptionService')) {
-            return 'subscription-services';
-          }
-          if (id.includes('src/lib/supabase') && !id.includes('email')) {
-            return 'supabase-services';
-          }
-          if (id.includes('src/components') && !id.includes('admin')) {
-            return 'user-components';
-          }
-          if (id.includes('src/lib') && !id.includes('admin') && !id.includes('email') && !id.includes('subscription') && !id.includes('supabase')) {
-            return 'user-services';
-          }
-        }
-      }
-    }
-  }
-})
+  
+  // إعدادات CSS
+  css: {
+    devSourcemap: true,
+  },
+  
+  // إعدادات المسارات
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@hooks': resolve(__dirname, 'src/hooks'),
+      '@utils': resolve(__dirname, 'src/utils'),
+      '@types': resolve(__dirname, 'src/types'),
+      '@contexts': resolve(__dirname, 'src/contexts'),
+      '@lib': resolve(__dirname, 'src/lib'),
+      '@data': resolve(__dirname, 'src/data'),
+    },
+  },
+  
+  // إعدادات البيئة
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+  },
+  
+  // إعدادات الأداء
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'react-i18next',
+      'i18next',
+      '@supabase/supabase-js',
+      'lucide-react',
+      'react-hook-form',
+      '@hookform/resolvers',
+      'zod',
+      'date-fns',
+      'clsx',
+      'tailwind-merge',
+    ],
+    exclude: ['@vite/client', '@vite/env'],
+  },
+  
+  // إعدادات إضافية
+  esbuild: {
+    logOverride: { 'this-is-undefined-in-esm': 'silent' },
+  },
+  
+  // إعدادات JSON
+  json: {
+    namedExports: true,
+    stringify: false,
+  },
+  
+  // إعدادات الصور
+  assetsInclude: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.webp'],
+  
+  
+  // إعدادات الأداء الإضافية
+  experimental: {
+    renderBuiltUrl(filename: string) {
+      return `/${filename}`;
+    },
+  },
+});

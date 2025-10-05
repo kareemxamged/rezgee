@@ -4,7 +4,7 @@
  */
 
 // مفاتيح reCAPTCHA مع نظام متدرج
-const PRIMARY_SECRET_KEY = '6LewINIrAAAAAFycWJU_h2A-8iIdMpa-axh17_O3'; // المفتاح الحقيقي المقدم من المستخدم
+const PRIMARY_SECRET_KEY = '6LewINIrAAAAAFycWJU_h2A-8iIdMpa-axh17_O3'; // المفتاح الحقيقي الجديد المقدم من المستخدم
 const FALLBACK_SECRET_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'; // المفتاح التجريبي البديل
 
 // استخدام المفتاح الحقيقي كافتراضي
@@ -31,7 +31,8 @@ export interface RecaptchaVerificationRequest {
  */
 class RecaptchaService {
   private readonly RECAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
-  private readonly SECRET_KEY = RECAPTCHA_SECRET_KEY;
+  private currentSecretKey = PRIMARY_SECRET_KEY;
+  private keyErrors = 0;
 
   /**
    * التحقق من صحة token الخاص بـ reCAPTCHA
@@ -43,10 +44,11 @@ class RecaptchaService {
   ): Promise<RecaptchaVerificationResult> {
     try {
       console.log('🔍 التحقق من reCAPTCHA token...');
+      console.log('🔑 المفتاح المستخدم:', this.currentSecretKey === PRIMARY_SECRET_KEY ? 'Primary' : 'Fallback');
 
       // إعداد البيانات للطلب
       const formData = new FormData();
-      formData.append('secret', this.SECRET_KEY);
+      formData.append('secret', this.currentSecretKey);
       formData.append('response', token);
       formData.append('action', action);
       
@@ -107,17 +109,35 @@ class RecaptchaService {
         // معالجة أخطاء التحقق
         const errorCodes = result['error-codes'] || [];
         let errorMessage = 'فشل في التحقق من reCAPTCHA';
-
-        if (errorCodes.includes('missing-input-secret')) {
-          errorMessage = 'مفتاح السر مفقود';
-        } else if (errorCodes.includes('invalid-input-secret')) {
-          errorMessage = 'مفتاح السر غير صحيح';
+        
+        // التحقق من أخطاء المفتاح
+        const isKeyError = errorCodes.includes('invalid-input-secret') || 
+                          errorCodes.includes('missing-input-secret') ||
+                          errorCodes.includes('bad-request');
+        
+        if (isKeyError) {
+          this.keyErrors++;
+          console.warn(`⚠️ خطأ في المفتاح (${this.keyErrors}):`, errorCodes);
+          
+          // إذا كان المفتاح الأساسي فاشل، انتقل للمفتاح التجريبي
+          if (this.currentSecretKey === PRIMARY_SECRET_KEY && this.keyErrors === 1) {
+            console.log('🔄 التبديل إلى المفتاح التجريبي...');
+            this.currentSecretKey = FALLBACK_SECRET_KEY;
+            this.keyErrors = 0; // إعادة تعيين العداد
+            return this.verifyToken(token, action, remoteip); // إعادة المحاولة
+          }
+          
+          // إذا فشل المفتاح التجريبي أيضاً
+          if (this.currentSecretKey === FALLBACK_SECRET_KEY && this.keyErrors >= 1) {
+            errorMessage = 'فشل جميع مفاتيح reCAPTCHA';
+            console.error('❌ فشل جميع مفاتيح reCAPTCHA');
+          } else {
+            errorMessage = 'مفتاح السر غير صحيح';
+          }
         } else if (errorCodes.includes('missing-input-response')) {
           errorMessage = 'استجابة التحقق مفقودة';
         } else if (errorCodes.includes('invalid-input-response')) {
           errorMessage = 'استجابة التحقق غير صحيحة';
-        } else if (errorCodes.includes('bad-request')) {
-          errorMessage = 'طلب غير صحيح';
         } else if (errorCodes.includes('timeout-or-duplicate')) {
           errorMessage = 'انتهت مهلة التحقق أو تم استخدامه مسبقاً';
         }
@@ -136,6 +156,29 @@ class RecaptchaService {
         error_codes: ['network-error']
       };
     }
+  }
+
+  /**
+   * إعادة تعيين المفاتيح إلى الحالة الافتراضية
+   */
+  resetKeys(): void {
+    console.log('🔄 إعادة تعيين مفاتيح reCAPTCHA إلى الحالة الافتراضية');
+    this.currentSecretKey = PRIMARY_SECRET_KEY;
+    this.keyErrors = 0;
+  }
+
+  /**
+   * الحصول على المفتاح الحالي المستخدم
+   */
+  getCurrentKey(): string {
+    return this.currentSecretKey;
+  }
+
+  /**
+   * التحقق من استخدام المفتاح التجريبي
+   */
+  isUsingFallbackKey(): boolean {
+    return this.currentSecretKey === FALLBACK_SECRET_KEY;
   }
 
   /**

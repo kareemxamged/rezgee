@@ -20,7 +20,7 @@
     },
     "type": "module",
     "scripts": {
-        "dev": "concurrently \"npm run smtp-simple\" \"vite\"",
+        "dev": "vite",
         "dev-only": "vite",
         "smtp-simple": "node simple-smtp-server.js",
         "smtp-server": "node smtp-server.js",

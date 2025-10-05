@@ -1,6 +1,5 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import './i18n'; // Initialize i18n
 import './styles/custom-scrollbar.css'; // Custom scrollbar styles
 import './utils/initializeTestTools'; // Initialize testing tools
@@ -13,60 +12,435 @@ import ProtectedRoute, { GuestOnlyRoute } from './components/ProtectedRoute';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import SilentConnectionManager from './components/SilentConnectionManager';
-import HomePage from './components/HomePage';
-import RegisterPage from './components/RegisterPage';
-import LoginPage from './components/LoginPage';
-import ForgotPasswordPage from './components/ForgotPasswordPage';
-import TemporaryPasswordLoginPage from './components/TemporaryPasswordLoginPage';
-import ResetPasswordPage from './components/ResetPasswordPage';
-import SetPasswordPage from './components/SetPasswordPage';
+import LoadingSpinner from './components/LoadingSpinner';
+import PerformanceMonitor from './components/PerformanceMonitor';
 
-import TwoFactorVerificationPage from './components/TwoFactorVerificationPage';
-import EnhancedProfilePage from './components/EnhancedProfilePage';
-import PublicProfilePage from './components/PublicProfilePage';
-import SearchPage from './components/SearchPage';
-import MessagesPage from './components/MessagesPage';
-import MatchesPage from './components/MatchesPage';
-import LikesPage from './components/LikesPage';
-import DashboardPage from './components/DashboardPage';
-import NotificationsPage from './components/NotificationsPage';
-import ReportDetailsPage from './components/ReportDetailsPage';
-import AdminLayout from './components/admin/AdminLayout';
-import AdminDashboard from './components/admin/AdminDashboard';
-import NewAdminLoginPage from './components/admin/NewAdminLoginPage';
-import NewsletterManagement from './components/admin/NewsletterManagement';
-import EmailNotificationsManagement from './components/admin/EmailNotificationsManagement';
-import UnsubscribePage from './components/UnsubscribePage';
-import AdminTwoFactorPage from './components/admin/AdminTwoFactorPage';
+// Lazy load components for better performance
+const HomePage = lazy(() => import('./components/HomePage'));
+const RegisterPage = lazy(() => import('./components/RegisterPage'));
+const LoginPage = lazy(() => import('./components/LoginPage'));
+const ForgotPasswordPage = lazy(() => import('./components/ForgotPasswordPage'));
+const TemporaryPasswordLoginPage = lazy(() => import('./components/TemporaryPasswordLoginPage'));
+const ResetPasswordPage = lazy(() => import('./components/ResetPasswordPage'));
+const SetPasswordPage = lazy(() => import('./components/SetPasswordPage'));
+
+const TwoFactorVerificationPage = lazy(() => import('./components/TwoFactorVerificationPage'));
+const EnhancedProfilePage = lazy(() => import('./components/EnhancedProfilePage'));
+const PublicProfilePage = lazy(() => import('./components/PublicProfilePage'));
+const SearchPage = lazy(() => import('./components/SearchPage'));
+const MessagesPage = lazy(() => import('./components/MessagesPage'));
+const MatchesPage = lazy(() => import('./components/MatchesPage'));
+const LikesPage = lazy(() => import('./components/LikesPage'));
+const DashboardPage = lazy(() => import('./components/DashboardPage'));
+const NotificationsPage = lazy(() => import('./components/NotificationsPage'));
+const ReportDetailsPage = lazy(() => import('./components/ReportDetailsPage'));
+const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
+const NewAdminLoginPage = lazy(() => import('./components/admin/NewAdminLoginPage'));
+const NewsletterManagement = lazy(() => import('./components/admin/NewsletterManagement'));
+const EmailNotificationsManagement = lazy(() => import('./components/admin/EmailNotificationsManagement'));
+const UnsubscribePage = lazy(() => import('./components/UnsubscribePage'));
+const AdminTwoFactorPage = lazy(() => import('./components/admin/AdminTwoFactorPage'));
+// Keep ThemeProvider as regular import since it's needed immediately
 import { ThemeProvider } from './contexts/ThemeContext';
-import UnifiedUsersManagement from './components/admin/users/UnifiedUsersManagement';
-import SubscriptionManagement from './components/admin/SubscriptionManagement';
-import SubscriptionBanner from './components/SubscriptionBanner';
-import SubscriptionPage from './components/SubscriptionPage';
-import PaymentPage from './components/PaymentPage';
-import SecuritySettingsPage from './components/SecuritySettingsPage';
-import AdminArticlesPage from './pages/admin/ArticlesPage';
-import CategoriesPage from './pages/admin/CategoriesPage';
-import CommentsPage from './pages/admin/CommentsPage';
-import ContentAnalyticsPage from './pages/admin/ContentAnalyticsPage';
-import ContentManagementPage from './pages/admin/ContentManagementPage';
+const UnifiedUsersManagement = lazy(() => import('./components/admin/users/UnifiedUsersManagement'));
+const SubscriptionManagement = lazy(() => import('./components/admin/SubscriptionManagement'));
+const SubscriptionBanner = lazy(() => import('./components/SubscriptionBanner'));
+const SubscriptionPage = lazy(() => import('./components/SubscriptionPage'));
+const PaymentPage = lazy(() => import('./components/PaymentPage'));
+const SecuritySettingsPage = lazy(() => import('./components/SecuritySettingsPage'));
+const AdminArticlesPage = lazy(() => import('./pages/admin/ArticlesPage'));
+const CategoriesPage = lazy(() => import('./pages/admin/CategoriesPage'));
+const CommentsPage = lazy(() => import('./pages/admin/CommentsPage'));
+const ContentAnalyticsPage = lazy(() => import('./pages/admin/ContentAnalyticsPage'));
+const ContentManagementPage = lazy(() => import('./pages/admin/ContentManagementPage'));
 
-import VerifyEmailChangePage from './components/VerifyEmailChangePage';
-import FeaturesPage from './components/FeaturesPage';
-import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
-import HelpCenterPage from './components/HelpCenterPage';
-import FAQPage from './components/FAQPage';
-import ArticlesPage from './components/ArticlesPage';
-import ArticleDetailPage from './components/ArticleDetailPage';
-import IslamicGuidelinesPage from './components/IslamicGuidelinesPage';
-import PrivacyPolicyPage from './components/PrivacyPolicyPage';
-import TermsOfServicePage from './components/TermsOfServicePage';
-import NotFoundPage from './components/NotFoundPage';
-import Footer from './components/Footer';
-import AlertsManager from './components/alerts/AlertsManager';
-import FaviconManager from './components/FaviconManager';
-import PageTitleManager from './components/PageTitleManager';
+const VerifyEmailChangePage = lazy(() => import('./components/VerifyEmailChangePage'));
+const FeaturesPage = lazy(() => import('./components/FeaturesPage'));
+const AboutPage = lazy(() => import('./components/AboutPage'));
+const ContactPage = lazy(() => import('./components/ContactPage'));
+const HelpCenterPage = lazy(() => import('./components/HelpCenterPage'));
+const FAQPage = lazy(() => import('./components/FAQPage'));
+const ArticlesPage = lazy(() => import('./components/ArticlesPage'));
+const ArticleDetailPage = lazy(() => import('./components/ArticleDetailPage'));
+const IslamicGuidelinesPage = lazy(() => import('./components/IslamicGuidelinesPage'));
+const PrivacyPolicyPage = lazy(() => import('./components/PrivacyPolicyPage'));
+const TermsOfServicePage = lazy(() => import('./components/TermsOfServicePage'));
+const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
+const Footer = lazy(() => import('./components/Footer'));
+const AlertsManager = lazy(() => import('./components/alerts/AlertsManager'));
+const FaviconManager = lazy(() => import('./components/FaviconManager'));
+const PageTitleManager = lazy(() => import('./components/PageTitleManager'));
+const DynamicMetaTags = lazy(() => import('./components/DynamicMetaTags'));
+
+// Keep usePageMeta as regular import since it's a hook
+import { usePageMeta } from './hooks/usePageMeta';
+
+// مكون داخلي لاستخدام hooks داخل Router
+const AppContent: React.FC = () => {
+  // استخدام hook لإدارة meta tags
+  const pageMeta = usePageMeta();
+
+  return (
+    <>
+      {/* مراقب الأداء - يعمل في الخلفية */}
+      <PerformanceMonitor 
+        enabled={true} 
+        reportToAnalytics={true} 
+        logToConsole={import.meta.env.DEV} 
+      />
+      
+      <Suspense fallback={<LoadingSpinner fullScreen text="جاري تحميل الموقع..." />}>
+        <DynamicMetaTags {...pageMeta} />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner size="sm" />}>
+        <FaviconManager />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner size="sm" />}>
+        <PageTitleManager />
+      </Suspense>
+      <ScrollToTop />
+      <Routes>
+        {/* صفحة تسجيل الدخول الإدارية المنفصلة */}
+        <Route path="/admin/login" element={
+          <ThemeProvider>
+            <Suspense fallback={<LoadingSpinner fullScreen text="جاري تحميل صفحة تسجيل الدخول..." />}>
+              <NewAdminLoginPage />
+            </Suspense>
+          </ThemeProvider>
+        } />
+
+        {/* صفحة التحقق الإضافي للمشرفين */}
+        <Route path="/admin/two-factor" element={
+          <ThemeProvider>
+            <Suspense fallback={<LoadingSpinner fullScreen text="جاري تحميل صفحة التحقق..." />}>
+              <AdminTwoFactorPage />
+            </Suspense>
+          </ThemeProvider>
+        } />
+
+        {/* مسارات الإدارة - منفصلة بالكامل عن تخطيط الموقع العام */}
+        <Route path="/admin/*" element={
+          <Suspense fallback={<LoadingSpinner fullScreen text="جاري تحميل لوحة الإدارة..." />}>
+            <AdminLayout />
+          </Suspense>
+        }>
+          <Route index element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل لوحة التحكم..." />}>
+              <AdminDashboard />
+            </Suspense>
+          } />
+          <Route path="users" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة المستخدمين..." />}>
+              <UnifiedUsersManagement />
+            </Suspense>
+          } />
+          <Route path="content" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة المحتوى..." />}>
+              <ContentManagementPage />
+            </Suspense>
+          } />
+          <Route path="articles" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة المقالات..." />}>
+              <AdminArticlesPage />
+            </Suspense>
+          } />
+          <Route path="categories" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة الفئات..." />}>
+              <CategoriesPage />
+            </Suspense>
+          } />
+          <Route path="comments" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة التعليقات..." />}>
+              <CommentsPage />
+            </Suspense>
+          } />
+          <Route path="content-analytics" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل تحليلات المحتوى..." />}>
+              <ContentAnalyticsPage />
+            </Suspense>
+          } />
+          <Route path="newsletter" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة النشرة الإخبارية..." />}>
+              <NewsletterManagement />
+            </Suspense>
+          } />
+          <Route path="email-notifications" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة الإشعارات..." />}>
+              <EmailNotificationsManagement />
+            </Suspense>
+          } />
+          <Route path="subscriptions" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل إدارة الاشتراكات..." />}>
+              <SubscriptionManagement />
+            </Suspense>
+          } />
+          <Route path="subscriptions/plans" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل خطط الاشتراك..." />}>
+              <SubscriptionManagement />
+            </Suspense>
+          } />
+          <Route path="subscriptions/users" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل مستخدمي الاشتراك..." />}>
+              <SubscriptionManagement />
+            </Suspense>
+          } />
+          <Route path="subscriptions/payments" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل مدفوعات الاشتراك..." />}>
+              <SubscriptionManagement />
+            </Suspense>
+          } />
+          <Route path="subscriptions/trials" element={
+            <Suspense fallback={<LoadingSpinner text="جاري تحميل التجارب المجانية..." />}>
+              <SubscriptionManagement />
+            </Suspense>
+          } />
+          {/* يمكن إضافة المزيد من المسارات الإدارية هنا لاحقاً */}
+        </Route>
+
+        {/* باقي مسارات الموقع العام مع التخطيط العادي */}
+        <Route path="/*" element={
+          <div className="main-site min-h-screen bg-white font-arabic" dir="rtl">
+            <Header />
+
+            {/* بانر الاشتراك - يظهر أسفل الهيدر للمستخدمين المسجلين */}
+            <Suspense fallback={<LoadingSpinner size="sm" />}>
+              <SubscriptionBanner />
+            </Suspense>
+
+            {/* مدير الاتصال الصامت - يعمل خلف الكواليس */}
+            <SilentConnectionManager />
+
+            {/* مدير التنبيهات - يعرض التنبيهات تلقائياً */}
+            <Suspense fallback={<LoadingSpinner size="sm" />}>
+              <AlertsManager />
+            </Suspense>
+
+            <main>
+              <Routes>
+              {/* الصفحات العامة */}
+              <Route path="/" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل الصفحة الرئيسية..." />}>
+                  <HomePage />
+                </Suspense>
+              } />
+              <Route path="/features" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة المميزات..." />}>
+                  <FeaturesPage />
+                </Suspense>
+              } />
+              <Route path="/about" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة من نحن..." />}>
+                  <AboutPage />
+                </Suspense>
+              } />
+              <Route path="/contact" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة التواصل..." />}>
+                  <ContactPage />
+                </Suspense>
+              } />
+              <Route path="/help-center" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل مركز المساعدة..." />}>
+                  <HelpCenterPage />
+                </Suspense>
+              } />
+              <Route path="/faq" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل الأسئلة الشائعة..." />}>
+                  <FAQPage />
+                </Suspense>
+              } />
+              <Route path="/articles" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل المقالات..." />}>
+                  <ArticlesPage />
+                </Suspense>
+              } />
+              <Route path="/articles/:id" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل المقال..." />}>
+                  <ArticleDetailPage />
+                </Suspense>
+              } />
+              <Route path="/islamic-guidelines" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل الإرشادات الإسلامية..." />}>
+                  <IslamicGuidelinesPage />
+                </Suspense>
+              } />
+              <Route path="/privacy-policy" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل سياسة الخصوصية..." />}>
+                  <PrivacyPolicyPage />
+                </Suspense>
+              } />
+              <Route path="/terms-of-service" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل شروط الخدمة..." />}>
+                  <TermsOfServicePage />
+                </Suspense>
+              } />
+
+              {/* صفحة إلغاء الاشتراك من النشرة الإخبارية */}
+              <Route path="/unsubscribe" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة إلغاء الاشتراك..." />}>
+                  <UnsubscribePage />
+                </Suspense>
+              } />
+
+              {/* صفحات للزوار فقط (غير المسجلين) */}
+              <Route path="/register" element={
+                <GuestOnlyRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة التسجيل..." />}>
+                    <RegisterPage />
+                  </Suspense>
+                </GuestOnlyRoute>
+              } />
+              <Route path="/login" element={
+                <GuestOnlyRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة تسجيل الدخول..." />}>
+                    <LoginPage />
+                  </Suspense>
+                </GuestOnlyRoute>
+              } />
+              <Route path="/forgot-password" element={
+                <GuestOnlyRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة نسيان كلمة المرور..." />}>
+                    <ForgotPasswordPage />
+                  </Suspense>
+                </GuestOnlyRoute>
+              } />
+              <Route path="/temporary-password-login" element={
+                <GuestOnlyRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة تسجيل الدخول المؤقت..." />}>
+                    <TemporaryPasswordLoginPage />
+                  </Suspense>
+                </GuestOnlyRoute>
+              } />
+              <Route path="/reset-password" element={
+                <GuestOnlyRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة إعادة تعيين كلمة المرور..." />}>
+                    <ResetPasswordPage />
+                  </Suspense>
+                </GuestOnlyRoute>
+              } />
+              <Route path="/set-password" element={
+                <GuestOnlyRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة تعيين كلمة المرور..." />}>
+                    <SetPasswordPage />
+                  </Suspense>
+                </GuestOnlyRoute>
+              } />
+
+
+              {/* صفحة التحقق من المصادقة الثنائية */}
+              <Route path="/two-factor-verification" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة التحقق..." />}>
+                  <TwoFactorVerificationPage />
+                </Suspense>
+              } />
+
+              {/* الصفحات المحمية (تتطلب تسجيل دخول) */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل لوحة التحكم..." />}>
+                    <DashboardPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/notifications" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل الإشعارات..." />}>
+                    <NotificationsPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/report/:reportId" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل تفاصيل التقرير..." />}>
+                    <ReportDetailsPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل الملف الشخصي..." />}>
+                    <EnhancedProfilePage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/profile/:userId" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل الملف الشخصي..." />}>
+                  <PublicProfilePage />
+                </Suspense>
+              } />
+              <Route path="/search" element={
+                <ProtectedRoute requireVerification={true}>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة البحث..." />}>
+                    <SearchPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/messages" element={
+                <ProtectedRoute requireVerification={true}>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل الرسائل..." />}>
+                    <MessagesPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/matches" element={
+                <ProtectedRoute requireVerification={true}>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل المطابقات..." />}>
+                    <MatchesPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/likes" element={
+                <ProtectedRoute requireVerification={true}>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل الإعجابات..." />}>
+                    <LikesPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/security" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل إعدادات الأمان..." />}>
+                    <SecuritySettingsPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+
+              <Route path="/subscription" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة الاشتراك..." />}>
+                    <SubscriptionPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/payment" element={
+                <ProtectedRoute>
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة الدفع..." />}>
+                    <PaymentPage />
+                  </Suspense>
+                </ProtectedRoute>
+              } />
+              <Route path="/verify-email-change" element={
+                <Suspense fallback={<LoadingSpinner text="جاري تحميل صفحة التحقق من البريد الإلكتروني..." />}>
+                  <VerifyEmailChangePage />
+                </Suspense>
+              } />
+
+                {/* صفحة 404 - يجب أن تكون في النهاية */}
+                <Route path="*" element={
+                  <Suspense fallback={<LoadingSpinner text="جاري تحميل الصفحة..." />}>
+                    <NotFoundPage />
+                  </Suspense>
+                } />
+              </Routes>
+            </main>
+            <Suspense fallback={<LoadingSpinner size="sm" />}>
+              <Footer />
+            </Suspense>
+          </div>
+        } />
+      </Routes>
+    </>
+  );
+};
 
 function App() {
   // بدء نظام الإشعارات البريدية المستقل 24/7 عند تحميل التطبيق
@@ -108,180 +482,8 @@ function App() {
     <AuthProvider>
       <ToastProvider>
         <Router>
-          <FaviconManager />
-          <PageTitleManager />
-          <ScrollToTop />
-          <Routes>
-            {/* صفحة تسجيل الدخول الإدارية المنفصلة */}
-            <Route path="/admin/login" element={
-              <ThemeProvider>
-                <NewAdminLoginPage />
-              </ThemeProvider>
-            } />
-
-            {/* صفحة التحقق الإضافي للمشرفين */}
-            <Route path="/admin/two-factor" element={
-              <ThemeProvider>
-                <AdminTwoFactorPage />
-              </ThemeProvider>
-            } />
-
-            {/* مسارات الإدارة - منفصلة بالكامل عن تخطيط الموقع العام */}
-            <Route path="/admin/*" element={<AdminLayout />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="users" element={<UnifiedUsersManagement />} />
-              <Route path="content" element={<ContentManagementPage />} />
-              <Route path="articles" element={<AdminArticlesPage />} />
-              <Route path="categories" element={<CategoriesPage />} />
-              <Route path="comments" element={<CommentsPage />} />
-              <Route path="content-analytics" element={<ContentAnalyticsPage />} />
-              <Route path="newsletter" element={<NewsletterManagement />} />
-              <Route path="email-notifications" element={<EmailNotificationsManagement />} />
-              <Route path="subscriptions" element={<SubscriptionManagement />} />
-              <Route path="subscriptions/plans" element={<SubscriptionManagement />} />
-              <Route path="subscriptions/users" element={<SubscriptionManagement />} />
-              <Route path="subscriptions/payments" element={<SubscriptionManagement />} />
-              <Route path="subscriptions/trials" element={<SubscriptionManagement />} />
-              {/* يمكن إضافة المزيد من المسارات الإدارية هنا لاحقاً */}
-            </Route>
-
-            {/* باقي مسارات الموقع العام مع التخطيط العادي */}
-            <Route path="/*" element={
-              <div className="main-site min-h-screen bg-white font-arabic" dir="rtl">
-                <Header />
-
-                {/* بانر الاشتراك - يظهر أسفل الهيدر للمستخدمين المسجلين */}
-                <SubscriptionBanner />
-
-                {/* مدير الاتصال الصامت - يعمل خلف الكواليس */}
-                <SilentConnectionManager />
-
-                {/* مدير التنبيهات - يعرض التنبيهات تلقائياً */}
-                <AlertsManager />
-
-                <main>
-                  <Routes>
-              {/* الصفحات العامة */}
-              <Route path="/" element={<HomePage />} />
-              <Route path="/features" element={<FeaturesPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/help-center" element={<HelpCenterPage />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/articles" element={<ArticlesPage />} />
-              <Route path="/articles/:id" element={<ArticleDetailPage />} />
-              <Route path="/islamic-guidelines" element={<IslamicGuidelinesPage />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-
-              {/* صفحة إلغاء الاشتراك من النشرة الإخبارية */}
-              <Route path="/unsubscribe" element={<UnsubscribePage />} />
-
-              {/* صفحات للزوار فقط (غير المسجلين) */}
-              <Route path="/register" element={
-                <GuestOnlyRoute>
-                  <RegisterPage />
-                </GuestOnlyRoute>
-              } />
-              <Route path="/login" element={
-                <GuestOnlyRoute>
-                  <LoginPage />
-                </GuestOnlyRoute>
-              } />
-              <Route path="/forgot-password" element={
-                <GuestOnlyRoute>
-                  <ForgotPasswordPage />
-                </GuestOnlyRoute>
-              } />
-              <Route path="/temporary-password-login" element={
-                <GuestOnlyRoute>
-                  <TemporaryPasswordLoginPage />
-                </GuestOnlyRoute>
-              } />
-              <Route path="/reset-password" element={
-                <GuestOnlyRoute>
-                  <ResetPasswordPage />
-                </GuestOnlyRoute>
-              } />
-              <Route path="/set-password" element={
-                <GuestOnlyRoute>
-                  <SetPasswordPage />
-                </GuestOnlyRoute>
-              } />
-
-
-              {/* صفحة التحقق من المصادقة الثنائية */}
-              <Route path="/two-factor-verification" element={<TwoFactorVerificationPage />} />
-
-              {/* الصفحات المحمية (تتطلب تسجيل دخول) */}
-              <Route path="/dashboard" element={
-                <ProtectedRoute>
-                  <DashboardPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/notifications" element={
-                <ProtectedRoute>
-                  <NotificationsPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/report/:reportId" element={
-                <ProtectedRoute>
-                  <ReportDetailsPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <EnhancedProfilePage />
-                </ProtectedRoute>
-              } />
-              <Route path="/profile/:userId" element={<PublicProfilePage />} />
-              <Route path="/search" element={
-                <ProtectedRoute requireVerification={true}>
-                  <SearchPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/messages" element={
-                <ProtectedRoute requireVerification={true}>
-                  <MessagesPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/matches" element={
-                <ProtectedRoute requireVerification={true}>
-                  <MatchesPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/likes" element={
-                <ProtectedRoute requireVerification={true}>
-                  <LikesPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/security" element={
-                <ProtectedRoute>
-                  <SecuritySettingsPage />
-                </ProtectedRoute>
-              } />
-
-              <Route path="/subscription" element={
-                <ProtectedRoute>
-                  <SubscriptionPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/payment" element={
-                <ProtectedRoute>
-                  <PaymentPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/verify-email-change" element={<VerifyEmailChangePage />} />
-
-              {/* صفحة 404 - يجب أن تكون في النهاية */}
-              <Route path="*" element={<NotFoundPage />} />
-                  </Routes>
-                </main>
-                <Footer />
-              </div>
-            } />
-          </Routes>
-      </Router>
+          <AppContent />
+        </Router>
       </ToastProvider>
     </AuthProvider>
   );

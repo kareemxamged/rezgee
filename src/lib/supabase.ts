@@ -5,7 +5,7 @@ import { DirectNotificationEmailService } from './directNotificationEmailService
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://sbtzngewizgeqzfbhfjy.supabase.co';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNidHpuZ2V3aXpnZXF6ZmJoZmp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTExMzc5MTMsImV4cCI6MjA2NjcxMzkxM30.T8iv9C4OeKAb-e4Oz6uw3tFnMrgFK3SKN6fVCrBEUGo';
 
-// Create Supabase client with enhanced JWT management
+// Create Supabase client with enhanced JWT management and performance optimizations
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
@@ -15,6 +15,12 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     flowType: 'pkce',
     // تقليل وقت انتهاء الصلاحية لتجديد أسرع
     refreshTokenRotationEnabled: true,
+    // تحسينات الأداء للتخزين المؤقت
+    cache: {
+      enabled: true,
+      ttl: 300000, // 5 دقائق
+      maxSize: 100
+    },
     // تخصيص storage مع معالجة محسنة للأخطاء
     storage: typeof window !== 'undefined' ? {
       getItem: (key: string) => {
@@ -124,6 +130,10 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
       eventsPerSecond: 5,
     },
   },
+  // إعدادات قاعدة البيانات المحسنة
+  db: {
+    schema: 'public'
+  }
 });
 
 // Database types
@@ -2794,5 +2804,263 @@ export const handleSupabaseError = async (error: any, context?: string): Promise
     hint: error?.hint
   });
 };
+
+// ===============================================
+// تحسينات الأداء لقاعدة البيانات
+// ===============================================
+
+/**
+ * تحسين استعلامات قاعدة البيانات
+ */
+export const optimizedQuery = {
+  // استعلام محسن للمستخدمين
+  async getUsers(limit: number = 20, offset: number = 0) {
+    const { data, error } = await supabase
+      .from('users')
+      .select(`
+        id,
+        email,
+        created_at,
+        profiles!inner(
+          first_name,
+          last_name,
+          age,
+          city,
+          country,
+          profile_photo,
+          is_verified
+        )
+      `)
+      .eq('profiles.is_active', true)
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1);
+    
+    if (error) throw error;
+    return data;
+  },
+
+  // استعلام محسن للبحث
+  async searchUsers(searchTerm: string, filters: any = {}) {
+    let query = supabase
+      .from('profiles')
+      .select(`
+        *,
+        users!inner(
+          id,
+          email,
+          created_at
+        )
+      `)
+      .eq('is_active', true);
+
+    // إضافة شروط البحث
+    if (searchTerm) {
+      query = query.or(`first_name.ilike.%${searchTerm}%,last_name.ilike.%${searchTerm}%,city.ilike.%${searchTerm}%`);
+    }
+
+    // إضافة الفلاتر
+    if (filters.age_min) {
+      query = query.gte('age', filters.age_min);
+    }
+    if (filters.age_max) {
+      query = query.lte('age', filters.age_max);
+    }
+    if (filters.city) {
+      query = query.eq('city', filters.city);
+    }
+    if (filters.country) {
+      query = query.eq('country', filters.country);
+    }
+
+    const { data, error } = await query.limit(50);
+    
+    if (error) throw error;
+    return data;
+  },
+
+  // استعلام محسن للرسائل
+  async getMessages(userId: string, limit: number = 50) {
+    const { data, error } = await supabase
+      .from('messages')
+      .select(`
+        *,
+        sender:sender_id(id, profiles!inner(first_name, last_name, profile_photo)),
+        receiver:receiver_id(id, profiles!inner(first_name, last_name, profile_photo))
+      `)
+      .or(`sender_id.eq.${userId},receiver_id.eq.${userId}`)
+      .order('created_at', { ascending: false })
+      .limit(limit);
+    
+    if (error) throw error;
+    return data;
+  },
+
+  // استعلام محسن للإشعارات
+  async getNotifications(userId: string, limit: number = 20) {
+    const { data, error } = await supabase
+      .from('notifications')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('is_read', false)
+      .order('created_at', { ascending: false })
+      .limit(limit);
+    
+    if (error) throw error;
+    return data;
+  }
+};
+
+/**
+ * تحسين التخزين المؤقت
+ */
+export const cacheManager = {
+  // تخزين مؤقت للبيانات
+  cache: new Map<string, { data: any; timestamp: number; ttl: number }>(),
+
+  // إضافة بيانات للتخزين المؤقت
+  set(key: string, data: any, ttl: number = 300000) { // 5 دقائق افتراضياً
+    this.cache.set(key, {
+      data,
+      timestamp: Date.now(),
+      ttl
+    });
+  },
+
+  // الحصول على البيانات من التخزين المؤقت
+  get(key: string) {
+    const cached = this.cache.get(key);
+    if (!cached) return null;
+
+    // فحص انتهاء الصلاحية
+    if (Date.now() - cached.timestamp > cached.ttl) {
+      this.cache.delete(key);
+      return null;
+    }
+
+    return cached.data;
+  },
+
+  // حذف البيانات من التخزين المؤقت
+  delete(key: string) {
+    this.cache.delete(key);
+  },
+
+  // تنظيف التخزين المؤقت
+  clear() {
+    this.cache.clear();
+  },
+
+  // تنظيف البيانات المنتهية الصلاحية
+  cleanup() {
+    const now = Date.now();
+    for (const [key, cached] of this.cache.entries()) {
+      if (now - cached.timestamp > cached.ttl) {
+        this.cache.delete(key);
+      }
+    }
+  }
+};
+
+/**
+ * تحسين الأداء للاستعلامات
+ */
+export const performanceOptimizer = {
+  // تجميع الاستعلامات
+  batchQueries: async (queries: Array<() => Promise<any>>) => {
+    const results = await Promise.allSettled(queries);
+    return results.map((result) => 
+      result.status === 'fulfilled' ? result.value : null
+    );
+  },
+
+  // تحسين الاستعلامات المتكررة
+  debounce: (func: Function, wait: number) => {
+    let timeout: NodeJS.Timeout;
+    return function executedFunction(...args: any[]) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  },
+
+  // تحسين الاستعلامات المتكررة
+  throttle: (func: Function, limit: number) => {
+    let inThrottle: boolean;
+    return function executedFunction(...args: any[]) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+};
+
+/**
+ * مراقبة أداء قاعدة البيانات
+ */
+export const dbPerformanceMonitor = {
+  // تتبع أوقات الاستعلامات
+  queryTimes: new Map<string, number[]>(),
+
+  // بداية قياس الوقت
+  startQuery(queryName: string) {
+    const startTime = performance.now();
+    return {
+      end: () => {
+        const endTime = performance.now();
+        const duration = endTime - startTime;
+        
+        // حفظ وقت الاستعلام
+        if (!this.queryTimes.has(queryName)) {
+          this.queryTimes.set(queryName, []);
+        }
+        this.queryTimes.get(queryName)?.push(duration);
+        
+        // إرسال البيانات إلى Google Analytics
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'database_query', {
+            query_name: queryName,
+            duration: Math.round(duration),
+            category: 'performance'
+          });
+        }
+        
+        return duration;
+      }
+    };
+  },
+
+  // الحصول على إحصائيات الأداء
+  getStats() {
+    const stats: Record<string, any> = {};
+    
+    for (const [queryName, times] of this.queryTimes.entries()) {
+      if (times.length > 0) {
+        stats[queryName] = {
+          count: times.length,
+          average: Math.round(times.reduce((a, b) => a + b, 0) / times.length),
+          min: Math.round(Math.min(...times)),
+          max: Math.round(Math.max(...times))
+        };
+      }
+    }
+    
+    return stats;
+  },
+
+  // تنظيف البيانات القديمة
+  cleanup() {
+    this.queryTimes.clear();
+  }
+};
+
+// تنظيف دوري للتخزين المؤقت
+setInterval(() => {
+  cacheManager.cleanup();
+}, 60000); // كل دقيقة
 
 export default supabase;

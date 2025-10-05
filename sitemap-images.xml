@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage Images -->
+  <url>
+    <loc>https://rezgee.com/</loc>
+    <image:image>
+      <image:loc>https://rezgee.com/images/rezgee-logo.png</image:loc>
+      <image:title>رزقي - شعار الموقع</image:title>
+      <image:caption>شعار موقع رزقي للزواج الإسلامي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/rezgee-og-image.jpg</image:loc>
+      <image:title>رزقي - صورة المشاركة الاجتماعية</image:title>
+      <image:caption>صورة مشاركة موقع رزقي على وسائل التواصل الاجتماعي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/hero-section.jpg</image:loc>
+      <image:title>رزقي - الصفحة الرئيسية</image:title>
+      <image:caption>صورة الصفحة الرئيسية لموقع رزقي للزواج الإسلامي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/features-1.jpg</image:loc>
+      <image:title>رزقي - الميزات الرئيسية</image:title>
+      <image:caption>ميزات موقع رزقي للزواج الإسلامي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/security-features.jpg</image:loc>
+      <image:title>رزقي - ميزات الأمان</image:title>
+      <image:caption>ميزات الأمان في موقع رزقي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/mobile-app.jpg</image:loc>
+      <image:title>رزقي - تطبيق الجوال</image:title>
+      <image:caption>تطبيق رزقي للجوال</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/testimonials.jpg</image:loc>
+      <image:title>رزقي - شهادات المستخدمين</image:title>
+      <image:caption>شهادات المستخدمين في موقع رزقي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/success-stories.jpg</image:loc>
+      <image:title>رزقي - قصص النجاح</image:title>
+      <image:caption>قصص نجاح الزواج من موقع رزقي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+  </url>
+
+  <!-- About Page Images -->
+  <url>
+    <loc>https://rezgee.com/about</loc>
+    <image:image>
+      <image:loc>https://rezgee.com/images/about-us.jpg</image:loc>
+      <image:title>رزقي - من نحن</image:title>
+      <image:caption>معلومات عن موقع رزقي للزواج الإسلامي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/team.jpg</image:loc>
+      <image:title>رزقي - فريق العمل</image:title>
+      <image:caption>فريق عمل موقع رزقي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+  </url>
+
+  <!-- Help Page Images -->
+  <url>
+    <loc>https://rezgee.com/help</loc>
+    <image:image>
+      <image:loc>https://rezgee.com/images/help-guide.jpg</image:loc>
+      <image:title>رزقي - دليل المساعدة</image:title>
+      <image:caption>دليل استخدام موقع رزقي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://rezgee.com/images/tutorial.jpg</image:loc>
+      <image:title>رزقي - دروس تعليمية</image:title>
+      <image:caption>دروس تعليمية لاستخدام موقع رزقي</image:caption>
+      <image:license>https://rezgee.com/license</image:license>
+    </image:image>
+  </url>
+
+</urlset>

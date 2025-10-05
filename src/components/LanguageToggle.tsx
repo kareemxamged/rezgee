@@ -2,16 +2,30 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe } from 'lucide-react';
 import { changeLanguage } from '../i18n';
+import { trackLanguageChange } from '../utils/gtm';
 
 const LanguageToggle: React.FC = () => {
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
 
-  const toggleLanguage = () => {
-    const newLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
-    console.log('🌐 Language toggle clicked:', currentLanguage, '->', newLanguage);
-    changeLanguage(newLanguage);
-  };
+    const toggleLanguage = () => {
+      const newLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+      console.log('🌐 Language toggle clicked:', currentLanguage, '->', newLanguage);
+
+      // تتبع استخدام زر تبديل اللغة في Google Analytics
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'language_toggle_clicked', {
+          'from_language': currentLanguage,
+          'to_language': newLanguage,
+          'page_location': window.location.href
+        });
+      }
+
+      // تتبع تبديل اللغة في GTM
+      trackLanguageChange(currentLanguage, newLanguage);
+
+      changeLanguage(newLanguage);
+    };
 
   return (
     <button

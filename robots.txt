@@ -1,0 +1,285 @@
+# Robots.txt for Rezgee - Islamic Marriage Platform
+# Updated based on actual site structure from App.tsx
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://rezgee.com/sitemap.xml
+Sitemap: https://rezgee.com/sitemap-images.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to access static resources
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.otf$
+
+# Block access to sensitive and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /backup/
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.env$
+Disallow: /*.config$
+
+# Block access to user-specific private content
+Disallow: /profile/
+Disallow: /user/
+Disallow: /account/
+Disallow: /dashboard
+Disallow: /messages
+Disallow: /matches
+Disallow: /likes
+Disallow: /notifications
+Disallow: /security
+Disallow: /subscription
+Disallow: /payment
+Disallow: /report/
+
+# Block access to authentication and verification pages
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /set-password
+Disallow: /temporary-password-login
+Disallow: /two-factor-verification
+Disallow: /verify-email-change
+Disallow: /unsubscribe
+
+# Allow access to public pages (based on App.tsx structure)
+Allow: /
+Allow: /features
+Allow: /about
+Allow: /contact
+Allow: /help-center
+Allow: /faq
+Allow: /articles
+Allow: /islamic-guidelines
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /register
+Allow: /login
+Allow: /search
+
+# Block access to individual user profiles (privacy protection)
+Disallow: /profile/*
+Disallow: /user/*
+Disallow: /report/*
+
+# Block access to article details (may contain user-generated content)
+Disallow: /articles/*
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+# Allow Google to access more content for better indexing
+Allow: /articles
+Allow: /search
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+Allow: /articles
+Allow: /search
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Block aggressive crawlers and SEO tools
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MajesticSEO
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: LinkdexBot
+Disallow: /
+
+User-agent: ScreamingFrogSEOSpider
+Disallow: /
+
+User-agent: SiteAuditBot
+Disallow: /
+
+# Block social media crawlers from accessing private content
+User-agent: facebookexternalhit
+Disallow: /profile/
+Disallow: /dashboard
+Disallow: /messages
+Disallow: /matches
+Disallow: /likes
+Disallow: /notifications
+Disallow: /security
+Disallow: /subscription
+Disallow: /payment
+Allow: /
+Allow: /features
+Allow: /about
+Allow: /articles
+
+User-agent: Twitterbot
+Disallow: /profile/
+Disallow: /dashboard
+Disallow: /messages
+Disallow: /matches
+Disallow: /likes
+Disallow: /notifications
+Disallow: /security
+Disallow: /subscription
+Disallow: /payment
+Allow: /
+Allow: /features
+Allow: /about
+Allow: /articles
+
+User-agent: LinkedInBot
+Disallow: /profile/
+Disallow: /dashboard
+Disallow: /messages
+Disallow: /matches
+Disallow: /likes
+Disallow: /notifications
+Disallow: /security
+Disallow: /subscription
+Disallow: /payment
+Allow: /
+Allow: /features
+Allow: /about
+Allow: /articles
+
+# Block malicious and unwanted bots
+User-agent: BadBot
+Disallow: /
+
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: EmailSiphon
+Disallow: /
+
+User-agent: WebBandit
+Disallow: /
+
+User-agent: EmailWolf
+Disallow: /
+
+User-agent: ExtractorPro
+Disallow: /
+
+User-agent: CopyRightCheck
+Disallow: /
+
+User-agent: Crescent
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: ProWebWalker
+Disallow: /
+
+User-agent: CheeseBot
+Disallow: /
+
+User-agent: LNSpiderguy
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: ia_archiver/1.6
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: MIIxpc
+Disallow: /
+
+User-agent: Telesoft
+Disallow: /
+
+User-agent: Website Quester
+Disallow: /
+
+User-agent: moget/2.1
+Disallow: /
+
+User-agent: WebZip/4.0
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebSauger
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: NetAnts
+Disallow: /
+
+User-agent: MFC_Tear_Sample
+Disallow: /
+
+User-agent: HTTPGet
+Disallow: /
+
+User-agent: *Bot*
+Disallow: /
+
+User-agent: *bot*
+Disallow: /
+
+User-agent: *spider*
+Disallow: /
+
+User-agent: *crawler*
+Disallow: /

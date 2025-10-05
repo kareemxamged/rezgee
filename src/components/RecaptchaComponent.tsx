@@ -57,7 +57,7 @@ const RecaptchaComponent: React.FC<RecaptchaComponentProps> = ({
   const widgetIdRef = useRef<number | null>(null);
 
   // مفاتيح reCAPTCHA مع نظام متدرج
-  const PRIMARY_SITE_KEY = '6LewINIrAAAAACzqj4aHviy5SlRiV5Q2HaAC0XKP'; // المفتاح الحقيقي المقدم من المستخدم
+  const PRIMARY_SITE_KEY = '6LewINIrAAAAACzqj4aHviy5SlRiV5Q2HaAC0XKP'; // المفتاح الحقيقي الجديد المقدم من المستخدم
   const FALLBACK_SITE_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'; // المفتاح التجريبي البديل
   
   const [currentSiteKey, setCurrentSiteKey] = useState(PRIMARY_SITE_KEY);
