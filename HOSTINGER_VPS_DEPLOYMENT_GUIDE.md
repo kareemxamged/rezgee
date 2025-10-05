@@ -1,582 +1,0 @@
-# 🚀 دليل النشر الشامل على VPS Hostinger - رزقي
-## Comprehensive Hostinger VPS Deployment Guide - Rezge
-
-<div align="center">
-
-[![Deployment](https://img.shields.io/badge/Deployment-Ready-green?style=for-the-badge)](https://github.com)
-[![VPS](https://img.shields.io/badge/VPS-Hostinger-blue?style=for-the-badge)](https://hostinger.com)
-[![Time](https://img.shields.io/badge/Time-60_Minutes-orange?style=for-the-badge)](https://github.com)
-
-**دليل مفصل لرفع مشروع رزقي على VPS Hostinger**
-
-</div>
-
----
-
-## 📋 **المعلومات الأساسية**
-
-- **IP الخادم:** `148.230.112.17`
-- **النطاق:** `rezgee.com`
-- **نوع المشروع:** React + TypeScript + Supabase
-- **الخادم:** VPS Hostinger Ubuntu 22.04 LTS
-
----
-
-## **المرحلة الأولى: إعداد VPS** ⚙️
-
-### 1️⃣ **الاتصال بالخادم**
-```bash
-ssh root@148.230.112.17
-```
-
-### 2️⃣ **تحديث النظام وتثبيت المتطلبات**
-```bash
-# تحديث النظام
-apt update && apt upgrade -y
-
-# تثبيت Node.js 20.x
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-apt-get install -y nodejs
-
-# تثبيت Nginx
-apt install -y nginx
-
-# تثبيت PM2 لإدارة العمليات
-npm install -g pm2
-
-# تثبيت PostgreSQL (إذا كنت تحتاجه محلياً)
-apt install -y postgresql postgresql-contrib
-
-# تثبيت Git
-apt install -y git
-
-# تثبيت Certbot للـ SSL
-apt install -y certbot python3-certbot-nginx
-
-# تثبيت أدوات إضافية
-apt install -y unzip wget curl
-```
-
-### 3️⃣ **إنشاء مستخدم للمشروع**
-```bash
-# إنشاء مستخدم rezge
-adduser rezge
-usermod -aG sudo rezge
-
-# إنشاء مجلد المشروع
-mkdir -p /var/www/rezge
-chown -R rezge:rezge /var/www/rezge
-```
-
----
-
-## **المرحلة الثانية: رفع ملفات المشروع** 📁
-
-### 1️⃣ **إعداد المشروع محلياً أولاً**
-
-#### أ. تشغيل سكريبت النشر:
-```bash
-# على الكمبيوتر المحلي
-./deploy.sh
-# أو على Windows
-deploy.bat
-```
-
-#### ب. رفع الملف المضغوط:
-```bash
-# رفع الملف المضغوط إلى الخادم
-scp rezge-deploy-*.tar.gz root@148.230.112.17:/tmp/
-```
-
-### 2️⃣ **استخراج وتركيب المشروع على الخادم**
-```bash
-# على الخادم
-cd /var/www/rezge
-
-# استخراج الملفات
-tar -xzf /tmp/rezge-deploy-*.tar.gz --strip-components=1
-
-# تثبيت التبعيات
-npm ci --only=production
-
-# بناء المشروع
-npm run build
-```
-
----
-
-## **المرحلة الثالثة: إعداد البيئة** 🔧
-
-### 1️⃣ **إنشاء ملف البيئة**
-```bash
-# نسخ ملف البيئة من المثال
-cp env.production.example .env.production
-
-# تعديل الملف
-nano .env.production
-```
-
-### 2️⃣ **تحديث إعدادات البيئة**
-```env
-# Supabase Configuration
-VITE_SUPABASE_URL=your_supabase_url_here
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-
-# SMTP Email Configuration
-VITE_SMTP_HOST=smtp.hostinger.com
-VITE_SMTP_PORT=465
-VITE_SMTP_USER=noreply@rezgee.com
-VITE_SMTP_PASS=your_smtp_password_here
-VITE_SMTP_FROM=رزقي - Rezge <noreply@rezgee.com>
-VITE_SMTP_FROM_NAME=رزقي - Rezge
-
-# Application Configuration
-VITE_APP_URL=https://rezgee.com
-VITE_APP_NAME=رزقي - Rezge
-VITE_APP_DESCRIPTION=منصة الزواج الإسلامي الشرعي
-VITE_APP_VERSION=1.0.0
-NODE_ENV=production
-
-# Security Configuration
-VITE_ENABLE_2FA=true
-VITE_ENABLE_CAPTCHA=true
-VITE_SESSION_TIMEOUT=3600000
-VITE_MAX_LOGIN_ATTEMPTS=5
-
-# Feature Flags
-VITE_ENABLE_NOTIFICATIONS=true
-VITE_ENABLE_VERIFICATION=true
-VITE_ENABLE_PAYMENTS=true
-VITE_ENABLE_ARTICLES=true
-VITE_ENABLE_COMMENTS=true
-
-# Development/Testing (Set to false in production)
-VITE_DEBUG_MODE=false
-VITE_MOCK_DATA=false
-VITE_VERBOSE_LOGGING=false
-```
-
----
-
-## **المرحلة الرابعة: إعداد Nginx** 🌐
-
-### 1️⃣ **إنشاء ملف إعداد Nginx**
-```bash
-# إنشاء ملف الإعداد
-nano /etc/nginx/sites-available/rezgee.com
-```
-
-### 2️⃣ **إعدادات Nginx**
-```nginx
-server {
-    listen 80;
-    server_name rezgee.com www.rezgee.com;
-    root /var/www/rezge/dist;
-    index index.html;
-
-    # Security headers
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Referrer-Policy "no-referrer-when-downgrade" always;
-    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
-
-    # Gzip compression
-    gzip on;
-    gzip_vary on;
-    gzip_min_length 1024;
-    gzip_proxied expired no-cache no-store private must-revalidate auth;
-    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml+rss application/javascript;
-
-    # Static files caching
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-        try_files $uri =404;
-    }
-
-    # Main application
-    location / {
-        try_files $uri $uri/ /index.html;
-        
-        # Security
-        add_header X-Frame-Options "SAMEORIGIN" always;
-        add_header X-XSS-Protection "1; mode=block" always;
-        add_header X-Content-Type-Options "nosniff" always;
-    }
-
-    # API proxy (if needed)
-    location /api/ {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
-    }
-
-    # Error pages
-    error_page 404 /index.html;
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
-}
-```
-
-### 3️⃣ **تفعيل الموقع**
-```bash
-# تفعيل الموقع
-ln -s /etc/nginx/sites-available/rezgee.com /etc/nginx/sites-enabled/
-
-# إزالة الموقع الافتراضي
-rm /etc/nginx/sites-enabled/default
-
-# اختبار التكوين
-nginx -t
-
-# إعادة تحميل Nginx
-systemctl reload nginx
-systemctl enable nginx
-```
-
----
-
-## **المرحلة الخامسة: إعداد PM2** 🔄
-
-### 1️⃣ **تحديث ملف PM2**
-```bash
-# تعديل ملف PM2
-nano /var/www/rezge/ecosystem.config.js
-```
-
-### 2️⃣ **إعدادات PM2 المحدثة**
-```javascript
-module.exports = {
-    apps: [{
-        name: 'rezge-app',
-        script: 'npm',
-        args: 'run preview',
-        cwd: '/var/www/rezge',
-        instances: 1,
-        autorestart: true,
-        watch: false,
-        max_memory_restart: '1G',
-        env: {
-            NODE_ENV: 'production',
-            PORT: 3000,
-            HOST: '0.0.0.0'
-        },
-        error_file: '/var/log/pm2/rezge-error.log',
-        out_file: '/var/log/pm2/rezge-out.log',
-        log_file: '/var/log/pm2/rezge-combined.log',
-        log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
-        time: true,
-        merge_logs: true,
-        kill_timeout: 5000,
-        wait_ready: true,
-        listen_timeout: 10000,
-        restart_delay: 4000,
-        max_restarts: 10,
-        min_uptime: '10s'
-    }]
-};
-```
-
-### 3️⃣ **بدء التطبيق**
-```bash
-# إنشاء مجلد السجلات
-mkdir -p /var/log/pm2
-
-# بدء التطبيق
-pm2 start ecosystem.config.js
-
-# حفظ إعدادات PM2
-pm2 save
-
-# إعداد بدء تلقائي
-pm2 startup
-```
-
----
-
-## **المرحلة السادسة: إعداد SSL** 🔒
-
-### 1️⃣ **الحصول على شهادة SSL**
-```bash
-# الحصول على شهادة SSL
-certbot --nginx -d rezgee.com -d www.rezgee.com
-
-# اختبار التجديد التلقائي
-certbot renew --dry-run
-```
-
-### 2️⃣ **إعداد التجديد التلقائي**
-```bash
-# إضافة مهمة cron للتجديد التلقائي
-crontab -e
-
-# إضافة السطر التالي:
-0 12 * * * /usr/bin/certbot renew --quiet
-```
-
----
-
-## **المرحلة السابعة: إعداد DNS** 🌍
-
-### 1️⃣ **تحديث DNS في لوحة تحكم النطاق**
-```
-Type: A
-Name: @
-Value: 148.230.112.17
-TTL: 3600
-
-Type: A
-Name: www
-Value: 148.230.112.17
-TTL: 3600
-```
-
-### 2️⃣ **انتظار انتشار DNS**
-```bash
-# فحص DNS
-nslookup rezgee.com
-dig rezgee.com
-```
-
----
-
-## **المرحلة الثامنة: الاختبار والتحقق** ✅
-
-### 1️⃣ **فحص الخدمات**
-```bash
-# فحص حالة Nginx
-systemctl status nginx
-
-# فحص حالة PM2
-pm2 status
-
-# فحص السجلات
-pm2 logs rezgee-app
-tail -f /var/log/nginx/error.log
-```
-
-### 2️⃣ **اختبار الموقع**
-```bash
-# اختبار HTTP
-curl -I http://rezgee.com
-
-# اختبار HTTPS
-curl -I https://rezgee.com
-
-# اختبار من المتصفح
-# اذهب إلى: https://rezgee.com
-```
-
----
-
-## **المرحلة التاسعة: الصيانة والمراقبة** 🔧
-
-### 1️⃣ **إعداد النسخ الاحتياطي**
-```bash
-# إنشاء سكريبت النسخ الاحتياطي
-nano /root/backup-rezgee.sh
-```
-
-```bash
-#!/bin/bash
-DATE=$(date +%Y%m%d_%H%M%S)
-BACKUP_DIR="/root/backups"
-PROJECT_DIR="/var/www/rezgee"
-
-mkdir -p $BACKUP_DIR
-
-# نسخ احتياطي للمشروع
-tar -czf $BACKUP_DIR/rezge-backup-$DATE.tar.gz -C $PROJECT_DIR .
-
-# نسخ احتياطي لقاعدة البيانات (إذا كانت محلية)
-# pg_dump -U postgres rezge_db > $BACKUP_DIR/rezge-db-$DATE.sql
-
-# حذف النسخ القديمة (أكثر من 7 أيام)
-find $BACKUP_DIR -name "rezge-backup-*.tar.gz" -mtime +7 -delete
-
-echo "Backup completed: rezge-backup-$DATE.tar.gz"
-```
-
-```bash
-# جعل السكريبت قابل للتنفيذ
-chmod +x /root/backup-rezge.sh
-
-# إضافة مهمة cron للنسخ الاحتياطي اليومي
-crontab -e
-
-# إضافة السطر التالي:
-0 2 * * * /root/backup-rezge.sh
-```
-
-### 2️⃣ **مراقبة الأداء**
-```bash
-# مراقبة استخدام الذاكرة والمعالج
-htop
-
-# مراقبة مساحة القرص
-df -h
-
-# مراقبة PM2
-pm2 monit
-```
-
----
-
-## **حل المشاكل الشائعة** 🆘
-
-### 1️⃣ **المشكلة: الموقع لا يظهر**
-```bash
-# فحص Nginx
-systemctl status nginx
-nginx -t
-
-# فحص PM2
-pm2 status
-pm2 logs rezge-app
-
-# فحص الجدار الناري
-ufw status
-```
-
-### 2️⃣ **المشكلة: خطأ SSL**
-```bash
-# إعادة تشغيل Certbot
-certbot renew --dry-run
-systemctl reload nginx
-
-# فحص الشهادة
-openssl x509 -in /etc/letsencrypt/live/rezgee.com/cert.pem -text -noout
-```
-
-### 3️⃣ **المشكلة: خطأ في قاعدة البيانات**
-```bash
-# فحص PostgreSQL
-systemctl status postgresql
-sudo -u postgres psql -c "SELECT version();"
-
-# فحص اتصال Supabase
-curl -I https://your-supabase-url.supabase.co
-```
-
-### 4️⃣ **المشكلة: خطأ في البريد الإلكتروني**
-```bash
-# فحص إعدادات SMTP
-telnet smtp.hostinger.com 465
-
-# فحص السجلات
-pm2 logs rezge-app | grep -i smtp
-```
-
----
-
-## **أوامر مفيدة للصيانة** 🛠️
-
-### **فحص حالة النظام:**
-```bash
-# حالة الخدمات
-systemctl status nginx postgresql
-
-# حالة PM2
-pm2 status
-pm2 logs rezge-app
-
-# استخدام الموارد
-htop
-df -h
-free -h
-```
-
-### **إعادة تشغيل الخدمات:**
-```bash
-# إعادة تشغيل Nginx
-systemctl restart nginx
-
-# إعادة تشغيل PM2
-pm2 restart all
-
-# إعادة تشغيل كل شيء
-pm2 restart all && systemctl restart nginx
-```
-
-### **فحص السجلات:**
-```bash
-# سجلات Nginx
-tail -f /var/log/nginx/access.log
-tail -f /var/log/nginx/error.log
-
-# سجلات PM2
-pm2 logs rezge-app
-tail -f /var/log/pm2/rezge-error.log
-```
-
----
-
-## **قائمة التحقق النهائية** ✅
-
-### **قبل النشر:**
-- [ ] VPS مشتري ومُعد
-- [ ] النطاق مُعد ومُوجه لـ VPS
-- [ ] ملفات المشروع جاهزة ومبنية
-- [ ] إعدادات البيئة محدثة
-- [ ] إعدادات Supabase صحيحة
-- [ ] إعدادات SMTP صحيحة
-
-### **بعد النشر:**
-- [ ] الموقع يعمل على HTTP
-- [ ] SSL يعمل على HTTPS
-- [ ] PM2 يدير التطبيق
-- [ ] قاعدة البيانات تعمل (Supabase)
-- [ ] البريد الإلكتروني يعمل
-- [ ] جميع الميزات تعمل بشكل صحيح
-- [ ] النسخ الاحتياطي مُعد
-- [ ] المراقبة مُعدة
-
----
-
-## **الملفات المهمة** 📁
-
-- **Nginx config**: `/etc/nginx/sites-available/rezgee.com`
-- **PM2 config**: `/var/www/rezge/ecosystem.config.js`
-- **Environment**: `/var/www/rezge/.env.production`
-- **Logs**: `/var/log/nginx/` و `/var/log/pm2/`
-- **Backups**: `/root/backups/`
-- **Project**: `/var/www/rezge/`
-
----
-
-## **الخطوات التالية** 🚀
-
-1. ✅ **اختبار جميع الميزات**
-2. ✅ **إعداد النسخ الاحتياطي**
-3. ✅ **مراقبة الأداء**
-4. ✅ **تحديث المحتوى**
-5. ✅ **إعداد المراقبة المتقدمة**
-6. ✅ **تحسين الأداء**
-
----
-
-<div align="center">
-
-## 🎉 **تهانينا!**
-
-**تم نشر مشروع رزقي بنجاح! 🚀**
-
-الموقع الآن متاح على: **https://rezgee.com**
-
----
-
-**آخر تحديث:** يناير 2025  
-**المشروع:** رزقي - Rezge للزواج الإسلامي  
-**الخادم:** VPS Hostinger - 148.230.112.17
-
-</div>
-

@@ -197,6 +197,13 @@ REGISTER_PAGE_TRANSLATION_README.md
 TERMS_OF_SERVICE_TRANSLATION_README.md
 VERIFICATION_LIMITS_GUIDE.md
 
+# Ignore all markdown files except README.md
+*.md
+!README.md
+
+# Ignore marketing plan directory
+marketing plan/
+
 # Test files (all test-*.html files)
 test-advanced-security-system.html
 test-auth-fix.html
